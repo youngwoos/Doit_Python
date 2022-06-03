@@ -1,6 +1,6 @@
 <Do it! 쉽게 배우는 파이썬 데이터 분석> 저장소
 ---
-<img src="cover.png" style="zoom:25%;" />
+<img src="cover.png" style="zoom:15%;" />
 
 - 예스24 [[바로가기]](http://www.yes24.com/Product/Goods/108947478)
 - 알라딘 [[바로가기]](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=293059248)
