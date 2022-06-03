@@ -3,6 +3,8 @@
 
 ![](cover.png){width=20%}
 
+<img src = "cover.png" width="20%">
+
 - 예스24 [[바로가기]](http://www.yes24.com/Product/Goods/108947478)
 - 알라딘 [[바로가기]](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=293059248)
 - 교보문고 [[바로가기]](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9791163033493)
