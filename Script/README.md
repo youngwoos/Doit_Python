@@ -17,4 +17,4 @@
 [15.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/15.ipynb) | 15 머신러닝을 이용한 예측 분석
 [16.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/16.ipynb) | 16 데이터를 추출하는 다양한 방법
 [17.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/17.ipynb) | 17 자료 구조 다루기
-[quiz] | 퀴즈 정답
+quiz.ipynb | 퀴즈 정답
