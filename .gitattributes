@@ -1,3 +1,4 @@
 *.sav filter=lfs diff=lfs merge=lfs -text
 11.ipynb filter=lfs diff=lfs merge=lfs -text
 Notebook/11.ipynb filter=lfs diff=lfs merge=lfs -text
+Script/11.ipynb filter=lfs diff=lfs merge=lfs -text
