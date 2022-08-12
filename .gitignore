@@ -37,3 +37,10 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Bakcup
+Notebook/bakcup/
+
+# ipynb_checkpoints
+Notebook/.ipynb_checkpoints
+
