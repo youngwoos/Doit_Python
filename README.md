@@ -12,7 +12,7 @@
 폴더           | 내용
 :------------- |:-------------
 [Data](https://github.com/youngwoos/Doit_Python/tree/main/Data) | 실습 데이터 파일
-[Notebook](https://github.com/youngwoos/Doit_Python/tree/main/Notebook) | 노트북, 퀴즈 정답
+[Notebook](https://github.com/youngwoos/Doit_Python/tree/main/Notebook) | 주피터 노트북, 퀴즈 정답
 [Lecture](https://github.com/youngwoos/Doit_Python/tree/main/Lecture) | 강의용 프리젠테이션 자료
 
 - 저장소의 모든 자료를 한 번에 다운로드하려면 다음 [링크](https://github.com/youngwoos/Doit_Python/archive/refs/heads/main.zip)를 클릭하세요.

@@ -1,34 +1,20 @@
-# 실습 데이터 파일
-실습 데이터 파일입니다. 다운로드해서 워킹 디렉터리에 삽입한 다음 실습을 진행하세요.
+# 주피터 노트북  파일
 
-## 다운로드 방법
-- ① 다운로드할 파일 클릭
-- ② `Raw` 버튼 또는 `Download` 버튼 마우스 오른쪽 클릭
-- ③ [다른 이름으로 링크 저장] 클릭
-
-
-## CSV 파일 다운로드 방법
-- ① [파일 이름' 뒤 확장자 `txt`를 `csv`로 변경 
-- ② 파일 형식'을 '모든 파일'로 변경 → [저장]
-
-
-## 주요 파일
 파일           | 내용
 :------------- |:-------------
-[excel_exam.xlsx](https://github.com/youngwoos/Doit_Python/blob/main/Data/excel_exam.xlsx) | 04-3절 엑셀 파일
-[exam.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/exam.csv) | 04-3절 CSV 파일
-[mpg.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/mpg.csv) | 05-1절 mpg 데이터
-[midwest.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/midwest.csv) | 5장 분석 도전 midwest 데이터
-[economics.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/economics.csv) | 08-4절 economics 데이터
-[Koweps_hpwc14_2019_beta2.sav](https://github.com/youngwoos/Doit_Python/blob/main/Data/Koweps_hpwc14_2019_beta2.sav) | 09-1절 한국복지패널 데이터
-[Koweps_Codebook_2019.xlsx](https://github.com/youngwoos/Doit_Python/blob/main/Data/Koweps_Codebook_2019.xlsx) | 09-1절 한국복지패널 데이터 변수 선정 코드북
-[speech_moon.txt](https://github.com/youngwoos/Doit_Python/blob/main/Data/speech_moon.txt) | 10-1절 문재인 대통령 대선 출마 선언문
-[news_comment_BTS.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/news_comment_BTS.csv) | 10-2절 방탄소년단 네이버 뉴스 기사 댓글
-[DoHyeon-Regular.ttf](https://github.com/youngwoos/Doit_Python/blob/main/Data/DoHyeon-Regular.ttf) | 10-2절 배달의민족 도현체 폰트 파일
-[SIG.geojson](https://github.com/youngwoos/Doit_Python/blob/main/Data/SIG.geojson) | 11-1절 대한민국 시군구별 경계 좌표
-[SIG_Seoul.geojson](https://github.com/youngwoos/Doit_Python/blob/main/Data/SIG_Seoul.geojson) | 11-1절 서울시 시군구 경계 좌표
-[Population_SIG.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/Population_SIG.csv) | 11-1절 시군구별 인구 통계 데이터
-[EMD_Seoul.geojson](https://github.com/youngwoos/Doit_Python/blob/main/Data/EMD_Seoul.geojson) | 11-2절 서울시 동 경계 좌표
-[Foreigner_EMD_Seoul.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/Foreigner_EMD_Seoul.csv) | 11-2절 서울시 동별 외국인 인구 통계
-[mtcars.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/mtcars.csv) | 14-3절 mtcars 데이터
-[adult.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/adult.csv) | 15-2절 인구 조사 데이터
+[03.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/03.ipynb) | 03 데이터 분석에 필요한 연장 챙기기
+[04.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/04.ipynb) | 04 데이터 프레임의 세계로!
+[05.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/05.ipynb) | 05 데이터 분석 기초! - 데이터 파악하기, 다루기 쉽게 수정하기
+[06.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/06.ipynb) | 06 자유자재로 데이터 가공하기
+[07.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/07.ipynb) | 07 데이터 정제 - 빠진 데이터, 이상한 데이터 제거하기
+[08.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/08.ipynb) | 08 그래프 만들기
+[09.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/09.ipynb) | 09 데이터 분석 프로젝트 - 한국인의 삶을 파악하라!
+[10.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/10.ipynb) | 10 텍스트 마이닝
+[11.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/11.ipynb) | 11 지도 시각화
+[12.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/12.ipynb) | 12 인터랙티브 그래프
+[13.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/13.ipynb) | 13 마크다운으로 데이터 분석 보고서 만들기
+[14.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/14.ipynb) | 14 통계 분석 기법을 이용한 가설 검정
+[15.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/15.ipynb) | 15 머신러닝을 이용한 예측 분석
+[16.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/16.ipynb) | 16 데이터를 추출하는 다양한 방법
+[17.ipynb](https://github.com/youngwoos/Doit_Python/blob/main/Script/17.ipynb) | 17 자료 구조 다루기
+quiz.ipynb | 퀴즈 정답
