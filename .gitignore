@@ -42,5 +42,5 @@ vignettes/*.pdf
 Notebook/bakcup/
 
 # ipynb_checkpoints
-Notebook/.ipynb_checkpoints
+Notebook/.ipynb_checkpoints/
 
