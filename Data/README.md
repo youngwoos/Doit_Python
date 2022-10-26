@@ -20,7 +20,7 @@
 [mpg.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/mpg.csv) | 05-1절 mpg 데이터
 [midwest.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/midwest.csv) | 5장 분석 도전 midwest 데이터
 [economics.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/economics.csv) | 08-4절 economics 데이터
-[Koweps_hpwc14_2019_beta2.sav](https://github.com/youngwoos/Doit_Python/blob/main/Data/Koweps_hpwc14_2019_beta2.sav) | 09-1절 한국복지패널 데이터
+[Koweps_hpwc14_2019_beta2.sav](https://bit.ly/Koweps_hpwc14_2019_beta2) | 09-1절 한국복지패널 데이터
 [Koweps_Codebook_2019.xlsx](https://github.com/youngwoos/Doit_Python/blob/main/Data/Koweps_Codebook_2019.xlsx) | 09-1절 한국복지패널 데이터 변수 선정 코드북
 [speech_moon.txt](https://github.com/youngwoos/Doit_Python/blob/main/Data/speech_moon.txt) | 10-1절 문재인 대통령 대선 출마 선언문
 [news_comment_BTS.csv](https://github.com/youngwoos/Doit_Python/blob/main/Data/news_comment_BTS.csv) | 10-2절 방탄소년단 네이버 뉴스 기사 댓글
