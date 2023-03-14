@@ -44,8 +44,10 @@ Notebook/bakcup/
 # ipynb_checkpoints
 Notebook/.ipynb_checkpoints/
 
-# Lecture
-Lecture/qmd/
-
-
+# docs
+docs/refer.html
+docs/refer.qmd
+docs/refer_files
+docs/StartPython.html - 바로 가기.lnk
+docs/.ipynb_checkpoints
 
