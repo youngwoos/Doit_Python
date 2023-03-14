@@ -10,16 +10,11 @@ upcoming| 07~
 
 ---
 
-- 슬라이드는 크롬에 최적화되어있습니다. 
-  - [크롬 다운로드](https://www.google.com/chrome/)
-
+- 슬라이드는 크롬에 최적화되어 있습니다([크롬 다운로드](https://www.google.com/chrome/)).
+- 자유롭게 수정하고 배포하셔도 됩니다.
+- 오류를 발견하면 [issues](https://github.com/youngwoos/Doit_Python/issues) 또는 [데이터 분석 커뮤니티](https://www.facebook.com/groups/datacommunity)로 알려주세요. 확인하는 대로 수정하겠습니다.
 - 단축키
   - [M] : 메뉴
   - [O] : 슬라이드 미리보기
   - [?] : 단축키 설명
   - [E] → [Ctrl]+[P]: PDF파일로 저장하기
-
-- 자유롭게 수정하고 배포하셔도 됩니다.
-- 오류를 발견하면 [issues](https://github.com/youngwoos/Doit_Python/issues) 또는 [데이터 분석 커뮤니티](https://www.facebook.com/groups/datacommunity)로 알려주세요. 확인하는 대로 수정하겠습니다.
-
-
