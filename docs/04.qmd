@@ -59,6 +59,8 @@ pd.options.display.show_dimensions = False
 
 `r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
 
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [ 슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
 `r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
 
 <br-back-10>
