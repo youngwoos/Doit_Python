@@ -78,7 +78,7 @@ pd.options.display.show_dimensions = False
 :::
 
 ::::
-
+dis
 
 ::: {background-color="#FF7232" transition="fade"}
 
@@ -635,6 +635,13 @@ mpg = pd.read_csv('../data/mpg.csv')
 <br10>
 
 ![](img/07-boxplot_table.png){width=100%}
+<br-back-50>
+
+[
+• IQR(사분위 범위): 1사분위수와 3사분위수의 거리
+<br-back-10>
+• 1.5 IQR: IQR의 1.5배
+]{.small}
 
 :::
 

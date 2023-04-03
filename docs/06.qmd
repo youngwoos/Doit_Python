@@ -148,7 +148,7 @@ exam
 ```{python}
 #| echo: false
 import pandas as pd
-exam = pd.read_csv('../../data/exam.csv')
+exam = pd.read_csv('../data/exam.csv')
 exam
 
 ```
@@ -448,7 +448,7 @@ mpg_b = mpg.query('displ >= 5')  # displ 5 이상 추출
 
 ```{python}
 #| echo: false
-mpg = pd.read_csv('../../data/mpg.csv')     # mpg 데이터 불러오기
+mpg = pd.read_csv('../data/mpg.csv')     # mpg 데이터 불러오기
 mpg_a = mpg.query('displ <= 4')  # displ 4 이하 추출
 mpg_b = mpg.query('displ >= 5')  # displ 5 이상 추출
 ```
@@ -490,7 +490,7 @@ mpg_new['hwy'].mean()
 
 
 
-## 06-2 필요한 변수만 추출하기 {background-color="#FFCE32" transition="fade"}
+## 06-3 필요한 변수만 추출하기 {background-color="#FFCE32" transition="fade"}
 
 ---
 
@@ -698,7 +698,7 @@ mpg_new.head()                      # mpg_new 일부 출력
 
 ```{python}
 #| echo: false
-mpg = pd.read_csv('../../data/mpg.csv')  # mpg 데이터 불러오기
+mpg = pd.read_csv('../data/mpg.csv')  # mpg 데이터 불러오기
 mpg_new = mpg[['category', 'cty']]    # category, cty 추출
 mpg_new.head()                        # mpg_new 일부 출력
 ```
@@ -814,7 +814,7 @@ mpg.query('manufacturer == "audi"') \
 
 ```{python}
 #| echo: false
-mpg = pd.read_csv('../../data/mpg.csv')     
+mpg = pd.read_csv('../data/mpg.csv')     
 mpg.query('manufacturer == "audi"') \
    .sort_values('hwy', ascending = False) \
    .head()
@@ -972,7 +972,7 @@ mpg_new = mpg_new.assign(total = mpg_new['cty'] + mpg_new['hwy'])
 
 ```{python}
 #| echo: false
-mpg = pd.read_csv('../../data/mpg.csv')  # mpg 데이터 불러오기
+mpg = pd.read_csv('../data/mpg.csv')  # mpg 데이터 불러오기
 mpg_new = mpg.copy()          # mpg 복사본 만들기
 
 # 합산 연비 변수 추가
@@ -1402,7 +1402,7 @@ mpg.groupby('category') \
 
 ```{python}
 #| echo: false
-mpg = pd.read_csv('../../data/mpg.csv')
+mpg = pd.read_csv('../data/mpg.csv')
 mpg.groupby('category') \
    .agg(mean_cty = ('cty', 'mean'))
 
@@ -1783,7 +1783,7 @@ mpg = pd.merge(mpg, fuel, how = 'left', on = 'fl')
 
 ```{python}
 #| echo: false
-mpg = pd.read_csv('../../data/mpg.csv')                # mpg 데이터 불러오기
+mpg = pd.read_csv('../data/mpg.csv')                # mpg 데이터 불러오기
 mpg = pd.merge(mpg, fuel, how = 'left', on = 'fl')  # mpg에 연료 가격 변수 추가
 
 ```
@@ -1929,7 +1929,7 @@ midwest['ratio'] = (midwest['poptotal'] - midwest['popadults']) \
 ```{python}
 #| echo: false
 # midwest 데이터 불러오기
-midwest = pd.read_csv('../../data/midwest.csv')
+midwest = pd.read_csv('../data/midwest.csv')
 
 # midwest에 백분율 변수 추가
 midwest['ratio'] = (midwest['poptotal'] - midwest['popadults']) \
