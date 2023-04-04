@@ -86,6 +86,15 @@ pd.options.display.show_dimensions = False
 ---
 
 <br>
+<br>
+
+
+![](img/05-intro.png){width=50% fig-align="center"}
+
+
+---
+
+<br>
 
 ##### [목차]{.font-jua .larger}
 
@@ -122,7 +131,7 @@ exam = pd.read_csv('exam.csv')
 ```{python}
 #| echo: false
 import pandas as pd
-exam = pd.read_csv('../../Data/exam.csv')
+exam = pd.read_csv('../Data/exam.csv')
 ```
 
 ---
@@ -205,7 +214,7 @@ mpg = pd.read_csv('mpg.csv')
 ```{python}
 #| echo: false
 # mpg 데이터 불러오기
-mpg = pd.read_csv('../../Data/mpg.csv')
+mpg = pd.read_csv('../Data/mpg.csv')
 ```
 
 ::: {.fragment}
@@ -317,7 +326,7 @@ df.head()
 
 ```{python}
 #| echo: false
-df = pd.read_csv('../../Data/exam.csv')
+df = pd.read_csv('../Data/exam.csv')
 df.head()
 ```
 
@@ -459,7 +468,7 @@ Q3. 데이터 일부를 출력해 변수명이 바뀌었는지 확인해 보세�
 
 ```{python}
 #| echo: false
-pd.read_csv('../../data/mpg.csv').rename(columns = {'cty' : 'city', 'hwy' : 'highway'}).head()
+pd.read_csv('../Data/mpg.csv').rename(columns = {'cty' : 'city', 'hwy' : 'highway'}).head()
 
 ```
 
@@ -475,7 +484,7 @@ mpg_new = mpg.copy()          # 복사본 만들기
 
 ```{python}
 #| echo: false
-mpg_new = pd.read_csv('../../data/mpg.csv')
+mpg_new = pd.read_csv('../Data/mpg.csv')
 ```
 
 ---
@@ -821,7 +830,7 @@ count_test.plot.bar(rot = 0)             # 빈도 막대 그래프 만들기
 
 ```{python}
 #| echo = F
-midwest = pd.read_csv('../../data/midwest.csv')
+midwest = pd.read_csv('../Data/midwest.csv')
 ```
 
 ```{python}

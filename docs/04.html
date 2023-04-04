@@ -425,6 +425,15 @@
 
 <section class="slide level3">
 
+<p><br> <br> <br> <br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/04-intro.png" style="width:40.0%"></p>
+</figure>
+</div>
+</section>
+<section class="slide level3">
+
 <p><br></p>
 <h5 id="목차"><span class="font-jua larger">목차</span></h5>
 <p><span class="font-jua">04-1 데이터 프레임 이해하기</span>(<a href="#/데이터-프레임-이해하기">link</a>)</p>
@@ -607,11 +616,28 @@ Name: english, dtype: int64</code></pre>
 </div>
 <p><br-back-30></br-back-30></p>
 <div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in py_call_impl(callable, dots$args, dots$keywords): FileNotFoundError: [Errno 2] No such file or directory: '../../Data/excel_exam.xlsx'</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'df_exam' is not defined</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+0    1       1    50       98       50
+1    2       1    60       97       60
+2    3       1    45       86       78
+3    4       1    30       98       58
+4    5       2    25       80       65
+5    6       2    50       89       98
+6    7       2    80       90       45
+7    8       2    90       78       25
+8    9       3    20       98       15
+9   10       3    50       98       45
+10  11       3    65       65       65
+11  12       3    45       85       32
+12  13       4    46       98       65
+13  14       4    48       87       12
+14  15       4    75       56       78
+15  16       4    58       98       65
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87
+19  20       5    78       83       58</code></pre>
 </div>
 </div>
 <!-- `<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:#FF7333;overflow:visible;position:relative;"><path d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>`{=html} 워킹 디렉터리에 불러올 파일이 있어야 함   -->
@@ -637,7 +663,7 @@ Name: english, dtype: int64</code></pre>
 <p><br></p>
 <h5 id="경로-직접-지정">경로 직접 지정</h5>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_exam <span class="op">=</span> pd.read_excel(<span class="st">'c:/easy_python/excel_exam.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_exam <span class="op">=</span> pd.read_excel(<span class="st">'c:/easy_python/excel_exam.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -645,13 +671,13 @@ Name: english, dtype: int64</code></pre>
 
 <h4 id="분석하기">분석하기</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(df_exam[<span class="st">'english'</span>]) <span class="op">/</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'df_exam' is not defined</code></pre>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(df_exam[<span class="st">'english'</span>]) <span class="op">/</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>84.9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(df_exam[<span class="st">'science'</span>]) <span class="op">/</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'df_exam' is not defined</code></pre>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(df_exam[<span class="st">'science'</span>]) <span class="op">/</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>59.45</code></pre>
 </div>
 </div>
 </section>
@@ -659,13 +685,13 @@ Name: english, dtype: int64</code></pre>
 
 <h4 id="len-이용해-평균-구하기"><code>len()</code> 이용해 평균 구하기</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수의 값 개수 구하기</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수의 값 개수 구하기</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1, 2, 3, 4, 5]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>5</code></pre>
 </div>
@@ -675,17 +701,17 @@ Name: english, dtype: int64</code></pre>
 
 <h4 id="len-이용해-평균-구하기-1"><code>len()</code> 이용해 평균 구하기</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 프레임의 행 개수 구하기</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'a'</span> : [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'b'</span> : [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]})</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 프레임의 행 개수 구하기</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'a'</span> : [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'b'</span> : [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]})</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   a  b
 0  1  4
 1  2  5
 2  3  6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3</code></pre>
 </div>
@@ -695,17 +721,17 @@ Name: english, dtype: int64</code></pre>
 
 <h4 id="len-이용해-평균-구하기-2"><code>len()</code> 이용해 평균 구하기</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># english 합계를 행 개수로 나누기</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(df_exam[<span class="st">'english'</span>]) <span class="op">/</span> <span class="bu">len</span>(df_exam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'df_exam' is not defined</code></pre>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># english 합계를 행 개수로 나누기</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(df_exam[<span class="st">'english'</span>]) <span class="op">/</span> <span class="bu">len</span>(df_exam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>84.9</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># science 합계를 행 개수로 나누기</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(df_exam[<span class="st">'science'</span>]) <span class="op">/</span> <span class="bu">len</span>(df_exam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'df_exam' is not defined</code></pre>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># science 합계를 행 개수로 나누기</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(df_exam[<span class="st">'science'</span>]) <span class="op">/</span> <span class="bu">len</span>(df_exam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>59.45</code></pre>
 </div>
 </div>
 </section>
@@ -713,8 +739,8 @@ Name: english, dtype: int64</code></pre>
 
 <h4 id="엑셀-파일의-첫-번째-행이-변수명이-아니라면">엑셀 파일의 첫 번째 행이 변수명이 아니라면?</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_exam_novar <span class="op">=</span> pd.read_excel(<span class="st">'excel_exam_novar.xlsx'</span>, header <span class="op">=</span> <span class="va">None</span>)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df_exam_novar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df_exam_novar <span class="op">=</span> pd.read_excel(<span class="st">'excel_exam_novar.xlsx'</span>, header <span class="op">=</span> <span class="va">None</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df_exam_novar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- `<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:#FF7333;overflow:visible;position:relative;"><path d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>`{=html} `None`의 첫 글자 `N` 대문자 유의 -->
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -735,11 +761,11 @@ Name: english, dtype: int64</code></pre>
 
 <h4 id="엑셀-파일에-시트가-여러-개-있다면">엑셀 파일에 시트가 여러 개 있다면?</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sheet2 시트의 데이터 불러오기</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>df_exam <span class="op">=</span> pd.read_excel(<span class="st">'excel_exam.xlsx'</span>, sheet_name <span class="op">=</span> <span class="st">'Sheet2'</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 세 번째 시트의 데이터 불러오기</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>df_exam <span class="op">=</span> pd.read_excel(<span class="st">'excel_exam.xlsx'</span>, sheet_name <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sheet2 시트의 데이터 불러오기</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df_exam <span class="op">=</span> pd.read_excel(<span class="st">'excel_exam.xlsx'</span>, sheet_name <span class="op">=</span> <span class="st">'Sheet2'</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 세 번째 시트의 데이터 불러오기</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>df_exam <span class="op">=</span> pd.read_excel(<span class="st">'excel_exam.xlsx'</span>, sheet_name <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- `<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:#FF7333;overflow:visible;position:relative;"><path d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>`{=html} 숫자를 `0`부터 센다는 점 유의 -->
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -759,16 +785,33 @@ Name: english, dtype: int64</code></pre>
 <section id="csv-파일-불러오기" class="slide level3">
 <h3>CSV 파일 불러오기</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_csv_exam <span class="op">=</span> pd.read_csv(<span class="st">'exam.csv'</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>df_csv_exam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df_csv_exam <span class="op">=</span> pd.read_csv(<span class="st">'exam.csv'</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>df_csv_exam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br-back-30></br-back-30></p>
 <div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in py_call_impl(callable, dots$args, dots$keywords): FileNotFoundError: [Errno 2] No such file or directory: '../../Data/exam.csv'</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'df_csv_exam' is not defined</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+0    1       1    50       98       50
+1    2       1    60       97       60
+2    3       1    45       86       78
+3    4       1    30       98       58
+4    5       2    25       80       65
+5    6       2    50       89       98
+6    7       2    80       90       45
+7    8       2    90       78       25
+8    9       3    20       98       15
+9   10       3    50       98       45
+10  11       3    65       65       65
+11  12       3    45       85       32
+12  13       4    46       98       65
+13  14       4    48       87       12
+14  15       4    75       56       78
+15  16       4    58       98       65
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87
+19  20       5    78       83       58</code></pre>
 </div>
 </div>
 </section>
@@ -776,10 +819,10 @@ Name: english, dtype: int64</code></pre>
 <h3>데이터 프레임을 CSV 파일로 저장하기</h3>
 <h4 id="데이터-프레임-만들기-1">1. 데이터 프레임 만들기</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_midterm <span class="op">=</span> pd.DataFrame({<span class="st">'english'</span> : [<span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">60</span>, <span class="dv">70</span>],</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'math'</span>    : [<span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">20</span>],</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'nclass'</span>  : [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>]})</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>df_midterm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df_midterm <span class="op">=</span> pd.DataFrame({<span class="st">'english'</span> : [<span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">60</span>, <span class="dv">70</span>],</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'math'</span>    : [<span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">20</span>],</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'nclass'</span>  : [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>]})</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>df_midterm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   english  math  nclass
 0       90    50       1
@@ -792,7 +835,7 @@ Name: english, dtype: int64</code></pre>
 <!-- -->
 <h4 id="csv-파일로-저장하기">2. CSV 파일로 저장하기</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df_midterm.to_csv(<span class="st">'output_newdata.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_midterm.to_csv(<span class="st">'output_newdata.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -801,29 +844,29 @@ Name: english, dtype: int64</code></pre>
 </ul>
 <p><br-back-20></br-back-20></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_midterm.to_csv(<span class="st">'output_newdata.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df_midterm.to_csv(<span class="st">'output_newdata.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="정리하기" class="slide level3">
 <h3>정리하기</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 데이터 프레임 만들기</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'name'</span>    : [<span class="st">' 김지훈 '</span>, <span class="st">' 이유진 '</span>, <span class="st">' 박동현 '</span>, <span class="st">' 김민지 '</span>],</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'english'</span> : [<span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">60</span>, <span class="dv">70</span>],</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'math'</span>    : [<span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">20</span>]})</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. 외부 데이터 이용하기</span></span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co">#  엑셀 파일 불러오기</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>df_exam <span class="op">=</span> pd.read_excel(<span class="st">'excel_exam.xlsx'</span>)</span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co"># CSV  파일 불러오기</span></span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>df_csv_exam <span class="op">=</span> pd.read_csv(<span class="st">'exam.csv'</span>)</span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="co"># CSV 파일로 저장하기</span></span>
-<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>df_midterm.to_csv(<span class="st">'output_newdata.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 데이터 프레임 만들기</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'name'</span>    : [<span class="st">' 김지훈 '</span>, <span class="st">' 이유진 '</span>, <span class="st">' 박동현 '</span>, <span class="st">' 김민지 '</span>],</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'english'</span> : [<span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">60</span>, <span class="dv">70</span>],</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'math'</span>    : [<span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">20</span>]})</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. 외부 데이터 이용하기</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="co">#  엑셀 파일 불러오기</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>df_exam <span class="op">=</span> pd.read_excel(<span class="st">'excel_exam.xlsx'</span>)</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co"># CSV  파일 불러오기</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>df_csv_exam <span class="op">=</span> pd.read_csv(<span class="st">'exam.csv'</span>)</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="co"># CSV 파일로 저장하기</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>df_midterm.to_csv(<span class="st">'output_newdata.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section id="끝" class="title-slide slide level2 center" data-background-color="#FF7232" data-transition="fade">

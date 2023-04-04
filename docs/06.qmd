@@ -87,6 +87,17 @@ pd.options.display.show_dimensions = False
 :::
 
 
+
+---
+
+<br>
+<br>
+<br>
+
+
+![](img/06-intro.png){width=60% fig-align="center"}
+
+
 ---
 
 <br>

@@ -86,6 +86,17 @@ pd.options.display.show_dimensions = False
 ---
 
 <br>
+<br>
+<br>
+<br>
+
+
+![](img/03-intro.png){width=45% fig-align="center"}
+
+
+---
+
+<br>
 
 ##### [목차]{.font-jua .larger}
 
@@ -105,7 +116,6 @@ pd.options.display.show_dimensions = False
 
 
 ## 03-1 변하는 수, '변수' 이해하기{background-color="#FFCE32" transition="fade"}
-
 
 ---
 

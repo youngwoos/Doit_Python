@@ -82,6 +82,16 @@ pd.options.display.show_dimensions = False
 
 :::
 
+---
+
+<br>
+<br>
+<br>
+<br>
+
+
+![](img/04-intro.png){width=40% fig-align="center"}
+
 
 ---
 
@@ -255,7 +265,7 @@ df_exam                                     # 출력
 
 ```{python}
 #| echo: false
-df_exam = pd.read_excel('../../Data/excel_exam.xlsx')
+df_exam = pd.read_excel('../Data/excel_exam.xlsx')
 df_exam
 ```
 
@@ -396,7 +406,7 @@ df_csv_exam
 
 ```{python}
 #| echo: false
-df_csv_exam = pd.read_csv('../../Data/exam.csv')
+df_csv_exam = pd.read_csv('../Data/exam.csv')
 df_csv_exam
 ```
 
