@@ -1,0 +1,912 @@
+---
+jupyter: python3
+title: "Do it! 쉽게 배우는 파이썬 데이터 분석"
+output-dir: html
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme_09.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+### {data-menu-title="Info"}
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+
+# 한글 우측 줄맞춤
+import pandas as pd
+pd.set_option("display.unicode.east_asian_width", True)
+
+```
+
+
+<!-- fa 아이콘 출력 설정 -->
+<!-- [{{< fa rocket size=sm >}}]} -->
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+<br>
+<br>
+<br>
+
+![](img/cover.png){fig-align="center" width="70%"}
+
+:::
+
+<!-- width: 55% -->
+
+::: {.column width="55%"}
+
+<br>
+<br>
+<br>
+
+`r fontawesome::fa("github", margin_left = '-0.5em')` [github.com/youngwoos/Doit_Python](https://github.com/youngwoos/Doit_Python)
+
+`r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [ 슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
+`r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
+
+<br-back-10>
+
+&nbsp;&nbsp; ▪ [yes24](http://www.yes24.com/Product/Goods/108947478)
+
+&nbsp;&nbsp; ▪ [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601)
+
+&nbsp;&nbsp; ▪ [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163033493)
+
+:::
+
+::::
+
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 10 텍스트 마이닝 {background-color="#FF7232" transition="fade"}
+
+ 
+:::
+
+
+---
+
+### {data-menu-title="To do"}
+
+<br>
+<br>
+
+
+![](img/10-intro.png){width=60% fig-align="center"}
+
+---
+
+<br>
+
+##### [목차]{.font-jua .larger}
+
+[10-1 대통령 연설문 텍스트 마이닝]{.font-jua}([link](#대통령-연설문-텍스트-마이닝))
+
+[10-2 기사 댓글 텍스트 마이닝]{.font-jua}([link](#기사-댓글-텍스트-마이닝))
+
+
+## 10-1 대통령 연설문 텍스트 마이닝 {background-color="#FFCE32" transition="fade"}
+
+---
+
+##### 형태소 분석(morphology analysis)
+
+- 문장을 구성하는 어절들의 품사를 분석
+- 텍스트 마이닝할 때 가장 먼저 하는 작업
+- 명사, 동사, 형용사 등 의미를 지닌 품사를 추출해 빈도 확인
+
+<br10>
+
+##### 문재인 대통령의 출마 선언문
+
+- 대통령 연설문은 문법 오류 없고 문장이 정제됨
+- 전처리 작업을 많이 하지 않아도 되므로 텍스트 마이닝 익히는 데 적합
+
+---
+
+### `KoNLPy` 패키지 설치하기
+
+<br>
+
+#### 1. 자바 설치하기
+
+- 윈도우 설정 → 시스템 → 정보 → '장치 사양'의 '시스템 종류' 에서 운영 체제 버전 확인
+- [abit.ly/easypy_101](https://abit.ly/easypy_101)에서 운영 체제 버전에 맞는 설치 파일 다운로드, 설치하기
+    - '플랫폼' 항목에서 맞는 운영 체제 버전 선택
+      - 64비트: Windows x64
+      - 32비트: Windows x86
+
+---
+
+### `KoNLPy` 패키지 설치하기
+
+<br>
+
+#### 2. `KoNLPy` 의존성 패키지 설치하기
+
+  `pip install jpype1`
+
+- 의존성 패키지: 패키지가 의존하는 패키지
+- 어떤 패키지는 다른 패키지의 기능을 이용하므로 의존성 패키지를 먼저 설치해야 작동함
+- `KoNLPy`의 의존성 패키지인 `jpype1` 설치하기
+
+<br>
+
+#### 3. `KoNLPy` 설치하기
+
+  `pip install konlpy`
+
+---
+
+### 가장 많이 사용된 단어 알아보기
+
+#### 1. 연설문 불러오기
+
+- `open()`으로 파일을 열고 `read()`로 불러오기
+- `encoding = 'UTF-8'`: 불러올 텍스트 파일의 인코딩을 'UTF-8'로 지정
+
+```{python}
+#| eval: false
+moon = open('speech_moon.txt', encoding = 'UTF-8').read()
+moon
+```
+
+<br-back-40>
+
+```{python}
+#| echo: false
+moon = open('speech_moon.txt', encoding = 'UTF-8').read()
+moon[0:500]
+```
+
+---
+
+#### 2. 불필요한 문자 제거하기
+
+- 특수 문자, 한자, 공백은 분석 대상 아니므로 제거하기
+- `re.sub()`으로 한글이 아닌 모든 문자를 공백으로 바꾸기
+- `[^가-힣]` : '한글이 아닌 모든 문자'를 의미하는 정규 표현식(regular expression)
+
+```{python}
+#| eval: false
+# 불필요한 문자 제거하기
+import re
+moon = re.sub('[^가-힣]', ' ', moon)
+moon
+```
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 불필요한 문자 제거하기
+import re
+moon = re.sub('[^가-힣]', ' ', moon)
+moon[0:500]
+```
+
+---
+
+#### 3. 명사 추출하기
+
+- 명사를 보면 텍스트가 무엇에 관한 내용인지 파악할 수 있음
+
+```{python}
+#| echo: false
+# JAVA_HOME 경로 설정
+import os
+os.environ['JAVA_HOME'] = 'C:/Program Files/Amazon Corretto/jdk11.0.18_10'
+```
+
+```{python}
+# hannanum 만들기
+import konlpy
+hannanum = konlpy.tag.Hannanum()
+
+# 명사 추출하기
+hannanum.nouns("대한민국의 영토는 한반도와 그 부속도서로 한다")
+```
+
+---
+
+```{python}
+# 연설문에서 명사 추출하기
+nouns = hannanum.nouns(moon)
+nouns
+```
+
+---
+
+##### 리스트를 다루기 쉽게 데이터 프레임으로 변환하기
+
+```{python}
+# 데이터 프레임으로 변환
+import pandas as pd
+df_word = pd.DataFrame({'word' : nouns})
+df_word
+```
+
+
+---
+
+
+#### 4. 단어 빈도표 만들기
+
+- `str.len()`: 글자 수 세기
+
+```{python}
+# 글자 수 추가
+df_word['count'] = df_word['word'].str.len()
+df_word
+```
+
+---
+
+
+```{python}
+# 두 글자 이상 단어만 남기기
+df_word = df_word.query('count >= 2')
+df_word.sort_values('count')
+```
+
+---
+
+:::: {.columns}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# 단어 빈도 구하기
+df_word = df_word.groupby('word', as_index = False) \
+                 .agg(n = ('word', 'count')) \
+                 .sort_values('n', ascending = False)
+df_word
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# 단어별 분리
+# 빈도 구하기
+# 내림차순 정렬
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 단어 빈도 구하기
+df_word = df_word.groupby('word', as_index = False) \
+                 .agg(n = ('word', 'count')) \
+                 .sort_values('n', ascending = False)
+df_word
+
+```
+
+---
+
+
+#### 5. 단어 빈도 막대 그래프 만들기
+
+```{python}
+# 단어 빈도 상위 20개 추출
+top20 = df_word.head(20)
+top20
+```
+
+---
+
+
+```{python}
+#| eval: false
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({'font.family'    : 'Malgun Gothic',  # 한글 폰트 설정
+                     'figure.dpi'     : '120',            # 해상도 설정
+                     'figure.figsize' : [6.5, 6]})        # 가로 세로 크기 설정
+
+# 막대 그래프 만들기
+sns.barplot(data = top20, y = 'word', x = 'n')
+```
+
+<br-back-20>
+
+[`r fontawesome::fa("triangle-exclamation", margin_left = '-0.5em', fill = '#FF7333')` 맥 사용자는 `'Malgun Gothic'` 대신 `'AppleGothic'` 폰트 설정]{.small-90}
+
+<br-back-20>
+
+```{python}
+#| echo: false
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({'font.family'    : 'Malgun Gothic',  # 한글 폰트 설정
+                     'figure.dpi'     : '120',            # 해상도 설정
+                     'figure.figsize' : [4.33, 4]})        # 가로 세로 크기 설정
+
+# 막대 그래프 만들기
+p = sns.barplot(data = top20, y = 'word', x = 'n')
+plt.tight_layout()  #  여백
+plt.show()
+
+```
+
+---
+
+### 워드 클라우드 만들기
+
+**워드 클라우드(word cloud)**: 단어의 빈도를 구름 모양으로 표현한 그래프
+
+- 단어의 빈도에 따라 글자의 크기와 색깔을 다르게 표현함
+- 어떤 단어가 얼마나 많이 사용됐는지 한눈에 파악할 수 있음
+
+<br>
+
+#### 1. `wordcloud` 패키지 설치하기
+
+  `pip install wordcloud`
+
+---
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [wordcloud 패키지 설치 오류 해결하기]{.info}
+
+
+`wordcloud` 패키지 설치 중 다음 에러 메시지가 출력되면 'Microsoft Visual C++' 설치
+
+> error: Microsoft Visual C++ 14.0 or greater is required.
+         Get it with "Microsoft C++ Build Tools"
+
+
+- 1. [bit.ly/easypy_103](https://bit.ly/easypy_103)에서 왼쪽 위 [Build Tools 다운로드] 버튼 클릭해 설치 파일을 다운로드
+
+- 2. 설치 파일 실행,  설정 화면에서 왼쪽 위 'C++를 사용한 데스트톱 개발' 체크, <br> 오른쪽
+아래 [Install] 클릭해 설치 시작
+
+- 3. 설치 끝나면 아나콘다 프롬프트에서 `wordcloud` 패키지 설치
+
+:::
+
+---
+
+#### 2. 한글 폰트 설정하기
+
+```{python}
+font = 'DoHyeon-Regular.ttf'
+```
+
+---
+
+#### 3. 단어와 빈도를 담은 딕셔너리 만들기
+
+##### 단어는 키(key), 빈도는 값(value)으로 구성된 딕셔너리 만들기
+
+```{python}
+# 데이터 프레임을 딕셔너리로 변환
+dic_word = df_word.set_index('word').to_dict()['n']
+dic_word
+```
+
+---
+
+#### 4. 워드 클라우드 만들기
+
+```{python}
+# wc 만들기
+from wordcloud import WordCloud
+wc = WordCloud(random_state = 1234,         # 난수 고정
+               font_path = font,            # 폰트 설정
+               width = 400,                 # 가로 크기
+               height = 400,                # 세로 크기
+               background_color = 'white')  # 배경색
+
+```
+
+
+---
+
+#### 4. 워드 클라우드 만들기
+
+```{python}
+#| eval: false
+
+# 워드 클라우드 만들기
+img_wordcloud = wc.generate_from_frequencies(dic_word);
+
+# 워드 클라우드 출력하기
+plt.figure(figsize = (10, 10))  # 가로, 세로 크기 설정
+plt.axis('off')                 # 테두리 선 없애기
+plt.imshow(img_wordcloud)       # 워드 클라우드 출력
+```
+
+<br-back-40>
+
+```{python}
+#| echo: false
+#| output: false
+
+# 워드 클라우드 만들기
+img_wordcloud = wc.generate_from_frequencies(dic_word);
+
+# 워드 클라우드 출력하기
+plt.figure(figsize = (5.5, 5.5))  # 가로, 세로 크기 설정
+plt.axis('off')               # 테두리 선 없애기
+```
+
+<br-back-40>
+
+```{python}
+#| echo: false
+plt.imshow(img_wordcloud)     # 워드 클라우드 출력
+```
+
+---
+
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [워드 클라우드 만들 때 주의하기]{.info}
+
+- 워드 클라우드 이미지 출력 코드는 한 셀에 넣어 함께 실행해야 함
+- `WordCloud()`는 실행할 때마다 난수를 이용해 워드 클라우드를 매번 다른 모양으로 만듦
+- 항상 같은 모양으로 만들려면 `random_state`를 이용해 난수를 고정 하고, `wc` 만드는 코드를 먼저<br> 실행한 다음 `wc.generate_from_frequencies()`를 실행해야 함
+
+
+:::
+
+---
+
+### 워드 클라우드 모양 바꾸기
+
+#### 1. mask 만들기
+
+##### 이미지 파일 불러오기
+
+<br10>
+![](img/cloud.png){width=40%}
+
+```{python}
+import PIL
+icon = PIL.Image.open('cloud.png')
+```
+
+---
+
+##### mask 만들기
+
+```{python}
+import numpy as np
+img = PIL.Image.new('RGB', icon.size, (255, 255, 255))
+img.paste(icon, icon)
+img = np.array(img)
+```
+
+---
+
+
+#### 2. 워드 클라우드 만들기
+
+- `mask = img`: `mask` 적용하기
+
+```{python}
+# wc 만들기
+wc = WordCloud(random_state = 1234,         # 난수 고정
+               font_path = font,            # 폰트 설정
+               width = 400,                 # 가로 크기
+               height = 400,                # 세로 크기
+               background_color = 'white',  # 배경색
+               mask = img)                  # mask 설정
+```
+
+---
+
+#### 2. 워드 클라우드 만들기
+
+```{python}
+#| eval: false
+
+# 워드 클라우드 만들기
+img_wordcloud = wc.generate_from_frequencies(dic_word);
+
+# 워드 클라우드 출력하기
+plt.figure(figsize = (10, 10))  # 가로, 세로 크기 설정
+plt.axis('off')                 # 테두리 선 없애기
+plt.imshow(img_wordcloud)       # 워드 클라우드 출력
+```
+
+<br-back-40>
+
+```{python}
+#| echo: false
+#| output: false
+
+# 워드 클라우드 만들기
+img_wordcloud = wc.generate_from_frequencies(dic_word);
+
+# 워드 클라우드 출력하기
+plt.figure(figsize = (9, 6))  # 가로, 세로 크기 설정
+plt.axis('off')               # 테두리 선 없애기
+```
+
+<br-back-40>
+
+```{python}
+#| echo: false
+plt.imshow(img_wordcloud)     # 워드 클라우드 출력
+```
+
+---
+
+### 워드 클라우드 색깔 바꾸기
+
+- `colormap = 'inferno'`:  워드 클라우드에 `inferno` 컬러맵 적용
+- 컬러맵(colormaps): 색깔 목록
+
+```{python}
+# wc 만들기
+wc = WordCloud(random_state = 1234,         # 난수 고정
+               font_path = font,            # 폰트 설정
+               width = 400,                 # 가로 크기
+               height = 400,                # 세로 크기
+               background_color = 'white',  # 배경색
+               mask = img,                  # mask 설정
+               colormap = 'inferno')        # 컬러맵 설정
+```
+
+---
+
+### 워드 클라우드 색깔 바꾸기
+
+
+```{python}
+#| eval: false
+
+# 워드 클라우드 만들기
+img_wordcloud = wc.generate_from_frequencies(dic_word);
+
+# 워드 클라우드 출력하기
+plt.figure(figsize = (10, 10))  # 가로, 세로 크기 설정
+plt.axis('off')                 # 테두리 선 없애기
+plt.imshow(img_wordcloud)       # 워드 클라우드 출력
+```
+
+<br-back-40>
+
+```{python}
+#| echo: false
+#| output: false
+
+# 워드 클라우드 만들기
+img_wordcloud = wc.generate_from_frequencies(dic_word);
+
+# 워드 클라우드 출력하기
+plt.figure(figsize = (9, 6))  # 가로, 세로 크기 설정
+plt.axis('off')               # 테두리 선 없애기
+```
+
+<br-back-40>
+
+```{python}
+#| echo: false
+plt.imshow(img_wordcloud)     # 워드 클라우드 출력
+```
+
+
+---
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [다양한 컬러맵 이용하기]{.info}
+
+워드 클라우드에 적용할 수 있는 다양한 컬러맵
+
+• Choosing Colormaps in Matplotlib: [bit.ly/easypy_104](https://bit.ly/easypy_104)
+
+:::
+
+
+<br>
+
+:::: {.fragment}
+
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [워드 클라우드는 좋은 그래프인가?]{.info}
+
+- 워드 클라우드는 분석 결과를 정확하게 표현하는 그래프는 아님
+- 단어 빈도를 크기와 색으로 표현하므로 '어떤 단어가 몇 번 사용됐는지' 정확히 알 수 없음
+- 단어 배치가 산만해서 '어떤 단어가 다른 단어보다 얼마나 더 많이 사용됐는지' 비교하기 어려움
+- 아름답게 표현하는 게 아니라 정확하게 표현하려면 워드 클라우드보다 막대 그래프를 이용
+
+:::
+
+::::
+
+
+## 10-2 기사 댓글 텍스트 마이닝{background-color="#FFCE32" transition="fade"}
+
+---
+
+### 가장 많이 사용된 단어 알아보기
+
+#### 1. 기사 댓글 불러오기
+
+- `'news_comment_BTS.csv'`: 방탄소년단 ‘빌보드 핫 100 차트’ 1위 소식을 다룬 네이버 뉴스 기사 댓글
+
+```{python}
+# 데이터 불러오기
+df = pd.read_csv('news_comment_BTS.csv', encoding = 'UTF-8')
+
+# 데이터 살펴보기
+df.info()
+```
+
+---
+
+#### 2. 불필요한 문자 제거하기
+
+- `reply`는 데이터 프레임에 담겨 있는 변수이므로 `str.replace()`를 사용해 불필요 문자 제거
+
+```{python}
+# 불필요한 문자 제거하기
+df['reply'] = df['reply'].str.replace('[^가-힣]', ' ', regex = True)
+df['reply'].head()
+```
+
+---
+
+#### 3. 명사 추출하기
+
+- 꼬꼬마(Kkma) 형태소 분석기 이용해 명사 추출
+  - 띄어쓰기 오류 있는 문장에서도 형태소를 잘 추출하는 장점이 있음
+  - 댓글처럼 정제되지 않은 텍스트 분석에 적합
+
+```{python}
+# kkma 만들기
+import konlpy
+kkma = konlpy.tag.Kkma()
+```
+
+`r fontawesome::fa("triangle-exclamation", margin_left = '-0.5em', fill = '#FF7333')` `Kkma()`의 첫 글자 `K` 대문자 주의
+
+---
+
+##### 명사 추출
+
+- `reply`는 데이터 프레임에 들어 있는 변수이므로 `kkma.nouns()`에 바로 적용할 수 없음
+- 함수가 각 행의 값을 따로따로 처리하도록 `apply()` 사용
+
+```{python}
+# 명사 추출 - apply() 활용
+nouns = df['reply'].apply(kkma.nouns)
+nouns
+```
+
+---
+
+#### 4. 단어 빈도표 만들기
+
+- `nouns`는 행마다 여러 단어가 리스트 자료 구조로 들어 있음
+- `df.explode()`를 이용해 한 행에 한 단어만 들어가도록 변경
+
+```{python}
+# 한 행에 한 단어가 들어가도록 구성
+nouns = nouns.explode()
+nouns
+```
+
+---
+
+```{python}
+# 데이터 프레임 만들기
+df_word = pd.DataFrame({'word' : nouns})
+
+# 글자 수 추가
+df_word['count'] = df_word['word'].str.len()
+
+# 두 글자 이상 단어만 남기기
+df_word = df_word.query('count >= 2')
+df_word
+```
+
+---
+
+:::: {.columns}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# 빈도표 만들기
+df_word = df_word.groupby('word', as_index = False) \
+                 .agg(n = ('word', 'count')) \
+                 .sort_values('n', ascending = False)
+df_word
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# 단어별 분리
+# 빈도 구하기
+# 내림차순 정렬
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+
+# 빈도표 만들기
+df_word = df_word.groupby('word', as_index = False) \
+                 .agg(n = ('word', 'count')) \
+                 .sort_values('n', ascending = False)
+df_word
+
+```
+
+---
+
+#### 5. 단어 빈도 막대 그래프 만들기
+
+```{python}
+# 단어 빈도 상위 20개 추출
+top20 = df_word.head(20)
+top20
+```
+
+---
+
+```{python}
+# 가로 세로 크기 설정
+plt.rcParams.update({'figure.figsize': [6.5, 6]})
+
+# 막대 그래프 만들기
+sns.barplot(data = top20, y = 'word', x = 'n')
+```
+
+---
+
+### 워드 클라우드 만들기
+
+```{python}
+# 데이터 프레임을 딕셔너리로 변환
+dic_word = df_word.set_index('word').to_dict()['n']
+
+# wc 만들기
+wc = WordCloud(random_state = 1234,         # 난수 고정
+               font_path = font,            # 폰트 설정
+               width = 400,                 # 가로 크기
+               height = 400,                # 세로 크기
+               background_color = 'white',  # 배경색
+               mask = img)                  # mask 설정
+```
+
+---
+
+```{python}
+#| eval: false
+# 워드 클라우드 만들기
+img_wordcloud = wc.generate_from_frequencies(dic_word)
+
+# 워드 클라우드 출력하기
+plt.figure(figsize = (10, 10))  # 가로, 세로 크기 설정
+plt.axis('off')                 # 테두리 선 없애기
+plt.imshow(img_wordcloud)       # 워드 클라우드 출력
+```
+
+
+<br-back-40>
+
+
+```{python}
+#| echo: false
+#| output: false
+# 워드 클라우드 만들기
+img_wordcloud = wc.generate_from_frequencies(dic_word)
+
+# 워드 클라우드 출력하기
+plt.figure(figsize = (9, 6))  # 가로, 세로 크기 설정
+plt.axis('off')                 # 테두리 선 없애기
+```
+
+<br-back-40>
+
+
+```{python}
+#| echo: false
+plt.imshow(img_wordcloud)       # 워드 클라우드 출력
+```
+
+---
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [텍스트 마이닝 더 알아보기]{.info}
+
+**다양한 형태소 분석기 이용하기**
+
+- `KoNLPy`를 이용하면 한나눔, 꼬꼬마 외에도 다양한 형태소 분석기를 이용할 수 있음
+- 명사뿐 아니라 동사, 형용사 등 다양한 품사를 추출할 수 있음
+- `KoNLPy` 공식 문서: [konlpy.org/ko/latest](https://konlpy.org/ko/latest/)
+
+
+**텍스트 마이닝 자세히 익히기**
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+<br10>
+
+![](img/10-title_rtm.png){fig-align="right" width="70%"}
+
+
+:::
+
+::: {.column width="70%"}
+
+<br10>
+
+- Do it! 쉽게 배우는 R 텍스트 마이닝》: <br> [yes24.com/Product/Goods/97126355](http://www.yes24.com/Product/Goods/97126355)
+
+:::
+
+::::
+
+<br-back-50>
+
+:::
+
+
+::: {background-color="#FF7232" transition="fade"}
+## 끝
+:::

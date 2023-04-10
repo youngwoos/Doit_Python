@@ -29,6 +29,8 @@ execute:
   cache: false
 ---
 
+### {data-menu-title="Info"}
+
 ```{python}
 #| echo: false
 # 데이터 프레임 하단 행, 열 개수 표기X
@@ -78,7 +80,7 @@ pd.options.display.show_dimensions = False
 :::
 
 ::::
-dis
+
 
 ::: {background-color="#FF7232" transition="fade"}
 
@@ -89,6 +91,8 @@ dis
 
 
 ---
+
+### {data-menu-title="To do"}
 
 <br>
 <br>

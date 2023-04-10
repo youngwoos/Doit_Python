@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="10_files/libs/clipboard/clipboard.min.js"></script>
+<script src="10_files/libs/quarto-html/tabby.min.js"></script>
+<script src="10_files/libs/quarto-html/popper.min.js"></script>
+<script src="10_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="10_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="10_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="10_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="10_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="10_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="10_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.290">
+
+  <title>Do it! 쉽게 배우는 파이썬 데이터 분석</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="10_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="10_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="10_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="10_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="10_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="10_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="10_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#FF7232" class="quarto-title-block center">
+  <h1 class="title">Do it! 쉽게 배우는 파이썬 데이터 분석</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="section" class="slide level3" data-menu-title="Info">
+<h3></h3>
+<!-- fa 아이콘 출력 설정 -->
+<!-- []} -->
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><br> <br> <br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/cover.png" class="quarto-discovered-preview-image" style="width:70.0%"></p>
+</figure>
+</div>
+</div><!-- width: 55% --><div class="column" style="width:55%;">
+<p><br> <br> <br></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg> <a href="https://github.com/youngwoos/Doit_Python">github.com/youngwoos/Doit_Python</a></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.3V327.7h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0 -48-48z"></path></svg> <a href="https://facebook.com/groups/datacommunity">facebook.com/groups/datacommunity</a></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 576 512" style="height:0.8em;width:0.9em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M528 0h-480C21.5 0 0 21.5 0 48v320C0 394.5 21.5 416 48 416h192L224 464H152C138.8 464 128 474.8 128 488S138.8 512 152 512h272c13.25 0 24-10.75 24-24s-10.75-24-24-24H352L336 416h192c26.5 0 48-21.5 48-48v-320C576 21.5 554.5 0 528 0zM512 288H64V64h448V288z"></path></svg> <a href="https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md">슬라이드 목록</a></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M448 336v-288C448 21.49 426.5 0 400 0H96C42.98 0 0 42.98 0 96v320c0 53.02 42.98 96 96 96h320c17.67 0 32-14.33 32-31.1c0-11.72-6.607-21.52-16-27.1v-81.36C441.8 362.8 448 350.2 448 336zM143.1 128h192C344.8 128 352 135.2 352 144C352 152.8 344.8 160 336 160H143.1C135.2 160 128 152.8 128 144C128 135.2 135.2 128 143.1 128zM143.1 192h192C344.8 192 352 199.2 352 208C352 216.8 344.8 224 336 224H143.1C135.2 224 128 216.8 128 208C128 199.2 135.2 192 143.1 192zM384 448H96c-17.67 0-32-14.33-32-32c0-17.67 14.33-32 32-32h288V448z"></path></svg> <a href="https://search.shopping.naver.com/book/catalog/32474211621">네이버책</a></p>
+<p><br-back-10></br-back-10></p>
+<p>&nbsp;&nbsp; ▪ <a href="http://www.yes24.com/Product/Goods/108947478">yes24</a></p>
+<p>&nbsp;&nbsp; ▪ <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601">알라딘</a></p>
+<p>&nbsp;&nbsp; ▪ <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791163033493">교보문고</a></p>
+</div>
+</div>
+</section>
+<section id="텍스트-마이닝" class="title-slide slide level2 center" data-background-color="#FF7232" data-transition="fade">
+<h2>10 텍스트 마이닝</h2>
+
+</section>
+
+<section id="section-1" class="slide level3" data-menu-title="To do">
+<h3></h3>
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/10-intro.png" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section class="slide level3">
+
+<p><br></p>
+<h5 id="목차"><span class="font-jua larger">목차</span></h5>
+<p><span class="font-jua">10-1 대통령 연설문 텍스트 마이닝</span>(<a href="#/대통령-연설문-텍스트-마이닝">link</a>)</p>
+<p><span class="font-jua">10-2 기사 댓글 텍스트 마이닝</span>(<a href="#/기사-댓글-텍스트-마이닝">link</a>)</p>
+</section>
+<section>
+<section id="대통령-연설문-텍스트-마이닝" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>10-1 대통령 연설문 텍스트 마이닝</h2>
+
+</section>
+<section class="slide level3">
+
+<h5 id="형태소-분석morphology-analysis">형태소 분석(morphology analysis)</h5>
+<ul>
+<li>문장을 구성하는 어절들의 품사를 분석</li>
+<li>텍스트 마이닝할 때 가장 먼저 하는 작업</li>
+<li>명사, 동사, 형용사 등 의미를 지닌 품사를 추출해 빈도 확인</li>
+</ul>
+<p><br10></br10></p>
+<h5 id="문재인-대통령의-출마-선언문">문재인 대통령의 출마 선언문</h5>
+<ul>
+<li>대통령 연설문은 문법 오류 없고 문장이 정제됨</li>
+<li>전처리 작업을 많이 하지 않아도 되므로 텍스트 마이닝 익히는 데 적합</li>
+</ul>
+</section>
+<section id="konlpy-패키지-설치하기" class="slide level3">
+<h3><code>KoNLPy</code> 패키지 설치하기</h3>
+<p><br></p>
+<h4 id="자바-설치하기">1. 자바 설치하기</h4>
+<ul>
+<li>윈도우 설정 → 시스템 → 정보 → ‘장치 사양’의 ’시스템 종류’ 에서 운영 체제 버전 확인</li>
+<li><a href="https://abit.ly/easypy_101">abit.ly/easypy_101</a>에서 운영 체제 버전에 맞는 설치 파일 다운로드, 설치하기
+<ul>
+<li>‘플랫폼’ 항목에서 맞는 운영 체제 버전 선택
+<ul>
+<li>64비트: Windows x64</li>
+<li>32비트: Windows x86</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="konlpy-패키지-설치하기-1" class="slide level3">
+<h3><code>KoNLPy</code> 패키지 설치하기</h3>
+<p><br></p>
+<h4 id="konlpy-의존성-패키지-설치하기">2. <code>KoNLPy</code> 의존성 패키지 설치하기</h4>
+<p><code>pip install jpype1</code></p>
+<ul>
+<li>의존성 패키지: 패키지가 의존하는 패키지</li>
+<li>어떤 패키지는 다른 패키지의 기능을 이용하므로 의존성 패키지를 먼저 설치해야 작동함</li>
+<li><code>KoNLPy</code>의 의존성 패키지인 <code>jpype1</code> 설치하기</li>
+</ul>
+<p><br></p>
+<h4 id="konlpy-설치하기">3. <code>KoNLPy</code> 설치하기</h4>
+<p><code>pip install konlpy</code></p>
+</section>
+<section id="가장-많이-사용된-단어-알아보기" class="slide level3">
+<h3>가장 많이 사용된 단어 알아보기</h3>
+<h4 id="연설문-불러오기">1. 연설문 불러오기</h4>
+<ul>
+<li><code>open()</code>으로 파일을 열고 <code>read()</code>로 불러오기</li>
+<li><code>encoding = 'UTF-8'</code>: 불러올 텍스트 파일의 인코딩을 ’UTF-8’로 지정</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>moon <span class="op">=</span> <span class="bu">open</span>(<span class="st">'speech_moon.txt'</span>, encoding <span class="op">=</span> <span class="st">'UTF-8'</span>).read()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>moon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>'정권교체 하겠습니다!\n  정치교체 하겠습니다!\n  시대교체 하겠습니다!\n  \n  ‘불비불명(不飛不鳴)’이라는 고사가 있습니다. 남쪽 언덕 나뭇가지에 앉아, 3년 동안 날지도 울지도 않는 새. 그러나 그 새는 한번 날면 하늘 끝까지 날고, 한번 울면 천지를 뒤흔듭니다.\n\n그 동안 정치와 거리를 둬 왔습니다. 그러나 암울한 시대가 저를 정치로 불러냈습니다. 더 이상 남쪽 나뭇가지에 머무를 수 없었습니다. 이제 저는 국민과 함께 높이 날고 크게 울겠습니다. 오늘 저는 제18대 대통령선거 출마를 국민 앞에 엄숙히 선언합니다.\n\n\n‘우리나라 대통령’이 되겠습니다.\n\n\n존경하는 국민 여러분!\n  \n  저는 대통령이 되겠습니다. 우리나라 대통령이 되겠습니다. 소수 특권층의 나라가 아니라 보통사람들이 주인인 ‘우리나라’, 네 편 내 편 편가르지 않고 함께 가는 우리나라, ‘우리’라는 말이 조금도 부끄럽지 않은, 진정한 ‘우리나라’의 대통령이 되겠습니다.\n\n지금까지 우리 보통사람들은 날지도 울지도 '</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="불필요한-문자-제거하기">2. 불필요한 문자 제거하기</h4>
+<ul>
+<li>특수 문자, 한자, 공백은 분석 대상 아니므로 제거하기</li>
+<li><code>re.sub()</code>으로 한글이 아닌 모든 문자를 공백으로 바꾸기</li>
+<li><code>[^가-힣]</code> : ’한글이 아닌 모든 문자’를 의미하는 정규 표현식(regular expression)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 불필요한 문자 제거하기</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>moon <span class="op">=</span> re.sub(<span class="st">'[^가-힣]'</span>, <span class="st">' '</span>, moon)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>moon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>'정권교체 하겠습니다    정치교체 하겠습니다    시대교체 하겠습니다        불비불명       이라는 고사가 있습니다  남쪽 언덕 나뭇가지에 앉아   년 동안 날지도 울지도 않는 새  그러나 그 새는 한번 날면 하늘 끝까지 날고  한번 울면 천지를 뒤흔듭니다   그 동안 정치와 거리를 둬 왔습니다  그러나 암울한 시대가 저를 정치로 불러냈습니다  더 이상 남쪽 나뭇가지에 머무를 수 없었습니다  이제 저는 국민과 함께 높이 날고 크게 울겠습니다  오늘 저는 제  대 대통령선거 출마를 국민 앞에 엄숙히 선언합니다     우리나라 대통령 이 되겠습니다    존경하는 국민 여러분       저는 대통령이 되겠습니다  우리나라 대통령이 되겠습니다  소수 특권층의 나라가 아니라 보통사람들이 주인인  우리나라   네 편 내 편 편가르지 않고 함께 가는 우리나라   우리 라는 말이 조금도 부끄럽지 않은  진정한  우리나라 의 대통령이 되겠습니다   지금까지 우리 보통사람들은 날지도 울지도 '</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="명사-추출하기">3. 명사 추출하기</h4>
+<ul>
+<li>명사를 보면 텍스트가 무엇에 관한 내용인지 파악할 수 있음</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hannanum 만들기</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> konlpy</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>hannanum <span class="op">=</span> konlpy.tag.Hannanum()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 명사 추출하기</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>hannanum.nouns(<span class="st">"대한민국의 영토는 한반도와 그 부속도서로 한다"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['대한민국', '영토', '한반도', '부속도서']</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 연설문에서 명사 추출하기</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>nouns <span class="op">=</span> hannanum.nouns(moon)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>nouns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['정권교체', '정치교체', '시대교체', '불비불명', '고사', '남쪽', '언덕', '나뭇가지', '년', '동안', '새', '한번', '하늘', '끝', '한번', '천지', '동안', '정치', '거리', '암울한', '시대', '저', '정치', '이상', '남쪽', '나뭇가지', '수', '저', '국민', '오늘', '저', '저', '대', '대통령선거', '출마', '국민', '앞', '선언', '우리나라', '대통령', '존경', '국민', '여러분', '저', '대통령', '우리나라', '대통령', '소수', '특권층', '나라', '보통사람들', '주인', '우리나라', '네', '편', '내', '편', '편가르지', '우리나라', '우리', '라', '말', '진정한', '우리나라', '의', '대통령', '지금', '우리', '보통사람들', '새', '나라', '주인', '행세', '주인', '대접', '말', '몸', '당당', '말', '정치', '참여', '저', '추구', '우리나라', '정치인', '나라', '시민', '정치', '정책과정', '참여', '나라', '저', '시민', '동행', '정치', '저', '추구', '우리나라', '특권', '불평등', '나라', '보통사람들', '기회', '공평', '정의로운', '나라', '권력', '돈', '집단', '나라', '그들', '마음', '시대', '사람들', '희생', '강요', '경제', '정치', '권력', '오늘', '문재인', '우리나라', '우리', '모두', '나라', '선언', '국민', '저', '결심', '이유', '보통사람들', '삶', '우리', '현실', '엄중하기', '때문', '근본적', '혁신', '거대', '전환', '나라', '절박', '때문', '우리', '삶', '우리', '사회', '이상', '경제성장', '과실', '소수', '부유층', '대기업', '창고', '황금', '대부분', '보통사람들', '취업불안', '주거불안', '고용불안', '건강불안', '노후불안', '등', '불안', '이불', '잠자리', '국민', '사람', '사람', '빚', '아이', '일자리', '입시부담', '성적스트레스', '학교폭력', '상처', '영혼들', '하나', '둘', '우리', '곁', '삶', '세상', '분', '들', '약자', '고통', '관심', '정부', '부자', '강자', '기득권', '급급', '정치', '사람들', '희망', '때문', '것', '표정', '사람들', '국민들', '희망', '정치', '절실', '필요', '국민', '뜻', '대통령의', '길', '저', '대선출마', '결심', '국민', '여러분', '출마선언문', '제안', '들', '글', '소중', '의견', '제안', '고단', '삶', '거기', '시민', '한숨', '눈물', '정치', '국민', '걱정거리', '초라한', '정부', '모습', '상식', '사회', '권한', '책', '비례', '사회', '인정', '세상', '개천', '용', '수', '사회', '철학', '나', '약자', '얘', '귀', '사람', '진심어린', '위로', '세상', '세금', '나', '사람', '관대', '힘', '사람', '엄격', '잣대', '적용', '사회', '국민들', '의', '수', '어깨', '대통령', '국민', '정부', '것', '국민', '요구', '미안', '가슴', '평범', '상식적', '요구', '소박한', '요구', '정치', '외면', '것', '국가비전', '공부', '고민', '거창', '국가비전', '국민', '마음속', '겸손', '국민', '마음속', '길', '것', '그것', '대통령의', '길', '국민들', '제', '국민', '뜻', '대통령의', '길', '대한민국', '길', '대한민국', '우리', '거대', '전환', '의', '시', '기존', '과거', '방식', '해결', '수', '근본적', '문제들', '우리', '앞', '지금', '우리', '사회', '지배', '경쟁', '승자독식', '강자지배', '의', '원리', '빈부격차', '확대', '중산층', '서민들', '삶', '기반', '붕괴', '중소기업', '자영업자들', '고통', '지역경제', '낙후', '경제성장', '잠재력', '약화', '악순환', '길', '유럽', '미국', '중국', '인도', '등', '세계', '곳곳', '경제위', '고조', '무분별한', '시장만능주의', '결과', '일부', '기존', '자본주', '모델', '수명', '진단', '과도한', '대외의존형', '경제', '취약', '사회안전망', '대한민국', '위', '무엇', '우리', '개발독재', '모델', '유산', '청산해', '시장만능주의', '대표', '시장독재', '모델', '극복', '개방', '공유', '협동', '공생', '원리', '채택', '인간', '인간답', '수', '민주적', '공정한', '시장경제', '모델', '부', '집안', '평생', '한', '집', '자녀들', '출발선', '불공평', '경쟁', '그것', '교육', '정규직', '중소기업', '지방', '산업', '공정', '경쟁', '노력', '만큼', '정당한', '보상', '세상', '지방대학', '나', '고등학교', '나', '실력', '대접', '수', '누구', '공정', '경쟁', '결과', '승복해', '패자', '따뜻한', '위로', '패자부활', '기회', '경쟁', '소외', '양극화', '살벌한', '세상', '대', '사람', '협력', '성장', '나', '결과', '공유', '지속가능', '삶', '토대', '나라', '저', '나라', '북한', '신뢰', '협력', '토대', '위', '평화', '공동번영', '나라', '저', '나라', '저', '두', '가지', '비전', '상생', '평화', '대한민국', '상생', '평화', '대한민국', '공평', '정의', '바탕', '성장', '과실', '나', '복지', '나', '일자리', '최우선', '나', '아이들', '여성', '노인', '행복', '나', '전', '평화로운', '나라', '것', '공평', '정의', '나라', '근간', '승자독식', '강자지배', '질서', '폐', '대한민국', '상생', '평화', '질서', '수립', '저', '공평', '정의', '원칙', '이명박', '정권', '입', '공정사회', '측근세력들', '국가권력', '사유화', '공공성', '파괴', '토건세력', '재벌집단', '최상위', '계층', '이익', '과도', '공정', '자체', '냉소거리', '신뢰', '상생', '사회', '불가능', '저', '시민들', '균등', '기회', '제공', '공평', '반칙', '특권', '부정부패', '척결', '정', '두', '가지', '가치', '근간', '대한민국', '정의', '원칙', '경제', '분야', '강조', '조세정의', '실현', '소득', '곳', '세금', '원칙', '세금', '불로소득', '정치민주화', '경제민주화', '필요', '재벌', '지배구조', '개선', '공정거래질서', '확립', '대기업', '중소기업', '간', '힘', '불균형', '약자', '억울', '것', '노사', '배', '공동운명체', '노동자들', '부당', '해', '권익', '부당', '침해', '일', '노동자들', '목소리', '적극적', '경영', '반영', '때', '기업', '성', '개선', '소수', '강자', '다수', '위', '군림', '약자', '강자', '공존', '상생', '경제', '질서', '것', '경제민주화', '주요', '내용', '대', '성장전략', '획기적', '국가발전', '선성장', '후분배', '낙수효과', '생각', '사회적', '양극화', '성장잠재력', '저하', '결과', '이', '극복', '성장', '분배', '환경', '평화', '역동적', '선순환', '대', '성장전략', '추진', '첫째', '분배', '재분배', '강화', '중산층', '서민들', '유효수요', '구매력', '확대', '소비', '투자', '촉진', '포용적', '성장', '을', '추진', '이', '최저임금', '생활임금', '개념', '정책', '반영', '복지투자', '확대', '서민경제', '활성화', '것', '재벌', '거대기업', '과도한', '경제력', '집중', '억제', '고용', '대부분', '감당', '중소기업', '성장', '중심', '지원', '사회적', '기업', '협동조합', '육성', '등', '사회적', '경제', '확대', '포용적', '성장', '거시구조적', '개혁', '추진', '둘째', '적', '자본', '투자', '강화', '사람', '중심', '경제성장', '실현', '교육혁신', '학생들', '학부모', '고통', '줄', '입시', '과잉', '학습', '대', '평생학습체제', '자리', '일대', '교육혁신', '문화혁신', '국민', '창조성', '이', '기술혁신', '신산업', '형성', '역동적', '파동', '창조적', '성장', '을', '추진', '셋째', '석유시대', '종말', '대비', '재생', '에너지', '비중', '확대', '녹색', '에너지기술', '것', '축', '전기자동차', '제조', '등', '영역', '신산업', '육성', '생태적', '성장', '을', '추진', '추', '원전', '건설', '중단', '수명', '원전', '가동', '중지', '재생', '에너지', '비중', '확대', '만큼', '원전', '비중', '이', '에너지', '종류', '정도', '산업', '소비생활', '전반', '구조', '저', '차', '산업혁명', '수', '변화', '이', '토건사업', '개발사업', '우위', '정부구조', '재정지출', '구조도', '혁신', '산업', '환경', '농림', '국토', '등', '부처', '지속가능성', '가치', '아래', '재편', '넷째', '인터넷', '를', '전세계', '확산', '소통', '네트워크', '기반', '국경', '경쟁', '집단협업', '개방형', '혁신', '협동생태계', '활용', '협력적', '성장', '을', '추진', '인식', '아래', '한반도평화', '남북협력', '강력', '성장동력', '활용', '남북한', '자원', '기술', '인력', '등', '점', '탁월', '보완관계', '평화', '바탕', '서로', '강점', '동북아시아', '세계', '진출', '복지국가', '를', '담대', '정조대왕', '위', '손해', '아래', '이득', '그것', '국가', '일', '라', '말', '백', '년', '전', '이', '소득재분배', '복지국가', '사상', '위정자', '지구상', '어디', '우리', '복지국가', '담대', '때', '때문', '발걸음', '재촉', '복지', '포퓰리즘', '새누리당', '중상모략', '거부', '부자감세', '사업', '시대착오적', '과오', '청산', '복지국가', '우리', '복지국가', '양극화', '분열', '국가', '절박한', '벌', '나라', '운명', '건곤', '척', '복지', '진정성', '진보세력만', '수', '복지', '낭비', '투자', '사람', '투자', '강력', '성장전략', '복지국가', '국', '경쟁력', '복지', '확대', '보육', '교육', '의료', '요양', '등', '사회서비스', '부문', '일자리', '자영업', '과잉인력', '흡수', '수', '공공임대주택', '주거복지', '것', '월세', '대책', '복지국가', '길', '사람', '투', '일자리', '창출', '자영업', '고통', '경감', '삶', '향상', '등', '조의', '효과', '길', '우리', '보편적', '복지국가', '국민', '것', '년', '뒤', '성과', '것', '일자리', '정부', '로', '일자리', '혁명', '을', '복지', '확대', '저', '강력한', '일자리', '혁명', '을', '젊은이들', '실업자', '정규직', '종사', '근로능력', '고령자들', '일할', '수', '기회', '일자리', '요구', '일자리', '창출', '정규직', '정규직', '전환', '촉진', '정규직', '차별철폐', '근로시간', '축', '신규고용', '확대', '고용영향평가제도', '채택', '고용증진', '기업지원', '연계', '등', '중요', '정책수단', '채택', '정보통신', '산업', '바이오산업', '나노', '산업', '재생에너지', '산업', '문화산업', '콘텐츠산업', '등', '신산업', '일자리', '대대적', '앞', '한', '보육', '교육', '의료', '복지', '등', '사회서비스', '부문', '무궁무진한', '잠재적', '일자리', '보고', '일자리', '곳', '희망', '수', '지방', '일자리', '특별', '노력', '지역균형발전', '산업', '균형', '일자리', '균형', '목표', '이명박', '정부', '방해', '불구', '국민', '세종시', '혁신도시', '지방', '일자리', '창출', '거점', '공기업', '공무원', '지역우대', '채용', '각종', '정부', '지원', '지방채용', '연동제', '확대', '정책', '실효성', '담보', '대통령', '저', '대통령', '직속', '국가일자리위원회', '를', '설치', '일자리점검', '범정부회', '를', '개최', '일자리', '마련', '상황', '점검', '독려', '저', '훗날', '일자리', '혁명', '대통령', '으', '평가', '희망', '아이들', '여성', '노인들', '나라', '아이들', '행복', '나라', '행복', '교육', '학교', '것', '교육혁신', '기본방향', '이', '유아', '초등단계', '과도한', '학습', '부담', '특기적성', '이외', '사교육', '교육', '이념', '전장', '곤란', '교육', '진보', '보수', '아이들', '존재해', '학생', '교사', '학교', '자율성', '창의성', '보장하', '마을', '아이', '수', '지원', '일자리', '산업혁신', '평생학습체제', '뒷받침', '평생학습', '참가율', '선진국', '수준', '리', '우리', '풍요', '어르신들', '희생', '덕분', '노후대비', '겨를', '급격', '가족구조', '변화', '노동시장', '변화', '극심한', '어려움', '사회', '효도', '참여정부', '도입', '기초노령연금', '장기요양보험', '강화', '건강지원', '방법', '차원', '개선', '노인', '일자리', '리', '연륜', '경험', '지역사회', '활용', '수', '방안', '마련', '남녀', '실질적', '평등', '숙제', '가사', '육아', '노인', '책', '여성들', '수준', '여성', '경제활동', '참가율', '세계', '최저', '출산율', '대한민국', '여성들', '말', '가족', '공적서비스', '확대', '여성', '부담', '줄', '취업', '승진기회', '등', '사회적', '차별', '해소', '수', '적극적', '대책', '남녀', '일', '사회', '전진', '대한민국', '한반', '평화', '국가', '존립', '국토방위', '헌법상', '대통령', '막중', '의무', '대외정책', '출발', '튼튼', '국방력', '대한민국', '군', '유능', '군대', '미국과', '관계', '건강', '관계', '발전', '중국', '일본', '러시아', '등', '주변국들', '호혜협력', '관계', '강화', '전쟁', '불안', '한반도', '해방', '이명박', '정부', '파탄', '안보', '새누리당', '정권', '아래', '분쟁', '대결', '휴전선', '일대', '평화경제', '지', '김대중', '대통령의', '공동선언', '노무현', '대통령의', '남북정상선언', '남북', '양측', '책', '이행', '개성공단', '확장', '금강산', '관광', '재개', '금강산', '설악산', '평창', '연결', '국제관광특구', '적극', '남북', '군사대결지대', '공동이익', '창출', '경제지', '전환', '부모들', '안심', '자식', '군대', '안보환경', '특권층', '군대', '안가', '철저', '한편', '젊은이들', '병역', '부담', '사병', '복지', '향상', '북핵문제', '평화적', '해결', '한반', '평화체제', '구축', '저', '북한', '핵', '용인', '수', '확고', '입장', '대화', '협상', '핵', '포기', '실종', '자회담', '재개', '대한민국', '주도적', '역할', '복원', '자회담', '남북관계', '복원', '평화체제', '구축작업', '병행', '추진', '한반도', '평화', '공동번영', '선순환', '구조', '속', '성장동력', '순국선열', '민주영령', '앞', '약속드', '존경', '국민', '여러분', '자리', '애국', '민주', '헌신', '세', '가지', '가치', '숨', '역사', '현장', '저', '역사', '앞', '대통령', '출마선언', '역사', '앞', '저', '자신', '결연', '의지', '역사', '가슴', '미래', '뚜벅뚜벅', '의지', '저것', '수', '벽', '고개', '때', '담쟁', '잎', '담쟁', '잎', '수천', '개', '벽', '도종환', '담쟁', '도종환', '시인', '담쟁', '라', '시', '일부', '우리', '담쟁이', '두', '손', '벽', '특권', '벽', '차별', '벽', '분단', '분열', '벽', '패배주의', '벽', '문재인', '세상', '문', '문재인', '겸손', '권력', '따뜻한', '나라', '국민', '마음', '길', '우리나라', '대통령', '우리', '모두', '주인', '진정한', '우리나라', '대통령']</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="리스트를-다루기-쉽게-데이터-프레임으로-변환하기">리스트를 다루기 쉽게 데이터 프레임으로 변환하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 프레임으로 변환</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df_word <span class="op">=</span> pd.DataFrame({<span class="st">'word'</span> : nouns})</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df_word</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          word
+0     정권교체
+1     정치교체
+2     시대교체
+3     불비불명
+4         고사
+...        ...
+1408      모두
+1409      주인
+1410    진정한
+1411  우리나라
+1412    대통령</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="단어-빈도표-만들기">4. 단어 빈도표 만들기</h4>
+<ul>
+<li><code>str.len()</code>: 글자 수 세기</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 글자 수 추가</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df_word[<span class="st">'count'</span>] <span class="op">=</span> df_word[<span class="st">'word'</span>].<span class="bu">str</span>.<span class="bu">len</span>()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df_word</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          word  count
+0     정권교체      4
+1     정치교체      4
+2     시대교체      4
+3     불비불명      4
+4         고사      2
+...        ...    ...
+1408      모두      2
+1409      주인      2
+1410    진정한      3
+1411  우리나라      4
+1412    대통령      3</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 글자 이상 단어만 남기기</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df_word <span class="op">=</span> df_word.query(<span class="st">'count &gt;= 2'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>df_word.sort_values(<span class="st">'count'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  word  count
+712               국민      2
+1164              가사      2
+1163              숙제      2
+1162              평등      2
+644               확대      2
+...                ...    ...
+707       평생학습체제      6
+1268      군사대결지대      6
+173       성적스트레스      6
+978   고용영향평가제도      8
+1055  국가일자리위원회      8</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 단어 빈도 구하기</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df_word <span class="op">=</span> df_word.groupby(<span class="st">'word'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                 .agg(n <span class="op">=</span> (<span class="st">'word'</span>, <span class="st">'count'</span>)) <span class="op">\</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                 .sort_values(<span class="st">'n'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>df_word</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 단어별 분리</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈도 구하기</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 내림차순 정렬</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>         word   n
+153      나라  19
+462    일자리  19
+116      국민  18
+422      우리  17
+198    대통령  12
+..        ...  ..
+278  북핵문제   1
+279      분단   1
+281      분야   1
+283      분쟁   1
+355      수천   1</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="단어-빈도-막대-그래프-만들기">5. 단어 빈도 막대 그래프 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 단어 빈도 상위 20개 추출</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>top20 <span class="op">=</span> df_word.head(<span class="dv">20</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>top20</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         word   n
+153      나라  19
+462    일자리  19
+116      국민  18
+422      우리  17
+198    대통령  12
+202  대한민국  11
+693      확대  11
+525      정치  10
+423  우리나라  10
+304      사회   9
+298      사람   9
+332      성장   9
+646      평화   8
+266  복지국가   8
+265      복지   8
+308      산업   7
+517      정부   7
+609      추진   7
+103      교육   6
+339      세상   6</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.family'</span>    : <span class="st">'Malgun Gothic'</span>,  <span class="co"># 한글 폰트 설정</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'figure.dpi'</span>     : <span class="st">'120'</span>,            <span class="co"># 해상도 설정</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'figure.figsize'</span> : [<span class="fl">6.5</span>, <span class="dv">6</span>]})        <span class="co"># 가로 세로 크기 설정</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> top20, y <span class="op">=</span> <span class="st">'word'</span>, x <span class="op">=</span> <span class="st">'n'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-20></br-back-20></p>
+<p><span class="small-90"><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:#FF7333;overflow:visible;position:relative;"><path d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"></path></svg> 맥 사용자는 <code>'Malgun Gothic'</code> 대신 <code>'AppleGothic'</code> 폰트 설정</span></p>
+<p><br-back-20></br-back-20></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="10_files/figure-revealjs/unnamed-chunk-17-1.png" width="416"></p>
+</div>
+</div>
+</section>
+<section id="워드-클라우드-만들기" class="slide level3">
+<h3>워드 클라우드 만들기</h3>
+<p><strong>워드 클라우드(word cloud)</strong>: 단어의 빈도를 구름 모양으로 표현한 그래프</p>
+<ul>
+<li>단어의 빈도에 따라 글자의 크기와 색깔을 다르게 표현함</li>
+<li>어떤 단어가 얼마나 많이 사용됐는지 한눈에 파악할 수 있음</li>
+</ul>
+<p><br></p>
+<h4 id="wordcloud-패키지-설치하기">1. <code>wordcloud</code> 패키지 설치하기</h4>
+<p><code>pip install wordcloud</code></p>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">wordcloud 패키지 설치 오류 해결하기</span></p>
+<p><code>wordcloud</code> 패키지 설치 중 다음 에러 메시지가 출력되면 ‘Microsoft Visual C++’ 설치</p>
+<blockquote>
+<p>error: Microsoft Visual C++ 14.0 or greater is required. Get it with “Microsoft C++ Build Tools”</p>
+</blockquote>
+<ul>
+<li><ol type="1">
+<li><a href="https://bit.ly/easypy_103">bit.ly/easypy_103</a>에서 왼쪽 위 [Build Tools 다운로드] 버튼 클릭해 설치 파일을 다운로드</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>설치 파일 실행, 설정 화면에서 왼쪽 위 ‘C++를 사용한 데스트톱 개발’ 체크, <br> 오른쪽 아래 [Install] 클릭해 설치 시작</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>설치 끝나면 아나콘다 프롬프트에서 <code>wordcloud</code> 패키지 설치</li>
+</ol></li>
+</ul>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="한글-폰트-설정하기">2. 한글 폰트 설정하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>font <span class="op">=</span> <span class="st">'DoHyeon-Regular.ttf'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="단어와-빈도를-담은-딕셔너리-만들기">3. 단어와 빈도를 담은 딕셔너리 만들기</h4>
+<h5 id="단어는-키key-빈도는-값value으로-구성된-딕셔너리-만들기">단어는 키(key), 빈도는 값(value)으로 구성된 딕셔너리 만들기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 프레임을 딕셔너리로 변환</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dic_word <span class="op">=</span> df_word.set_index(<span class="st">'word'</span>).to_dict()[<span class="st">'n'</span>]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>dic_word</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'나라': 19, '일자리': 19, '국민': 18, '우리': 17, '대통령': 12, '대한민국': 11, '확대': 11, '정치': 10, '우리나라': 10, '사회': 9, '사람': 9, '성장': 9, '평화': 8, '복지국가': 8, '복지': 8, '산업': 7, '정부': 7, '추진': 7, '교육': 6, '세상': 6, '경쟁': 6, '보통사람들': 5, '공평': 5, '경제': 5, '대통령의': 5, '상생': 5, '정규직': 5, '정의': 4, '결과': 4, '사회적': 4, '투자': 4, '주인': 4, '전환': 4, '때문': 4, '모델': 4, '요구': 4, '희망': 4, '창출': 4, '역사': 4, '기회': 4, '여성': 4, '담쟁': 4, '강화': 4, '아래': 4, '고통': 4, '약자': 4, '아이들': 4, '중소기업': 4, '공정': 3, '문재인': 3, '특권': 3, '국가': 3, '사람들': 3, '노인': 3, '변화': 3, '비중': 3, '교육혁신': 3, '관계': 3, '질서': 3, '군대': 3, '지원': 3, '과도한': 3, '권력': 3, '부담': 3, '그것': 3, '지방': 3, '국민들': 3, '채택': 3, '소수': 3, '세계': 3, '신산업': 3, '시민': 3, '개선': 3, '혁신': 3, '혁명': 3, '양극화': 3, '원칙': 3, '활용': 3, '행복': 3, '원전': 3, '에너지': 3, '경제성장': 3, '세금': 3, '이명박': 3, '성장전략': 3, '가치': 3, '가지': 3, '여러분': 3, '강자': 3, '진정한': 2, '노동자들': 2, '마음속': 2, '노력': 2, '만큼': 2, '육성': 2, '모두': 2, '의료': 2, '참여': 2, '지금': 2, '의지': 2, '중심': 2, '역동적': 2, '마련': 2, '마음': 2, '대기업': 2, '위로': 2, '따뜻한': 2, '도종환': 2, '참가율': 2, '여성들': 2, '차별': 2, '담대': 2, '아이': 2, '원리': 2, '대책': 2, '대접': 2, '대부분': 2, '재생': 2, '바탕': 2, '중산층': 2, '실현': 2, '자영업': 2, '북한': 2, '분배': 2, '분열': 2, '정권': 2, '젊은이들': 2, '불안': 2, '남쪽': 2, '성장동력': 2, '자회담': 2, '선언': 2, '적극적': 2, '선순환': 2, '사회서비스': 2, '서민들': 2, '재개': 2, '재벌': 2, '자리': 2, '부문': 2, '부당': 2, '시대': 2, '이상': 2, '중국': 2, '새누리당': 2, '신뢰': 2, '시장만능주의': 2, '반영': 2, '존경': 2, '제안': 2, '정책': 2, '승자독식': 2, '보육': 2, '일대': 2, '복원': 2, '일부': 2, '수준': 2, '수명': 2, '희생': 2, '동안': 2, '오늘': 2, '기반': 2, '금강산': 2, '근본적': 2, '거대': 2, '협력': 2, '근간': 2, '극복': 2, '균형': 2, '결심': 2, '토대': 2, '겸손': 2, '향상': 2, '국가비전': 2, '특권층': 2, '경제민주화': 2, '구조': 2, '해결': 2, '한번': 2, '한반도': 2, '한반': 2, '학습': 2, '과실': 2, '학교': 2, '평생학습체제': 2, '공유': 2, '필요': 2, '평화체제': 2, '포용적': 2, '추구': 2, '공동번영': 2, '남녀': 2, '남북': 2, '가슴': 2, '강력': 2, '강자지배': 2, '기존': 2, '나뭇가지': 2, '촉진': 2, '환경': 2, '기업': 2, '유효수요': 1, '자율성': 1, '운명': 1, '자체': 1, '한반도평화': 1, '잠자리': 1, '우위': 1, '휴전선': 1, '훗날': 1, '자영업자들': 1, '자원': 1, '잠재력': 1, '한숨': 1, '한편': 1, '후분배': 1, '해방': 1, '자신': 1, '자식': 1, '자본주': 1, '자본': 1, '학생들': 1, '장기요양보험': 1, '잠재적': 1, '재촉': 1, '적용': 1, '적극': 1, '요양': 1, '포퓰리즘': 1, '표정': 1, '저하': 1, '풍요': 1, '용인': 1, '저것': 1, '재편': 1, '하나': 1, '학생': 1, '재정지출': 1, '재생에너지': 1, '하늘': 1, '흡수': 1, '재분배': 1, '재벌집단': 1, '학교폭력': 1, '학부모': 1, '자녀들': 1, '잣대': 1, '효도': 1, '입시부담': 1, '해소': 1, '이득': 1, '이익': 1, '이유': 1, '이외': 1, '협동조합': 1, '위정자': 1, '이불': 1, '협력적': 1, '협상': 1, '형성': 1, '유능': 1, '이념': 1, '협동': 1, '호혜협력': 1, '의무': 1, '유럽': 1, '확고': 1, '의견': 1, '유산': 1, '유아': 1, '육아': 1, '확립': 1, '확산': 1, '협동생태계': 1, '월세': 1, '입장': 1, '활성화': 1, '확장': 1, '효과': 1, '입시': 1, '일할': 1, '일자리점검': 1, '행세': 1, '획기적': 1, '황금': 1, '헌법상': 1, '일본': 1, '헌신': 1, '이행': 1, '인터넷': 1, '전기자동차': 1, '인정': 1, '인식': 1, '현실': 1, '인력': 1, '인도': 1, '인간답': 1, '인간': 1, '현장': 1, '혁신도시': 1, '철학': 1, '포기': 1, '출발': 1, '진단': 1, '직속': 1, '출마선언': 1, '지역우대': 1, '지역사회': 1, '출마선언문': 1, '지역균형발전': 1, '지역경제': 1, '외면': 1, '지속가능성': 1, '지속가능': 1, '지배구조': 1, '지배': 1, '탁월': 1, '지방채용': 1, '지방대학': 1, '출발선': 1, '출산율': 1, '취약': 1, '취업': 1, '취업불안': 1, '측근세력들': 1, '지구상': 1, '중지': 1, '중요': 1, '침해': 1, '출마': 1, '진보': 1, '진보세력만': 1, '진심어린': 1, '천지': 1, '첫째': 1, '척결': 1, '채용': 1, '창조적': 1, '창조성': 1, '청산': 1, '청산해': 1, '창의성': 1, '창고': 1, '참여정부': 1, '초등단계': 1, '초라한': 1, '차원': 1, '차별철폐': 1, '집중': 1, '집안': 1, '집단협업': 1, '최상위': 1, '집단': 1, '진출': 1, '최우선': 1, '최저': 1, '최저임금': 1, '진정성': 1, '콘텐츠산업': 1, '중상모략': 1, '전반': 1, '평생학습': 1, '패자부활': 1, '편가르지': 1, '정조대왕': 1, '평가': 1, '정의로운': 1, '평등': 1, '정부구조': 1, '평범': 1, '정보통신': 1, '평생': 1, '정도': 1, '정당한': 1, '평창': 1, '토건사업': 1, '정권교체': 1, '점검': 1, '평화경제': 1, '절실': 1, '절박한': 1, '철저': 1, '평화로운': 1, '평화적': 1, '전진': 1, '전쟁': 1, '전장': 1, '전세계': 1, '패자': 1, '패배주의': 1, '파탄': 1, '정책과정': 1, '중단': 1, '토건세력': 1, '주요': 1, '주변국들': 1, '주도적': 1, '주거불안': 1, '주거복지': 1, '종사': 1, '종말': 1, '종류': 1, '존재해': 1, '존립': 1, '특기적성': 1, '조의': 1, '조세정의': 1, '제조': 1, '특별': 1, '제공': 1, '정치인': 1, '정치민주화': 1, '정치교체': 1, '튼튼': 1, '파괴': 1, '정책수단': 1, '파동': 1, '절박': 1, '가동': 1, '영혼들': 1, '과잉': 1, '권익': 1, '권한': 1, '균등': 1, '그들': 1, '극심한': 1, '근로능력': 1, '근로시간': 1, '급격': 1, '급급': 1, '기득권': 1, '기본방향': 1, '기술': 1, '기술혁신': 1, '기업지원': 1, '기초노령연금': 1, '군사대결지대': 1, '군림': 1, '국토방위': 1, '구축': 1, '관광': 1, '관대': 1, '관심': 1, '교사': 1, '구매력': 1, '구조도': 1, '구축작업': 1, '국토': 1, '국가권력': 1, '국가발전': 1, '국가일자리위원회': 1, '국경': 1, '국방력': 1, '국제관광특구': 1, '김대중': 1, '나노': 1, '낙수효과': 1, '대대적': 1, '눈물': 1, '다수': 1, '담보': 1, '담쟁이': 1, '당당': 1, '대결': 1, '대비': 1, '농림': 1, '대선출마': 1, '대외의존형': 1, '대외정책': 1, '대통령선거': 1, '대표': 1, '대화': 1, '누구': 1, '녹색': 1, '낙후': 1, '냉소거리': 1, '남북관계': 1, '남북정상선언': 1, '남북한': 1, '남북협력': 1, '낭비': 1, '내용': 1, '네트워크': 1, '노후불안': 1, '넷째': 1, '노동시장': 1, '노무현': 1, '노사': 1, '노인들': 1, '노후대비': 1, '과잉인력': 1, '과오': 1, '도입': 1, '과도': 1, '거대기업': 1, '거리': 1, '거부': 1, '거시구조적': 1, '거점': 1, '거창': 1, '걱정거리': 1, '건강': 1, '건강불안': 1, '건강지원': 1, '건곤': 1, '건설': 1, '겨를': 1, '결연': 1, '경감': 1, '거기': 1, '개혁': 1, '개최': 1, '강점': 1, '가족': 1, '가족구조': 1, '각종': 1, '감당': 1, '강력한': 1, '강요': 1, '강조': 1, '개천': 1, '개념': 1, '개발독재': 1, '개발사업': 1, '개방': 1, '개방형': 1, '개성공단': 1, '경영': 1, '경쟁력': 1, '경제력': 1, '공부': 1, '공공임대주택': 1, '공기업': 1, '공동선언': 1, '공동운명체': 1, '공동이익': 1, '공무원': 1, '공생': 1, '곳곳': 1, '공적서비스': 1, '공정거래질서': 1, '공정사회': 1, '공정한': 1, '공존': 1, '과거': 1, '공공성': 1, '곤란': 1, '경제위': 1, '고등학교': 1, '경제지': 1, '경제활동': 1, '경험': 1, '계층': 1, '고개': 1, '고단': 1, '고령자들': 1, '고조': 1, '고민': 1, '고사': 1, '고용': 1, '고용불안': 1, '고용영향평가제도': 1, '고용증진': 1, '덕분': 1, '독려': 1, '영역': 1, '상식': 1, '소득재분배': 1, '소박한': 1, '소비': 1, '소비생활': 1, '소외': 1, '소중': 1, '소통': 1, '손해': 1, '수립': 1, '가사': 1, '숙제': 1, '순국선열': 1, '승복해': 1, '승진기회': 1, '시대교체': 1, '소득': 1, '셋째': 1, '세종시': 1, '서민경제': 1, '상처': 1, '상황': 1, '생각': 1, '생태적': 1, '생활임금': 1, '서로': 1, '석유시대': 1, '성적스트레스': 1, '선성장': 1, '선진국': 1, '설악산': 1, '설치': 1, '성과': 1, '성장잠재력': 1, '시대착오적': 1, '시민들': 1, '시인': 1, '엄격': 1, '어디': 1, '어려움': 1, '어르신들': 1, '억울': 1, '억제': 1, '언덕': 1, '엄중하기': 1, '양측': 1, '에너지기술': 1, '역할': 1, '연결': 1, '연계': 1, '연동제': 1, '연륜': 1, '어깨': 1, '약화': 1, '시장경제': 1, '실효성': 1, '시장독재': 1, '신규고용': 1, '실력': 1, '실업자': 1, '실종': 1, '실질적': 1, '악순환': 1, '약속드': 1, '안가': 1, '안보': 1, '안보환경': 1, '안심': 1, '암울한': 1, '애국': 1, '상식적': 1, '살벌한': 1, '동북아시아': 1, '산업혁신': 1, '미래': 1, '미안': 1, '민주': 1, '민주영령': 1, '민주적': 1, '바이오산업': 1, '반칙': 1, '발걸음': 1, '발전': 1, '방법': 1, '방식': 1, '방안': 1, '방해': 1, '범정부회': 1, '병역': 1, '미국과': 1, '미국': 1, '문화혁신': 1, '막중': 1, '동행': 1, '둘째': 1, '뒷받침': 1, '뚜벅뚜벅': 1, '러시아': 1, '마을': 1, '모습': 1, '문화산업': 1, '목소리': 1, '목표': 1, '무궁무진한': 1, '무분별한': 1, '무엇': 1, '문제들': 1, '병행': 1, '보고': 1, '보상': 1, '빈부격차': 1, '불로소득': 1, '불비불명': 1, '불평등': 1, '붕괴': 1, '비례': 1, '비전': 1, '사교육': 1, '불구': 1, '사병': 1, '사상': 1, '사업': 1, '사유화': 1, '사회안전망': 1, '산업혁명': 1, '불균형': 1, '불공평': 1, '보수': 1, '부자': 1, '보완관계': 1, '보장하': 1, '보편적': 1, '복지투자': 1, '부모들': 1, '부유층': 1, '부자감세': 1, '불가능': 1, '부정부패': 1, '부처': 1, '북핵문제': 1, '분단': 1, '분야': 1, '분쟁': 1, '수천': 1}</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="워드-클라우드-만들기-1">4. 워드 클라우드 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wc 만들기</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>wc <span class="op">=</span> WordCloud(random_state <span class="op">=</span> <span class="dv">1234</span>,         <span class="co"># 난수 고정</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>               font_path <span class="op">=</span> font,            <span class="co"># 폰트 설정</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>               width <span class="op">=</span> <span class="dv">400</span>,                 <span class="co"># 가로 크기</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>               height <span class="op">=</span> <span class="dv">400</span>,                <span class="co"># 세로 크기</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>               background_color <span class="op">=</span> <span class="st">'white'</span>)  <span class="co"># 배경색</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="워드-클라우드-만들기-2">4. 워드 클라우드 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 워드 클라우드 만들기</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>img_wordcloud <span class="op">=</span> wc.generate_from_frequencies(dic_word)<span class="op">;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 워드 클라우드 출력하기</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">10</span>))  <span class="co"># 가로, 세로 크기 설정</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)                 <span class="co"># 테두리 선 없애기</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>plt.imshow(img_wordcloud)       <span class="co"># 워드 클라우드 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-40></br-back-40></p>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="10_files/figure-revealjs/unnamed-chunk-23-3.png" width="528"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">워드 클라우드 만들 때 주의하기</span></p>
+<ul>
+<li>워드 클라우드 이미지 출력 코드는 한 셀에 넣어 함께 실행해야 함</li>
+<li><code>WordCloud()</code>는 실행할 때마다 난수를 이용해 워드 클라우드를 매번 다른 모양으로 만듦</li>
+<li>항상 같은 모양으로 만들려면 <code>random_state</code>를 이용해 난수를 고정 하고, <code>wc</code> 만드는 코드를 먼저<br> 실행한 다음 <code>wc.generate_from_frequencies()</code>를 실행해야 함</li>
+</ul>
+</div>
+</section>
+<section id="워드-클라우드-모양-바꾸기" class="slide level3">
+<h3>워드 클라우드 모양 바꾸기</h3>
+<h4 id="mask-만들기">1. mask 만들기</h4>
+<h5 id="이미지-파일-불러오기">이미지 파일 불러오기</h5>
+<p><br10> <img data-src="img/cloud.png" style="width:40.0%"></br10></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> PIL</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>icon <span class="op">=</span> PIL.Image.<span class="bu">open</span>(<span class="st">'cloud.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="mask-만들기-1">mask 만들기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> PIL.Image.new(<span class="st">'RGB'</span>, icon.size, (<span class="dv">255</span>, <span class="dv">255</span>, <span class="dv">255</span>))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>img.paste(icon, icon)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> np.array(img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="워드-클라우드-만들기-3">2. 워드 클라우드 만들기</h4>
+<ul>
+<li><code>mask = img</code>: <code>mask</code> 적용하기</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wc 만들기</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>wc <span class="op">=</span> WordCloud(random_state <span class="op">=</span> <span class="dv">1234</span>,         <span class="co"># 난수 고정</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>               font_path <span class="op">=</span> font,            <span class="co"># 폰트 설정</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>               width <span class="op">=</span> <span class="dv">400</span>,                 <span class="co"># 가로 크기</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>               height <span class="op">=</span> <span class="dv">400</span>,                <span class="co"># 세로 크기</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>               background_color <span class="op">=</span> <span class="st">'white'</span>,  <span class="co"># 배경색</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>               mask <span class="op">=</span> img)                  <span class="co"># mask 설정</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="워드-클라우드-만들기-4">2. 워드 클라우드 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 워드 클라우드 만들기</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>img_wordcloud <span class="op">=</span> wc.generate_from_frequencies(dic_word)<span class="op">;</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 워드 클라우드 출력하기</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">10</span>))  <span class="co"># 가로, 세로 크기 설정</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)                 <span class="co"># 테두리 선 없애기</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>plt.imshow(img_wordcloud)       <span class="co"># 워드 클라우드 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-40></br-back-40></p>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="10_files/figure-revealjs/unnamed-chunk-29-5.png" width="864"></p>
+</div>
+</div>
+</section>
+<section id="워드-클라우드-색깔-바꾸기" class="slide level3">
+<h3>워드 클라우드 색깔 바꾸기</h3>
+<ul>
+<li><code>colormap = 'inferno'</code>: 워드 클라우드에 <code>inferno</code> 컬러맵 적용</li>
+<li>컬러맵(colormaps): 색깔 목록</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wc 만들기</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>wc <span class="op">=</span> WordCloud(random_state <span class="op">=</span> <span class="dv">1234</span>,         <span class="co"># 난수 고정</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>               font_path <span class="op">=</span> font,            <span class="co"># 폰트 설정</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>               width <span class="op">=</span> <span class="dv">400</span>,                 <span class="co"># 가로 크기</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>               height <span class="op">=</span> <span class="dv">400</span>,                <span class="co"># 세로 크기</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>               background_color <span class="op">=</span> <span class="st">'white'</span>,  <span class="co"># 배경색</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>               mask <span class="op">=</span> img,                  <span class="co"># mask 설정</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>               colormap <span class="op">=</span> <span class="st">'inferno'</span>)        <span class="co"># 컬러맵 설정</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="워드-클라우드-색깔-바꾸기-1" class="slide level3">
+<h3>워드 클라우드 색깔 바꾸기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 워드 클라우드 만들기</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>img_wordcloud <span class="op">=</span> wc.generate_from_frequencies(dic_word)<span class="op">;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 워드 클라우드 출력하기</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">10</span>))  <span class="co"># 가로, 세로 크기 설정</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)                 <span class="co"># 테두리 선 없애기</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>plt.imshow(img_wordcloud)       <span class="co"># 워드 클라우드 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-40></br-back-40></p>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="10_files/figure-revealjs/unnamed-chunk-33-7.png" width="864"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">다양한 컬러맵 이용하기</span></p>
+<p>워드 클라우드에 적용할 수 있는 다양한 컬러맵</p>
+<p>• Choosing Colormaps in Matplotlib: <a href="https://bit.ly/easypy_104">bit.ly/easypy_104</a></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">워드 클라우드는 좋은 그래프인가?</span></p>
+<ul>
+<li>워드 클라우드는 분석 결과를 정확하게 표현하는 그래프는 아님</li>
+<li>단어 빈도를 크기와 색으로 표현하므로 ‘어떤 단어가 몇 번 사용됐는지’ 정확히 알 수 없음</li>
+<li>단어 배치가 산만해서 ‘어떤 단어가 다른 단어보다 얼마나 더 많이 사용됐는지’ 비교하기 어려움</li>
+<li>아름답게 표현하는 게 아니라 정확하게 표현하려면 워드 클라우드보다 막대 그래프를 이용</li>
+</ul>
+</div>
+</div>
+</section></section>
+<section>
+<section id="기사-댓글-텍스트-마이닝" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>10-2 기사 댓글 텍스트 마이닝</h2>
+
+</section>
+<section id="가장-많이-사용된-단어-알아보기-1" class="slide level3">
+<h3>가장 많이 사용된 단어 알아보기</h3>
+<h4 id="기사-댓글-불러오기">1. 기사 댓글 불러오기</h4>
+<ul>
+<li><code>'news_comment_BTS.csv'</code>: 방탄소년단 ‘빌보드 핫 100 차트’ 1위 소식을 다룬 네이버 뉴스 기사 댓글</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 불러오기</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'news_comment_BTS.csv'</span>, encoding <span class="op">=</span> <span class="st">'UTF-8'</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 살펴보기</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 1200 entries, 0 to 1199
+Data columns (total 5 columns):
+ #   Column    Non-Null Count  Dtype 
+---  ------    --------------  ----- 
+ 0   reg_time  1200 non-null   object
+ 1   reply     1200 non-null   object
+ 2   press     1200 non-null   object
+ 3   title     1200 non-null   object
+ 4   url       1200 non-null   object
+dtypes: object(5)
+memory usage: 47.0+ KB</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="불필요한-문자-제거하기-1">2. 불필요한 문자 제거하기</h4>
+<ul>
+<li><code>reply</code>는 데이터 프레임에 담겨 있는 변수이므로 <code>str.replace()</code>를 사용해 불필요 문자 제거</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 불필요한 문자 제거하기</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'reply'</span>] <span class="op">=</span> df[<span class="st">'reply'</span>].<span class="bu">str</span>.replace(<span class="st">'[^가-힣]'</span>, <span class="st">' '</span>, regex <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'reply'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0                               국보소년단            
+1                               아줌마가 들어도 좋더라
+2    팩트체크    현재 빌보드             위  방탄소년단        위  ...
+3    방탄소년단이 한국사람이라 너무 자랑스러워요    우리오래오래 함께하자 ...
+4    대단한      월드 클래스는 다르네   좋은 소식   응원해요...
+Name: reply, dtype: object</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="명사-추출하기-1">3. 명사 추출하기</h4>
+<ul>
+<li>꼬꼬마(Kkma) 형태소 분석기 이용해 명사 추출
+<ul>
+<li>띄어쓰기 오류 있는 문장에서도 형태소를 잘 추출하는 장점이 있음</li>
+<li>댓글처럼 정제되지 않은 텍스트 분석에 적합</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kkma 만들기</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> konlpy</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>kkma <span class="op">=</span> konlpy.tag.Kkma()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:#FF7333;overflow:visible;position:relative;"><path d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"></path></svg> <code>Kkma()</code>의 첫 글자 <code>K</code> 대문자 주의</p>
+</section>
+<section class="slide level3">
+
+<h5 id="명사-추출">명사 추출</h5>
+<ul>
+<li><code>reply</code>는 데이터 프레임에 들어 있는 변수이므로 <code>kkma.nouns()</code>에 바로 적용할 수 없음</li>
+<li>함수가 각 행의 값을 따로따로 처리하도록 <code>apply()</code> 사용</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 명사 추출 - apply() 활용</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>nouns <span class="op">=</span> df[<span class="st">'reply'</span>].<span class="bu">apply</span>(kkma.nouns)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>nouns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0                              [국보, 국보소년단, 소년단]
+1                                                [아줌마]
+2       [팩트, 팩트체크, 체크, 보드, 위, 방탄, 방탄소년단, 소년단]...
+3       [방탄, 방탄소년단, 소년단, 한국, 한국사람, 사람, 자랑, 우리, 하자]...
+4                              [월드, 클래스, 소식, 응원]
+                              ...                        
+1195                                                   []
+1196                               [우리, 탄, 자랑, 사랑]
+1197                                           [애, 군대]
+1198                             [군, 군면제급, 면제, 급]
+1199    [자랑, 축하, 김, 김남, 남, 김석진, 민, 민윤기, 윤기, 정, 정호석, 호석...
+Name: reply, dtype: object</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="단어-빈도표-만들기-1">4. 단어 빈도표 만들기</h4>
+<ul>
+<li><code>nouns</code>는 행마다 여러 단어가 리스트 자료 구조로 들어 있음</li>
+<li><code>df.explode()</code>를 이용해 한 행에 한 단어만 들어가도록 변경</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 한 행에 한 단어가 들어가도록 구성</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>nouns <span class="op">=</span> nouns.explode()</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>nouns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0             국보
+0       국보소년단
+0           소년단
+1           아줌마
+2             팩트
+           ...    
+1199        박지민
+1199        김태형
+1199            전
+1199        전정국
+1199          정국
+Name: reply, dtype: object</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 프레임 만들기</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>df_word <span class="op">=</span> pd.DataFrame({<span class="st">'word'</span> : nouns})</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 글자 수 추가</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>df_word[<span class="st">'count'</span>] <span class="op">=</span> df_word[<span class="st">'word'</span>].<span class="bu">str</span>.<span class="bu">len</span>()</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 두 글자 이상 단어만 남기기</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>df_word <span class="op">=</span> df_word.query(<span class="st">'count &gt;= 2'</span>)</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>df_word</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            word  count
+0           국보    2.0
+0     국보소년단    5.0
+0         소년단    3.0
+1         아줌마    3.0
+2           팩트    2.0
+...          ...    ...
+1199        박지    2.0
+1199      박지민    3.0
+1199      김태형    3.0
+1199      전정국    3.0
+1199        정국    2.0</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈도표 만들기</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df_word <span class="op">=</span> df_word.groupby(<span class="st">'word'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                 .agg(n <span class="op">=</span> (<span class="st">'word'</span>, <span class="st">'count'</span>)) <span class="op">\</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>                 .sort_values(<span class="st">'n'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>df_word</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 단어별 분리</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈도 구하기</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 내림차순 정렬</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            word    n
+752         방탄  280
+1878        축하  236
+1556        자랑  205
+1032      소년단  144
+763   방탄소년단  136
+...          ...  ...
+1136    실력있음    1
+406     다음주면    1
+1134        신화    1
+1133        신중    1
+1084      스을적    1</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="단어-빈도-막대-그래프-만들기-1">5. 단어 빈도 막대 그래프 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 단어 빈도 상위 20개 추출</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>top20 <span class="op">=</span> df_word.head(<span class="dv">20</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>top20</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            word    n
+752         방탄  280
+1878        축하  236
+1556        자랑  205
+1032      소년단  144
+763   방탄소년단  136
+813         보드  131
+618         면제  125
+233       군면제   78
+225         군대   77
+1364        우리   68
+11          가수   64
+987         선양   62
+215     국위선양   59
+214         국위   58
+328         나라   53
+2038        한국   52
+371         노래   50
+463     대한민국   46
+708         민국   46
+462         대한   46</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 가로 세로 크기 설정</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'figure.figsize'</span>: [<span class="fl">6.5</span>, <span class="dv">6</span>]})</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> top20, y <span class="op">=</span> <span class="st">'word'</span>, x <span class="op">=</span> <span class="st">'n'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="10_files/figure-revealjs/unnamed-chunk-44-9.png" width="864"></p>
+</div>
+</div>
+</section>
+<section id="워드-클라우드-만들기-5" class="slide level3">
+<h3>워드 클라우드 만들기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 프레임을 딕셔너리로 변환</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>dic_word <span class="op">=</span> df_word.set_index(<span class="st">'word'</span>).to_dict()[<span class="st">'n'</span>]</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># wc 만들기</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>wc <span class="op">=</span> WordCloud(random_state <span class="op">=</span> <span class="dv">1234</span>,         <span class="co"># 난수 고정</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>               font_path <span class="op">=</span> font,            <span class="co"># 폰트 설정</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>               width <span class="op">=</span> <span class="dv">400</span>,                 <span class="co"># 가로 크기</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>               height <span class="op">=</span> <span class="dv">400</span>,                <span class="co"># 세로 크기</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>               background_color <span class="op">=</span> <span class="st">'white'</span>,  <span class="co"># 배경색</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>               mask <span class="op">=</span> img)                  <span class="co"># mask 설정</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 워드 클라우드 만들기</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>img_wordcloud <span class="op">=</span> wc.generate_from_frequencies(dic_word)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 워드 클라우드 출력하기</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">10</span>))  <span class="co"># 가로, 세로 크기 설정</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)                 <span class="co"># 테두리 선 없애기</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>plt.imshow(img_wordcloud)       <span class="co"># 워드 클라우드 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-40></br-back-40></p>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="10_files/figure-revealjs/unnamed-chunk-48-11.png" width="864"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">텍스트 마이닝 더 알아보기</span></p>
+<p><strong>다양한 형태소 분석기 이용하기</strong></p>
+<ul>
+<li><code>KoNLPy</code>를 이용하면 한나눔, 꼬꼬마 외에도 다양한 형태소 분석기를 이용할 수 있음</li>
+<li>명사뿐 아니라 동사, 형용사 등 다양한 품사를 추출할 수 있음</li>
+<li><code>KoNLPy</code> 공식 문서: <a href="https://konlpy.org/ko/latest/">konlpy.org/ko/latest</a></li>
+</ul>
+<p><strong>텍스트 마이닝 자세히 익히기</strong></p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><br10></br10></p>
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="img/10-title_rtm.png" style="width:70.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:70%;">
+<p><br10></br10></p>
+<ul>
+<li>Do it! 쉽게 배우는 R 텍스트 마이닝》: <br> <a href="http://www.yes24.com/Product/Goods/97126355">yes24.com/Product/Goods/97126355</a></li>
+</ul>
+</div>
+</div>
+<p><br-back-50></br-back-50></p>
+</div>
+</section></section>
+<section id="끝" class="title-slide slide level2 center" data-background-color="#FF7232" data-transition="fade">
+<h2>끝</h2>
+
+</section>
+
+<div class="footer footer-default">
+
+</div>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="10_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="10_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="10_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="10_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="10_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="10_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="10_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="10_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="10_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="10_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: false,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: true,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 750,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
