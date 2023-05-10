@@ -44,22 +44,28 @@ Notebook/bakcup/
 # ipynb_checkpoints
 Notebook/.ipynb_checkpoints/
 
-/*Notebook 폴더의 .ipynb, .md 제외한 모든 파일 ignore*/
+# Notebook 폴더의 .ipynb, .md 제외한 모든 파일 ignore
 Notebook/*
 !Notebook/*.ipynb
 !Notebook/*.md
 
+# docs 폴더의 .qmd, .html, .md 제외한 모든 파일 ignore
+docs/*
+!docs/*.html
+!docs/*.qmd
+refer!docs/*.md
+
 # docs
-docs/refer.html
-docs/refer.qmd
-docs/refer_files
-docs/StartPython.html - 바로 가기.lnk
-docs/.ipynb_checkpoints
-docs/gif/*
-docs/qmd/*
-docs/*.sav
-docs/*.xlsx
-docs/*.csv
-docs/cloud.png
-docs/speech_moon.txt
-docs/DoHyeon-Regular.ttf
+# docs/refer.html
+# docs/refer.qmd
+# docs/refer_files
+# docs/StartPython.html - 바로 가기.lnk
+# docs/.ipynb_checkpoints
+# docs/gif/*
+# docs/qmd/*
+# docs/*.sav
+# docs/*.xlsx
+# docs/*.csv
+# docs/cloud.png
+# docs/speech_moon.txt
+# docs/DoHyeon-Regular.ttf
