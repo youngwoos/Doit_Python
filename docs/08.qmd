@@ -29,6 +29,13 @@ execute:
   cache: false
 ---
 
+
+```{r setup, include=FALSE}
+# 파이썬 버전 설정
+knitr::opts_chunk$set(engine.path = list(
+  python = "C:/Users/USER/anaconda3"))
+```
+
 ### {data-menu-title="Info"}
 
 ```{python}
@@ -267,7 +274,7 @@ plt.rcParams.update({'figure.dpi'     : '150',
                      'font.family'    : 'Malgun Gothic'})
 
 # 모든 설정 되돌리기
-plt.rcParams.update(plt.rcParamsDefault)
+plt.rcdefaults()
 ```
 
 ##### 설명 메시지 숨기기 - 코드 뒤에 `;` 삽입
@@ -643,7 +650,7 @@ sns.barplot(data = df_mpg, x = 'category', y = 'n')
 plt.show()
 
 # 설정 되돌리기
-plt.rcParams.update(plt.rcParamsDefault)
+plt.rcdefaults()
 
 ```
 
@@ -666,7 +673,7 @@ plt.rcParams.update(plt.rcParamsDefault)
 #| echo: false
 economics = pd.read_csv('../data/economics.csv')
 
-sns.lineplot(data = economics, x = pd.to_datetime(economics['date']).dt.year, y = 'unemploy', ci = None)
+sns.lineplot(data = economics, x = pd.to_datetime(economics['date']).dt.year, y = 'unemploy', errorbar = None)
 
 
 ```
@@ -766,7 +773,7 @@ sns.lineplot(data = economics, x = 'year', y = 'unemploy')
 
 ```{python}
 # 신뢰구간 제거
-sns.lineplot(data = economics, x = 'year', y = 'unemploy', ci = None)
+sns.lineplot(data = economics, x = 'year', y = 'unemploy', errorbar = None)
 ```
 
 
@@ -817,7 +824,7 @@ Q1. `psavert`(개인 저축률)가 시간에 따라 어떻게 변해 왔는지 �
 
 ```{python}
 # 연도별 개인 저축률 선 그래프
-sns.lineplot(data = economics, x = 'year', y = 'psavert', ci = None)
+sns.lineplot(data = economics, x = 'year', y = 'psavert', errorbar = None)
 ```
 
 ---
@@ -832,7 +839,7 @@ economics['month'] = economics['date2'].dt.month
 df_2014 = economics.query('year == 2014')
 
 # 선 그래프 만들기
-sns.lineplot(data = df_2014, x = 'month', y = 'psavert', ci = None)
+sns.lineplot(data = df_2014, x = 'month', y = 'psavert', errorbar = None)
 ```
 
 

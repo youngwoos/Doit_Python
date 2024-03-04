@@ -29,6 +29,13 @@ execute:
   cache: false
 ---
 
+
+```{r setup, include=FALSE}
+# 파이썬 버전 설정
+knitr::opts_chunk$set(engine.path = list(
+  python = "C:/Users/USER/anaconda3"))
+```
+
 ### {data-menu-title="Info"}
 
 ```{python}

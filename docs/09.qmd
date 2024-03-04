@@ -29,6 +29,13 @@ execute:
   cache: false
 ---
 
+
+```{r setup, include=FALSE}
+# 파이썬 버전 설정
+knitr::opts_chunk$set(engine.path = list(
+  python = "C:/Users/USER/anaconda3"))
+```
+
 ### {data-menu-title="Info"}
 
 ```{python}
@@ -113,21 +120,21 @@ pd.set_option("display.unicode.east_asian_width", True)
 
 [09-1 '한국복지패널 데이터' 분석 준비하기]{.font-jua}([link](#한국복지패널-데이터-분석-준비하기))
   
-[09-2 성별에 따른 월급 차이 - 성별에 따라 월급이 다를까?]{.font-jua}([link](#성별에-따른-월급-차이---성별에-따라-월급이-다를까?))
+[09-2 성별에 따른 월급 차이 - 성별에 따라 월급이 다를까?]{.font-jua}([link](#성별에-따른-월급-차이---성별에-따라-월급이-다를까))
+
+[09-3 나이와 월급의 관계 - 몇 살 때 월급을 가장 많이 받을까?]{.font-jua}([link](#나이와-월급의-관계---몇-살-때-월급을-가장-많이-받을까))
   
-[09-3 나이와 월급의 관계 - 몇 살 때 월급을 가장 많이 받을까?]{.font-jua}([link](#나이와-월급의-관계---몇-살-때-월급을-가장-많이-받을까?))
+[09-4 연령대에 따른 월급 차이 - 어떤 연령대의 월급이 가장 많을까?]{.font-jua}([link](#연령대에-따른-월급-차이---어떤-연령대의-월급이-가장-많을까))
   
-[09-4 연령대에 따른 월급 차이 - 어떤 연령대의 월급이 가장 많을까?]{.font-jua}([link](#연령대에-따른-월급-차이---어떤-연령대의-월급이-가장-많을까?))
+[09-5 연령대 및 성별 월급 차이 - 성별 월급 차이는 연령대별로 다를까?]{.font-jua}([link](#연령대-및-성별-월급-차이---성별-월급-차이는-연령대별로-다를까))
   
-[09-5 연령대 및 성별 월급 차이 - 성별 월급 차이는 연령대별로 다를까?]{.font-jua}([link](#연령대-및-성별-월급-차이---성별-월급-차이는-연령대별로-다를까?))
+[09-6 직업별 월급 차이 - 어떤 직업이 월급을 가장 많이 받을까?]{.font-jua}([link](#직업별-월급-차이---어떤-직업이-월급을-가장-많이-받을까))
   
-[09-6 직업별 월급 차이 - 어떤 직업이 월급을 가장 많이 받을까?]{.font-jua}([link](#직업별-월급-차이---어떤-직업이-월급을-가장-많이-받을까?))
+[09-7 성별 직업 빈도 - 성별에 따라 어떤 직업이 가장 많을까?]{.font-jua}([link](#성별-직업-빈도---성별에-따라-어떤-직업이-가장-많을까))
+
+[09-8 종교 유무에 따른 이혼율 - 종교가 있으면 이혼을 덜 할까?]{.font-jua}([link](#종교-유무에-따른-이혼율---종교가-있으면-이혼을-덜-할까))
   
-[09-7 성별 직업 빈도 - 성별로 어떤 직업이 가장 많을까?]{.font-jua}([link](#성별-직업-빈도---성별로-어떤-직업이-가장-많을까?))
-  
-[09-8 종교 유무에 따른 이혼율 - 종교가 있으면 이혼을 덜 할까?]{.font-jua}([link](#종교-유무에-따른-이혼율---종교가-있으면-이혼을-덜-할까?))
-  
-[09-9 지역별 연령대 비율 - 어느 지역에 노년층이 많을까?]{.font-jua}([link](#지역별-연령대-비율---어느-지역에-노년층이-많을까?))
+[09-9 지역별 연령대 비율 - 어느 지역에 노년층이 많을까?]{.font-jua}([link](#지역별-연령대-비율---어느-지역에-노년층이-많을까))
   
 
 
@@ -371,7 +378,7 @@ welfare['income'].isna().sum()
 ```{python}
 #| eval: false
 ## 성별 월급 평균표 만들기
-sex_income = welfare.dropna(subset = ['income']) \
+sex_income = welfare.dropna(subset = 'income') \
                     .groupby('sex', as_index = False) \
                     .agg(mean_income = ('income', 'mean'))
 sex_income
@@ -395,7 +402,7 @@ sex_income
 
 ```{python}
 #| echo: false
-sex_income = welfare.dropna(subset = ['income']) \
+sex_income = welfare.dropna(subset = 'income') \
                     .groupby('sex', as_index = False) \
                     .agg(mean_income = ('income', 'mean'))
 sex_income
@@ -483,7 +490,7 @@ sns.histplot(data = welfare, x = 'age')  # 히스토그램 만들기
 ```{python}
 #| eval: false
 # 나이별 월급 평균표 만들기
-age_income = welfare.dropna(subset = ['income']) \
+age_income = welfare.dropna(subset = 'income') \
                     .groupby('age') \
                     .agg(mean_income = ('income', 'mean'))
 
@@ -510,7 +517,7 @@ age_income.head()
 ```{python}
 #| echo: false
 # 나이별 월급 평균표 만들기
-age_income = welfare.dropna(subset = ['income']) \
+age_income = welfare.dropna(subset = 'income') \
                     .groupby('age') \
                     .agg(mean_income = ('income', 'mean'))
 
@@ -572,7 +579,7 @@ sns.countplot(data = welfare, x = 'ageg')
 ```{python}
 #| eval: false
 # 연령대별 월급 평균표 만들기
-ageg_income = welfare.dropna(subset = ['income']) \
+ageg_income = welfare.dropna(subset = 'income') \
                      .groupby('ageg', as_index = False) \
                      .agg(mean_income = ('income', 'mean'))
 ageg_income
@@ -598,7 +605,7 @@ ageg_income
 ```{python}
 #| echo: false
 # 연령대별 월급 평균표 만들기
-ageg_income = welfare.dropna(subset = ['income']) \
+ageg_income = welfare.dropna(subset = 'income') \
                      .groupby('ageg', as_index = False) \
                      .agg(mean_income = ('income', 'mean'))
 ageg_income
@@ -639,7 +646,7 @@ sns.barplot(data = ageg_income, x = 'ageg', y = 'mean_income',
 ```{python}
 #| eval: false
 # 연령대 및 성별 평균표 만들기
-sex_income = welfare.dropna(subset = ['income']) \
+sex_income = welfare.dropna(subset = 'income') \
                     .groupby(['ageg', 'sex'], as_index = False) \
                     .agg(mean_income = ('income', 'mean'))
 sex_income
@@ -665,7 +672,7 @@ sex_income
 ```{python}
 #| echo: false
 # 연령대 및 성별 평균표 만들기
-sex_income = welfare.dropna(subset = ['income']) \
+sex_income = welfare.dropna(subset = 'income') \
                     .groupby(['ageg', 'sex'], as_index = False) \
                     .agg(mean_income = ('income', 'mean'))
 sex_income
@@ -693,7 +700,7 @@ sns.barplot(data = sex_income, x = 'ageg', y = 'mean_income', hue = 'sex',
 ```{python}
 #| eval: false
 # 나이 및 성별 월급 평균표 만들기
-sex_age = welfare.dropna(subset = ['income']) \
+sex_age = welfare.dropna(subset = 'income') \
                  .groupby(['age', 'sex'], as_index = False) \
                  .agg(mean_income = ('income', 'mean'))
 sex_age.head()
@@ -719,7 +726,7 @@ sex_age.head()
 ```{python}
 #| echo: false
 # 나이 및 성별 월급 평균표 만들기
-sex_age = welfare.dropna(subset = ['income']) \
+sex_age = welfare.dropna(subset = 'income') \
                  .groupby(['age', 'sex'], as_index = False) \
                  .agg(mean_income = ('income', 'mean'))
 sex_age.head()
@@ -873,7 +880,7 @@ plt.show()
 ```
 
 
-## 09-7 성별 직업 빈도 <br>- 성별로 어떤 직업이 가장 많을까?{background-color="#FFCE32" transition="fade"}
+## 09-7 성별 직업 빈도 <br>- 성별에 따라 어떤 직업이 가장 많을까?{background-color="#FFCE32" transition="fade"}
 
 ---
 

@@ -29,6 +29,13 @@ execute:
   cache: false
 ---
 
+```{r setup, include=FALSE}
+# 파이썬 버전 설정
+knitr::opts_chunk$set(engine.path = list(
+  python = "C:/Users/USER/anaconda3"))
+```
+
+
 ### {data-menu-title="Info"}
 
 ```{python}
@@ -172,7 +179,7 @@ pd.isna(df).sum()  # 결측치 빈도 확인
 #### 결측치 있는 행 제거하기
 
 ```{python}
-df.dropna(subset = ['score'])  # score 결측치 제거
+df.dropna(subset = 'score')  # score 결측치 제거
 ```
 
 
@@ -180,8 +187,8 @@ df.dropna(subset = ['score'])  # score 결측치 제거
 
 
 ```{python}
-df_nomiss = df.dropna(subset = ['score'])  # score 결측치 제거된 데이터 만들기
-df_nomiss['score'] + 1                     # score로 연산
+df_nomiss = df.dropna(subset = 'score')  # score 결측치 제거된 데이터 만들기
+df_nomiss['score'] + 1                   # score로 연산
 ```
 
 :::
@@ -336,7 +343,7 @@ exam['math'].isna().sum()  # 결측치 빈도 확인
 **결측치가 들어 있는 `mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
 
 
-`mpg` 데이터 원본에는 결측치가 없습니다. 우선 `mpg` 데이터를 불러와 일부러 몇 개의 값을 결측치로 
+`mpg` 데이터 원본에는 결측치가 없습니다. 우선 `mpg` 데이터를 불러와 일부러 몇 개의 값을 결측치로
 <br>만들겠습니다. 다음 코드를 실행하면 다섯 행의 `hwy` 변수에 `NaN`을 할당합니다.
 
 ```{python}
@@ -363,7 +370,7 @@ Q1. `drv`(구동 방식)별로 `hwy`(고속도로 연비) 평균이 어떻게 �
 
 ```{python}
 # 결측치 빈도 확인
-mpg[['drv', 'hwy']].isna().sum()  
+mpg[['drv', 'hwy']].isna().sum()
 ```
 
 ---
@@ -414,7 +421,7 @@ mpg.dropna(subset = ['hwy']) \
 ##### 이상치가 들어있는 데이터 만들기
 
 ```{python}
-df = pd.DataFrame({'sex'   : [1, 2, 1, 3, 2, 1], 
+df = pd.DataFrame({'sex'   : [1, 2, 1, 3, 2, 1],
                    'score' : [5, 4, 3, 4, 2, 6]})
 df
 ```
@@ -518,7 +525,7 @@ df.isna()
 ```
 :::
 
-:::: 
+::::
 
 <br>
 <br20>
@@ -900,7 +907,7 @@ mpg.dropna(subset = ['drv', 'cty']) \
 #| eval: false
 ## 1. 결측치 정제하기
 pd.isna(df).sum()                                 # 결측치 확인
-df_nomiss = df.dropna(subset = ['score'])         # 결측치 제거
+df_nomiss = df.dropna(subset = 'score' )          # 결측치 제거
 df_nomiss = df.dropna(subset = ['score', 'sex'])  # 여러 변수 동시에 결측치 제거
 ```
 
