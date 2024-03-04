@@ -1,0 +1,333 @@
+---
+jupyter: python3
+title: "Do it! 쉽게 배우는 파이썬 데이터 분석"
+output-dir: html
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+
+```{r setup, include=FALSE}
+# 파이썬 버전 설정
+knitr::opts_chunk$set(engine.path = list(
+  python = "C:/Users/USER/anaconda3"))
+```
+
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+
+# 한글 우측 줄맞춤
+import pandas as pd
+pd.set_option("display.unicode.east_asian_width", True)
+
+```
+
+
+### {data-menu-title="Info"}
+
+
+
+
+<!-- fa 아이콘 출력 설정 -->
+<!-- [{{< fa rocket size=sm >}}]} -->
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+<br>
+<br>
+
+![](img/cover.png){fig-align="center" width="75%"}
+
+:::
+
+<!-- width: 55% -->
+
+::: {.column width="55%"}
+
+<br>
+<br>
+<br>
+
+`r fontawesome::fa("github", margin_left = '-0.5em')` [github.com/youngwoos/Doit_Python](https://github.com/youngwoos/Doit_Python)
+
+`r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [ 슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
+`r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
+
+<br-back-20>
+
+&nbsp;&nbsp; ▪ [yes24](http://www.yes24.com/Product/Goods/108947478)
+
+&nbsp;&nbsp; ▪ [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601)
+
+&nbsp;&nbsp; ▪ [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163033493)
+
+:::
+
+::::
+
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 12 인터랙티브 그래프 {background-color="#FF7232" transition="fade"}
+
+ 
+:::
+
+
+---
+
+### {data-menu-title="To do"}
+
+
+
+:::: {.columns}
+
+
+::: {.column width="10%"}
+
+:::
+
+
+::: {.column width="60%"}
+
+<br>
+<br>
+
+```{python}
+#| echo: false
+import pandas as pd
+import plotly.express as px
+
+mpg = pd.read_csv('../Data/mpg.csv')
+
+df = mpg.groupby('category', as_index = False) \
+        .agg(n = ('category', 'count'))
+
+px.bar(data_frame = df, x = 'category', y = 'n', color = 'category')
+```
+
+:::
+
+::::
+
+
+## 12-1 인터랙티브 그래프 만들기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+### 산점도 만들기
+
+```{python}
+#| eval: false
+import pandas as pd
+mpg = pd.read_csv('mpg.csv')
+
+# 산점도 만들기
+import plotly.express as px
+px.scatter(data_frame = mpg, x = 'cty', y = 'hwy', color = 'drv')
+```
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+<br-back-20>
+
+```{python}
+#| echo: false
+
+import pandas as pd
+mpg = pd.read_csv('../Data/mpg.csv')
+
+# 산점도 만들기
+import plotly.express as px
+px.scatter(data_frame = mpg, x = 'cty', y = 'hwy', color = 'drv')
+```
+
+:::
+
+::::
+
+---
+
+### 막대 그래프 만들기
+
+```{python}
+# 자동차 종류별 빈도 구하기
+df = mpg.groupby('category', as_index = False) \
+        .agg(n = ('category', 'count'))
+df
+```
+
+---
+
+### 막대 그래프 만들기
+
+```{python}
+#| eval: false
+# 막대 그래프 만들기
+px.bar(data_frame = df, x = 'category', y = 'n', color = 'category')
+
+```
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+<br-back-20>
+
+```{python}
+#| echo: false
+# 막대 그래프 만들기
+px.bar(data_frame = df, x = 'category', y = 'n', color = 'category')
+
+```
+
+:::
+
+::::
+
+
+---
+
+### 선 그래프 만들기
+
+```{python}
+#| eval: false
+# economics 불러오기
+economics = pd.read_csv('economics.csv')
+
+# 선 그래프 만들기
+px.line(data_frame = economics, x = 'date', y = 'psavert')
+
+```
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+<br-back-20>
+
+```{python}
+#| echo: false
+
+# economics 불러오기
+economics = pd.read_csv('../Data/economics.csv')
+
+# 선 그래프 만들기
+px.line(data_frame = economics, x = 'date', y = 'psavert')
+
+```
+
+:::
+
+::::
+
+
+---
+
+### 상자 그림 만들기
+
+
+```{python}
+#| eval: false
+# 상자 그림 만들기
+px.box(data_frame = mpg, x = 'drv', y = 'hwy', color = 'drv')
+
+```
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+<br-back-20>
+
+```{python}
+#| echo: false
+# 상자 그림 만들기
+px.box(data_frame = mpg, x = 'drv', y = 'hwy', color = 'drv')
+
+```
+
+:::
+
+::::
+
+---
+
+##### HTML 파일로 저장하기
+
+```{python}
+#| eval: false
+# 그래프를 변수에 할당하기
+fig = px.scatter(data_frame = mpg, x = 'cty', y = 'hwy')
+
+# html로 저장하기
+fig.write_html('scatter_plot.html')
+```
+
+---
+
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [`plotly` 활용하기]{.info}
+
+
+**그래프 크기 조절하기**
+
+```{python}
+#| eval: false
+px.scatter(data_frame = mpg, x = 'hwy', y = 'cty', color = 'drv',
+           width = 600, height = 400)
+```
+
+**새 창에 그래프 출력하기**
+
+```{python}
+#| eval: false
+import plotly
+plotly.io.renderers.default = 'browser'
+
+# 설정 원래대로 되돌리기
+plotly.io.renderers.default = 'jupyterlab'
+```
+
+:::
+
+
+::: {background-color="#FF7232" transition="fade"}
+## 끝
+:::
