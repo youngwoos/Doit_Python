@@ -54,6 +54,7 @@ docs/*.csv
 docs/*.xlsx
 docs/*.txt
 docs/*.geojson
+docs/*.sav
 # !docs/*.html
 # !docs/*.qmd
 # !docs/*.md
