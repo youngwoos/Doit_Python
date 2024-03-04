@@ -53,7 +53,8 @@ Notebook/*
 docs/*
 !docs/*.html
 !docs/*.qmd
-refer!docs/*.md
+!docs/*.md
+# refer!docs/*.md
 
 # docs
 # docs/refer.html
