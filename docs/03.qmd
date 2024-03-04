@@ -1,0 +1,622 @@
+---
+jupyter: python3
+title: "Do it! 쉽게 배우는 파이썬 데이터 분석"
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+### {data-menu-title="Info"}
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+```
+
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+<br>
+<br>
+
+![](img/cover.png){fig-align="center" width="75%"}
+
+:::
+
+<!-- width: 55% -->
+
+::: {.column width="55%"}
+
+<br>
+<br>
+<br>
+
+`r fontawesome::fa("github", margin_left = '-0.5em')` [github.com/youngwoos/Doit_Python](https://github.com/youngwoos/Doit_Python)
+
+`r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [ 슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
+`r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
+
+<br-back-10>
+
+&nbsp;&nbsp; ▪ [yes24](http://www.yes24.com/Product/Goods/108947478)
+
+&nbsp;&nbsp; ▪ [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601)
+
+&nbsp;&nbsp; ▪ [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163033493)
+
+:::
+
+::::
+
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 03 데이터 분석에 필요한 연장 챙기기
+
+:::
+
+
+---
+
+### {data-menu-title="To do"}
+
+<br>
+<br>
+<br>
+<br>
+
+
+![](img/03-intro.png){width=45% fig-align="center"}
+
+
+---
+
+<br>
+
+##### [목차]{.font-jua .larger}
+
+[03-1 변하는 수, ‘변수’ 이해하기]{.font-jua}([link](#변하는-수-변수-이해하기))
+
+[03-2 마술 상자 같은 ‘함수’ 이해하기]{.font-jua}([link](#마술-상자-같은-함수-이해하기))
+
+[03-3 함수 꾸러미, ‘패키지’ 이해하기]{.font-jua}([link](#함수-꾸러미-패키지-이해하기))
+
+
+<!-- 제목에 화면 전환 넣기 -->
+<!-- ::: {background-color="#FF7232" transition="fade"} -->
+
+<!-- ## 03-1 변하는 수, '변수' 이해하기 -->
+
+<!-- ::: -->
+
+
+## 03-1 변하는 수, '변수' 이해하기{background-color="#FFCE32" transition="fade"}
+
+---
+
+#### 변수(variable)
+
+- 다양한 값을 지닌 하나의 속성
+- 데이터 분석의 대상
+
+<br10>
+
+![](img/variable.jpg){width=50%}
+
+---
+
+### 변수 만들기
+
+<br>
+ 
+
+![](img/make_variable.jpg){width=45%}
+
+
+---
+
+### 변수 만들기
+
+
+```{python}
+a = 1  # a에 1 할당
+a      # a 출력
+```
+
+<br-back-25>
+
+```{python}
+b = 2
+b
+```
+
+<br-back-25>
+
+```{python}
+c = 3
+c
+```
+
+<br-back-25>
+
+```{python}
+d = 3.5
+d
+```
+
+### 변수로 연산하기
+
+```{python}
+a + b
+```
+
+```{python}
+a + b + c
+```
+
+```{python}
+4 / b
+```
+
+```{python}
+5 * b
+```
+
+---
+
+### 여러 값으로 구성된 변수 만들기
+
+```{python}
+var1 = [1, 2, 3]
+var1
+```
+
+```{python}
+var2 = [4, 5, 6]
+var2
+```
+
+```{python}
+var1 + var2
+```
+
+---
+
+### 문자로 된 변수 만들기
+
+```{python}
+str1 = 'a'
+str1
+```
+
+```{python}
+str2 = 'text'
+str2
+```
+
+```{python}
+str3 = 'Hello World!'
+str3
+```
+
+### 여러 문자로 된 변수 만들기
+
+```{python}
+str4 = ['a', 'b', 'c']
+str4
+```
+
+```{python}
+str5 = ['Hello!', 'World', 'is', 'good!']
+str5
+```
+
+### 문자 변수 결합하기
+
+```{python}
+str2 + str3
+```
+
+```{python}
+str2 + ' ' + str3
+```
+
+---
+
+### 문자로 된 변수로는 연산할 수 없다
+
+```{python}
+str1 + 2
+```
+
+
+## 03-2 마술 상자 같은 '함수' 이해하기{background-color="#FFCE32" transition="fade"}
+
+---
+
+
+#### 함수(function)
+
+- 값을 넣으면 특정한 기능을 수행해 처음과 다른 값으로 만듦
+
+<br10>
+
+
+::: {.nostretch}
+
+![](img/function.jpg){width=40%}
+
+:::
+
+---
+
+### 함수 이용하기
+
+```{python}
+# 변수 만들기
+x = [1, 2, 3]
+x
+```
+
+```{python}
+# 함수 적용하기
+sum(x)
+```
+
+```{python}
+max(x)
+```
+
+```{python}
+min(x)
+```
+
+---
+
+#### 함수의 결과물로 새 변수 만들기
+
+```{python}
+x_sum = sum(x)
+x_sum
+```
+
+```{python}
+x_max = max(x)
+x_max
+```
+
+
+
+## 03-3 함수 꾸러미, '패키지' 이해하기{background-color="#FFCE32" transition="fade"}
+
+---
+
+#### 패키지(packages)
+
+- 함수가 여러 개 들어 있는 꾸러미
+- 함수 사용하려면 패키지 설치 먼저
+- 아나콘다에 주요 패키지 대부분 들어있음
+
+<br10>
+
+::: {.nostretch}
+
+![](img/packages.png){width=50%}
+
+
+:::
+
+---
+
+##### 패키지 로드하기
+
+```{python}
+import seaborn
+```
+
+##### 패키지 함수 사용하기
+
+```{python}
+var = ['a', 'a', 'b', 'c']
+var
+seaborn.countplot(x = var)
+```
+
+---
+
+#### 패키지 약어 활용하기
+
+```{python}
+import seaborn as sns
+sns.countplot(x = var)
+```
+
+---
+
+### `seaborn`의 `titanic` 데이터로 그래프 만들기
+
+<br10>
+
+#### `load_dataset()`로 `titanic` 데이터 불러오기
+
+```{python}
+df = sns.load_dataset('titanic')
+df
+```
+
+---
+
+#### 함수의 다양한 기능 이용하기
+
+```{python}
+sns.countplot(data = df, x = 'sex')
+```
+
+---
+
+#### 함수의 다양한 기능 이용하기
+
+```{python}
+# x축 class
+sns.countplot(data = df, x = 'class')  
+```
+
+---
+
+#### 함수의 다양한 기능 이용하기
+
+```{python}
+# x축 class, alive별 색 표현
+sns.countplot(data = df, x = 'class', hue = 'alive')  
+```
+
+---
+
+#### 함수의 다양한 기능 이용하기
+
+```{python}
+# y축 class, alive별 색 표현
+sns.countplot(data = df, y = 'class', hue = 'alive')  
+```
+
+
+<!-- --- -->
+
+<!-- ::: {.callout-tip} -->
+
+<!-- #### 함수 사용법이 궁금할 땐 Help 함수를 활용해 보세요  -->
+
+<!-- ::: -->
+
+<!-- ```{python} -->
+<!-- #| eval: false -->
+<!-- sns.countplot? -->
+<!-- ``` -->
+
+
+---
+
+:::: {.box}
+
+<!-- [{{< fa rocket size=sm >}}]{style="color:#FF7333"} -->
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [함수 사용법이 궁금할 땐 Help 함수를 활용해 보세요]{.info}
+
+```{python}
+#| eval: false
+sns.countplot?
+```
+
+::::
+
+---
+
+### 모듈
+
+<br>
+ 
+![](img/module.jpg){width='35%'}
+
+---
+
+### 모듈
+
+```{python}
+#| eval: false
+# `패키지명.모듈명.함수명()`으로 함수 사용하기
+import sklearn.metrics
+sklearn.metrics.accuracy_score()
+```
+
+
+```{python}
+#| eval: false
+# `모듈명.함수명()`으로 함수 사용하기
+from sklearn import metrics
+metrics.accuracy_score()
+```
+
+
+```{python}
+#| eval: false
+# `함수명()`으로 함수 사용하기
+from sklearn.metrics import accuracy_score
+accuracy_score()
+```
+
+---
+
+:::: {.box}
+
+<!-- [{{< fa rocket size=sm >}}]{style="color:#FF7333"} [as로 약어 지정하기]{.info} -->
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [as로 약어 지정하기]{.info}
+
+```{python}
+#| eval: false
+import sklearn.metrics as met
+met.accuracy_score()
+
+from sklearn import metrics as met
+met.accuracy_score()
+
+from sklearn.metrics import accuracy_score as accuracy
+accuracy()
+```
+
+::::
+
+<!-- --- -->
+
+
+<!-- :::{.callout-tip} -->
+
+<!-- #### as로 약어 지정하기 -->
+
+<!-- ::: -->
+
+<!-- ```{python} -->
+<!-- #| eval: false -->
+<!-- import sklearn.metrics as met -->
+<!-- met.accuracy_score() -->
+
+<!-- from sklearn import metrics as met -->
+<!-- met.accuracy_score() -->
+
+<!-- from sklearn.metrics import accuracy_score as accuracy -->
+<!-- accuracy() -->
+<!-- ``` -->
+
+---
+
+
+#### 패키지 설치하기
+
+```{python}
+#| eval: false
+pip install pydataset
+```
+
+<br>
+
+![](img/prompt_install.png){width="50%"}
+
+---
+
+#### 패키지 함수 사용하기
+
+```{python}
+import pydataset
+pydataset.data()
+```
+
+---
+
+#### 패키지 함수 사용하기
+
+```{python}
+df = pydataset.data('mtcars')  # mtcars 데이터를 df에 할당
+df                             # df 출력
+
+```
+
+
+---
+
+### 혼자서 해보기
+
+**앞에서 익힌 기능을 활용해 분석 문제를 해결해 보세요.**
+
+<br10>
+
+**Q1. 시험 점수 변수 만들고 출력하기**  
+학생 5명이 시험을 봤습니다. 학생들의 시험 점수를 담고 있는 변수를 만들어 <br> 출력해 보세요. 학생들의 시험 점수는 다음과 같습니다.
+
+::: {style="text-align: center;"}
+`80, 60, 70, 50, 90`
+:::
+
+<br10>
+
+
+**Q2. 합계 점수 구하기**  
+앞 문제에서 만든 변수를 이용해 합계 점수를 구해 보세요.
+
+<br10>
+
+**Q3. 합계 점수 변수 만들어 출력하기**  
+합계 점수를 담고 있는 새 변수를 만들어 출력해 보세요. 앞 문제를 풀 때 <br>사용한 코드를 응용하면 됩니다.
+
+---
+
+**Q1. 시험 점수 변수 만들고 출력하기**  
+학생 5명이 시험을 봤습니다. 학생들의 시험 점수를 담고 있는 변수를 만들어 <br> 출력해 보세요. 학생들의 시험 점수는 다음과 같습니다.
+
+::: {style="text-align: center;"}
+`80, 60, 70, 50, 90`
+:::
+
+<br>
+
+```{python}
+score = [80, 60, 70, 50, 90]  # 변수 만들기
+score                         # 출력하기
+```
+
+
+---
+
+
+**Q2. 합계 점수 구하기**  
+앞 문제에서 만든 변수를 이용해 합계 점수를 구해 보세요.
+
+```{python}
+sum(score)  # score의 합계 구하기
+```
+
+
+::: {.fragment}
+
+**Q3. 합계 점수 변수 만들어 출력하기**  
+합계 점수를 담고 있는 새 변수를 만들어 출력해 보세요. 앞 문제를 풀 때 <br>사용한 코드를 응용하면 됩니다.
+
+```{python}
+sum_score = sum(score)  # score의 합계를 담은 변수 만들기
+sum_score               # sum_score 출력하기
+```
+:::
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 끝
+
+:::

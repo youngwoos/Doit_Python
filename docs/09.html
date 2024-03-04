@@ -1,0 +1,2394 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="09_files/libs/clipboard/clipboard.min.js"></script>
+<script src="09_files/libs/quarto-html/tabby.min.js"></script>
+<script src="09_files/libs/quarto-html/popper.min.js"></script>
+<script src="09_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="09_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="09_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="09_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="09_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="09_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="09_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.290">
+
+  <title>Do it! 쉽게 배우는 파이썬 데이터 분석</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="09_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="09_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="09_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="09_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="09_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="09_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="09_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#FF7232" class="quarto-title-block center">
+  <h1 class="title">Do it! 쉽게 배우는 파이썬 데이터 분석</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="section" class="slide level3" data-menu-title="Info">
+<h3></h3>
+<!-- fa 아이콘 출력 설정 -->
+<!-- []} -->
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/cover.png" class="quarto-discovered-preview-image" style="width:75.0%"></p>
+</figure>
+</div>
+</div><!-- width: 55% --><div class="column" style="width:55%;">
+<p><br> <br> <br></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg> <a href="https://github.com/youngwoos/Doit_Python">github.com/youngwoos/Doit_Python</a></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg> <a href="https://facebook.com/groups/datacommunity">facebook.com/groups/datacommunity</a></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 576 512" style="height:0.8em;width:0.9em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64H240l-10.7 32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H346.7L336 416H512c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM512 64V288H64V64H512z"></path></svg> <a href="https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md">슬라이드 목록</a></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"></path></svg> <a href="https://search.shopping.naver.com/book/catalog/32474211621">네이버책</a></p>
+<p><br-back-10></br-back-10></p>
+<p>&nbsp;&nbsp; ▪ <a href="http://www.yes24.com/Product/Goods/108947478">yes24</a></p>
+<p>&nbsp;&nbsp; ▪ <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601">알라딘</a></p>
+<p>&nbsp;&nbsp; ▪ <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791163033493">교보문고</a></p>
+</div>
+</div>
+</section>
+<section id="데이터-분석-프로젝트---한국인의-삶을-파악하라" class="title-slide slide level2 center" data-background-color="#FF7232" data-transition="fade">
+<h2>09 데이터 분석 프로젝트 <br> - 한국인의 삶을 파악하라!</h2>
+
+</section>
+
+<section id="section-1" class="slide level3" data-menu-title="To do">
+<h3></h3>
+<p><br> <br> <br> <br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/09-intro.png" style="width:80.0%"></p>
+</figure>
+</div>
+</section>
+<section class="slide level3">
+
+<p><br></p>
+<h5 id="목차"><span class="font-jua larger">목차</span></h5>
+<p><span class="font-jua">09-1 ‘한국복지패널 데이터’ 분석 준비하기</span>(<a href="#/한국복지패널-데이터-분석-준비하기">link</a>)</p>
+<p><span class="font-jua">09-2 성별에 따른 월급 차이 - 성별에 따라 월급이 다를까?</span>(<a href="#/성별에-따른-월급-차이---성별에-따라-월급이-다를까">link</a>)</p>
+<p><span class="font-jua">09-3 나이와 월급의 관계 - 몇 살 때 월급을 가장 많이 받을까?</span>(<a href="#/나이와-월급의-관계---몇-살-때-월급을-가장-많이-받을까">link</a>)</p>
+<p><span class="font-jua">09-4 연령대에 따른 월급 차이 - 어떤 연령대의 월급이 가장 많을까?</span>(<a href="#/연령대에-따른-월급-차이---어떤-연령대의-월급이-가장-많을까">link</a>)</p>
+<p><span class="font-jua">09-5 연령대 및 성별 월급 차이 - 성별 월급 차이는 연령대별로 다를까?</span>(<a href="#/연령대-및-성별-월급-차이---성별-월급-차이는-연령대별로-다를까">link</a>)</p>
+<p><span class="font-jua">09-6 직업별 월급 차이 - 어떤 직업이 월급을 가장 많이 받을까?</span>(<a href="#/직업별-월급-차이---어떤-직업이-월급을-가장-많이-받을까">link</a>)</p>
+<p><span class="font-jua">09-7 성별 직업 빈도 - 성별에 따라 어떤 직업이 가장 많을까?</span>(<a href="#/성별-직업-빈도---성별에-따라-어떤-직업이-가장-많을까">link</a>)</p>
+<p><span class="font-jua">09-8 종교 유무에 따른 이혼율 - 종교가 있으면 이혼을 덜 할까?</span>(<a href="#/종교-유무에-따른-이혼율---종교가-있으면-이혼을-덜-할까">link</a>)</p>
+<p><span class="font-jua">09-9 지역별 연령대 비율 - 어느 지역에 노년층이 많을까?</span>(<a href="#/지역별-연령대-비율---어느-지역에-노년층이-많을까">link</a>)</p>
+</section>
+<section>
+<section id="한국복지패널-데이터-분석-준비하기" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>09-1 ‘한국복지패널 데이터’ 분석 준비하기</h2>
+
+</section>
+<section class="slide level3">
+
+<h4 id="한국복지패널-데이터">한국복지패널 데이터</h4>
+<ul>
+<li>한국보건사회연구원 발간 조사 자료</li>
+<li>전국 7,000여 가구 선정, 2006년부터 매년 추적 조사한 자료</li>
+<li>경제활동, 생활실태, 복지욕구 등 천여 개 변수로 구성됨</li>
+<li>다양한 분야의 연구자, 정책전문가들이 활용함</li>
+<li>엄밀한 절차로 수집되고 다양한 변수가 있으므로 데이터 분석 연습하기 좋은 재료</li>
+</ul>
+</section>
+<section id="데이터-분석-준비하기" class="slide level3">
+<h3>데이터 분석 준비하기</h3>
+<h4 id="데이터-준비하기">1. 데이터 준비하기</h4>
+<ul>
+<li><code>Koweps_hpwc14_2019_beta2.sav</code> 파일을 워킹 디렉터리에 삽입</li>
+<li>2020년 발간 복지패널 데이터. 6,331가구, 14,418명의 정보를 담고 있음</li>
+</ul>
+<p><br10></br10></p>
+<h4 id="패키지-설치-및-로드하기">2. 패키지 설치 및 로드하기</h4>
+<ul>
+<li><code>sav</code>: 통계 분석 소프트웨어 SPSS 전용 파일</li>
+<li><code>pyreadstat</code> 패키지 설치하면 <code>pandas</code> 패키지를 이용해 불러올 수 있음</li>
+</ul>
+<h5 id="패키지-설치">(1) 패키지 설치</h5>
+<p><br-back-20></br-back-20></p>
+<pre><code>`pip install pyreadstat`</code></pre>
+<h5 id="패키지-로드">(2) 패키지 로드</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="데이터-불러오기">3. 데이터 불러오기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 불러오기</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>raw_welfare <span class="op">=</span> pd.read_spss(<span class="st">'Koweps_hpwc14_2019_beta2.sav'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 복사본 만들기 </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>welfare <span class="op">=</span> raw_welfare.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<h4 id="데이터-검토하기">4. 데이터 검토하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>welfare             <span class="co"># 앞부분, 뒷부분 출력</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>welfare.shape       <span class="co"># 행, 열 개수 출력</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>welfare.info()      <span class="co"># 변수 속성 출력</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>welfare.describe()  <span class="co"># 요약 통계량</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>규모가 큰 데이터는 변수명을 쉬운 단어로 바꾸고 분석할 변수를 하나씩 살펴봐야 함</li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h4 id="변수명-바꾸기">5. 변수명 바꾸기</h4>
+<div class="small-95">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>welfare <span class="op">=</span> welfare.rename(columns <span class="op">=</span> {<span class="st">'h14_g3'</span>     : <span class="st">'sex'</span>,            <span class="co">#  성별</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">'h14_g4'</span>     : <span class="st">'birth'</span>,          <span class="co">#  태어난 연도</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">'h14_g10'</span>    : <span class="st">'marriage_type'</span>,  <span class="co">#  혼인 상태</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">'h14_g11'</span>    : <span class="st">'religion'</span>,       <span class="co">#  종교 </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">'p1402_8aq1'</span> : <span class="st">'income'</span>,         <span class="co">#  월급 </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">'h14_eco9'</span>   : <span class="st">'code_job'</span>,       <span class="co">#  직업 코드</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">'h14_reg7'</span>   : <span class="st">'code_region'</span>})   <span class="co">#  지역 코드</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li>규모가 큰 조사 자료는 데이터의 특징을 설명해 놓은 코드북(codebook)을 함께 제공함</li>
+<li>코드북에 코드로 된 변수명과 값의 의미가 설명되어 있음</li>
+<li>데이터의 특징을 알 수 있고 분석 방향 아이디어를 얻을 수 있음</li>
+<li><code>Koweps_Codebook_2019.xlsx</code> 참고</li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h4 id="데이터-분석-절차-살펴보기">데이터 분석 절차 살펴보기</h4>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h5 id="단계---변수-검토-및-전처리">1단계 - 변수 검토 및 전처리</h5>
+<ul>
+<li>분석에 활용할 변수 전처리
+<ul>
+<li>변수의 특징 파악, 이상치와 결측치 정제</li>
+<li>변수의 값을 다루기 편하게 바꾸기</li>
+</ul></li>
+<li>분석에 활용할 변수 각각 전처리
+<ul>
+<li>ex) 성별에 따른 월급 차이: 성별, 월급 각각</li>
+</ul></li>
+</ul>
+<h5 id="단계---변수-간-관계-분석">2단계 - 변수 간 관계 분석</h5>
+<ul>
+<li>변수 간 관계 분석
+<ul>
+<li>데이터 요약 표, 그래프 만들기</li>
+<li>분석 결과 해석</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<p><img data-src="img/09-process.png"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="성별에-따른-월급-차이---성별에-따라-월급이-다를까" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>09-2 성별에 따른 월급 차이 <br> - 성별에 따라 월급이 다를까?</h2>
+
+</section>
+<section id="성별-변수-검토-및-전처리하기" class="slide level3">
+<h3>성별 변수 검토 및 전처리하기</h3>
+<h4 id="변수-검토하기">1. 변수 검토하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'sex'</span>].dtypes  <span class="co"># 변수 타입 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('float64')</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'sex'</span>].value_counts()  <span class="co"># 빈도 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>sex
+2.0    7913
+1.0    6505
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="전처리하기">2. 전처리하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 이상치 확인</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'sex'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>sex
+2.0    7913
+1.0    6505
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 이상치 결측 처리</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'sex'</span>] <span class="op">=</span> np.where(welfare[<span class="st">'sex'</span>] <span class="op">==</span> <span class="dv">9</span>, np.nan, welfare[<span class="st">'sex'</span>])</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측치 확인</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'sex'</span>].isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 성별 항목 이름 부여</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'sex'</span>] <span class="op">=</span> np.where(welfare[<span class="st">'sex'</span>] <span class="op">==</span> <span class="dv">1</span>, <span class="st">'male'</span>, <span class="st">'female'</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈도 구하기</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'sex'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>sex
+female    7913
+male      6505
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈도 막대 그래프 만들기</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(data <span class="op">=</span> welfare, x <span class="op">=</span> <span class="st">'sex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-11-1.png" width="576"></p>
+</div>
+</div>
+</section>
+<section id="월급-변수-검토-및-전처리하기" class="slide level3">
+<h3>월급 변수 검토 및 전처리하기</h3>
+<h4 id="변수-검토하기-1">1. 변수 검토하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'income'</span>].dtypes  <span class="co"># 변수 타입 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('float64')</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'income'</span>].describe()  <span class="co"># 요약 통계량 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>count    4534.000000
+mean      268.455007
+std       198.021206
+min         0.000000
+25%       150.000000
+50%       220.000000
+75%       345.750000
+max      1892.000000
+Name: income, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data <span class="op">=</span> welfare, x <span class="op">=</span> <span class="st">'income'</span>)  <span class="co"># 히스토그램 만들기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-14-3.png" width="576"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="전처리하기-1">2. 전처리하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'income'</span>].describe()  <span class="co"># 이상치 확인</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>count    4534.000000
+mean      268.455007
+std       198.021206
+min         0.000000
+25%       150.000000
+50%       220.000000
+75%       345.750000
+max      1892.000000
+Name: income, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'income'</span>].isna().<span class="bu">sum</span>()  <span class="co"># 결측치 확인</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>9884</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="{.small-95)">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 이상치 결측 처리</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'income'</span>] <span class="op">=</span> np.where(welfare[<span class="st">'income'</span>] <span class="op">==</span> <span class="dv">9999</span>, np.nan, welfare[<span class="st">'income'</span>])</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측치 확인</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'income'</span>].isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>9884</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="성별에-따른-월급-차이-분석하기" class="slide level3">
+<h3>성별에 따른 월급 차이 분석하기</h3>
+<h4 id="성별-월급-평균표-만들기">1. 성별 월급 평균표 만들기</h4>
+<div class="columns small-95">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">## 성별 월급 평균표 만들기</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>sex_income <span class="op">=</span> welfare.dropna(subset <span class="op">=</span> <span class="st">'income'</span>) <span class="op">\</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                    .groupby(<span class="st">'sex'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                    .agg(mean_income <span class="op">=</span> (<span class="st">'income'</span>, <span class="st">'mean'</span>))</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>sex_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># income 결측치 제거</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sex별 분리</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># income 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>      sex  mean_income
+0  female   186.293096
+1    male   349.037571</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="그래프-만들기">2. 그래프 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> sex_income, x <span class="op">=</span> <span class="st">'sex'</span>, y <span class="op">=</span> <span class="st">'mean_income'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-21-5.png" width="576"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="나이와-월급의-관계---몇-살-때-월급을-가장-많이-받을까" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>09-3 나이와 월급의 관계 <br>- 몇 살 때 월급을 가장 많이 받을까?</h2>
+
+</section>
+<section id="나이-변수-검토-및-전처리하기" class="slide level3">
+<h3>나이 변수 검토 및 전처리하기</h3>
+<h4 id="변수-검토하기-2">1. 변수 검토하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'birth'</span>].dtypes  <span class="co"># 변수 타입 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('float64')</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'birth'</span>].describe()  <span class="co"># 요약 통계량 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>count    14418.000000
+mean      1969.280205
+std         24.402250
+min       1907.000000
+25%       1948.000000
+50%       1968.000000
+75%       1990.000000
+max       2018.000000
+Name: birth, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data <span class="op">=</span> welfare, x <span class="op">=</span> <span class="st">'birth'</span>)  <span class="co"># 히스토그램 만들기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-24-7.png" width="576"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="전처리하기-2">2. 전처리하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'birth'</span>].describe()  <span class="co"># 이상치 확인</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>count    14418.000000
+mean      1969.280205
+std         24.402250
+min       1907.000000
+25%       1948.000000
+50%       1968.000000
+75%       1990.000000
+max       2018.000000
+Name: birth, dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'birth'</span>].isna().<span class="bu">sum</span>()  <span class="co"># 결측치 확인</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 이상치 결측 처리</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'birth'</span>] <span class="op">=</span> np.where(welfare[<span class="st">'birth'</span>] <span class="op">==</span> <span class="dv">9999</span>, np.nan, welfare[<span class="st">'birth'</span>])</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 결측치 확인</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'birth'</span>].isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="파생변수-만들기---나이">3. 파생변수 만들기 - 나이</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>welfare <span class="op">=</span> welfare.assign(age <span class="op">=</span> <span class="dv">2019</span> <span class="op">-</span> welfare[<span class="st">'birth'</span>] <span class="op">+</span> <span class="dv">1</span>)  <span class="co"># 나이 변수 만들기</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'age'</span>].describe()                                    <span class="co"># 요약 통계량 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>count    14418.000000
+mean        50.719795
+std         24.402250
+min          2.000000
+25%         30.000000
+50%         52.000000
+75%         72.000000
+max        113.000000
+Name: age, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data <span class="op">=</span> welfare, x <span class="op">=</span> <span class="st">'age'</span>)  <span class="co"># 히스토그램 만들기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-29-9.png" width="576"></p>
+</div>
+</div>
+</section>
+<section id="나이와-월급의-관계-분석하기" class="slide level3">
+<h3>나이와 월급의 관계 분석하기</h3>
+<h4 id="나이에-따른-월급-평균표-만들기">1. 나이에 따른 월급 평균표 만들기</h4>
+<div class="columns small-95">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 나이별 월급 평균표 만들기</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>age_income <span class="op">=</span> welfare.dropna(subset <span class="op">=</span> <span class="st">'income'</span>) <span class="op">\</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                    .groupby(<span class="st">'age'</span>) <span class="op">\</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                    .agg(mean_income <span class="op">=</span> (<span class="st">'income'</span>, <span class="st">'mean'</span>))</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>age_income.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># income 결측치 제거</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># age별 분리</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># income 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>      mean_income
+age              
+19.0   162.000000
+20.0   121.333333
+21.0   136.400000
+22.0   123.666667
+23.0   179.676471</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="그래프-만들기-1">2. 그래프 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 선 그래프 만들기</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> age_income, x <span class="op">=</span> <span class="st">'age'</span>, y <span class="op">=</span> <span class="st">'mean_income'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-33-11.png" width="576"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="연령대에-따른-월급-차이---어떤-연령대의-월급이-가장-많을까" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>09-4 연령대에 따른 월급 차이 <br>- 어떤 연령대의 월급이 가장 많을까?</h2>
+
+</section>
+<section id="연령대-변수-검토-및-전처리하기" class="slide level3">
+<h3>연령대 변수 검토 및 전처리하기</h3>
+<h4 id="파생변수-만들기---연령대">파생변수 만들기 - 연령대</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 나이 변수 살펴보기</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'age'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    75.0
+1    72.0
+2    78.0
+3    58.0
+4    57.0
+Name: age, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 연령대 변수 만들기</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>welfare <span class="op">=</span> welfare.assign(ageg <span class="op">=</span> np.where(welfare[<span class="st">'age'</span>] <span class="op">&lt;</span>  <span class="dv">30</span>, <span class="st">'young'</span>,</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>                                np.where(welfare[<span class="st">'age'</span>] <span class="op">&lt;=</span> <span class="dv">59</span>, <span class="st">'middle'</span>, <span class="st">'old'</span>)))</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈도 구하기</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'ageg'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ageg
+old       5955
+middle    4963
+young     3500
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈도 막대 그래프 만들기</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(data <span class="op">=</span> welfare, x <span class="op">=</span> <span class="st">'ageg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-36-13.png" width="576"></p>
+</div>
+</div>
+</section>
+<section id="연령대에-따른-월급-차이-분석하기" class="slide level3">
+<h3>연령대에 따른 월급 차이 분석하기</h3>
+<h4 id="연령대별-월급-평균표-만들기">1. 연령대별 월급 평균표 만들기</h4>
+<div class="columns small-90">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 연령대별 월급 평균표 만들기</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>ageg_income <span class="op">=</span> welfare.dropna(subset <span class="op">=</span> <span class="st">'income'</span>) <span class="op">\</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                     .groupby(<span class="st">'ageg'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>                     .agg(mean_income <span class="op">=</span> (<span class="st">'income'</span>, <span class="st">'mean'</span>))</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>ageg_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># income 결측치 제거</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ageg별 분리</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># income 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     ageg  mean_income
+0  middle   329.157157
+1     old   140.129003
+2   young   195.663424</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="그래프-만들기-2">2. 그래프 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> ageg_income, x <span class="op">=</span> <span class="st">'ageg'</span>, y <span class="op">=</span> <span class="st">'mean_income'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-40-15.png" width="576"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 정렬하기</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> ageg_income, x <span class="op">=</span> <span class="st">'ageg'</span>, y <span class="op">=</span> <span class="st">'mean_income'</span>,</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>            order <span class="op">=</span> [<span class="st">'young'</span>, <span class="st">'middle'</span>, <span class="st">'old'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-41-17.png" width="576"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+</section></section>
+<section>
+<section id="연령대-및-성별-월급-차이---성별-월급-차이는-연령대별로-다를까" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>09-5 연령대 및 성별 월급 차이 <br>- 성별 월급 차이는 연령대별로 다를까?</h2>
+
+</section>
+<section id="연령대-및-성별-월급-차이-분석하기" class="slide level3">
+<h3>연령대 및 성별 월급 차이 분석하기</h3>
+<h4 id="연령대-및-성별-월급-평균표-만들기">1. 연령대 및 성별 월급 평균표 만들기</h4>
+<div class="columns small-80">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 연령대 및 성별 평균표 만들기</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>sex_income <span class="op">=</span> welfare.dropna(subset <span class="op">=</span> <span class="st">'income'</span>) <span class="op">\</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>                    .groupby([<span class="st">'ageg'</span>, <span class="st">'sex'</span>], as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>                    .agg(mean_income <span class="op">=</span> (<span class="st">'income'</span>, <span class="st">'mean'</span>))</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>sex_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># income 결측치 제거</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ageg 및 sex별 분리</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co"># income 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     ageg     sex  mean_income
+0  middle  female   230.481735
+1  middle    male   409.541228
+2     old  female    90.228896
+3     old    male   204.570231
+4   young  female   189.822222
+5   young    male   204.909548</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="그래프-만들기-3">2. 그래프 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> sex_income, x <span class="op">=</span> <span class="st">'ageg'</span>, y <span class="op">=</span> <span class="st">'mean_income'</span>, hue <span class="op">=</span> <span class="st">'sex'</span>,</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>            order <span class="op">=</span> [<span class="st">'young'</span>, <span class="st">'middle'</span>, <span class="st">'old'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-45-19.png" width="576"></p>
+</div>
+</div>
+</section>
+<section id="나이-및-성별-월급-차이-분석하기" class="slide level3">
+<h3>나이 및 성별 월급 차이 분석하기</h3>
+<div class="columns small-90">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 나이 및 성별 월급 평균표 만들기</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>sex_age <span class="op">=</span> welfare.dropna(subset <span class="op">=</span> <span class="st">'income'</span>) <span class="op">\</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>                 .groupby([<span class="st">'age'</span>, <span class="st">'sex'</span>], as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>                 .agg(mean_income <span class="op">=</span> (<span class="st">'income'</span>, <span class="st">'mean'</span>))</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>sex_age.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># income 결측치 제거</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># age 및 sex별 분리</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co"># income 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    age     sex  mean_income
+0  19.0    male   162.000000
+1  20.0  female    87.666667
+2  20.0    male   155.000000
+3  21.0  female   124.000000
+4  21.0    male   186.000000</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 선 그래프 만들기</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> sex_age, x <span class="op">=</span> <span class="st">'age'</span>, y <span class="op">=</span> <span class="st">'mean_income'</span>, hue <span class="op">=</span> <span class="st">'sex'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-49-21.png" width="576"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="직업별-월급-차이---어떤-직업이-월급을-가장-많이-받을까" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>09-6 직업별 월급 차이 <br>- 어떤 직업이 월급을 가장 많이 받을까?</h2>
+
+</section>
+<section id="직업-변수-검토-및-전처리하기" class="slide level3">
+<h3>직업 변수 검토 및 전처리하기</h3>
+<h4 id="변수-검토하기-3">1. 변수 검토하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'code_job'</span>].dtypes  <span class="co"># 변수 타입 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('float64')</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'code_job'</span>].value_counts()  <span class="co"># 빈도 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>code_job
+611.0    962
+941.0    391
+521.0    354
+312.0    275
+873.0    236
+        ... 
+112.0      2
+784.0      2
+423.0      1
+861.0      1
+872.0      1
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="전처리하기-3">2. 전처리하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>list_job <span class="op">=</span> pd.read_excel(<span class="st">'Koweps_Codebook_2019.xlsx'</span>, sheet_name <span class="op">=</span> <span class="st">'직종코드'</span>)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>list_job.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   code_job                                     job
+0       111  의회 의원∙고위 공무원 및 공공단체 임원
+1       112                          기업 고위 임원
+2       121                행정 및 경영 지원 관리자
+3       122              마케팅 및 광고∙홍보 관리자
+4       131           연구∙교육 및 법률 관련 관리자</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>list_job.shape  <span class="co"># 행, 열 개수 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(156, 2)</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># welfare에 list_job 결합하기</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>welfare <span class="op">=</span> welfare.merge(list_job, how <span class="op">=</span> <span class="st">'left'</span>, on <span class="op">=</span> <span class="st">'code_job'</span>)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co"># code_job 결측치 제거하고 code_job, job 출력</span></span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>welfare.dropna(subset <span class="op">=</span> [<span class="st">'code_job'</span>])[[<span class="st">'code_job'</span>, <span class="st">'job'</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    code_job                           job
+2      762.0                        전기공
+3      855.0          금속기계 부품 조립원
+7      941.0          청소원 및 환경미화원
+8      999.0  기타 서비스 관련 단순 종사자
+14     312.0              경영 관련 사무원</code></pre>
+</div>
+</div>
+</section>
+<section id="직업별-월급-차이-분석하기" class="slide level3">
+<h3>직업별 월급 차이 분석하기</h3>
+<h4 id="직업별-월급-평균표-만들기">1. 직업별 월급 평균표 만들기</h4>
+<div class="columns small-90">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 직업별 월급 평균표 만들기</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>job_income <span class="op">=</span> welfare.dropna(subset <span class="op">=</span> [<span class="st">'job'</span>, <span class="st">'income'</span>]) <span class="op">\</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>                    .groupby(<span class="st">'job'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>                    .agg(mean_income <span class="op">=</span> (<span class="st">'income'</span>, <span class="st">'mean'</span>))</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>job_income.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="co"># job, income 결측치 제거</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="co"># job별 분리</span></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co"># income 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                              job  mean_income
+0             가사 및 육아 도우미    92.455882
+1                          간호사   265.219178
+2  감정∙기술영업및중개관련종사자    391.000000
+3           건물 관리원 및 검표원   168.375000
+4        건설 및 광업 단순 종사자   261.975000</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="그래프-만들기-4">3. 그래프 만들기</h4>
+<p><strong>(1) 월급이 많은 직업</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 상위 10위 추출</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>top10 <span class="op">=</span> job_income.sort_values(<span class="st">'mean_income'</span>, ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">10</span>)</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>top10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                        job  mean_income
+98                         의료 진료 전문가   781.000000
+60                              법률 전문가   776.333333
+140                행정 및 경영 지원 관리자   771.833333
+63                      보험 및 금융 관리자   734.750000
+110            재활용 처리 및 소각로 조작원   688.000000
+131      컴퓨터 하드웨어 및 통신공학 전문가   679.444444
+24           기계∙로봇공학 기술자 및 시험원   669.166667
+6             건설∙전기 및 생산 관련 관리자   603.083333
+120                        제관원 및 판금원   597.000000
+100  의회 의원∙고위 공무원 및 공공단체 임원   580.500000</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 맑은 고딕 폰트 설정</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.family'</span> : <span class="st">'Malgun Gothic'</span>})</span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> top10, y <span class="op">=</span> <span class="st">'job'</span>, x <span class="op">=</span> <span class="st">'mean_income'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-59-23.png" width="576"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p><strong>(2) 월급이 적은 직업</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 하위 10위 추출</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>bottom10 <span class="op">=</span> job_income.sort_values(<span class="st">'mean_income'</span>).head(<span class="dv">10</span>)</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>bottom10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                           job  mean_income
+33   기타 돌봄∙보건 및 개인 생활 서비스 종사자    73.964286
+34                기타 서비스 관련 단순 종사자    77.789474
+128                       청소원 및 환경미화원    88.461756
+0                          가사 및 육아 도우미    92.455882
+43                  돌봄 및 보건 서비스 종사자   117.162338
+97                       음식 관련 단순 종사자   118.187500
+39                  농림∙어업 관련 단순 종사자   122.625000
+139               학예사∙사서 및 기록물 관리사   140.000000
+126              채굴 및 토목 관련 기능 종사자   140.000000
+135                      판매 관련 단순 종사자   140.909091</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> bottom10, y <span class="op">=</span> <span class="st">'job'</span>, x <span class="op">=</span> <span class="st">'mean_income'</span>) <span class="op">\</span></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>   .<span class="bu">set</span>(xlim <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">800</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-62-25.png" width="576"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="성별-직업-빈도---성별에-따라-어떤-직업이-가장-많을까" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>09-7 성별 직업 빈도 <br>- 성별에 따라 어떤 직업이 가장 많을까?</h2>
+
+</section>
+<section id="성별-직업-빈도-분석하기" class="slide level3">
+<h3>성별 직업 빈도 분석하기</h3>
+<h4 id="성별-직업-빈도표-만들기">1. 성별 직업 빈도표 만들기</h4>
+<div class="columns small-95">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 남성 직업 빈도 상위 10개 추출</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>job_male <span class="op">=</span> welfare.dropna(subset <span class="op">=</span> [<span class="st">'job'</span>]) <span class="op">\</span></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>                  .query(<span class="st">'sex == "male"'</span>) <span class="op">\</span></span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>                  .groupby(<span class="st">'job'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>                  .agg(n <span class="op">=</span> (<span class="st">'job'</span>, <span class="st">'count'</span>)) <span class="op">\</span></span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>                  .sort_values(<span class="st">'n'</span>, ascending <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a>                  .head(<span class="dv">10</span>)</span>
+<span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>job_male</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="co"># job 결측치 제거</span></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="co"># male 추출</span></span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="co"># job별 분리</span></span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="co"># job 빈도 구하기</span></span>
+<span id="cb88-6"><a href="#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 내림차순 정렬</span></span>
+<span id="cb88-7"><a href="#cb88-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 상위 10행 추출</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                          job    n
+107          작물 재배 종사자  486
+104             자동차 운전원  230
+11           경영 관련 사무원  216
+46           매장 판매 종사자  142
+89                영업 종사자  113
+127      청소원 및 환경미화원  109
+4    건설 및 광업 단순 종사자   96
+120     제조 관련 단순 종사자   80
+3       건물 관리원 및 검표원   79
+141               행정 사무원   74</code></pre>
+</div>
+</div>
+</section>
+<section id="성별-직업-빈도-분석하기-1" class="slide level3">
+<h3>성별 직업 빈도 분석하기</h3>
+<h4 id="성별-직업-빈도표-만들기-1">1. 성별 직업 빈도표 만들기</h4>
+<div class="columns small-95">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 여성 직업 빈도 상위 10개 추출</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>job_female <span class="op">=</span> welfare.dropna(subset <span class="op">=</span> [<span class="st">'job'</span>]) <span class="op">\</span></span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>                    .query(<span class="st">'sex == "female"'</span>) <span class="op">\</span></span>
+<span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a>                    .groupby(<span class="st">'job'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a>                    .agg(n <span class="op">=</span> (<span class="st">'job'</span>, <span class="st">'count'</span>)) <span class="op">\</span></span>
+<span id="cb90-6"><a href="#cb90-6" aria-hidden="true" tabindex="-1"></a>                    .sort_values(<span class="st">'n'</span>, ascending <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb90-7"><a href="#cb90-7" aria-hidden="true" tabindex="-1"></a>                    .head(<span class="dv">10</span>)</span>
+<span id="cb90-8"><a href="#cb90-8" aria-hidden="true" tabindex="-1"></a>job_female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="co"># job 결측치 제거</span></span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="co"># female 추출</span></span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="co"># job별 분리</span></span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="co"># job 빈도 구하기</span></span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 내림차순 정렬</span></span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 상위 10행 추출</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                              job    n
+83               작물 재배 종사자  476
+91           청소원 및 환경미화원  282
+33               매장 판매 종사자  212
+106           회계 및 경리 사무원  163
+31     돌봄 및 보건 서비스 종사자  155
+87          제조 관련 단순 종사자  148
+73          음식 관련 단순 종사자  126
+58           식음료 서비스 종사자  117
+88                         조리사  114
+24   기타 서비스 관련 단순 종사자   97</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="그래프-만들기-5">2. 그래프 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 남성 직업 빈도 막대 그래프 만들기</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> job_male, y <span class="op">=</span> <span class="st">'job'</span>, x <span class="op">=</span> <span class="st">'n'</span>).<span class="bu">set</span>(xlim <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">500</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-70-27.png" width="576"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="그래프-만들기-6">2. 그래프 만들기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 여성 직업 빈도 막대 그래프 만들기</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> job_female, y <span class="op">=</span> <span class="st">'job'</span>, x <span class="op">=</span> <span class="st">'n'</span>).<span class="bu">set</span>(xlim <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">500</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-72-29.png" width="576"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="종교-유무에-따른-이혼율---종교가-있으면-이혼을-덜-할까" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>09-8 종교 유무에 따른 이혼율 <br>- 종교가 있으면 이혼을 덜 할까?</h2>
+
+</section>
+<section id="종교-변수-검토-및-전처리하기" class="slide level3">
+<h3>종교 변수 검토 및 전처리하기</h3>
+<h4 id="변수-검토하기-4">1. 변수 검토하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'religion'</span>].dtypes  <span class="co"># 변수 타입 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('float64')</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'religion'</span>].value_counts()  <span class="co"># 빈도 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>religion
+2.0    7815
+1.0    6603
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="전처리하기-4">2. 전처리하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 종교 유무 이름 부여</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'religion'</span>] <span class="op">=</span> np.where(welfare[<span class="st">'religion'</span>] <span class="op">==</span> <span class="dv">1</span>, <span class="st">'yes'</span>, <span class="st">'no'</span>)</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈도 구하기</span></span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'religion'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>religion
+no     7815
+yes    6603
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(data <span class="op">=</span> welfare, x <span class="op">=</span> <span class="st">'religion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-76-31.png" width="576"></p>
+</div>
+</div>
+</section>
+<section id="혼인-상태-변수-검토-및-전처리하기" class="slide level3">
+<h3>혼인 상태 변수 검토 및 전처리하기</h3>
+<h4 id="변수-검토하기-5">1. 변수 검토하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'marriage_type'</span>].dtypes  <span class="co"># 변수 타입 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('float64')</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'marriage_type'</span>].value_counts()  <span class="co"># 빈도 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>marriage_type
+1.0    7190
+5.0    2357
+0.0    2121
+2.0    1954
+3.0     689
+4.0      78
+6.0      29
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="파생변수-만들기---이혼-여부">2. 파생변수 만들기 - 이혼 여부</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 이혼 여부 변수 만들기</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'marriage'</span>] <span class="op">=</span> np.where(welfare[<span class="st">'marriage_type'</span>] <span class="op">==</span> <span class="dv">1</span>, <span class="st">'marriage'</span>,</span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>                      np.where(welfare[<span class="st">'marriage_type'</span>] <span class="op">==</span> <span class="dv">3</span>, <span class="st">'divorce'</span>, <span class="st">'etc'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="columns small-90">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 이혼 여부별 빈도</span></span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>n_divorce <span class="op">=</span> welfare.groupby(<span class="st">'marriage'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>                   .agg(n <span class="op">=</span> (<span class="st">'marriage'</span>, <span class="st">'count'</span>))</span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>n_divorce</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="co"># marriage별 분리</span></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="co"># marriage별 빈도 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   marriage     n
+0   divorce   689
+1       etc  6539
+2  marriage  7190</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> n_divorce, x <span class="op">=</span> <span class="st">'marriage'</span>, y <span class="op">=</span> <span class="st">'n'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-83-33.png" width="576"></p>
+</div>
+</div>
+</section>
+<section id="종교-유무에-따른-이혼율-분석하기" class="slide level3">
+<h3>종교 유무에 따른 이혼율 분석하기</h3>
+<h4 id="종교-유무에-따른-이혼율표-만들기">1. 종교 유무에 따른 이혼율표 만들기</h4>
+<div class="columns small-95">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>rel_div <span class="op">=</span> welfare.query(<span class="st">'marriage != "etc"'</span>) <span class="op">\</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>                 .groupby(<span class="st">'religion'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>                 [<span class="st">'marriage'</span>] <span class="op">\</span></span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a>                 .value_counts(normalize <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a>rel_div</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># etc 제외</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="co"># religion별 분리</span></span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="co"># marriage 추출</span></span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  religion  marriage  proportion
+0       no  marriage    0.905045
+1       no   divorce    0.094955
+2      yes  marriage    0.920469
+3      yes   divorce    0.079531</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="그래프-만들기-7">2. 그래프 만들기</h4>
+<div class="columns small-90">
+<div class="column" style="width:75%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>rel_div <span class="op">=</span> <span class="op">\</span></span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>    rel_div.query(<span class="st">'marriage == "divorce"'</span>) <span class="op">\</span></span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>           .assign(proportion <span class="op">=</span> rel_div[<span class="st">'proportion'</span>] <span class="op">*</span> <span class="dv">100</span>) <span class="op">\</span></span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>           .<span class="bu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a>rel_div</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># divorce 추출</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 백분율로 바꾸기</span></span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 반올림</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  religion marriage  proportion
+1       no  divorce         9.5
+3      yes  divorce         8.0</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> rel_div, x <span class="op">=</span> <span class="st">'religion'</span>, y <span class="op">=</span> <span class="st">'proportion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-90-35.png" width="576"></p>
+</div>
+</div>
+</section>
+<section id="연령대-및-종교-유무에-따른-이혼율-분석하기" class="slide level3">
+<h3>연령대 및 종교 유무에 따른 이혼율 분석하기</h3>
+<h4 id="연령대별-이혼율표-만들기">1. 연령대별 이혼율표 만들기</h4>
+<div class="columns small-95">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>age_div <span class="op">=</span> welfare.query(<span class="st">'marriage != "etc"'</span>) <span class="op">\</span></span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>                 .groupby(<span class="st">'ageg'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>                 [<span class="st">'marriage'</span>] <span class="op">\</span></span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>                 .value_counts(normalize <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>age_div</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># etc 제외</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ageg별 분리</span></span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="co"># marriage 추출</span></span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     ageg  marriage  proportion
+0  middle  marriage    0.910302
+1  middle   divorce    0.089698
+2     old  marriage    0.914220
+3     old   divorce    0.085780
+4   young  marriage    0.950000
+5   young   divorce    0.050000</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="columns small-95">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 연령대 및 이혼 여부별 빈도</span></span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>welfare.query(<span class="st">'marriage != "etc"'</span>) <span class="op">\</span></span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>       .groupby(<span class="st">'ageg'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>       [<span class="st">'marriage'</span>] <span class="op">\</span></span>
+<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>       .value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="co"># etc 제외</span></span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ageg별 분리</span></span>
+<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="co"># marriage 추출</span></span>
+<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈도 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     ageg  marriage  count
+0  middle  marriage   3552
+1  middle   divorce    350
+2     old  marriage   3581
+3     old   divorce    336
+4   young  marriage     57
+5   young   divorce      3</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="연령대별-이혼율-그래프-만들기">2. 연령대별 이혼율 그래프 만들기</h4>
+<div class="columns small-90">
+<div class="column" style="width:72%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>age_div <span class="op">=</span> \ </span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>    age_div.query(<span class="st">'ageg != "young" &amp; marriage == "divorce"'</span>) <span class="op">\</span></span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>           .assign(proportion <span class="op">=</span> age_div[<span class="st">'proportion'</span>] <span class="op">*</span> <span class="dv">100</span>) <span class="op">\</span></span>
+<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a>           .<span class="bu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-6"><a href="#cb124-6" aria-hidden="true" tabindex="-1"></a>age_div</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:28%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 초년층 제외, 이혼 추출</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 백분율로 바꾸기</span></span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 반올림</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     ageg marriage  proportion
+1  middle  divorce         9.0
+3     old  divorce         8.6</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> age_div, x <span class="op">=</span> <span class="st">'ageg'</span>, y <span class="op">=</span> <span class="st">'proportion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-100-37.png" width="576"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="연령대-및-종교-유무에-따른-이혼율표-만들기">3. 연령대 및 종교 유무에 따른 이혼율표 만들기</h4>
+<div class="columns small-90">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>age_rel_div <span class="op">=</span> <span class="op">\</span></span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>    welfare.query(<span class="st">'marriage != "etc" &amp; ageg != "young"'</span>) <span class="op">\</span></span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>           .groupby([<span class="st">'ageg'</span>, <span class="st">'religion'</span>], as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a>           [<span class="st">'marriage'</span>] <span class="op">\</span></span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a>           .value_counts(normalize <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a>age_rel_div</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># etc 제외, 초년층 제외</span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ageg, religion별 분리</span></span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="co"># marriage 추출</span></span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     ageg religion  marriage  proportion
+0  middle       no  marriage    0.904953
+1  middle       no   divorce    0.095047
+2  middle      yes  marriage    0.917520
+3  middle      yes   divorce    0.082480
+4     old       no  marriage    0.904382
+5     old       no   divorce    0.095618
+6     old      yes  marriage    0.922222
+7     old      yes   divorce    0.077778</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="연령대-및-종교-유무에-따른-이혼율-그래프-만들기">4. 연령대 및 종교 유무에 따른 이혼율 그래프 만들기</h4>
+<div class="columns small-85">
+<div class="column" style="width:77%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>age_rel_div <span class="op">=</span> <span class="op">\</span></span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>    age_rel_div.query(<span class="st">'marriage == "divorce"'</span>) <span class="op">\</span></span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>               .assign(proportion <span class="op">=</span> age_rel_div[<span class="st">'proportion'</span>] <span class="op">*</span> <span class="dv">100</span>) <span class="op">\</span></span>
+<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a>               .<span class="bu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-6"><a href="#cb131-6" aria-hidden="true" tabindex="-1"></a>age_rel_div</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:23%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># divorce 추출</span></span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 백분율로 바꾸기</span></span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 반올림</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     ageg religion marriage  proportion
+1  middle       no  divorce         9.5
+3  middle      yes  divorce         8.2
+5     old       no  divorce         9.6
+7     old      yes  divorce         7.8</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> age_rel_div, x <span class="op">=</span> <span class="st">'ageg'</span>, y <span class="op">=</span> <span class="st">'proportion'</span>, hue <span class="op">=</span> <span class="st">'religion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-107-39.png" width="576"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="지역별-연령대-비율---어느-지역에-노년층이-많을까" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>09-9 지역별 연령대 비율 <br>- 어느 지역에 노년층이 많을까?</h2>
+
+</section>
+<section id="지역-변수-검토-및-전처리하기" class="slide level3">
+<h3>지역 변수 검토 및 전처리하기</h3>
+<h4 id="변수-검토하기-6">1. 변수 검토하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'code_region'</span>].dtypes  <span class="co"># 변수 타입 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('float64')</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>welfare[<span class="st">'code_region'</span>].value_counts()  <span class="co"># 빈도 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>code_region
+2.0    3246
+7.0    2466
+3.0    2448
+1.0    2002
+4.0    1728
+5.0    1391
+6.0    1137
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="전처리하기-5">2. 전처리하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 지역 코드 목록 만들기</span></span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a>list_region <span class="op">=</span> pd.DataFrame({<span class="st">'code_region'</span> : [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>],</span>
+<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'region'</span>      : [<span class="st">'서울'</span>,</span>
+<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'수도권(인천/경기)'</span>,</span>
+<span id="cb139-5"><a href="#cb139-5" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'부산/경남/울산'</span>,</span>
+<span id="cb139-6"><a href="#cb139-6" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'대구/경북'</span>,</span>
+<span id="cb139-7"><a href="#cb139-7" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'대전/충남'</span>,</span>
+<span id="cb139-8"><a href="#cb139-8" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'강원/충북'</span>,</span>
+<span id="cb139-9"><a href="#cb139-9" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'광주/전남/전북/제주도'</span>]})</span>
+<span id="cb139-10"><a href="#cb139-10" aria-hidden="true" tabindex="-1"></a>list_region</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   code_region                 region
+0            1                   서울
+1            2      수도권(인천/경기)
+2            3         부산/경남/울산
+3            4              대구/경북
+4            5              대전/충남
+5            6              강원/충북
+6            7  광주/전남/전북/제주도</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 지역명 변수 추가</span></span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>welfare <span class="op">=</span> welfare.merge(list_region, how <span class="op">=</span> <span class="st">'left'</span>, on <span class="op">=</span> <span class="st">'code_region'</span>)</span>
+<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a>welfare[[<span class="st">'code_region'</span>, <span class="st">'region'</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   code_region region
+0          1.0   서울
+1          1.0   서울
+2          1.0   서울
+3          1.0   서울
+4          1.0   서울</code></pre>
+</div>
+</div>
+</section>
+<section id="지역별-연령대-비율-분석하기" class="slide level3">
+<h3>지역별 연령대 비율 분석하기</h3>
+<h4 id="지역별-연령대-비율표-만들기">1. 지역별 연령대 비율표 만들기</h4>
+<div class="columns small-90">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>region_ageg <span class="op">=</span> welfare.groupby(<span class="st">'region'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>                     [<span class="st">'ageg'</span>] <span class="op">\</span></span>
+<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a>                     .value_counts(normalize <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a>region_ageg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># region별 분리</span></span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ageg 추출</span></span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 비율 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                   region    ageg  proportion
+0               강원/충북     old    0.459103
+1               강원/충북  middle    0.308707
+2               강원/충북   young    0.232190
+3   광주/전남/전북/제주도     old    0.449311
+4   광주/전남/전북/제주도  middle    0.317924
+5   광주/전남/전북/제주도   young    0.232766
+6               대구/경북     old    0.504051
+7               대구/경북  middle    0.296296
+8               대구/경북   young    0.199653
+9               대전/충남     old    0.413372
+10              대전/충남  middle    0.336449
+11              대전/충남   young    0.250180
+12         부산/경남/울산     old    0.437500</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="그래프-만들기-8">2. 그래프 만들기</h4>
+<div class="columns small-85">
+<div class="column" style="width:80%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>region_ageg <span class="op">=</span> <span class="op">\</span></span>
+<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a>    region_ageg.assign(proportion <span class="op">=</span> region_ageg[<span class="st">'proportion'</span>] <span class="op">*</span> <span class="dv">100</span>) <span class="op">\</span></span>
+<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a>               .<span class="bu">round</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:20%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 백분율로 바꾸기</span></span>
+<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 반올림</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 막대 그래프 만들기</span></span>
+<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> region_ageg, y <span class="op">=</span> <span class="st">'region'</span>, x <span class="op">=</span> <span class="st">'proportion'</span>, hue <span class="op">=</span> <span class="st">'ageg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-119-41.png" width="576"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="누적-비율-막대-그래프-만들기">3. 누적 비율 막대 그래프 만들기</h4>
+<h5 id="피벗하기">(1) 피벗하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 피벗</span></span>
+<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a>pivot_df <span class="op">=</span> <span class="op">\</span></span>
+<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a>    region_ageg[[<span class="st">'region'</span>, <span class="st">'ageg'</span>, <span class="st">'proportion'</span>]].pivot(index   <span class="op">=</span> <span class="st">'region'</span>,</span>
+<span id="cb149-4"><a href="#cb149-4" aria-hidden="true" tabindex="-1"></a>                                                        columns <span class="op">=</span> <span class="st">'ageg'</span>,</span>
+<span id="cb149-5"><a href="#cb149-5" aria-hidden="true" tabindex="-1"></a>                                                        values  <span class="op">=</span> <span class="st">'proportion'</span>)</span>
+<span id="cb149-6"><a href="#cb149-6" aria-hidden="true" tabindex="-1"></a>pivot_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ageg                   middle   old  young
+region                                    
+강원/충북                30.9  45.9   23.2
+광주/전남/전북/제주도    31.8  44.9   23.3
+대구/경북                29.6  50.4   20.0
+대전/충남                33.6  41.3   25.0
+부산/경남/울산           33.4  43.8   22.9
+서울                     38.5  37.6   23.9
+수도권(인천/경기)        38.8  32.5   28.7</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="그래프-만들기-9">(2) 그래프 만들기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 가로 막대 그래프 만들기</span></span>
+<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a>pivot_df.plot.barh(stacked <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-122-43.png" width="576"></p>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="막대-정렬하기">(3) 막대 정렬하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 노년층 비율 기준 정렬, 변수 순서 바꾸기</span></span>
+<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a>reorder_df <span class="op">=</span> pivot_df.sort_values(<span class="st">'old'</span>)[[<span class="st">'young'</span>, <span class="st">'middle'</span>, <span class="st">'old'</span>]]</span>
+<span id="cb152-3"><a href="#cb152-3" aria-hidden="true" tabindex="-1"></a>reorder_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ageg                   young  middle   old
+region                                    
+수도권(인천/경기)       28.7    38.8  32.5
+서울                    23.9    38.5  37.6
+대전/충남               25.0    33.6  41.3
+부산/경남/울산          22.9    33.4  43.8
+광주/전남/전북/제주도   23.3    31.8  44.9
+강원/충북               23.2    30.9  45.9
+대구/경북               20.0    29.6  50.4</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 누적 가로 막대 그래프 만들기</span></span>
+<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a>reorder_df.plot.barh(stacked <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="09_files/figure-revealjs/unnamed-chunk-125-45.png" width="576"></p>
+</div>
+</div>
+</section></section>
+<section id="끝" class="title-slide slide level2 center" data-background-color="#FF7232" data-transition="fade">
+<h2>끝</h2>
+
+</section>
+
+<div class="footer footer-default">
+
+</div>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="09_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="09_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="09_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="09_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="09_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="09_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="09_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="09_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="09_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="09_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: false,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: true,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 750,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

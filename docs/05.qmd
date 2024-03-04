@@ -1,0 +1,913 @@
+---
+jupyter: python3
+title: "Do it! 쉽게 배우는 파이썬 데이터 분석"
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+### {data-menu-title="Info"}
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+```
+
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+<br>
+<br>
+
+![](img/cover.png){fig-align="center" width="75%"}
+
+:::
+
+<!-- width: 55% -->
+
+::: {.column width="55%"}
+
+<br>
+<br>
+<br>
+
+`r fontawesome::fa("github", margin_left = '-0.5em')` [github.com/youngwoos/Doit_Python](https://github.com/youngwoos/Doit_Python)
+
+`r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [ 슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
+`r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
+
+<br-back-10>
+
+&nbsp;&nbsp; ▪ [yes24](http://www.yes24.com/Product/Goods/108947478)
+
+&nbsp;&nbsp; ▪ [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601)
+
+&nbsp;&nbsp; ▪ [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163033493)
+
+:::
+
+::::
+
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 05 데이터 분석 기초! {background-color="#FF7232" transition="fade"}
+
+:::
+
+
+---
+
+### {data-menu-title="To do"}
+
+<br>
+<br>
+
+
+![](img/05-intro.png){width=50% fig-align="center"}
+
+
+---
+
+<br>
+
+##### [목차]{.font-jua .larger}
+
+[05-1 데이터 파악하기]{.font-jua}([link](#데이터-파악하기))
+
+[05-2 변수명 바꾸기]{.font-jua}([link](#변수명-바꾸기))
+
+[05-3 파생변수 만들기]{.font-jua}([link](#파생변수-만들기))
+
+
+## 05-1 데이터 파악하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+#### 데이터를 파악할 때 사용하는 명령어
+
+<br>
+
+![](img/05-explore-function.jpg){width=35%}
+
+
+---
+
+### `exam` 데이터 파악하기
+
+#### 준비하기
+
+```{python}
+#| eval: false
+import pandas as pd
+exam = pd.read_csv('exam.csv')
+```
+
+```{python}
+#| echo: false
+import pandas as pd
+exam = pd.read_csv('../Data/exam.csv')
+```
+
+---
+
+#### `head()` - 데이터 앞부분 확인하기
+
+```{python}
+exam.head()  # 앞에서부터 5행까지 출력
+```
+
+```{python}
+exam.head(10)  # 앞에서부터 10행까지 출력
+```
+
+---
+
+#### `tail()` - 데이터 뒷부분 확인하기
+
+```{python}
+exam.tail()  # 뒤에서부터 5행까지 출력
+```
+
+```{python}
+exam.tail(10)  # 뒤에서부터 10행까지 출력
+```
+
+---
+
+#### `shape` - 데이터가 몇 행, 몇 열로 구성되는지 알아보기
+
+```{python}
+exam.shape
+```
+
+---
+
+#### `info()` - 변수 속성 파악하기
+
+```{python}
+exam.info()
+```
+
+::: {.fragment}
+
+- `Non-Null Count`: 결측치(누락된 값)를 제외하고 구한 값의 개수
+- 변수 속성: int64(정수), float64(실수), object(문자), datetime64(날짜 시간)
+- 64: 64비트
+  - 1 비트로 두 개의 값 표현 가능
+  - int64: 2^64개의 정수 표현 가능
+:::
+
+---
+
+
+#### `describe()` - 요약 통계량 구하기
+
+```{python}
+exam.describe()
+```
+
+<br-back-20>
+
+::: {.fragment}
+
+![](img/05-describe.jpg){width=65%}
+
+:::
+
+---
+
+
+### `mpg` 데이터 파악하기
+
+```{python}
+#| eval: false
+# mpg 데이터 불러오기
+mpg = pd.read_csv('mpg.csv')
+```
+
+```{python}
+#| echo: false
+# mpg 데이터 불러오기
+mpg = pd.read_csv('../Data/mpg.csv')
+```
+
+::: {.fragment}
+
+```{python}
+mpg.head()  # mpg 앞부분 확인
+```
+
+:::
+
+
+::: {.fragment}
+
+```{python}
+mpg.tail()  # mpg 뒷부분 확인
+```
+
+:::
+
+---
+
+
+```{python}
+mpg.shape  #  행, 열 출력
+```
+
+---
+
+```{python}
+mpg.info()  #  데이터 속성 확인
+```
+
+---
+
+
+```{python}
+mpg.describe()  #  요약 통계량 출력
+```
+
+
+---
+
+```{python}
+mpg.describe(include = 'all')  #  문자 변수 요약 통계량 함께 출력
+```
+
+<br-back-20>
+
+::: {.fragment}
+![](img/05-describe-all.jpg){width=60%}
+
+:::
+
+
+### 함수와 메서드 차이 알아보기
+
+<br>
+<br>
+
+![](img/05-function_type.jpg){width=70%}
+
+
+---
+
+#### 1. 내장 함수
+```{python}
+#| eval: false
+sum(var)
+max(var)
+```
+
+
+<br>
+
+#### 2. 패키지 함수
+
+```{python}
+#| eval: false
+import pandas as pd
+pd.read_csv('exam.csv')
+pd.DataFrame({'x' : [1, 2, 3]})
+```
+
+<br>
+
+#### 3. 메서드
+
+##### 메서드(method): 변수가 지니고 있는 함수
+
+<br-back-10>
+
+```{python}
+#| eval: false
+df.head()
+df.info()
+```
+
+---
+
+##### 변수의 자료 구조에 따라 사용 가능한 메서드가 다르다
+
+```{python}
+#| eval: false
+# 데이터 프레임
+df = pd.read_csv('exam.csv')
+df.head()
+
+```
+
+```{python}
+#| echo: false
+df = pd.read_csv('../Data/exam.csv')
+df.head()
+```
+
+```{python}
+# 리스트
+var = [1, 2, 3]
+var.head()
+```
+
+
+
+---
+
+### 어트리뷰트 알아보기
+
+##### 어트리뷰트(attribute): 변수가 지니고 있는 값
+
+```{python}
+# 메서드
+df.head()
+```
+
+```{python}
+# 어트리뷰트
+df.shape
+```
+
+---
+
+##### 변수의 자료 구조에 따라 지니고 있는 어트리뷰트가 다르다
+
+```{python}
+# 데이터 프레임
+df.shape
+```
+
+```{python}
+# 리스트
+var.shape
+```
+
+---
+
+#### 메서드와 어트리뷰트의 차이
+
+<br10>
+
+![](img/05-method_attribute.jpg){width=60%}
+
+
+## 05-2 변수명 바꾸기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+
+### 변수명 바꾸기
+
+#### 1. 데이터 프레임 만들기
+
+
+```{python}
+df_raw = pd.DataFrame({'var1' : [1, 2, 1],
+                       'var2' : [2, 3, 2]})
+df_raw
+```
+
+
+<br-back-30>
+
+
+::: {.fragment}
+
+#### 2. 데이터 프레임 복사본 만들기
+
+<br-back-15>
+
+- 오류가 발생하더라도 원 상태로 되돌릴 수 있다
+- 데이터를 비교하면서 변형되는 과정을 검토할 수 있다
+
+<br-back-30>
+
+```{python}
+df_new = df_raw.copy()  # 복사본 만들기
+df_new                  # 출력
+```
+
+:::
+
+---
+
+#### 3. 변수명 바꾸기
+
+```{python}
+df_new = df_new.rename(columns = {'var2' : 'v2'})  # var2를 v2로 수정
+df_new
+```
+
+::: {.fragment}
+
+
+#### 비교하기
+
+```{python}
+df_raw
+```
+
+:::
+
+---
+
+:::: {.box}
+
+<!-- [{{< fa rocket size=sm >}}]{style="color:#FF7333"} -->
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [데이터 프레임을 복사할 때 `df.copy()`를 사용하는 이유]{.info}
+
+- `df_new = df_raw`와 같이 작성하면 `df_new`와 `df_raw`는 이름만 다를 뿐 한 몸처럼 <br>항상 같은 값 갖게 됨
+- 어느 한쪽 수정하면 다른 한쪽도 수정됨
+- 복사본을 수정해도 원본은 영향받지 않도록 `df.copy()` 사용
+
+::::
+
+---
+
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+mpg 데이터의 변수명은 긴 단어를 짧게 줄인 축약어로 되어 있습니다. `cty`는 도시 연비, <br>`hwy`는 고속도로 연비를 의미합니다. 변수명을 이해하기 쉬운 단어로 바꾸려고 합니다.
+
+<br10>
+
+Q1. `mpg` 데이터를 불러와 복사본을 만드세요.
+
+Q2. 복사본 데이터를 이용해 `cty`는 `city`로, `hwy`는 `highway`로 수정하세요.
+
+Q3. 데이터 일부를 출력해 변수명이 바뀌었는지 확인해 보세요. 다음과 같은 결과물이 출력<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;되어야 합니다.
+
+```{python}
+#| echo: false
+pd.read_csv('../Data/mpg.csv').rename(columns = {'cty' : 'city', 'hwy' : 'highway'}).head()
+
+```
+
+---
+
+Q1. `mpg` 데이터를 불러와 복사본을 만드세요.
+
+```{python}
+#| eval: false
+mpg = pd.read_csv('mpg.csv')  # mpg 데이터 불러오기
+mpg_new = mpg.copy()          # 복사본 만들기
+```
+
+```{python}
+#| echo: false
+mpg_new = pd.read_csv('../Data/mpg.csv')
+```
+
+---
+
+Q2. 복사본 데이터를 이용해 `cty`는 `city`로, `hwy`는 `highway`로 수정하세요.
+
+
+```{python}
+mpg_new = mpg_new.rename(columns = {'cty' : 'city'})     # cty를 city로 수정
+mpg_new = mpg_new.rename(columns = {'hwy' : 'highway'})  # hwy를 highway로 수정
+```
+
+
+---
+
+Q3. 데이터 일부를 출력해 변수명이 바뀌었는지 확인해 보세요. 다음과 같은 결과물이 출력<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;되어야 합니다.
+
+```{python}
+mpg_new.head()  # 데이터 일부 출력
+```
+
+
+## 05-3 파생변수 만들기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+#### 파생변수(derived variable)
+
+- 기존의 변수를 변형해 만든 변수
+
+![](img/05-derived-variable.jpg){width=70%}
+
+
+
+---
+
+### 변수 조합해 파생변수 만들기
+
+```{python}
+df = pd.DataFrame({'var1' : [4, 3, 8],
+                   'var2' : [2, 6, 1]})
+df
+```
+
+
+### 변수 조합해 파생변수 만들기
+
+```{python}
+df['var_sum'] = df['var1'] + df['var2']         # var_sum 파생변수 만들기
+df
+```
+
+::: {.fragment}
+```{python}
+df['var_mean'] = (df['var1'] + df['var2']) / 2  # var_mean 파생변수 만들기
+df
+```
+:::
+
+
+### `mpg` 통합 연비 변수 만들기
+
+```{python}
+mpg['total'] = (mpg['cty'] + mpg['hwy']) / 2  # 통합 연비 변수 만들기
+mpg.head()
+```
+
+::: {.fragment}
+
+#### 파생변수 분석하기
+
+```{python}
+sum(mpg['total']) / len(mpg)  # total 합계를 행 수로 나누기
+mpg['total'].mean()           # 통합 연비 변수 평균
+```
+:::
+
+
+
+### 조건문을 활용해 파생변수 만들기
+
+
+#### 1. 기준값 정하기
+
+```{python}
+mpg['total'].describe()  # 요약 통계량 출력
+
+```
+
+---
+
+```{python}
+mpg['total'].plot.hist()  # 그래프 만들기
+```
+
+---
+
+#### 2. 합격 판정 변수 만들기
+
+<br10>
+
+![](img/05-where.jpg){width=90%}
+
+```{python}
+import numpy as np
+
+# 20 이상이면 pass, 그렇지 않으면 fail 부여
+mpg['test'] = np.where(mpg['total'] >= 20, 'pass', 'fail')
+mpg.head()
+```
+
+
+---
+
+#### 3. 빈도표로 합격 판정 자동차 수 살펴보기
+
+```{python}
+mpg['test'].value_counts()  # 연비 합격 빈도표 만들기
+```
+
+---
+
+#### 4. 막대 그래프로 빈도 표현하기
+
+```{python}
+count_test = mpg['test'].value_counts()  # 연비 합격 빈도표를 변수에 할당
+count_test.plot.bar()                    # 연비 합격 빈도 막대 그래프 만들기
+```
+
+---
+
+
+##### 축 이름 회전하기
+
+```{python}
+count_test.plot.bar(rot = 0)  # 축 이름 수평으로 만들기
+```
+
+
+
+### 중첩 조건문 활용하기
+
+<br10>
+
+![](img/05-multiple-where.jpg){width=25%}
+
+
+<br-back-10>
+
+#### 1. 연비 등급 변수 만들기
+
+```{python}
+# total 기준으로 A, B, C 등급 부여
+mpg['grade'] = np.where(mpg['total'] >= 30, 'A',
+               np.where(mpg['total'] >= 20, 'B', 'C'))
+
+# 데이터 확인
+mpg.head()
+```
+
+---
+
+
+#### 2. 빈도표와 막대 그래프로 연비 등급 살펴보기
+
+```{python}
+count_grade = mpg['grade'].value_counts()  # 등급 빈도표 만들기
+count_grade
+```
+
+```{python}
+count_grade.plot.bar(rot = 0)              # 등급 빈도 막대 그래프 만들기
+```
+
+---
+
+#### 알파벳순으로 막대 정렬하기
+
+```{python}
+# 등급 빈도표 알파벳순 정렬
+count_grade = mpg['grade'].value_counts().sort_index()
+count_grade
+
+```
+
+<br-back-20>
+
+```{python}
+count_grade.plot.bar(rot = 0)
+```
+
+
+---
+
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [메서드 체이닝(method chaining)]{.info}
+
+- `.`을 이용해 메서드를 계속 이어서 작성하는 방법
+  - ex: `mpg['grade'].value_counts().sort_index()`
+
+- 변수에 여러 메서드를 순서대로 적용
+- 출력 결과를 변수에 할당하고 다시 불러오는 작업 반복하지 않아도 됨
+
+
+```{python}
+#| eval: false
+# 출력 결과를 변수에 할당하는 방법
+df = mpg['grade']
+df = df.value_counts()
+df = df.sort_index()
+
+# 메서드 체이닝
+df = mpg['grade'].value_counts().sort_index()
+```
+
+:::
+
+---
+
+
+#### 필요한 만큼 범주 만들기: '범주의 수 - 1'
+
+
+```{python}
+#| eval: false
+# A, B, C, D 등급 변수 만들기
+mpg['grade2'] = np.where(mpg['total'] >= 30, 'A',
+                np.where(mpg['total'] >= 25, 'B',
+                np.where(mpg['total'] >= 20, 'C', 'D')))
+```
+
+---
+
+### 목록에 해당하는 행으로 변수 만들기
+
+- `|`: 버티컬 바(vertical bar)
+  - '또는(or)' 을 의미하는 기호
+  - [Shift] + [\\]로 입력
+
+```{python}
+mpg['size'] = np.where((mpg['category'] == 'compact') |
+                       (mpg['category'] == 'subcompact') |
+                       (mpg['category'] == '2seater'),
+                       'small', 'large')
+
+mpg['size'].value_counts()
+```
+
+
+
+::: {.callout-warning}
+
+`np.where()`에 여러 조건 입력할 때 각 조건에 괄호 입력 주의
+
+:::
+
+---
+
+### 목록에 해당하는 행으로 변수 만들기
+
+##### `df.isin()` 사용하기
+
+::: {.smaller}
+```{python}
+mpg['size'] = np.where(mpg['category'].isin(['compact', 'subcompact',
+'2seater']), 'small', 'large')
+
+mpg['size'].value_counts()
+```
+:::
+
+---
+
+#### 정리하기
+
+```{python}
+#| eval: false
+# 1. 패키지 로드
+import pandas as pd
+import numpy as np
+
+# 2. 데이터 불러오기
+mpg = pd.read_csv('mpg.csv')
+
+# 3. 데이터 파악하기
+mpg.head()      # 데이터 앞부분
+mpg.tail()      # 데이터 뒷부분
+mpg.shape       # 행, 열 수
+mpg.info()      # 속성
+mpg.describe()  # 요약 통계량
+```
+
+---
+
+#### 정리하기
+
+```{python}
+#| eval: false
+# 4. 변수명 바꾸기
+mpg = mpg.rename(columns = {'manufacturer' : 'company'})
+
+# 5. 파생변수 만들기
+mpg['total'] = (mpg['cty'] + mpg['hwy'])/2                  # 변수 조합
+mpg['test'] = np.where(mpg['total'] >= 20, 'pass', 'fail')  # 조건문 활용
+
+# 6. 빈도 확인하기
+count_test = mpg['test'].value_counts()  # 빈도표 만들기
+count_test.plot.bar(rot = 0)             # 빈도 막대 그래프 만들기
+```
+
+
+## 분석 도전 {background-color="#FFCE32" transition="fade"}
+
+---
+
+### 분석 도전
+
+**`midwest.csv`는 미국 동북중부 437개 지역의 인구통계 정보를 담고 있습니다. `midwest.csv`를 <br>이용해 데이터 분석 문제를 해결해 보세요.**
+
+<br10>
+
+문제 1. `midwest.csv`를 불러와 데이터의 특징을 파악하세요.
+
+문제 2. `poptotal`(전체 인구) 변수를 `total`로, `popasian`(아시아 인구) 변수를 `asian`으로 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수정하세요.
+
+문제 3. `total`, `asian` 변수를 이용해 '전체 인구 대비 아시아 인구 백분율' 파생변수를 추가하고, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+히스토그램을 만들어 분포를 살펴보세요.
+
+문제 4. 아시아 인구 백분율 전체 평균을 구하고, 평균을 초과하면 `'large'`, 그 외에는 `'small'`을<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 부여한 파생변수를 만들어 보세요.
+
+문제 5. `'large'`와 `'small'`에 해당하는 지역이 얼마나 많은지 빈도표와 빈도 막대 그래프를<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 만들어 확인해 보세요.
+
+<br>
+
+`r fontawesome::fa("triangle-exclamation", margin_left = '-0.5em', fill = '#FF7333')` `midwest` 데이터 출처: [bit.ly/easypy_52](http://bit.ly/easypy_52)
+
+---
+
+
+문제 1. `midwest.csv`를 불러와 데이터의 특징을 파악하세요.
+
+```{python}
+#| echo = F
+midwest = pd.read_csv('../Data/midwest.csv')
+```
+
+```{python}
+#| eval = F
+midwest = pd.read_csv('midwest.csv')  # midwest 데이터 불러오기
+midwest.head()                        # 앞부분 출력
+midwest.tail()                        # 뒷부분 출력
+midwest.shape                         # 행, 열 개수 출력
+midwest.info()                        # 변수 속성 출력
+midwest.describe()                    # 요약 통계량 출력
+```
+
+---
+
+문제 2. `poptotal`(전체 인구) 변수를 `total`로, `popasian`(아시아 인구) 변수를 `asian`으로 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수정하세요.
+
+```{python}
+# poptotal을 total로 수정
+midwest = midwest.rename(columns = {'poptotal' : 'total'})
+
+# popasian을 asian으로 수정
+midwest = midwest.rename(columns = {'popasian' : 'asian'})
+
+```
+
+---
+
+문제 3. `total`, `asian` 변수를 이용해 '전체 인구 대비 아시아 인구 백분율' 파생변수를 추가하고, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+히스토그램을 만들어 분포를 살펴보세요.
+
+```{python}
+# 백분율 변수 추가
+midwest['ratio'] = midwest['asian'] / midwest['total'] * 100
+
+# 히스토그램 만들기
+midwest['ratio'].plot.hist()
+```
+
+---
+
+
+문제 4. 아시아 인구 백분율 전체 평균을 구하고, 평균을 초과하면 `'large'`, 그 외에는 `'small'`을<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 부여한 파생변수를 만들어 보세요.
+
+```{python}
+# ratio 평균
+midwest['ratio'].mean()
+
+# large, small 부여
+midwest['group'] = np.where(midwest['ratio'] > 0.4872, 'large', 'small')
+```
+
+---
+
+문제 5. `'large'`와 `'small'`에 해당하는 지역이 얼마나 많은지 빈도표와 빈도 막대 그래프를<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 만들어 확인해 보세요.
+
+```{python}
+# group 빈도 구하기
+count_group = midwest['group'].value_counts()
+count_group
+```
+
+---
+
+문제 5. `'large'`와 `'small'`에 해당하는 지역이 얼마나 많은지 빈도표와 빈도 막대 그래프를<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 만들어 확인해 보세요.
+
+```{python}
+# 막대 그래프 만들기
+count_group.plot.bar(rot = 0)
+```
+
+
+
+::: {background-color="#FF7232" transition="fade"}
+## 끝
+:::
+

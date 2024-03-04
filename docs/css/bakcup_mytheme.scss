@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-full.css");
+
+/*-- scss:defaults --*/
+
+/*
+폰트, 색깔, 크기
+*/
+$code-block-bg: #f5f5f5;
+$code-block-border-color: #e0e0e0;
+$code-block-font-size: 0.6em;
+$presentation-heading-color: #2c6eab;
+$presentation-h1-font-size: 1.7em;
+$presentation-h3-font-size: 0.8em;
+$presentation-h4-font-size: 1em;
+$presentation-h5-font-size: 1em;
+$presentation-block-margin: 20px;
+
+
+/*-- scss:rules --*/
+
+.reveal h1 {
+  font-family:'Jua';
+  font-weight: normal;
+  text-align: center;
+}
+
+.reveal h2
+{
+  font-family:'Jua';
+  font-weight: normal;
+  text-align: center;
+}
+
+.reveal h3 {
+  font-family:'NanumGothic';
+}
+
+.reveal h4 {
+  font-family:'NanumGothic';
+}
+
+.reveal h5 {
+  font-family:'NanumGothic';
+  font-weight: bold;
+  color: black;
+  margin-bottom: 0.4em;
+}
+
+
+/*헤더 글자 색깔*/
+section.has-light-background h2, section.has-light-background h1  {
+  color: #FFFFFF;
+}
+
+
+/*셀 경계선 색깔*/
+/*$border-color:	#2c6eab;*/
+
+/*셀 경계선 두께*/
+/* $border-width:	1px;  */
+
+/*셀 경계선 곡선 각도*/
+/* $border-radius:	1px;*/
+
+
+/*셀 간격*/
+div.cell {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+
+/*아웃풋 간격*/
+.reveal pre code {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/*그래프 코드 아래 간격*/
+.reveal img {
+    margin-top: -40px;
+}
+
+
+/* 문장 내 코드*/
+.reveal code {
+    font-family: 'Source Code Pro', 'Inconsolata', Monaco, monospace;
+    font-size: 100%;
+    /*color: #2c6eab;*/
+    background-color: #F2F2F2;
+    padding: 3px 3px;  /*음영 상하 좌우*/ 
+}
+
+/*문자*/
+code span.st {
+    color: #B03328;
+}
+
+/*숫자*/
+code span.dv {
+    color: #338424;
+}
+
+/*주석*/
+code span.co {
+    color: #4B7E7F;
+    font-style: italic;
+}
+
+/*특수문자*/
+code span.op {
+    color: #9E41F6;
+}
+
+
+/*import 함수*/
+code span.im {
+  color: #307C21;
+  font-weight: bold;
+}
+
+/*내장 함수*/
+code span.bu {
+  color: #307C21;
+  font-weight: bold;
+}
+
+/*callout 폰트*/
+div.callout-tip.callout-style-default .callout-caption {
+    font-family: Nanumgothic;
+}
+
+/*폰트 크기*/
+.large { font-size: 120% }
+.large2 { font-size: 140% }
+.small { font-size: 70%  }
+.tiny  { font-size: 40%  }
+
+.font-jua {
+  font-family:'Jua';
+}
+
+.title1 {
+  background-color: #FFCE32;
+  color: white;
+  font-family:'Jua';
+  font-size: 55px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/*줄 간격 늘리기*/
+br10 {
+   display: block;
+   margin-block-start: 1em;
+}
+
+br15 {
+   display: block;
+   margin-block-start: 1.5em;
+}
+
+/*간격 줄이기*/
+br-back-5 {
+   display: block;
+   margin: -5px 0;
+}
+
+br-back-10 {
+   display: block;
+   margin: -10px 0;
+}
+
+br-back-15 {
+   display: block;
+   margin: -15px 0;
+}
+
+br-back-20 {
+   display: block;
+   margin: -20px 0;
+}
+
+br-back-25 {
+   display: block;
+   margin: -25px 0;
+}
+
+br-back-30 {
+   display: block;
+   margin: -30px 0;
+}
+
+
+/*알아두면 좋아요 폰트*/
+.info {
+  font-size: 30px;
+  color : #FF7333;
+  /*font-family:'Jua';*/
+  font-family: 'NanumGothic';
+  font-weight: bold;
+}
+
+
+/*---박스---*/
+
+/* USYD blockquote */
+box, .box {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 0.2em;
+  margin-left: 0px;
+  margin-right: 5px;
+  border-left: solid 10px #FF8C58;
+  border-top: solid 2px #FF8C58;
+  border-bottom: solid 2px #FF8C58;
+  border-right: solid 2px #FF8C58;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  /* background-color: #e64626; */
+  /*color: #e64626;*/
+  padding: 0.5em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+
+/*본문*/
+.reveal p {
+    font-size: 35px;
+    line-height: 1.5em;
+}
+
+/*목록*/
+.reveal li{
+    margin-top: 0.4em;
+    margin-bottom: 0.2em;
+    font-size: 0.9em;
+}
+
+/*목록 위 간격*/
+.reveal ul {
+    margin: -5px 0 0 1em;
+}
+
+
+/*코드 하일리이팅 컬러 지우기*/
+:root {
+  --quarto-hl-fu-color: '';
+}
+
+
+.pull-left-70 {
+  float: left;
+  width: 70%;
+}
+
+.pull-right-30 {
+  float: right;
+  width: 29%;
+}

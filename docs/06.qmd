@@ -1,0 +1,2106 @@
+---
+jupyter: python3
+title: "Do it! 쉽게 배우는 파이썬 데이터 분석"
+output-dir: html
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+
+```{r setup, include=FALSE}
+# 파이썬 버전 설정
+knitr::opts_chunk$set(engine.path = list(
+  python = "C:/Users/USER/anaconda3"))
+```
+
+### {data-menu-title="Info"}
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+```
+
+
+<!-- fa 아이콘 출력 설정 -->
+<!-- [{{< fa rocket size=sm >}}]} -->
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+<br>
+<br>
+
+![](img/cover.png){fig-align="center" width="75%"}
+
+:::
+
+<!-- width: 55% -->
+
+::: {.column width="55%"}
+
+<br>
+<br>
+<br>
+
+`r fontawesome::fa("github", margin_left = '-0.5em')` [github.com/youngwoos/Doit_Python](https://github.com/youngwoos/Doit_Python)
+
+`r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
+`r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
+
+<br-back-10>
+
+&nbsp;&nbsp; ▪ [yes24](http://www.yes24.com/Product/Goods/108947478)
+
+&nbsp;&nbsp; ▪ [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601)
+
+&nbsp;&nbsp; ▪ [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163033493)
+
+:::
+
+::::
+
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 06 자유자재로 데이터 가공하기 {background-color="#FF7232" transition="fade"}
+
+:::
+
+
+
+---
+
+### {data-menu-title="To do"}
+
+<br>
+<br>
+<br>
+
+
+![](img/06-intro.png){width=60% fig-align="center"}
+
+
+---
+
+<br>
+
+##### [목차]{.font-jua .larger}
+
+[06-1 데이터 전처리 - 원하는 형태로 데이터 가공하기]{.font-jua}([link](#데이터-전처리---원하는-형태로-데이터-가공하기))
+
+[06-2 조건에 맞는 데이터만 추출하기]{.font-jua}([link](#조건에-맞는-데이터만-추출하기))
+
+[06-3 필요한 변수만 추출하기]{.font-jua}([link](#필요한-변수만-추출하기))
+
+[06-4 순서대로 정렬하기]{.font-jua}([link](#순서대로-정렬하기))
+
+[06-5 파생변수 추가하기]{.font-jua}([link](#파생변수-추가하기))
+
+[06-6 집단별로 요약하기]{.font-jua}([link](#집단별로-요약하기))
+
+[06-7 데이터 합치기]{.font-jua}([link](#데이터-합치기))
+
+
+
+## 06-1 데이터 전처리<br> - 원하는 형태로 데이터 가공하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+#### 데이터 전처리(data preprocessing)
+
+- 분석에 적합하게 데이터를 가공하는 작업
+- `pandas`: 전처리 작업에 가장 많이 사용되는 패키지
+
+![](img/06-pandas.jpg){width=30%}
+
+
+
+## 06-2 조건에 맞는 데이터만 추출하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+### 조건에 맞는 데이터만 추출하기: `df.query()`
+
+<br>
+
+![](img/06-query.jpg){width=70%}
+
+---
+
+#### 데이터 불러오기
+
+```{python}
+#| eval: false
+import pandas as pd
+exam = pd.read_csv('exam.csv')
+exam
+```
+
+<br-back-20>
+
+```{python}
+#| echo: false
+import pandas as pd
+exam = pd.read_csv('../data/exam.csv')
+exam
+
+```
+
+---
+
+```{python}
+# exam에서 nclass가 1인 경우만 추출
+exam.query('nclass == 1')
+```
+
+::: {.fragment}
+
+
+```{python}
+# 2반인 경우만 추출
+exam.query('nclass == 2')
+```
+
+:::
+
+---
+
+```{python}
+# 1반이 아닌 경우
+exam.query('nclass != 1')
+```
+
+---
+
+```{python}
+# 3반이 아닌 경우
+exam.query('nclass != 3')
+```
+
+---
+
+### 초과, 미만, 이상, 이하 조건 걸기
+
+
+```{python}
+# 수학 점수가 50점을 초과한 경우
+exam.query('math > 50')
+```
+
+---
+
+```{python}
+# 수학 점수가 50점 미만인 경우
+exam.query('math < 50')
+```
+
+---
+
+```{python}
+# 영어 점수가 50점 이상인 경우
+exam.query('english >= 50')
+```
+
+
+---
+
+```{python}
+# 영어 점수가 80점 이하인 경우
+exam.query('english <= 80')
+```
+
+
+### 여러 조건을 충족하는 행 추출하기
+
+
+```{python}
+# 1반이면서 수학 점수가 50점 이상인 경우
+exam.query('nclass == 1 & math >= 50')
+```
+
+::: {.fragment}
+
+
+```{python}
+# 2반이면서 영어 점수가 80점 이상인 경우
+exam.query('nclass == 2 & english >= 80')
+```
+
+:::
+
+---
+
+### 여러 조건 중 하나 이상 충족하는 행 추출하기
+
+```{python}
+# 수학 점수가 90점 이상이거나 영어 점수가 90점 이상인 경우
+exam.query('math >= 90 | english >= 90')
+```
+
+
+---
+
+```{python}
+# 영어 점수가 90점 미만이거나 과학 점수가 50점 미만인 경우
+exam.query('english < 90 | science < 50')
+```
+
+
+---
+
+### 목록에 해당하는 행 추출하기
+
+```{python}
+# 1, 3, 5반에 해당하면 추출
+exam.query('nclass == 1 | nclass == 3 | nclass == 5')
+```
+
+
+---
+
+### 목록에 해당하는 행 추출하기
+
+```{python}
+# 1, 3, 5반에 해당하면 추출
+exam.query('nclass in [1, 3, 5]')
+```
+
+
+---
+
+### 추출한 행으로 데이터 만들기
+
+```{python}
+# nclass가 1인 행 추출해 nclass1에 할당
+nclass1 = exam.query('nclass == 1')
+
+# nclass가 2인 행 추출해 nclass2에 할당
+nclass2 = exam.query('nclass == 2')
+```
+
+::: {.fragment}
+
+```{python}
+nclass1['math'].mean()  # 1반 수학 점수 평균 구하기
+nclass2['math'].mean()  # 2반 수학 점수 평균 구하기
+```
+
+:::
+
+---
+
+### 문자 변수를 이용해 조건에 맞는 행 추출하기
+
+##### '전체 조건' 과 '추출할 문자' 에 서로 다른 모양 따옴표 입력
+
+```{python}
+df = pd.DataFrame({'sex'     : ['F', 'M', 'F', 'M'],
+                   'country' : ['Korea', 'China', 'Japan', 'USA']})
+df
+```
+
+
+---
+
+```{python}
+# 전체 조건에 작은따옴표, 추출할 문자에 큰따옴표 사용
+df.query('sex == "F" & country == "Korea"')
+```
+
+
+::: {.fragment}
+
+```{python}
+# 전체 조건에 큰따옴표, 추출할 문자에 작은따옴표 사용
+df.query("sex == 'M' & country == 'China'")
+```
+
+:::
+
+
+::: {.fragment}
+
+`r fontawesome::fa("triangle-exclamation", margin_left = '-0.5em', fill = '#FF7333')` **같은 모양 따옴표 사용하면 에러**
+
+
+```{python}
+#| eval: false
+# 전체 조건과 추출할 문자에 모두 작은따옴표 사용
+df.query('sex == 'F' & country == 'Korea'')
+```
+
+<br-back-20>
+
+    SyntaxError: invalid syntax (<string>, line 1)
+
+:::
+
+---
+
+
+
+:::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [외부 변수를 이용해 추출하기]{.info}
+
+별도의 변수를 이용해 행을 추출하려면 변수명 앞에 `@`를 붙여서 조건 입력
+
+```{python}
+var = 3
+exam.query('nclass == @var')
+```
+
+::::
+
+---
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [파이썬에서 사용하는 기호]{.info}
+
+<br10>
+
+![](img/06-special-character.jpg){width=60%}
+:::
+
+---
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [데이터 프레임 출력 제한 설정하기]{.info}
+
+##### 데이터 프레임 크면 중간 생략함
+- 60행 넘기면 위아래 5행씩 10행만 출력
+- 20열 넘기면 좌우 10열씩 20열만 출력
+
+##### 행, 열 제한 없이 모두 출력하기
+
+```{python}
+#| eval: false
+pd.set_option('display.max_rows', None)     # 모든 행 출력하도록 설정
+pd.set_option('display.max_columns', None)  # 모든 열 출력하도록 설정
+
+```
+
+<br-back-10>
+
+- JupyterLab이나 커널(Kernel)을 새로 실행하면 원래대로 돌아감
+  - 커널 새로 실행: JupyterLab 상단 메뉴 [Kernel → Restart Kernel...] 클릭
+
+##### 새로 실행하지 않고 설정 되돌리기
+
+```{python}
+#| eval: false
+pd.reset_option('display.max_rows')     # 행 출력 제한 되돌리기
+pd.reset_option('display.max_columns')  # 열 출력 제한 되돌리기
+pd.reset_option('all')                  # 모든 설정 되돌리기
+```
+
+<br-back-30>
+
+:::
+
+
+
+---
+
+
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+Q1. 자동차 배기량에 따라 고속도로 연비가 다른지 알아보려고 합니다. `displ`(배기량)이 `4` 이하인<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 자동차와 `5` 이상인 자동차 중 어떤 자동차의 `hwy`(고속도로 연비) 평균이 더 높은지 알아보세요.
+
+<!-- - 힌트: 특정 조건에 해당하는 데이터를 추출해 평균을 구하면 됩니다. `query()`를 이용해 `displ` 변수가 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;특정 값을 지닌 행을 추출해 새로운 변수에 할당한 다음 평균을 구해 보세요. -->
+
+
+Q2. 자동차 제조 회사에 따라 도시 연비가 어떻게 다른지 알아보려고 합니다. `'audi'`와 `'toyota'` <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중 어느 `manufacturer`(자동차 제조 회사)의 `cty`(도시 연비) 평균이 더 높은지 알아보세요.
+
+<!-- - 힌트: '여러 조건 중 하나 이상 충족' 하면 추출하도록 `query()` 함수를 구성해 보세요. 이렇게 추출한 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;데이터로 평균을 구하면 됩니다. `in`을 이용하면 코드를 짧게 만들 수 있습니다. -->
+
+
+Q3. `'chevrolet'`, `'ford'`, `'honda'` 자동차의 고속도로 연비 평균을 알아보려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;세 회사의 데이터를 추출한 다음 `hwy` 전체 평균을 구해 보세요.
+
+<!-- - 힌트: 앞 문제와 동일한 절차로 해결하면 됩니다. 단, 변수의 값이 숫자가 아니라 문자라는 점이 다릅니다. -->
+
+
+---
+
+
+Q1. 자동차 배기량에 따라 고속도로 연비가 다른지 알아보려고 합니다. `displ`(배기량)이 `4` 이하인<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 자동차와 `5` 이상인 자동차 중 어떤 자동차의 `hwy`(고속도로 연비) 평균이 더 높은지 알아보세요.
+
+
+```{python}
+#| eval: false
+mpg = pd.read_csv('mpg.csv')     # mpg 데이터 불러오기
+
+mpg_a = mpg.query('displ <= 4')  # displ 4 이하 추출
+mpg_b = mpg.query('displ >= 5')  # displ 5 이상 추출
+```
+
+```{python}
+#| echo: false
+mpg = pd.read_csv('../data/mpg.csv')     # mpg 데이터 불러오기
+mpg_a = mpg.query('displ <= 4')  # displ 4 이하 추출
+mpg_b = mpg.query('displ >= 5')  # displ 5 이상 추출
+```
+
+<br10>
+
+```{python}
+mpg_a['hwy'].mean()              # displ 4 이하의 hwy 평균
+mpg_b['hwy'].mean()              # displ 5 이상의 hwy 평균
+```
+
+---
+
+Q2. 자동차 제조 회사에 따라 도시 연비가 어떻게 다른지 알아보려고 합니다. `'audi'`와 `'toyota'` <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중 어느 `manufacturer`(자동차 제조 회사)의 `cty`(도시 연비) 평균이 더 높은지 알아보세요.
+
+
+```{python}
+mpg_audi   = mpg.query('manufacturer == "audi"')    # audi 추출
+mpg_toyota = mpg.query('manufacturer == "toyota"')  # toyota 추출
+```
+
+<br10>
+
+```{python}
+mpg_audi['cty'].mean()                              # audi의 cty 평균
+mpg_toyota['cty'].mean()                            # toyota의 cty 평균
+```
+
+---
+
+
+Q3. `'chevrolet'`, `'ford'`, `'honda'` 자동차의 고속도로 연비 평균을 알아보려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;세 회사의 데이터를 추출한 다음 `hwy` 전체 평균을 구해 보세요.
+
+```{python}
+# manufacturer가 chevrolet, ford, honda에 해당하면 추출
+mpg_new = mpg.query('manufacturer in ["chevrolet", "ford", "honda"]')
+mpg_new['hwy'].mean()
+```
+
+
+
+## 06-3 필요한 변수만 추출하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+
+### 변수 추출하기: `df[]`
+
+<br>
+
+![](img/06-select.jpg){width=70%}
+
+---
+
+### 변수 추출하기
+
+```{python}
+exam['math']  # math 추출
+```
+
+---
+
+```{python}
+exam['english']  # english 추출
+```
+
+---
+
+##### 여러 변수 추출하기
+
+```{python}
+exam[['nclass', 'math', 'english']]  # nclass, math, english 추출
+```
+
+
+---
+
+::::: {.box}
+
+<br-back-20>
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [변수가 1개 일 때 데이터 프레임 유지하기]{.info}
+
+##### 변수명을 `[]`로 한 번 더 감싸기
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{python}
+#| eval: false
+# 시리즈로 추출
+exam['math']
+```
+
+<br-back-30>
+
+
+```{python}
+#| echo: false
+# 시리즈로 추출
+exam['math'].head(10)
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{python}
+#| eval: false
+# 데이터 프레임으로 추출
+exam[['math']]
+```
+
+<br-back-30>
+
+```{python}
+#| echo: false
+# 데이터 프레임으로 추출
+exam[['math']].head(10)
+```
+
+:::
+
+::::
+
+<br-back-30>
+
+
+:::::
+
+---
+
+
+### 변수 제거하기
+
+```{python}
+exam.drop(columns = 'math')  # math 제거
+```
+
+---
+
+```{python}
+exam.drop(columns = ['math', 'english'])  # math, english 제거
+```
+
+
+---
+
+### `pandas` 함수 조합하기
+
+#### `query()`와 `[]` 조합하기
+
+##### 1반 학생의 영어 점수 추출
+ 
+```{python}
+# nclass가 1인 행만 추출한 다음 english 추출
+exam.query('nclass == 1')['english']
+```
+
+---
+
+##### 수학 점수가 `50`점 이상인 학생의 `id`와 `math` 변수 추출
+
+```{python}
+# math가 50 이상인 행만 추출한 다음 id, math 추출
+exam.query('math >= 50')[['id', 'math']]
+```
+
+---
+
+##### 일부만 출력하기
+
+```{python}
+# math가 50 이상인 행만 추출한 다음 id, math 앞부분 5행까지 추출
+exam.query('math >= 50')[['id', 'math']].head()
+```
+
+---
+
+##### 일부만 출력하기
+
+```{python}
+# math가 50 이상인 행만 추출한 다음 id, math 앞부분 10행까지 추출
+exam.query('math >= 50')[['id', 'math']].head(10)
+```
+
+
+### 가독성 있게 코드 줄 바꾸기
+
+- 1. 명령어 끝난 부분 뒤에 백슬래시(`\`) 입력 후 [Enter]로 줄바꿈
+- 2. [Spacebar]나 [Tab]을 이용해 간격 띄우고 다음 명령어 입력
+  - `\` 뒤에 아무것도 입력하면 안 됨(주석, 띄어쓰기 X)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{python}
+exam.query('math >= 50') \
+    [['id', 'math']] \
+    .head(10)
+```
+
+:::
+
+::: {.column width="50%"}
+```{python}
+# math가 50 이상인 행만 추출
+# id, math 추출
+# 앞부분 10행 추출
+```
+
+:::
+
+::::
+
+
+---
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+Q1. `mpg` 데이터는 11개 변수로 구성됩니다. 이 중 일부만 추출해 분석에 활용하려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`mpg` 데이터에서 `category`(자동차 종류), `cty`(도시 연비) 변수를 추출해 새로운 데이터를 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;만드세요. 새로 만든 데이터의 일부를 출력해 두 변수로만 구성되어 있는지 확인하세요.
+
+Q2. 자동차 종류에 따라 도시 연비가 어떻게 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이용해 `category`(자동차 종류)가 `'suv'`인 자동차와 `'compact'`인 자동차 중 어떤 자동차의 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`cty`(도시 연비) 평균이 더 높은지 알아보세요.
+
+
+---
+
+
+Q1. `mpg` 데이터는 11개 변수로 구성됩니다. 이 중 일부만 추출해 분석에 활용하려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`mpg` 데이터에서 `category`(자동차 종류), `cty`(도시 연비) 변수를 추출해 새로운 데이터를 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;만드세요. 새로 만든 데이터의 일부를 출력해 두 변수로만 구성되어 있는지 확인하세요.
+
+
+
+```{python}
+#| eval: false
+mpg = pd.read_csv('mpg.csv')        # mpg 데이터 불러오기
+
+mpg_new = mpg[['category', 'cty']]  # category, cty 추출
+mpg_new.head()                      # mpg_new 일부 출력
+```
+
+<br-back-30>
+
+
+```{python}
+#| echo: false
+mpg = pd.read_csv('../data/mpg.csv')  # mpg 데이터 불러오기
+mpg_new = mpg[['category', 'cty']]    # category, cty 추출
+mpg_new.head()                        # mpg_new 일부 출력
+```
+
+---
+
+Q2. 자동차 종류에 따라 도시 연비가 어떻게 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이용해 `category`(자동차 종류)가 `'suv'`인 자동차와 `'compact'`인 자동차 중 어떤 자동차의 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`cty`(도시 연비) 평균이 더 높은지 알아보세요.
+
+```{python}
+mpg_new.query('category == "suv"')['cty'].mean()      # suv의 cty 평균
+mpg_new.query('category == "compact"')['cty'].mean()  # compact의 cty 평균
+```
+
+
+
+
+
+## 06-4 순서대로 정렬하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+### 순서대로 정렬하기: `df.sort_values()`
+
+<br>
+
+![](img/06-sort-values.jpg){width=70%}
+
+---
+
+### 오름차순으로 정렬하기
+
+```{python}
+exam.sort_values('math')  # math 오름차순 정렬
+```
+
+---
+
+### 내림차순으로 정렬하기
+
+
+```{python}
+exam.sort_values('math', ascending = False)  # math 내림차순 정렬
+```
+
+---
+
+### 여러 정렬 기준 적용하기
+
+```{python}
+# nclass, math 오름차순 정렬
+exam.sort_values(['nclass', 'math'])
+```
+
+
+---
+
+##### 변수별로 정렬 순서를 다르게 지정하기
+
+```{python}
+# nclass 오름차순, math 내림차순 정렬
+exam.sort_values(['nclass', 'math'], ascending = [True, False])
+```
+
+---
+
+
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+
+::: {style="font-size: 0.9em;"}
+
+Q1. `'audi'`에서 생산한 자동차 중에 어떤 자동차 모델의 `hwy`(고속도로 연비)가 높은지 알아보려고 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+합니다. `'audi'`에서 생산한 자동차 중 `hwy`가 1~5위에 해당하는 자동차의 데이터를 출력하세요.
+
+:::
+
+::::: {.fragment}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{python}
+#| eval: false
+mpg = pd.read_csv('mpg.csv')     
+
+mpg.query('manufacturer == "audi"') \
+   .sort_values('hwy', ascending = False) \
+   .head()
+
+```
+:::
+
+::: {.column width="40%"}
+
+```{python}
+# mpg 데이터 불러오기
+
+# audi 추출
+# hwy 내림차순 정렬
+# 5행까지 출력
+```
+
+:::
+
+::::
+
+<br-back-30>
+
+
+```{python}
+#| echo: false
+mpg = pd.read_csv('../data/mpg.csv')     
+mpg.query('manufacturer == "audi"') \
+   .sort_values('hwy', ascending = False) \
+   .head()
+
+```
+
+
+::::: 
+
+## 06-5 파생변수 추가하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+### 파생변수 추가하기: `df.assign()`
+
+<br>
+
+![](img/06-assign.jpg){width=70%}
+
+
+---
+
+### 파생변수 추가하기
+
+```{python}
+# total 변수 추가
+exam.assign(total = exam['math'] + exam['english'] + exam['science'])
+```
+
+---
+
+##### 여러 파생변수 한 번에 추가하기
+
+```{python}
+exam.assign(
+  total = exam['math'] + exam['english'] + exam['science'],       # total 추가
+  mean = (exam['math'] + exam['english'] + exam['science']) / 3)  # mean 추가
+```
+
+---
+
+### `df.assign()`에 `np.where()` 적용하기
+
+```{python}
+import numpy as np
+exam.assign(test = np.where(exam['science'] >= 60, 'pass', 'fall'))
+```
+
+---
+
+### 추가한 변수를 `pandas` 함수에 바로 활용하기
+
+
+```{python}
+# total 변수 추가, total 기준 정렬
+exam.assign(total = exam['math'] + exam['english'] + exam['science']) \
+    .sort_values('total')
+```
+
+
+### `lambda` 이용해 데이터 프레임명 줄여 쓰기
+
+```{python}
+#| eval: false
+# 긴 데이터 프레임명 지정
+ long_name = pd.read_csv('exam.csv') 
+ 
+# long_name 직접 입력
+long_name.assign(new = long_name['math'] + long_name['english'] + 
+long_name['science']) 
+ 
+# long_name 대신 x 입력
+long_name.assign(new = lambda x: x['math'] + x['english'] + x['science'])
+```
+
+
+---
+
+### 앞에서 만든 변수를 활용해 다시 변수 만들기
+
+##### 반드시 `lambda`를 이용해 데이터 프레임명을 약어로 입력
+
+```{python}
+#| eval: false
+exam.assign(total = exam['math'] + exam['english'] + exam['science'], 
+            mean  = lambda x: x['total'] / 3) 
+```
+
+
+::: {.fragment}
+
+<br15>
+
+- 앞의 코드는 데이터 프레임명을 서로 다른 문자로 입력하여 읽기 불편함
+- 파생 변수를 만드는 행에 `lambda`를 각각 입력하면 데이터 프레임명 통일하여 가독성 높아짐
+
+```{python}
+#| eval: false
+exam.assign(total = lambda x: x['math'] + x['english'] + x['science'], 
+            mean  = lambda x: x['total'] / 3)
+```
+
+
+:::
+
+
+:::: {.fragment}
+
+
+::: {.callout-warning}
+
+##### lambda 이용하지 않고 데이터 프레임명 직접 입력하면 에러
+
+```{python}
+exam.assign(total = exam['math'] + exam['english'] + exam['science'], 
+            mean  = exam['total'] / 3)   
+```
+
+:::
+
+::::
+
+---
+
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+
+Q1. `mpg` 데이터 복사본을 만들고, `cty`와 `hwy`를 더한 '합산 연비 변수' 를 추가하세요.
+
+Q2. 앞에서 만든 '합산 연비 변수' 를 2로 나눠 '평균 연비 변수' 를 추가하세요.
+
+Q3. '평균 연비 변수' 가 가장 높은 자동차 3종의 데이터를 출력하세요.
+
+Q4. 1~3번 문제를 해결할 수 있는 하나로 연결된 `pandas` 구문을 만들어 실행해 보세요. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;데이터는 
+복사본 대신 `mpg` 원본을 이용하세요.
+
+
+
+---
+
+Q1. `mpg` 데이터 복사본을 만들고, `cty`와 `hwy`를 더한 '합산 연비 변수' 를 추가하세요.
+
+```{python}
+#| eval: false
+mpg = pd.read_csv('mpg.csv')  # mpg 데이터 불러오기
+mpg_new = mpg.copy()          # mpg 복사본 만들기
+
+# 합산 연비 변수 추가
+mpg_new = mpg_new.assign(total = mpg_new['cty'] + mpg_new['hwy'])  
+
+```
+
+```{python}
+#| echo: false
+mpg = pd.read_csv('../data/mpg.csv')  # mpg 데이터 불러오기
+mpg_new = mpg.copy()          # mpg 복사본 만들기
+
+# 합산 연비 변수 추가
+mpg_new = mpg_new.assign(total = mpg_new['cty'] + mpg_new['hwy'])  
+
+```
+
+
+
+---
+
+
+Q2. 앞에서 만든 '합산 연비 변수' 를 2로 나눠 '평균 연비 변수' 를 추가하세요.
+
+```{python}
+# 평균 연비 변수 추가
+mpg_new = mpg_new.assign(mean = mpg_new['total'] / 2)  
+```
+
+
+---
+
+Q3. '평균 연비 변수' 가 가장 높은 자동차 3종의 데이터를 출력하세요.
+
+```{python}
+#| eval: false
+# mean 기준 내림차순 정렬, 상위 3행 출력
+mpg_new.sort_values('mean', ascending = False).head(3)  
+```
+
+
+<br-back-20>
+
+::: {style="font-size: 0.9em;"}
+
+```{python}
+#| echo: false
+# mean 기준 내림차순 정렬, 상위 3행 출력
+mpg_new.sort_values('mean', ascending = False).head(3)  
+```
+
+:::
+
+
+
+---
+
+Q4. 1~3번 문제를 해결할 수 있는 하나로 연결된 `pandas` 구문을 만들어 실행해 보세요. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;데이터는 
+복사본 대신 `mpg` 원본을 이용하세요.
+
+:::: {.columns}
+
+::: {.column width="65%"}
+```{python}
+#| eval: false
+mpg.assign(total = lambda x: x['cty'] + x['hwy'],
+           mean  = lambda x: x['total'] / 2) \
+   .sort_values('mean', ascending = False) \
+   .head(3)
+```
+
+:::
+
+::: {.column width="35%"}
+
+```{python}
+# 합산 연비 변수 추가
+# 평균 연비 변수 추가
+# 내림차순 정렬
+# 상위 3행 출력
+```
+
+:::
+
+::::
+
+<br-back-30>
+
+
+::: {style="font-size: 0.9em;"}
+```{python}
+#| echo: false
+mpg.assign(total = lambda x: x['cty'] + x['hwy'],
+           mean  = lambda x: x['total'] / 2) \
+   .sort_values('mean', ascending = False) \
+   .head(3)
+```
+:::
+
+
+
+## 06-6 집단별로 요약하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+### 집단별로 요약하기: `df.groupby()`, `df.agg()`
+
+<br>
+
+![](img/06-query.jpg){width=70%}
+
+---
+
+### 집단별로 요약하기
+
+##### 전체 요약 통계량 구하기
+
+```{python}
+# math 평균 구하기
+exam.agg(mean_math = ('math', 'mean'))
+```
+
+<br>
+
+`r fontawesome::fa("triangle-exclamation", margin_left = '-0.5em', fill = '#FF7333')` 함수명 뒤에 `()` 넣지 않음
+
+---
+
+### 집단별로 요약하기
+
+##### 집단별 요약 통계량 구하기
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{python}
+#| eval: false
+exam.groupby('nclass') \
+    .agg(mean_math = ('math', 'mean'))
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{python}
+# nclass별로 분리하기
+# math 평균 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+exam.groupby('nclass') \
+    .agg(mean_math = ('math', 'mean'))
+
+```
+
+---
+
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [변수를 인덱스로 바꾸지 않기]{.info}
+
+- `as_index = False`: 변수를 인덱스로 바꾸지 않고 원래대로 유지
+  - 앞 코드의 출력 결과에서 변수명 `nclass`가 인덱스(index)로 바뀌어 `mean_math`보다 밑에 표시됨
+  - `groupby()`의 기본값이 변수를 인덱스로 바꾸도록 설정되어 있기 때문
+  - 인덱스(index): 값이 데이터 프레임의 어디에 있는지 '값의 위치를 나타낸 값'
+```{python}
+exam.groupby('nclass', as_index = False) \
+    .agg(mean_math = ('math', 'mean'))
+```
+
+:::
+
+---
+
+##### 여러 요약 통계량 한 번에 구하기
+
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{python}
+#| eval: false
+exam.groupby('nclass') \
+    .agg(mean_math   = ('math', 'mean'),
+         sum_math    = ('math', 'sum'),
+         median_math = ('math', 'median'),
+         n           = ('nclass', 'count'))
+```
+
+:::
+
+::: {.column width="40%"}
+
+```{python}
+# nclass별로 분리
+# 수학 점수 평균
+# 수학 점수 합계
+# 수학 점수 중앙값
+# 빈도(학생 수)
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+exam.groupby('nclass') \
+    .agg(mean_math   = ('math', 'mean'),     
+         sum_math    = ('math', 'sum'),
+         median_math = ('math', 'median'),          
+         n           = ('nclass', 'count'))
+
+```
+
+
+---
+
+#### `agg()`에 자주 사용하는 요약 통계량 함수
+
+
+<br>
+
+![](img/06-agg-functions.jpg){width=30%}
+
+
+
+
+
+---
+
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [모든 변수의 요약 통계량 한 번에 구하기]{.info}
+
+`df.groupby()`에 `agg()` 대신 `mean()`, `sum()`과 같은 요약 통계량 함수 적용
+
+```{python}
+exam.groupby('nclass').mean()
+```
+
+:::
+
+
+---
+
+### 집단별로 다시 집단 나누기
+
+##### 집단을 나눈 다음 다시 하위 집단으로 나누기
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{python}
+#| eval: false
+mpg.groupby(['manufacturer', 'drv']) \
+   .agg(mean_cty = ('cty', 'mean'))
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{python}
+# 제조 회사 및 구동 방식별 분리
+# cty 평균 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+mpg.groupby(['manufacturer', 'drv']) \
+   .agg(mean_cty = ('cty', 'mean'))
+
+```
+
+
+---
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [`value_counts()`로 집단별 빈도 간단하게 구하기]{.info}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{python}
+mpg.groupby('drv') \
+   .agg(n = ('drv', 'count'))
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{python}
+mpg['drv'].value_counts()
+```
+:::
+
+::::
+
+<br-back-40>
+
+- 짧은 코드로 빈도를 구할 수 있음, 자동으로 빈도 기준 내림차순 정렬
+- 출력 결과가 데이터 프레임이 아닌 시리즈(series) 자료 구조이므로 `query()` 적용 불가
+
+<br-back-20>
+
+```{python}
+mpg['drv'].value_counts().query('n > 100')
+```
+
+:::
+
+---
+
+### `pandas` 함수 조합하기
+
+Q. 제조 회사별로 `'suv'` 자동차의 도시 및 고속도로 합산 연비 평균을 구해 내림차순으로 정렬하고, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1~5위까지 출력하기
+
+##### 함수 사용 절차
+
+![](img/06-method-chaining.jpg){width=50%}
+
+---
+
+### `pandas` 함수 조합하기
+
+Q. 제조 회사별로 `'suv'` 자동차의 도시 및 고속도로 합산 연비 평균을 구해 내림차순으로 정렬하고, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1~5위까지 출력하기
+
+:::: {.columns}
+
+::: {.column width="65%"}
+```{python}
+#| eval: false
+mpg.query('category == "suv"') \
+   .assign(total = (mpg['hwy'] + mpg['cty']) / 2) \
+   .groupby('manufacturer') \
+   .agg(mean_tot = ('total', 'mean')) \
+   .sort_values('mean_tot', ascending = False) \
+   .head()
+```
+
+:::
+
+::: {.column width="35%"}
+
+```{python}
+# suv 추출
+# 합산 연비 변수 만들기
+# 제조 회사별로 분리
+# 합산 연비 평균 구하기
+# 내림차순 정렬
+# 1~5위까지 출력
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+mpg.query('category == "suv"') \
+   .assign(total = (mpg['hwy'] + mpg['cty']) / 2) \
+   .groupby('manufacturer') \
+   .agg(mean_tot = ('total', 'mean')) \
+   .sort_values('mean_tot', ascending = False) \
+   .head()
+```
+
+
+---
+
+
+
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+Q1. `mpg` 데이터의 `category`는 자동차를 특징에 따라 `'suv'`, `'compact'` 등 일곱 종류로 분류한 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변수입니다. 어떤 차종의 도시 연비가 높은지 비교해 보려고 합니다. `category`별 `cty` 평균을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;구해 보세요.
+
+Q2. 앞 문제의 출력 결과는 `category` 값 알파벳순으로 정렬되어 있습니다. 어떤 차종의 도시 연비가 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;높은지 쉽게 알아볼 수 있도록 `cty` 평균이 높은 순으로 정렬해 출력하세요.
+
+Q3. 어떤 회사 자동차의 `hwy`(고속도로 연비)가 가장 높은지 알아보려고 합니다. `hwy` 평균이 가장<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;높은 회사 세 곳을 출력하세요.
+
+Q4. 어떤 회사에서 `'compact'` 차종을 가장 많이 생산하는지 알아보려고 합니다. 회사별 `'compact'`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;차종 수를 내림차순으로 정렬해 출력하세요.
+
+---
+
+Q1. `mpg` 데이터의 `category`는 자동차를 특징에 따라 `'suv'`, `'compact'` 등 일곱 종류로 분류한 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변수입니다. 어떤 차종의 도시 연비가 높은지 비교해 보려고 합니다. `category`별 `cty` 평균을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;구해 보세요.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{python}
+#| eval: false
+mpg = pd.read_csv('mpg.csv')
+
+mpg.groupby('category') \
+   .agg(mean_cty = ('cty', 'mean'))
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{python}
+
+
+# category별 분리
+# cty 평균 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+mpg = pd.read_csv('../data/mpg.csv')
+mpg.groupby('category') \
+   .agg(mean_cty = ('cty', 'mean'))
+
+```
+
+---
+
+
+Q2. 앞 문제의 출력 결과는 `category` 값 알파벳순으로 정렬되어 있습니다. 어떤 차종의 도시 연비가 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;높은지 쉽게 알아볼 수 있도록 `cty` 평균이 높은 순으로 정렬해 출력하세요.
+
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{python}
+#| eval: false
+mpg.groupby('category') \
+   .agg(mean_cty = ('cty', 'mean')) \
+   .sort_values('mean_cty', ascending = False)
+```
+
+:::
+
+::: {.column width="40%"}
+
+```{python}
+# category별 분리
+# cty 평균 구하기
+# 내림차순 정렬
+
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+mpg.groupby('category') \
+   .agg(mean_cty = ('cty', 'mean')) \
+   .sort_values('mean_cty', ascending = False)
+
+```
+
+---
+
+
+Q3. 어떤 회사 자동차의 `hwy`(고속도로 연비)가 가장 높은지 알아보려고 합니다. `hwy` 평균이 가장<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;높은 회사 세 곳을 출력하세요.
+
+:::: {.columns}
+
+::: {.column width="65%"}
+```{python}
+#| eval: false
+mpg.groupby('manufacturer') \
+   .agg(mean_hwy = ('hwy', 'mean')) \
+   .sort_values('mean_hwy', ascending = False) \
+   .head(3)
+
+```
+
+:::
+
+::: {.column width="35%"}
+
+```{python}
+# manufacturer별 분리
+# hwp 평균 구하기
+# 내림차순 정렬
+# 상위 3행 출력
+
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+mpg.groupby('manufacturer') \
+   .agg(mean_hwy = ('hwy', 'mean')) \
+   .sort_values('mean_hwy', ascending = False) \
+   .head(3)
+
+```
+
+---
+
+
+Q4. 어떤 회사에서 `'compact'` 차종을 가장 많이 생산하는지 알아보려고 합니다. 회사별 `'compact'`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;차종 수를 내림차순으로 정렬해 출력하세요.
+
+
+##### 방법1
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{python}
+#| eval: false
+#| 
+mpg.query('category == "compact"') \
+   .groupby('manufacturer') \
+   .agg(n = ('manufacturer', 'count')) \
+   .sort_values('n', ascending = False)
+
+```
+
+:::
+
+::: {.column width="40%"}
+
+```{python}
+# manufacturer별 분리
+# hwp 평균 구하기
+# 내림차순 정렬
+# 상위 3행 출력
+
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+mpg.query('category == "compact"') \
+   .groupby('manufacturer') \
+   .agg(n = ('manufacturer', 'count')) \
+   .sort_values('n', ascending = False)
+
+```
+
+---
+
+
+Q4. 어떤 회사에서 `'compact'` 차종을 가장 많이 생산하는지 알아보려고 합니다. 회사별 `'compact'`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;차종 수를 내림차순으로 정렬해 출력하세요.
+
+##### 방법2
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{python}
+#| eval: false
+mpg.query('category == "compact"') \
+   .value_counts('manufacturer')
+
+```
+
+:::
+
+::: {.column width="40%"}
+
+```{python}
+# compact 추출
+# manufacturer별 빈도 구하기
+
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+mpg.query('category == "compact"') \
+   .value_counts('manufacturer')
+
+```
+
+
+
+## 06-7 데이터 합치기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+### 데이터 합치기
+
+#### 가로로 합치기: `df.merge()`
+
+<br15>
+
+![](img/06-merge.jpg){width=65%}
+
+
+#### 세로로 합치기: `df.concat()`
+
+<br15>
+
+![](img/06-concat.jpg){width=65%}
+
+
+---
+
+
+### 가로로 합치기
+
+```{python}
+# 중간고사 데이터 만들기
+test1 = pd.DataFrame({'id'      : [1, 2, 3, 4, 5],
+                      'midterm' : [60, 80, 70, 90, 85]})
+
+# 기말고사 데이터 만들기
+test2 = pd.DataFrame({'id'    : [1, 2, 3, 4, 5],
+                      'final' : [70, 83, 65, 95, 80]})
+```
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{python}
+test1  # test1 출력
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{python}
+test2  # test2 출력
+```
+:::
+
+::::
+
+
+---
+
+1. `pd.merge()`에 결합할 데이터 프레임명 나열
+2. `how  = 'left'`: 오른쪽에 입력한 데이터 프레임을 왼쪽 데이터 프레임에 결합
+3. `on`: 데이터를 합칠 때 기준으로 삼을 변수명 입력
+
+```{python}
+# id 기준으로 합쳐서 total에 할당
+total = pd.merge(test1, test2, how = 'left', on = 'id')
+total
+```
+
+---
+
+##### 다른 데이터를 활용해 변수 추가하기
+
+
+```{python}
+name = pd.DataFrame({'nclass'  : [1, 2, 3, 4, 5],
+                     'teacher' : ['kim', 'lee', 'park', 'choi', 'jung']})
+name
+```
+
+---
+
+##### 다른 데이터를 활용해 변수 추가하기
+
+```{python}
+# nclass 기준으로 합쳐서 exam_new에 할당
+exam_new = pd.merge(exam, name, how = 'left', on = 'nclass')
+exam_new
+```
+
+---
+
+
+### 세로로 합치기
+
+
+```{python}
+# 학생 1~5번 시험 데이터 만들기
+group_a = pd.DataFrame({'id'   : [1, 2, 3, 4, 5],
+                        'test' : [60, 80, 70, 90, 85]})
+
+# 학생 6~10번 시험 데이터 만들기
+group_b = pd.DataFrame({'id'   : [6, 7, 8, 9, 10],
+                        'test' : [70, 83, 65, 95, 80]})
+```
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{python}
+group_a  # group_a 출력
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{python}
+group_b  # group_b 출력
+```
+:::
+
+::::
+
+
+---
+
+##### 결합할 데이터 프레임명을 `[]`를 이용해 나열
+
+```{python}
+# 데이터 합쳐서 group_all에 할당
+group_all = pd.concat([group_a, group_b])
+group_all
+```
+
+`r fontawesome::fa("triangle-exclamation", margin_left = '-0.5em', fill = '#FF7333')` 인덱스 중복 안되도록 새로 부여하려면 `pd.concat()`에 `ignore_index = True`
+
+
+
+---
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [pandas 더 알아보기]{.info}
+
+
+**치트 시트(cheat sheet)**: 패키지 사용법을 요약한 매뉴얼 
+
+• Pandas Cheat Sheet: [bit.ly/easypy_pandas](https://bit.ly/easypy_pandas)
+
+<br20>
+
+**`pandas` 공식 문서 검색하기**
+
+• pandas documentation: [pandas.pydata.org/docs](https://pandas.pydata.org/docs)
+
+
+:::
+
+---
+
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+`mpg` 데이터의 `fl` 변수는 자동차에 사용하는 연료(fuel)를 의미합니다. 다음은 자동차 연료별 가격을 나타낸 표입니다. 우선 이 정보를 이용해 연료와 가격으로 구성된 데이터 프레임을 만들어 보세요.
+
+<br10>
+
+![](img/06-quiz-fuel.jpg){width=38%}
+
+<br-back-30>
+
+```{python}
+fuel = pd.DataFrame({'fl'       : ['c', 'd', 'e', 'p', 'r'],
+                     'price_fl' : [2.35, 2.38, 2.11, 2.76, 2.22]})
+fuel
+```
+
+---
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+Q1. `mpg` 데이터에는 연료 종류를 나타낸 `fl` 변수는 있지만 연료 가격을 나타낸 변수는 없습니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;앞에서 만든 `fuel` 데이터를 이용해 `mpg` 데이터에 `price_fl`(연료 가격) 변수를 추가하세요.
+ 
+Q2. 연료 가격 변수가 잘 추가됐는지 확인하기 위해 `model`, `fl`, `price_fl` 변수를 추출해 앞부분<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5행을 출력해 보세요.
+
+---
+
+Q1. `mpg` 데이터에는 연료 종류를 나타낸 `fl` 변수는 있지만 연료 가격을 나타낸 변수는 없습니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;앞에서 만든 `fuel` 데이터를 이용해 `mpg` 데이터에 `price_fl`(연료 가격) 변수를 추가하세요.
+ 
+```{python}
+#| eval: false
+# mpg 데이터 불러오기
+mpg = pd.read_csv('mpg.csv')
+
+# mpg에 연료 가격 변수 추가
+mpg = pd.merge(mpg, fuel, how = 'left', on = 'fl')
+
+```
+
+```{python}
+#| echo: false
+mpg = pd.read_csv('../data/mpg.csv')                # mpg 데이터 불러오기
+mpg = pd.merge(mpg, fuel, how = 'left', on = 'fl')  # mpg에 연료 가격 변수 추가
+
+```
+
+
+---
+
+ 
+Q2. 연료 가격 변수가 잘 추가됐는지 확인하기 위해 `model`, `fl`, `price_fl` 변수를 추출해 앞부분<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5행을 출력해 보세요.
+
+```{python}
+# 변수 추출, 앞부분 일부 출력
+mpg[['model', 'fl', 'price_fl']].head()             
+
+```
+
+---
+
+#### 정리하기
+
+```{python}
+#| eval: false
+
+## 1. 조건에 맞는 데이터만 추출하기
+exam.query('english <= 80')
+exam.query('nclass == 1 & math >= 50')    # 여러 조건 동시 충족
+exam.query('math >= 90 | english >= 90')  # 여러 조건 중 하나 이상 충족
+exam.query('nclass in [1, 3, 5]')
+
+
+## 2. 필요한 변수만 추출하기
+exam['math']                              # 한 변수 추출
+exam[['nclass', 'math', 'english']]       # 여러 변수 추출
+exam.drop(columns = 'math')               # 변수 제거
+exam.drop(columns = ['math', 'english'])  # 여러 변수 제거
+
+
+## 3. pandas 명령어 조합하기
+exam.query('math >= 50')[['id', 'math']].head()
+
+```
+
+
+---
+
+#### 정리하기
+
+```{python}
+#| eval: false
+
+## 4. 순서대로 정렬하기
+exam.sort_values('math')                     # 오름차순 정렬
+exam.sort_values('math', ascending = False)  # 내림차순 정렬
+
+# 여러 변수 기준 정렬
+exam.sort_values(['nclass', 'math'], ascending = [True, False])
+```
+
+---
+
+#### 정리하기
+
+```{python}
+#| eval: false
+
+## 5. 파생변수 추가하기
+exam.assign(total = exam['math'] + exam['english'] + exam['science'])
+
+# 여러 파생변수 한 번에 추가하기
+exam.assign(total = exam['math'] + exam['english'] + exam['science'],
+            mean = (exam['math'] + exam['english'] + exam['science']) / 3)
+
+# assign()에 np.where() 적용하기
+exam.assign(test = np.where(exam['science'] >= 60, 'pass', 'fall'))
+
+# 추가한 변수를 pandas 코드에 바로 활용하기
+exam.assign(total = exam['math'] + exam['english'] + exam['science']) \
+    .sort_values('total') \
+    .head()
+```
+
+
+---
+
+#### 정리하기
+
+```{python}
+#| eval: false
+
+## 6. 집단별로 요약하기
+exam.groupby('nclass') \
+    .agg(mean_math = ('math', 'mean'))
+
+# 각 집단별로 다시 집단 나누기
+mpg.groupby(['manufacturer', 'drv']) \
+   .agg(mean_cty = ('cty', 'mean'))
+
+
+## 7. 데이터 합치기
+pd.merge(test1, test2, how = 'left', on = 'id')  # 가로로 합치기
+pd.concat([group_a, group_b])                    # 세로로 합치기
+
+```
+
+
+## 분석 도전 {background-color="#FFCE32" transition="fade"}
+
+---
+
+### 분석 도전
+
+**미국 동북중부 437개 지역의 인구통계 정보를 담고 있는 `midwest.csv`를 사용해 데이터 분석 문제를 해결해 보세요.**
+
+<br10>
+
+문제 1. `popadults`는 해당 지역의 성인 인구, `poptotal`은 전체 인구를 나타냅니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`midwest` 데이터에 '전체 인구 대비 미성년 인구 백분율' 변수를 추가하세요.
+
+문제 2. 미성년 인구 백분율이 가장 높은 상위 5개 `county`(지역)의 미성년 인구 백분율을 출력하세요.
+
+문제 3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;알아보세요.
+
+
+
+문제 4. `popasian`은 해당 지역의 아시아인 인구를 나타냅니다. '전체 인구 대비 아시아인 인구 백분율' <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변수를 추가하고 하위 10개 지역의 `state`(주), `county`(지역), 아시아인 인구 백분율을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;출력하세요.
+
+
+---
+
+
+문제 1. `popadults`는 해당 지역의 성인 인구, `poptotal`은 전체 인구를 나타냅니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`midwest` 데이터에 '전체 인구 대비 미성년 인구 백분율' 변수를 추가하세요.
+
+```{python}
+#| eval: false
+# midwest 데이터 불러오기
+midwest = pd.read_csv('midwest.csv')
+
+# midwest에 백분율 변수 추가
+midwest['ratio'] = (midwest['poptotal'] - midwest['popadults']) \
+                  / midwest['poptotal'] * 100
+
+```
+
+```{python}
+#| echo: false
+# midwest 데이터 불러오기
+midwest = pd.read_csv('../data/midwest.csv')
+
+# midwest에 백분율 변수 추가
+midwest['ratio'] = (midwest['poptotal'] - midwest['popadults']) \
+                  / midwest['poptotal'] * 100
+
+```
+
+---
+
+
+문제 2. 미성년 인구 백분율이 가장 높은 상위 5개 `county`(지역)의 미성년 인구 백분율을 출력하세요.
+
+
+:::: {.columns}
+
+::: {.column width="65%"}
+```{python}
+#| eval: false
+midwest.sort_values('ratio', ascending = False) \
+       .head() \
+       [['county', 'ratio']]
+
+```
+
+:::
+
+::: {.column width="35%"}
+
+```{python}
+# ratio 내림차순 정렬
+# 상위 5행 추출
+# 변수 추출
+
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+midwest.sort_values('ratio', ascending = False) \
+       .head() \
+       [['county', 'ratio']]
+
+```
+
+---
+
+
+문제 3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;알아보세요.
+
+
+```{python}
+# midwest에 grade 변수 추가
+midwest['grade'] = np.where(midwest['ratio'] >= 40, 'large',
+                   np.where(midwest['ratio'] >= 30, 'middle', 'small'))
+
+```
+
+##### 방법1
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{python}
+#| eval: false
+midwest.groupby('grade') \
+       .agg(n = ('grade', 'count'))
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+
+```{python}
+# grade별 분리
+# grade 빈도 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+midwest.groupby('grade') \
+       .agg(n = ('grade', 'count'))
+
+```
+
+
+---
+
+문제 3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;알아보세요.
+
+```{python}
+#| eval: false
+# midwest에 grade 변수 추가
+midwest['grade'] = np.where(midwest['ratio'] >= 40, 'large',
+                   np.where(midwest['ratio'] >= 30, 'middle', 'small'))
+
+```
+
+##### 방법2
+
+```{python}
+midwest['grade'].value_counts()
+
+```
+
+---
+
+
+문제 4. `popasian`은 해당 지역의 아시아인 인구를 나타냅니다. '전체 인구 대비 아시아인 인구 백분율' <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변수를 추가하고 하위 10개 지역의 `state`(주), `county`(지역), 아시아인 인구 백분율을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;출력하세요.
+
+```{python}
+#| eval: false
+# 백분율 변수 추가
+# 내림차순 정렬
+# 상위 10행 출력
+# 변수 추출
+midwest.assign(ratio_asian = midwest['popasian'] / midwest['poptotal'] * 100) \
+       .sort_values('ratio_asian') \
+       .head(10) \
+       [['state', 'county', 'ratio_asian']]
+
+```
+
+<br-back-30>
+
+::: {.small-90}
+
+```{python}
+#| echo: false
+midwest.assign(ratio_asian = midwest['popasian'] / midwest['poptotal'] * 100) \
+       .sort_values('ratio_asian') \
+       .head(10) \
+       [['state', 'county', 'ratio_asian']]
+
+
+```
+
+:::
+
+::: {background-color="#FF7232" transition="fade"}
+## 끝
+:::

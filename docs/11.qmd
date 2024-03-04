@@ -1,0 +1,533 @@
+---
+jupyter: python3
+title: "Do it! 쉽게 배우는 파이썬 데이터 분석"
+output-dir: html
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+
+```{r setup, include=FALSE}
+# 파이썬 버전 설정
+knitr::opts_chunk$set(engine.path = list(
+  python = "C:/Users/USER/anaconda3"))
+```
+
+### {data-menu-title="Info"}
+
+
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+
+# 한글 우측 줄맞춤
+import pandas as pd
+pd.set_option("display.unicode.east_asian_width", True)
+
+```
+
+
+
+<!-- fa 아이콘 출력 설정 -->
+<!-- [{{< fa rocket size=sm >}}]} -->
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+<br>
+<br>
+
+![](img/cover.png){fig-align="center" width="75%"}
+
+:::
+
+<!-- width: 55% -->
+
+::: {.column width="55%"}
+
+<br>
+<br>
+<br>
+
+`r fontawesome::fa("github", margin_left = '-0.5em')` [github.com/youngwoos/Doit_Python](https://github.com/youngwoos/Doit_Python)
+
+`r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [ 슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
+`r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
+
+<br-back-10>
+
+&nbsp;&nbsp; ▪ [yes24](http://www.yes24.com/Product/Goods/108947478)
+
+&nbsp;&nbsp; ▪ [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601)
+
+&nbsp;&nbsp; ▪ [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163033493)
+
+:::
+
+::::
+
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 11 지도 시각화 {background-color="#FF7232" transition="fade"}
+
+ 
+:::
+
+
+---
+
+### {data-menu-title="To do"}
+
+<br>
+<br>
+
+
+![](img/11_title.png){width=60% fig-align="center"}
+
+---
+
+<br>
+
+##### [목차]{.font-jua .larger}
+
+
+[11-1 시군구별 인구 단계 구분도 만들기]{.font-jua}([link](#시군구별-인구-단계-구분도-만들기))
+
+[11-2 서울시 동별 외국인 인구 단계 구분도 만들기]{.font-jua}([link](#서울시-동별-외국인-인구-단계-구분도-만들기))
+
+
+
+
+
+## 08-1 시군구별 인구 단계 구분도 만들기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+
+### 시군구별 인구 단계 구분도 만들기
+
+#### 1. 시군구 경계 지도 데이터 준비하기
+
+
+```{python}
+#| eval: false
+import json
+geo = json.load(open('SIG.geojson', encoding = 'UTF-8'))
+```
+
+```{python}
+#| echo: false
+import json
+geo = json.load(open('../Data/SIG.geojson', encoding = 'UTF-8'))
+
+```
+
+```{python}
+# 행정 구역 코드 출력 
+geo['features'][0]['properties']
+```
+
+```{python}
+# 위도, 경도 좌표 출력
+geo['features'][0]['geometry']
+```
+---
+
+
+#### 2. 시군구별 인구 데이터 준비하기
+
+```{python}
+#| eval: false
+import pandas as pd
+df_pop = pd.read_csv('Population_SIG.csv')
+df_pop.head()
+```
+
+
+
+```{python}
+#| echo: false
+import pandas as pd
+df_pop = pd.read_csv('../Data/Population_SIG.csv')
+df_pop.head()
+```
+
+---
+
+```{python}
+df_pop.info()
+```
+
+##### `code`를 문자 타입으로 바꾸기
+
+```{python}
+df_pop['code'] = df_pop['code'].astype(str)
+```
+
+---
+
+
+#### 3. 단계 구분도 만들기
+
+```{python}
+#| eval: false
+pip install folium
+```
+
+
+---
+
+**(1) 배경 지도 만들기**
+
+```{python}
+#| eval: false
+import folium
+folium.Map(location = [35.95, 127.7],  # 지도 중심 좌표
+           zoom_start = 8)             # 확대 단계
+```
+
+<br-back-10>
+
+:::: {.columns}
+
+::: {.column width="80%"}
+
+```{python}
+#| echo: false
+import folium
+folium.Map(location = [35.95, 127.7],  # 지도 중심 좌표
+           zoom_start = 8)             # 확대 단계
+```
+
+:::
+
+::::
+
+
+---
+
+
+```{python}
+#| eval: false
+map_sig = folium.Map(location = [35.95, 127.7],  # 지도 중심 좌표
+                     zoom_start = 8,             # 확대 단계
+                     tiles = 'cartodbpositron')  # 지도 종류
+map_sig
+```
+
+
+<br-back-10>
+
+:::: {.columns}
+
+::: {.column width="80%"}
+
+```{python}
+#| echo: false
+map_sig = folium.Map(location = [35.95, 127.7],  # 지도 중심 좌표
+                     zoom_start = 8,             # 확대 단계
+                     tiles = 'cartodbpositron')  # 지도 종류
+map_sig
+
+```
+
+:::
+
+::::
+
+---
+
+**(2) 단계 구분도 만들기**
+
+```{python}
+#| eval: false
+#| tags: [remove_output]
+# 지도 데이터
+# 통계 데이터
+# df_pop 행정 구역 코드, 인구
+# geo 행정 구역 코드
+folium.Choropleth(geo_data = geo,
+                  data = df_pop,
+                  columns = ('code', 'pop'),
+                  key_on = 'feature.properties.SIG_CD') \
+      .add_to(map_sig)
+
+map_sig
+```
+
+
+---
+
+
+:::: {.columns}
+
+::: {.column width="80%"}
+
+```{python}
+#| echo: false
+folium.Choropleth(geo_data = geo,
+                  data = df_pop,
+                  columns = ('code', 'pop'),
+                  key_on = 'feature.properties.SIG_CD') \
+      .add_to(map_sig)
+
+map_sig
+
+```
+
+:::
+
+::::
+
+
+---
+
+
+**(3) 계급 구간 정하기**
+
+```{python}
+bins = list(df_pop['pop'].quantile([0, 0.2, 0.4, 0.6, 0.8, 1]))
+bins
+```
+
+
+---
+
+**(4) 디자인 수정하기**
+
+```{python}
+#| tags: [remove_output]
+#| eval: false
+## 배경 지도 만들기
+
+# 지도 중심 좌표
+# 확대 단계
+# 지도 종류
+map_sig = folium.Map(location = [35.95, 127.7],
+                     zoom_start = 8,
+                     tiles = 'cartodbpositron')
+```
+
+
+---
+
+**(4) 디자인 수정하기**
+
+
+
+```{python}
+#| eval: false
+## 단계 구분도 만들기
+# 지도 데이터
+# 통계 데이터
+# df_pop 행정 구역 코드, 인구
+# geo 행정 구역 코드
+# 컬러맵
+# 투명도
+# 경계선 투명도
+# 계급 구간 기준값
+# 배경 지도에 추가
+folium.Choropleth(geo_data = geo,
+                  data = df_pop,
+                  columns = ('code', 'pop'),
+                  key_on = 'feature.properties.SIG_CD',
+                  fill_color = 'YlGnBu',
+                  fill_opacity = 1,
+                  line_opacity = 0.5,
+                  bins = bins) \
+      .add_to(map_sig)
+map_sig
+```
+
+---
+
+<iframe src="map_sig_02.html" width="1200" height="720"></iframe>
+
+---
+
+<!-- ## 11-2 서울시 동별 외국인 인구 단계 구분도 만들기 -->
+
+<!-- ### 서울시 동별 외국인 인구 단계 구분도 만들기 -->
+
+<!-- #### 1. 서울시 동 경계 지도 데이터 준비하기 -->
+
+<!-- ```{python} -->
+<!-- #| eval: false -->
+<!-- import json -->
+<!-- geo_seoul = json.load(open('EMD_Seoul.geojson', encoding = 'UTF-8')) -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- import json -->
+<!-- geo_seoul = json.load(open('../Data/EMD_Seoul.geojson', encoding = 'UTF-8')) -->
+<!-- ``` -->
+
+
+
+<!-- ```{python} -->
+<!-- #| eval: false -->
+<!-- # 행정 구역 코드 출력  -->
+<!-- geo_seoul['features'][0]['properties'] -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- #| eval: false -->
+<!-- # 위도, 경도 좌표 출력 -->
+<!-- # geo_seoul['features'][0]['geometry'] -->
+<!-- ``` -->
+
+<!-- #### 2. 서울시 동별 외국인 인구 데이터 준비하기 -->
+
+<!-- ```{python} -->
+<!-- #| eval: false -->
+<!-- foreigner = pd.read_csv('Foreigner_EMD_Seoul.csv') -->
+<!-- foreigner.head() -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- foreigner = pd.read_csv('../Data/Foreigner_EMD_Seoul.csv') -->
+<!-- foreigner.head() -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- foreigner.info() -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- foreigner['code'] = foreigner['code'].astype(str) -->
+<!-- ``` -->
+
+<!-- #### 3. 단계 구분도 만들기 -->
+
+<!-- ```{python} -->
+<!-- bins = list(foreigner['pop'].quantile([0, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])) -->
+<!-- bins -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- #| tags: [remove_output] -->
+<!-- ## 배경 지도 만들기 -->
+
+<!-- # 서울 좌표 -->
+<!-- # 확대 단계 -->
+<!-- # 지도 종류 -->
+<!-- map_seoul = folium.Map(location = [37.56, 127],    -->
+<!--                        zoom_start = 12,            -->
+<!--                        tiles = 'cartodbpositron')  -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- #| tags: [remove_output] -->
+<!-- ## 단계구분도 만들기 -->
+
+<!-- # 지도 데이터 -->
+<!-- # 통계 데이터 -->
+<!-- # foreigner 행정 구역 코드, 인구 -->
+<!-- # geo_seoul 행정 구역 코드 -->
+<!-- # 컬러맵 -->
+<!-- # 결측치 색깔 -->
+<!-- # 투명도 -->
+<!-- # 경계선 투명도 -->
+<!-- # 계급 구간 기준값 -->
+<!-- # 배경 지도에 추가 -->
+<!-- folium.Choropleth(geo_data = geo_seoul, -->
+<!--                   data = foreigner, -->
+<!--                   columns = ('code', 'pop'), -->
+<!--                   key_on = 'feature.properties.ADM_DR_CD', -->
+<!--                   fill_color = 'Blues', -->
+<!--                   nan_fill_color = 'White', -->
+<!--                   fill_opacity = 1, -->
+<!--                   line_opacity = 0.5, -->
+<!--                   bins = bins) \ -->
+<!--       .add_to(map_seoul) -->
+
+<!-- map_seoul -->
+<!-- ``` -->
+
+<!-- #### 4. 구 경계선 추가하기 -->
+
+<!-- ```{python} -->
+<!-- #| eval: false -->
+<!-- geo_seoul_sig = json.load(open('SIG_Seoul.geojson', encoding = 'UTF-8')) -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- #| echo: false -->
+<!-- geo_seoul_sig = json.load(open('../Data/SIG_Seoul.geojson', encoding = 'UTF-8')) -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- #| tags: [remove_output] -->
+<!-- ## 서울 구 라인 추가 -->
+
+<!-- # 지도 데이터 -->
+<!-- # 투명도 -->
+<!-- # 선 두께 -->
+<!-- # 지도에 추가 -->
+<!-- folium.Choropleth(geo_data = geo_seoul_sig, -->
+<!--                   fill_opacity = 0, -->
+<!--                   line_weight = 4) \ -->
+<!--       .add_to(map_seoul) -->
+
+<!-- map_seoul -->
+<!-- ``` -->
+
+<!-- ----------------------------------------------------------------------- -->
+
+<!-- ### (알아 두면 좋아요) `folium` 활용하기 -->
+
+<!-- **HTML 파일로 저장하기** -->
+
+<!-- ```{python} -->
+<!-- #| eval: false -->
+<!-- map_seoul.save('map_seoul.html') -->
+<!-- ``` -->
+
+<!-- **웹 브라우저에서 html 파일 열기** -->
+
+<!-- ```{python} -->
+<!-- #| eval: false -->
+<!-- import webbrowser -->
+<!-- # webbrowser.open_new('map_seoul.html') -->
+<!-- ``` -->
+
+
+
+
+
+<!-- ::: {background-color="#FF7232" transition="fade"} -->
+<!-- ## 끝 -->
+<!-- ::: -->

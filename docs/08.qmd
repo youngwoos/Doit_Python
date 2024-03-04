@@ -1,0 +1,1103 @@
+---
+jupyter: python3
+title: "Do it! 쉽게 배우는 파이썬 데이터 분석"
+output-dir: html
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+
+```{r setup, include=FALSE}
+# 파이썬 버전 설정
+knitr::opts_chunk$set(engine.path = list(
+  python = "C:/Users/USER/anaconda3"))
+```
+
+### {data-menu-title="Info"}
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+```
+
+
+<!-- fa 아이콘 출력 설정 -->
+<!-- [{{< fa rocket size=sm >}}]} -->
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+<br>
+<br>
+
+![](img/cover.png){fig-align="center" width="75%"}
+
+:::
+
+<!-- width: 55% -->
+
+::: {.column width="55%"}
+
+<br>
+<br>
+<br>
+
+`r fontawesome::fa("github", margin_left = '-0.5em')` [github.com/youngwoos/Doit_Python](https://github.com/youngwoos/Doit_Python)
+
+`r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [ 슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
+`r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
+
+<br-back-10>
+
+&nbsp;&nbsp; ▪ [yes24](http://www.yes24.com/Product/Goods/108947478)
+
+&nbsp;&nbsp; ▪ [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601)
+
+&nbsp;&nbsp; ▪ [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163033493)
+
+:::
+
+::::
+
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 08 그래프 만들기 {background-color="#FF7232" transition="fade"}
+
+ 
+:::
+
+
+---
+
+### {data-menu-title="To do"}
+
+<br>
+<br>
+
+
+![](img/08-intro.png){width=60% fig-align="center"}
+
+---
+
+<br>
+
+##### [목차]{.font-jua .larger}
+
+
+[08-1 파이썬으로 만들 수 있는 그래프 살펴보기]{.font-jua}([link](#파이썬으로-만들-수-있는-그래프-살펴보기))
+
+[08-2 산점도 - 변수 간 관계 표현하기]{.font-jua}([link](#산점도---변수-간-관계-표현하기))
+
+[08-3 막대 그래프 - 집단 간 차이 표현하기]{.font-jua}([link](#막대-그래프---집단-간-차이-표현하기))
+
+[08-4 그래프 - 시간에 따라 달라지는 데이터 표현하기]{.font-jua}([link](#그래프---시간에-따라-달라지는-데이터-표현하기))
+
+[08-5 상자 그림 - 집단 간 분포 차이 표현하기]{.font-jua}([link](#상자-그림---집단-간-분포-차이-표현하기))
+
+
+## 08-1 파이썬으로 만들 수 있는 그래프 살펴보기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+**그래프(graph)**: 데이터를 보기 쉽게 그림으로 표현한 것
+
+- 추세와 경향성이 드러나 데이터의 특징을 쉽게 이해할 수 있다
+- 새로운 패턴 발견, 데이터의 특징을 잘 전달
+- 다양한 그래프
+  - 2차원 그래프, 3차원 그래프
+  - 지도 그래프
+  - 네트워크 그래프
+  - 모션 차트
+  - 인터랙티브 그래프
+
+---
+
+##### `seaborn` 패키지
+
+- 그래프를 만들 때 자주 사용되는 패키지
+- 코드가 쉽고 간결함
+
+
+## 08-2 산점도 <br>- 변수 간 관계 표현하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+##### 산점도(scatter plot)
+- 데이터를 x축과 y축에 점으로 표현한 그래프
+- 나이와 소득처럼 연속값으로 된 두 변수의 관계를 표현할 때 사용
+
+<br-back-20>
+
+
+```{python}
+#| echo: false
+import pandas as pd
+import seaborn as sns
+mpg = pd.read_csv('../data/mpg.csv')
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv')
+```
+
+---
+
+### 산점도 만들기
+
+```{python}
+#| eval: false
+import pandas as pd
+mpg = pd.read_csv('mpg.csv')
+```
+
+
+```{python}
+#| echo: false
+import pandas as pd
+mpg = pd.read_csv('../data/mpg.csv')
+```
+
+
+```{python}
+# x축은 displ, y축은 hwy를 나타낸 산점도 만들기
+import seaborn as sns
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy')
+```
+
+---
+
+#### 축 범위 설정하기
+
+```{python}
+#| eval: false
+# x축 범위 3~6으로 제한
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy') \
+   .set(xlim = [3, 6])
+```
+
+<br-back-20>
+
+```{python}
+#| echo: false
+import matplotlib.pyplot as plt
+
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy') \
+   .set(xlim = [3, 6]);
+
+plt.show()
+```
+
+
+---
+
+#### 축 범위 설정하기
+
+```{python}
+#| eval: false
+# x축 범위 3~6, y축 범위 10~30으로 제한
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy') \
+   .set(xlim = [3, 6], ylim = [10, 30])
+```
+
+<br-back-20>
+
+```{python}
+#| echo: false
+# x축 범위 3~6, y축 범위 10~30으로 제한
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy') \
+   .set(xlim = [3, 6], ylim = [10, 30]);
+
+plt.show()
+```
+
+
+---
+
+#### 종류별로 표식 색깔 바꾸기
+
+```{python}
+# drv별로 표식 색깔 다르게 표현
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv')
+```
+
+---
+
+
+:::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [그래프 활용하기]{.info}
+
+
+::: {.small-90}
+
+##### 그래프 설정 바꾸기
+
+```{python}
+#| eval: false
+import matplotlib.pyplot as plt
+plt.rcParams.update({'figure.dpi' : '150'})             # 해상도, 기본값 72
+plt.rcParams.update({'figure.figsize' : [8, 6]})        # 그림 크기, 기본값 [6, 4]
+plt.rcParams.update({'font.size' : '15'})               # 글자 크기, 기본값 10
+plt.rcParams.update({'font.family' : 'Malgun Gothic'})  # 폰트, 기본값 sans-serif
+
+# 여러 요소를 한 번에 설정하기
+plt.rcParams.update({'figure.dpi'     : '150',
+                     'figure.figsize' : [8, 6],
+                     'font.size'      : '15',
+                     'font.family'    : 'Malgun Gothic'})
+
+# 모든 설정 되돌리기
+plt.rcdefaults()
+```
+
+##### 설명 메시지 숨기기 - 코드 뒤에 `;` 삽입
+
+```{python}
+#| eval: false
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy');
+```
+
+:::
+
+::::
+
+---
+
+### 혼자서 해보기
+
+**`mpg` 데이터와 `midwest` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+Q1. `mpg` 데이터의 `cty`(도시 연비)와 `hwy`(고속도로 연비) 간에 어떤 관계가 있는지 알아보려고<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 합니다. `x`축은 `cty`, `y`축은 `hwy로` 된 산점도를 만들어 보세요.
+
+
+Q2. 미국의 지역별 인구통계 정보를 담은 `midwest.csv`를 이용해 전체 인구와 아시아인 인구 간에 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;어떤 관계가 있는지 알아보려고 합니다.
+
+<br-back-20>
+
+&nbsp;&nbsp; •`x`축은 `poptotal`(전체 인구), `y`축은 `popasian`(아시아인 인구)으로 된 산점도를 만들어 보세요.
+&nbsp;&nbsp; •전체 인구는 50만 명 이하, 아시아인 인구는 1만 명 이하인 지역만 산점도에 표시되게 설정하세요.
+
+---
+
+Q1. `mpg` 데이터의 `cty`(도시 연비)와 `hwy`(고속도로 연비) 간에 어떤 관계가 있는지 알아보려고<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 합니다. `x`축은 `cty`, `y`축은 `hwy로` 된 산점도를 만들어 보세요.
+
+
+```{python eval = F}
+mpg = pd.read_csv('mpg.csv')                       # mpg 데이터 불러오기
+sns.scatterplot(data = mpg, x = 'cty', y = 'hwy')  # 산점도 만들기
+```
+
+<br-back-20>
+
+```{python, echo = F}
+mpg = pd.read_csv('../data/mpg.csv')
+
+# 그래프 만들기
+sns.scatterplot(data = mpg, x = 'cty', y = 'hwy');
+
+plt.show()
+```
+
+
+---
+
+
+Q2. 미국의 지역별 인구통계 정보를 담은 `midwest.csv`를 이용해 전체 인구와 아시아인 인구 간에 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;어떤 관계가 있는지 알아보려고 합니다.
+
+<br-back-20>
+
+&nbsp;&nbsp; •`x`축은 `poptotal`(전체 인구), `y`축은 `popasian`(아시아인 인구)으로 된 산점도를 만들어 보세요.
+&nbsp;&nbsp; •전체 인구는 50만 명 이하, 아시아인 인구는 1만 명 이하인 지역만 산점도에 표시되게 설정하세요.
+
+
+```{python eval = F}
+# midwest 데이터 불러오기
+midwest = pd.read_csv('midwest.csv')
+
+# 산점도 만들기, 축 범위 제한하기
+sns.scatterplot(data = midwest, x = 'poptotal', y = 'popasian') \
+   .set(xlim = (0, 500000), ylim = (0, 10000))
+```
+
+<br-back-50>
+
+```{python, echo = F}
+midwest = pd.read_csv('../data/midwest.csv')
+
+# 그래프 만들기
+sns.scatterplot(data = midwest, x = 'poptotal', y = 'popasian') \
+       .set(xlim = (0, 500000), ylim = (0, 10000));
+
+plt.show()
+```
+
+
+
+## 08-3 막대 그래프<br> - 집단 간 차이 표현하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+##### 막대 그래프(bar chart)
+
+- 데이터의 크기를 막대의 길이로 표현한 그래프
+- 성별 소득 차이처럼 집단 간 차이를 표현할 때 사용
+
+<br-back-40>
+
+```{python}
+#| echo: false
+df_mpg = mpg.groupby('drv', as_index = False) \
+            .agg(mean_hwy = ('hwy', 'mean'))
+
+sns.barplot(data = df_mpg, x = 'drv', y = 'mean_hwy')
+```
+
+---
+
+### 평균 막대 그래프 만들기
+
+#### 1. 집단별 평균표 만들기
+
+```{python}
+df_mpg = mpg.groupby('drv') \
+            .agg(mean_hwy = ('hwy', 'mean'))
+df_mpg
+```
+
+
+---
+
+##### `as_index = False`: 변수를 인덱스로 바꾸지 않고 원래대로 유지
+
+- 앞 코드의 출력 결과를 보면 집단을 나타낸 변수 `drv`가 인덱스로 바뀌어 `mean_hwy`보다 아래에 표시됨
+- `seaborn`으로 그래프를 만들려면 값이 변수에 담겨 있어야 함
+
+```{python}
+df_mpg = mpg.groupby('drv', as_index = False) \
+            .agg(mean_hwy = ('hwy', 'mean'))
+df_mpg
+
+```
+
+---
+
+#### 2. 그래프 만들기
+
+```{python}
+sns.barplot(data = df_mpg, x = 'drv', y = 'mean_hwy')
+```
+
+---
+
+#### 3. 크기순으로 정렬하기
+
+```{python}
+# 데이터 프레임 정렬하기
+df_mpg = df_mpg.sort_values('mean_hwy', ascending = False)
+
+# 막대 그래프 만들기
+sns.barplot(data = df_mpg, x = 'drv', y = 'mean_hwy')
+```
+
+---
+
+### 빈도 막대 그래프 만들기
+
+- 빈도 막대 그래프: 값의 빈도(개수)를 막대 길이로 표현한 그래프
+- 여러 집단의 빈도를 비교할 때 사용
+
+#### 1. 집단별 빈도표 만들기
+
+```{python}
+# 집단별 빈도표 만들기
+df_mpg = mpg.groupby('drv', as_index = False) \
+            .agg(n = ('drv', 'count'))
+
+df_mpg
+```
+
+---
+
+#### 2. 그래프 만들기
+
+```{python}
+# 막대 그래프 만들기
+sns.barplot(data = df_mpg, x = 'drv', y = 'n')
+```
+
+---
+
+#### `sns.countplot()`으로 빈도 막대 그래프 만들기
+
+- 집단별 빈도표 만드는 작업 생략하고 원자료를 이용해 곧바로 빈도 막대 그래프 만듦
+
+```{python}
+# 빈도 막대 그래프 만들기
+sns.countplot(data = mpg, x = 'drv')
+```
+
+---
+
+##### `sns.barplot()`와 `sns.countplot()` x축 순서가 다른 이유
+
+- `mpg`의 `drv`: `f`, `4`, `r`순
+  - 데이터 프레임에서 변수의 값 순서는 데이터 프레임에 입력된 행 순서를 따름
+  - `mpg`의 0~6행 `f`, 7~17행 `4`, 18~27 `r`
+
+
+```{python}
+mpg['drv'].unique()
+```
+
+- `df_mpg`의 `drv`: 알파벳순
+  - `groupby()`로 데이터 프레임을 요약하면 값의 순서가 알파벳순으로 바뀜
+
+```{python}
+df_mpg['drv'].unique()
+```
+
+---
+
+#### 막대 정렬하기
+
+```{python}
+# 4, f, r 순으로 막대 정렬
+sns.countplot(data = mpg, x = 'drv', order = ['4', 'f', 'r'])
+```
+
+---
+
+##### 빈도 높은 순으로 정렬하기
+
+```{python}
+# drv의 값을 빈도가 높은 순으로 출력
+mpg['drv'].value_counts().index
+```
+
+```{python}
+# drv 빈도 높은 순으로 막대 정렬
+sns.countplot(data = mpg, x = 'drv', order = mpg['drv'].value_counts().index)
+```
+
+---
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+Q1. 어떤 회사에서 생산한 `'suv'` 차종의 도시 연비가 높은지 알아보려고 합니다. `'suv'` 차종을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대상으로 `cty`(도시 연비) 평균이 가장 높은 회사 다섯 곳을 막대 그래프로 표현해 보세요. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;막대는 연비가 높은 순으로 정렬하세요.
+
+Q2. 자동차 중에 어떤 `category`(자동차 종류)가 많은지 알아보려고 합니다. `sns.barplot()`을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이용해 자동차 종류별 빈도를 표현한 막대 그래프를 만들어 보세요. 막대는 빈도가 높은 순으로<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 정렬하세요.
+
+
+
+---
+
+Q1. 어떤 회사에서 생산한 `'suv'` 차종의 도시 연비가 높은지 알아보려고 합니다. `'suv'` 차종을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대상으로 `cty`(도시 연비) 평균이 가장 높은 회사 다섯 곳을 막대 그래프로 표현해 보세요. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;막대는 연비가 높은 순으로 정렬하세요.
+
+:::: {.columns}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# mpg 데이터 불러오기
+mpg = pd.read_csv('mpg.csv')
+
+df = mpg.query('category == "suv"') \
+        .groupby('manufacturer', as_index = False) \
+        .agg(mean_cty = ('cty','mean')) \
+        .sort_values('mean_cty', ascending = False) \
+        .head()
+df
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+
+
+# suv 차종 추출
+# manufacturer별 분리
+# cty 평균 구하기
+# 내림차순 정렬
+# 상위 5행 추출
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# mpg 데이터 불러오기
+mpg = pd.read_csv('../data/mpg.csv')
+
+# 평균표 만들기
+df = mpg.query('category == "suv"') \
+        .groupby('manufacturer', as_index = False) \
+        .agg(mean_cty = ('cty','mean')) \
+        .sort_values('mean_cty', ascending = False) \
+        .head()
+df
+```
+
+
+---
+
+
+Q1. 어떤 회사에서 생산한 `'suv'` 차종의 도시 연비가 높은지 알아보려고 합니다. `'suv'` 차종을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대상으로 `cty`(도시 연비) 평균이 가장 높은 회사 다섯 곳을 막대 그래프로 표현해 보세요. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;막대는 연비가 높은 순으로 정렬하세요.
+
+```{python}
+# 막대 그래프 만들기
+sns.barplot(data = df, x = 'manufacturer', y = 'mean_cty')
+```
+
+---
+
+Q2. 자동차 중에 어떤 `category`(자동차 종류)가 많은지 알아보려고 합니다. `sns.barplot()`을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이용해 자동차 종류별 빈도를 표현한 막대 그래프를 만들어 보세요. 막대는 빈도가 높은 순으로<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 정렬하세요.
+
+
+:::: {.columns}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+df_mpg = mpg.groupby('category', as_index = False) \
+            .agg(n = ('category', 'count')) \
+            .sort_values('n', ascending = False)
+
+df_mpg
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+# category별 분리
+# 빈도 구하기
+# 내림차순 정렬
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+df_mpg = mpg.groupby('category', as_index = False) \
+            .agg(n = ('category', 'count')) \
+            .sort_values('n', ascending = False)
+
+df_mpg
+
+```
+
+---
+
+Q2. 자동차 중에 어떤 `category`(자동차 종류)가 많은지 알아보려고 합니다. `sns.barplot()`을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이용해 자동차 종류별 빈도를 표현한 막대 그래프를 만들어 보세요. 막대는 빈도가 높은 순으로<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 정렬하세요.
+
+
+```{python}
+#| eval: false
+# 막대 그래프 만들기
+sns.barplot(data = df_mpg, x = 'category', y = 'n')
+
+```
+
+<br-back-40>
+
+
+```{python}
+#| echo: false
+# 폰트 크기 임시 변경 - 퀴즈 x축 겹칩
+plt.rcParams.update({'font.size': '8'})
+
+# 그래프 만들기
+sns.barplot(data = df_mpg, x = 'category', y = 'n')
+plt.show()
+
+# 설정 되돌리기
+plt.rcdefaults()
+
+```
+
+
+## 08-4 선 그래프 <br> - 시간에 따라 달라지는 데이터 표현하기 {background-color="#FFCE32" transition="fade"}
+
+
+---
+
+##### 선 그래프(line chart): 데이터를 선으로 표현한 그래프
+
+- 시간에 따라 달라지는 데이터를 표현할 때 사용
+    - ex) 환율, 주가지수 등 경제지표가 시간에 따라 변하는 양상
+- 시계열 데이터(time series data): 일별 환율처럼, 일정 시간 간격을 두고 나열된 데이터
+- 시계열 그래프(time series chart): 시계열 데이터를 선으로 표현한 그래프
+
+<br-back-40>
+
+```{python}
+#| echo: false
+economics = pd.read_csv('../data/economics.csv')
+
+sns.lineplot(data = economics, x = pd.to_datetime(economics['date']).dt.year, y = 'unemploy', errorbar = None)
+
+
+```
+
+
+---
+
+### 시계열 그래프 만들기
+
+```{python}
+#| eval: false
+# economics 데이터 불러오기
+economics = pd.read_csv('economics.csv')
+economics.head()
+```
+
+```{python}
+#| echo: false
+# economics 데이터 불러오기
+economics = pd.read_csv('../data/economics.csv')
+economics.head()
+```
+
+---
+
+
+```{python}
+sns.lineplot(data = economics, x = 'date', y = 'unemploy')
+```
+
+- x축에 굵은 선이 표시되어 있음
+- ‘연월일’ 을 나타낸 문자가 x축에 여러 번 겹쳐 표시되었기 때문
+
+---
+
+#### x축에 연도 표시하기
+
+##### (1) 날짜 시간 타입 변수 만들기
+
+```{python}
+# 날짜 시간 타입 변수 만들기
+economics['date2'] = pd.to_datetime(economics['date'])
+
+# 변수 타입 확인
+economics.info()
+```
+
+---
+
+```{python}
+economics[['date', 'date2']]
+```
+
+---
+
+```{python}
+# 연 추출
+economics['date2'].dt.year
+```
+
+---
+
+```{python}
+# 월 추출
+economics['date2'].dt.month
+```
+
+---
+
+```{python}
+# 일 추출
+economics['date2'].dt.day
+```
+
+---
+
+##### (2) 연도 변수 만들기
+
+```{python}
+# 연도 변수 추가
+economics['year'] = economics['date2'].dt.year
+economics.head()
+```
+
+---
+
+##### (3) x축에 연도 표시하기
+
+```{python}
+# x축에 연도 표시
+sns.lineplot(data = economics, x = 'year', y = 'unemploy')
+```
+
+---
+
+##### (3) x축에 연도 표시하기
+
+```{python}
+# 신뢰구간 제거
+sns.lineplot(data = economics, x = 'year', y = 'unemploy', errorbar = None)
+```
+
+
+---
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+Q1. `psavert`(개인 저축률)가 시간에 따라 어떻게 변해 왔는지 알아보려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;연도별 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요.
+
+Q2. 2014년 월별 `psavert`의 변화를 나타낸 시계열 그래프를 만들어 보세요.
+
+
+---
+
+Q1. `psavert`(개인 저축률)가 시간에 따라 어떻게 변해 왔는지 알아보려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;연도별 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요.
+
+```{python}
+#| eval: false
+# economics 데이터 불러오기
+economics = pd.read_csv('economics.csv')
+
+# 날짜 시간 타입 변수 만들기
+economics['date2'] = pd.to_datetime(economics['date'])
+
+# 연도 변수 추가
+economics['year'] = economics['date2'].dt.year
+```
+
+
+```{python}
+#| echo: false
+# economics 데이터 불러오기
+economics = pd.read_csv('../data/economics.csv')
+
+# 날짜 시간 타입 변수 만들기
+economics['date2'] = pd.to_datetime(economics['date'])
+
+# 연도 변수 추가
+economics['year'] = economics['date2'].dt.year
+
+```
+
+---
+
+Q1. `psavert`(개인 저축률)가 시간에 따라 어떻게 변해 왔는지 알아보려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;연도별 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요.
+
+```{python}
+# 연도별 개인 저축률 선 그래프
+sns.lineplot(data = economics, x = 'year', y = 'psavert', errorbar = None)
+```
+
+---
+
+Q2. 2014년 월별 `psavert`의 변화를 나타낸 시계열 그래프를 만들어 보세요.
+
+```{python}
+# 월 변수 추가
+economics['month'] = economics['date2'].dt.month
+
+# 2014년 추출
+df_2014 = economics.query('year == 2014')
+
+# 선 그래프 만들기
+sns.lineplot(data = df_2014, x = 'month', y = 'psavert', errorbar = None)
+```
+
+
+## 08-5 상자 그림 <br> - 집단 간 분포 차이 표현하기 {background-color="#FFCE32" transition="fade"}
+
+
+---
+
+##### 상자 그림(box plot) : 데이터의 분포 또는 퍼져 있는 형태를 직사각형 상자 모양으로 표현한 그래프
+
+- 데이터가 어떻게 분포하고 있는지 알 수 있다
+- 평균값만 볼 때보다 데이터의 특징을 더 자세히 이해할 수 있댜
+
+
+<br-back-40>
+
+```{python, echo = F}
+# mpg 데이터 불러오기
+mpg = pd.read_csv('../data/mpg.csv')
+
+df = mpg.query('category in ["compact", "subcompact", "suv"]')
+
+# 그래프 만들기
+sns.boxplot(data = df, x = 'category', y = 'cty')
+```
+
+---
+
+### 상자 그림 만들기
+
+```{python}
+#| eval: false
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
+```
+
+<br-back-40>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
+```
+
+:::
+
+::: {.column width="50%"}
+
+:::
+
+::::
+
+---
+
+### 상자 그림 만들기
+
+```{python}
+#| eval: false
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
+```
+
+<br-back-40>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
+```
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+![](img/08-boxplot_table.png)
+
+<br-back-50>
+
+[
+• IQR(사분위 범위): 1사분위수와 3사분위수의 거리
+<br-back-10>
+• 1.5 IQR: IQR의 1.5배
+]{.small}
+
+
+:::
+
+::::
+
+---
+
+### 상자 그림 만들기
+
+```{python}
+#| eval: false
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
+```
+
+<br-back-40>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{python}
+#| echo: false
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
+```
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+- **전륜구동(f)**
+  - 26~29 사이의 좁은 범위에 자동차가 모여 있는 뾰족한 형태의 분포
+  - 수염의 위아래에 점 표식이 있으므로 연비가 <br>극단적으로 높거나 낮은 자동차들이 있다
+
+- **4륜구동(4)**
+  - 17~22 사이에 자동차 대부분이 모여 있다
+  - 중앙값이 상자 밑면에 가까우므로 낮은 값 쪽으로 치우친 형태의 분포
+
+- **후륜구동(r)**
+  - 17~24 사이의 넓은 범위에 자동차가 분포한다
+  - 수염이 짧고 극단치가 없으므로 자동차 대부분이 사분위 범위에 해당
+
+:::
+
+::::
+
+---
+
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+Q1. `category`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;어떻게 다른지 비교해 보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어 보세요.
+
+
+---
+
+Q1. `category`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;어떻게 다른지 비교해 보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어 보세요.
+
+
+```{python eval = F}
+# mpg 데이터 불러오기
+mpg = pd.read_csv('mpg.csv')
+
+# compact, subcompact, suv 차종 추출
+df = mpg.query('category in ["compact", "subcompact", "suv"]')
+
+# 상자 그림 만들기
+sns.boxplot(data = df, x = 'category', y = 'cty')
+```
+
+<br-back-40>
+
+```{python, echo = F}
+# mpg 데이터 불러오기
+mpg = pd.read_csv('../data/mpg.csv')
+
+df = mpg.query('category in ["compact", "subcompact", "suv"]')
+
+# 그래프 만들기
+sns.boxplot(data = df, x = 'category', y = 'cty')
+```
+
+
+---
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [`seaborn` 더 알아보기]{.info}
+
+`seaborn` 치트 시트
+• DataCamp seaborn cheat sheet: [bit.ly/easypy_86](https://bit.ly/easypy_86)
+
+
+`seaborn`으로 만든 다양한 그래프와 코드들
+• seaborn Example gallery: [bit.ly/easypy_87](https://bit.ly/easypy_87)
+• The Python Graph Gallery - Seaborn: [bit.ly/easypy_seaborn](https://bit.ly/easypy_seaborn)
+
+
+`matplotlib` 패키지 함께 사용하기
+• matplotlib 공식 문서: [matplotlib.org](https://matplotlib.org)
+
+
+:::
+
+
+---
+
+### 정리하기
+
+<br>
+
+![](img/08-seaborn_functions.png){width=50%}
+
+---
+
+::: {.small-95}
+
+```{python}
+#| eval: false
+
+### 1. 산점도
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy')
+
+# 축 제한
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy') \
+   .set(xlim = [3, 6], ylim = [10, 30])
+
+# 종류별로 표식 색깔 바꾸기
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv')
+
+
+### 2. 막대 그래프
+
+## 평균 막대 그래프
+
+# 1단계. 평균표 만들기
+df_mpg = mpg.groupby('drv', as_index = False) \
+            .agg(mean_hwy = ('hwy', 'mean'))
+
+# 2단계. 그래프 만들기
+sns.barplot(data = df_mpg, x = 'drv', y = 'mean_hwy')
+
+## 빈도 막대 그래프
+sns.countplot(data = mpg, x = 'drv')
+```
+
+:::
+
+---
+
+::: {.small-95}
+
+```{python}
+#| eval: false
+
+### 3. 선 그래프
+sns.lineplot(data = economics, x = 'date', y = 'unemploy')
+
+
+### 4. 상자 그림
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
+```
+
+:::
+
+
+::: {background-color="#FF7232" transition="fade"}
+## 끝
+:::

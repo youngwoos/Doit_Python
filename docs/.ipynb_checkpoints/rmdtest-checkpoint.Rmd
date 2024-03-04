@@ -1,0 +1,306 @@
+---
+title: "test"
+output: html_document
+date: "2022-08-19"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+# 그래프 해상도 설정
+import matplotlib.pyplot as plt
+plt.rcParams.update({'figure.dpi' : '100'})
+# %config InlineBackend.figure_format = 'retina'
+```
+
+---
+
+
+# **첫째마당. 파이썬이랑 친해지기**
+---
+---
+
+
+
+# 03 데이터 분석에 필요한 연장 챙기기
+
+
+## 03-1 변하는 수, '변수' 이해하기
+
+```{r}
+a = 1  # a에 1 할당
+a      # a 출력
+```
+
+```{r}
+b = 2
+b
+```
+```{r}
+c = 3
+c
+```
+```{r}
+d = 3.5
+d
+```
+
+```{r}
+a + b
+```
+```{r}
+a + b + c
+```
+```{r}
+4 / b
+```
+```{r}
+5 * b
+```
+
+### 여러 값으로 구성된 변수 만들기
+
+```{r}
+var1 = [1, 2, 3]
+var1
+```
+```{r}
+var2 = [4, 5, 6]
+var2
+```
+
+```{r}
+var1 + var2
+```
+
+
+### 문자로 된 변수 만들기
+
+```{r}
+str1 = 'a'
+str1
+```
+
+```{r}
+str2 = 'text'
+str2
+```
+```{r}
+str3 = 'Hello World!'
+str3
+```
+
+```{r}
+str4 = ['a', 'b', 'c']
+str4
+```
+```{r}
+str5 = ['Hello!', 'World', 'is', 'good!']
+str5
+```
+
+```{r}
+str2 + str3
+```
+
+```{r}
+str2 + ' ' + str3
+```
+
+```{r tags=c("raises-exception")}
+str1 + 2
+```
+
+---
+## 03-2 마술 상자 같은 '함수' 이해하기
+
+
+### 함수 이용하기
+
+```{r}
+# 변수 만들기
+x = [1, 2, 3]
+x
+```
+```{r}
+# 함수 적용하기
+sum(x)
+```
+
+```{r}
+max(x)
+```
+```{r}
+min(x)
+```
+
+#### 함수의 결과물로 새 변수 만들기
+
+```{r}
+x_sum = sum(x)
+x_sum
+```
+```{r}
+x_max = max(x)
+x_max
+```
+
+
+---
+## 03-3 함수 꾸러미, '패키지' 이해하기
+
+
+#### 패키지 로드하기
+
+```{r}
+import seaborn
+```
+
+#### 패키지 함수 사용하기
+
+```{r}
+var = ['a', 'a', 'b', 'c']
+var
+```
+
+```{r}
+seaborn.countplot(x = var)
+```
+
+#### 패키지 약어 활용하기
+
+```{r}
+import seaborn as sns
+```
+
+```{r}
+sns.countplot(x = var)
+```
+
+### `seaborn`의 `titanic` 데이터로 그래프 만들기
+
+
+#### `seaborn`의 `load_dataset()`로 `titanic` 데이터 불러오기
+
+```{r}
+df = sns.load_dataset('titanic')
+df
+```
+
+#### 함수의 다양한 기능 이용하기
+
+```{r}
+sns.countplot(data = df, x = 'sex')
+```
+
+```{r}
+sns.countplot(data = df, x = 'class')                 # x축 class
+```
+
+```{r}
+sns.countplot(data = df, x = 'class', hue = 'alive')  # x축 class, alive별 색 표현
+```
+
+```{r}
+sns.countplot(data = df, y = 'class', hue = 'alive')  # y축 class, alive별 색 표현
+```
+
+---
+
+### (알아 두면 좋아요) 함수 사용법이 궁금할 땐 Help 함수를 활용해 보세요
+
+```{r}
+sns.countplot?
+```
+
+---
+
+
+### 모듈
+
+```{r}
+# sklearn 패키지의 metrics 모듈 로드하기
+import sklearn.metrics
+```
+
+```{r tags=c("raises-exception")}
+# sklearn 패키지 metrics 모듈의 accuracy_score() 사용하기
+sklearn.metrics.accuracy_score()
+```
+
+**`모듈명.함수명()`으로 함수 사용하기**
+
+```{r tags=c("raises-exception")}
+# sklearn 패키지의 metrics 모듈 로드하기
+from sklearn import metrics
+metrics.accuracy_score()
+```
+
+**`함수명()`으로 함수 사용하기**
+
+```{r tags=c("raises-exception")}
+# sklearn 패키지 metrics 모듈의 accuracy_score() 로드하기
+from sklearn.metrics import accuracy_score
+accuracy_score()
+```
+
+---
+### (알아 두면 좋아요) as로 약어 지정하기
+
+```{r tags=c("raises-exception")}
+import sklearn.metrics as met 
+met.accuracy_score()
+```
+
+```{r tags=c("raises-exception")}
+from sklearn import metrics as met 
+met.accuracy_score()
+```
+
+```{r tags=c("raises-exception")}
+from sklearn.metrics import accuracy_score as accuracy 
+accuracy()
+```
+
+---
+
+
+### 패키지 설치하기
+
+```{r}
+pip install pydataset
+```
+
+**패키지 함수 사용하기**
+
+```{r}
+import pydataset
+pydataset.data()
+```
+
+```{r}
+df = pydataset.data('mtcars')  # mtcars 데이터를 df에 할당
+df                             # df 출력
+```
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

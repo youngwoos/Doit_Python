@@ -1,0 +1,1684 @@
+---
+jupyter: python3
+title: "Do it! 쉽게 배우는 파이썬 데이터 분석"
+output-dir: html
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme_09.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+
+```{r setup, include=FALSE}
+# 파이썬 버전 설정
+knitr::opts_chunk$set(engine.path = list(
+  python = "C:/Users/USER/anaconda3"))
+```
+
+### {data-menu-title="Info"}
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+
+# 한글 우측 줄맞춤
+import pandas as pd
+pd.set_option("display.unicode.east_asian_width", True)
+```
+
+<!-- fa 아이콘 출력 설정 -->
+<!-- [{{< fa rocket size=sm >}}]} -->
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+<br>
+<br>
+
+![](img/cover.png){fig-align="center" width="75%"}
+
+:::
+
+<!-- width: 55% -->
+
+::: {.column width="55%"}
+
+<br>
+<br>
+<br>
+
+`r fontawesome::fa("github", margin_left = '-0.5em')` [github.com/youngwoos/Doit_Python](https://github.com/youngwoos/Doit_Python)
+
+`r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [ 슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
+`r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
+
+<br-back-10>
+
+&nbsp;&nbsp; ▪ [yes24](http://www.yes24.com/Product/Goods/108947478)
+
+&nbsp;&nbsp; ▪ [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601)
+
+&nbsp;&nbsp; ▪ [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163033493)
+
+:::
+
+::::
+
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 09 데이터 분석 프로젝트 <br> - 한국인의 삶을 파악하라! {background-color="#FF7232" transition="fade"}
+ 
+:::
+
+
+---
+
+### {data-menu-title="To do"}
+
+<br>
+<br>
+<br>
+<br>
+
+
+![](img/09-intro.png){width=80% fig-align="center"}
+
+---
+
+<br>
+
+##### [목차]{.font-jua .larger}
+
+
+[09-1 '한국복지패널 데이터' 분석 준비하기]{.font-jua}([link](#한국복지패널-데이터-분석-준비하기))
+  
+[09-2 성별에 따른 월급 차이 - 성별에 따라 월급이 다를까?]{.font-jua}([link](#성별에-따른-월급-차이---성별에-따라-월급이-다를까))
+
+[09-3 나이와 월급의 관계 - 몇 살 때 월급을 가장 많이 받을까?]{.font-jua}([link](#나이와-월급의-관계---몇-살-때-월급을-가장-많이-받을까))
+  
+[09-4 연령대에 따른 월급 차이 - 어떤 연령대의 월급이 가장 많을까?]{.font-jua}([link](#연령대에-따른-월급-차이---어떤-연령대의-월급이-가장-많을까))
+  
+[09-5 연령대 및 성별 월급 차이 - 성별 월급 차이는 연령대별로 다를까?]{.font-jua}([link](#연령대-및-성별-월급-차이---성별-월급-차이는-연령대별로-다를까))
+  
+[09-6 직업별 월급 차이 - 어떤 직업이 월급을 가장 많이 받을까?]{.font-jua}([link](#직업별-월급-차이---어떤-직업이-월급을-가장-많이-받을까))
+  
+[09-7 성별 직업 빈도 - 성별에 따라 어떤 직업이 가장 많을까?]{.font-jua}([link](#성별-직업-빈도---성별에-따라-어떤-직업이-가장-많을까))
+
+[09-8 종교 유무에 따른 이혼율 - 종교가 있으면 이혼을 덜 할까?]{.font-jua}([link](#종교-유무에-따른-이혼율---종교가-있으면-이혼을-덜-할까))
+  
+[09-9 지역별 연령대 비율 - 어느 지역에 노년층이 많을까?]{.font-jua}([link](#지역별-연령대-비율---어느-지역에-노년층이-많을까))
+  
+
+
+## 09-1 '한국복지패널 데이터' 분석 준비하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+#### 한국복지패널 데이터
+
+- 한국보건사회연구원 발간 조사 자료
+- 전국 7,000여 가구 선정, 2006년부터 매년 추적 조사한 자료
+- 경제활동, 생활실태, 복지욕구 등 천여 개 변수로 구성됨
+- 다양한 분야의 연구자, 정책전문가들이 활용함
+- 엄밀한 절차로 수집되고 다양한 변수가 있으므로 데이터 분석 연습하기 좋은 재료
+
+---
+
+### 데이터 분석 준비하기
+
+#### 1. 데이터 준비하기
+
+- `Koweps_hpwc14_2019_beta2.sav` 파일을 워킹 디렉터리에 삽입
+- 2020년 발간 복지패널 데이터. 6,331가구, 14,418명의 정보를 담고 있음
+
+<br10>
+
+#### 2. 패키지 설치 및 로드하기
+    
+- `sav`: 통계 분석 소프트웨어 SPSS 전용 파일
+- `pyreadstat` 패키지 설치하면 `pandas` 패키지를 이용해 불러올 수 있음
+
+##### (1) 패키지 설치
+<br-back-20>
+
+    `pip install pyreadstat`
+    
+##### (2) 패키지 로드
+
+```{python}
+import pandas as pd
+import numpy as np
+import seaborn as sns
+```
+
+---
+
+#### 3. 데이터 불러오기
+
+```{python}
+# 데이터 불러오기
+raw_welfare = pd.read_spss('Koweps_hpwc14_2019_beta2.sav')
+
+# 복사본 만들기 
+welfare = raw_welfare.copy()
+```
+
+#### 4. 데이터 검토하기
+
+```{python}
+#| eval: false
+welfare             # 앞부분, 뒷부분 출력
+welfare.shape       # 행, 열 개수 출력
+welfare.info()      # 변수 속성 출력
+welfare.describe()  # 요약 통계량
+```
+
+- 규모가 큰 데이터는 변수명을 쉬운 단어로 바꾸고 분석할 변수를 하나씩 살펴봐야 함
+
+---
+
+#### 5. 변수명 바꾸기
+
+::: {.small-95}
+
+```{python}
+welfare = welfare.rename(columns = {'h14_g3'     : 'sex',            #  성별
+                                    'h14_g4'     : 'birth',          #  태어난 연도
+                                    'h14_g10'    : 'marriage_type',  #  혼인 상태
+                                    'h14_g11'    : 'religion',       #  종교 
+                                    'p1402_8aq1' : 'income',         #  월급 
+                                    'h14_eco9'   : 'code_job',       #  직업 코드
+                                    'h14_reg7'   : 'code_region'})   #  지역 코드
+```
+
+:::
+
+- 규모가 큰 조사 자료는 데이터의 특징을 설명해 놓은 코드북(codebook)을 함께 제공함
+- 코드북에 코드로 된 변수명과 값의 의미가 설명되어 있음
+- 데이터의 특징을 알 수 있고 분석 방향 아이디어를 얻을 수 있음
+- `Koweps_Codebook_2019.xlsx` 참고
+
+---
+
+#### 데이터 분석 절차 살펴보기
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+##### 1단계 - 변수 검토 및 전처리
+
+- 분석에 활용할 변수 전처리
+    - 변수의 특징 파악, 이상치와 결측치 정제
+    - 변수의 값을 다루기 편하게 바꾸기
+
+- 분석에 활용할 변수 각각 전처리
+    - ex) 성별에 따른 월급 차이: 성별, 월급 각각
+
+
+##### 2단계 - 변수 간 관계 분석
+
+- 변수 간 관계 분석
+  - 데이터 요약 표, 그래프 만들기
+  - 분석 결과 해석
+  
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+![](img/09-process.png)
+
+:::
+
+::::
+
+
+
+## 09-2 성별에 따른 월급 차이 <br> - 성별에 따라 월급이 다를까?{background-color="#FFCE32" transition="fade"}
+
+---
+
+### 성별 변수 검토 및 전처리하기
+
+#### 1. 변수 검토하기
+
+```{python}
+welfare['sex'].dtypes  # 변수 타입 출력
+```
+
+```{python}
+welfare['sex'].value_counts()  # 빈도 구하기
+```
+
+---
+
+#### 2. 전처리하기
+
+```{python}
+# 이상치 확인
+welfare['sex'].value_counts()
+```
+
+```{python}
+# 이상치 결측 처리
+welfare['sex'] = np.where(welfare['sex'] == 9, np.nan, welfare['sex'])
+
+# 결측치 확인
+welfare['sex'].isna().sum()
+```
+
+---
+
+```{python}
+# 성별 항목 이름 부여
+welfare['sex'] = np.where(welfare['sex'] == 1, 'male', 'female')
+
+# 빈도 구하기
+welfare['sex'].value_counts()
+```
+
+---
+
+```{python}
+# 빈도 막대 그래프 만들기
+sns.countplot(data = welfare, x = 'sex')
+```
+
+---
+
+
+### 월급 변수 검토 및 전처리하기
+
+#### 1. 변수 검토하기
+
+```{python}
+welfare['income'].dtypes  # 변수 타입 출력
+```
+
+```{python}
+welfare['income'].describe()  # 요약 통계량 구하기
+```
+
+---
+
+```{python}
+sns.histplot(data = welfare, x = 'income')  # 히스토그램 만들기
+```
+
+---
+
+
+#### 2. 전처리하기
+
+```{python}
+welfare['income'].describe()  # 이상치 확인
+```
+
+```{python}
+welfare['income'].isna().sum()  # 결측치 확인
+```
+
+---
+
+::: {.small-95)
+
+```{python}
+# 이상치 결측 처리
+welfare['income'] = np.where(welfare['income'] == 9999, np.nan, welfare['income'])
+
+# 결측치 확인
+welfare['income'].isna().sum()
+```
+
+:::
+
+---
+
+
+### 성별에 따른 월급 차이 분석하기
+
+#### 1. 성별 월급 평균표 만들기
+
+
+:::: {.columns .small-95}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+## 성별 월급 평균표 만들기
+sex_income = welfare.dropna(subset = 'income') \
+                    .groupby('sex', as_index = False) \
+                    .agg(mean_income = ('income', 'mean'))
+sex_income
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# income 결측치 제거
+# sex별 분리
+# income 평균 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+sex_income = welfare.dropna(subset = 'income') \
+                    .groupby('sex', as_index = False) \
+                    .agg(mean_income = ('income', 'mean'))
+sex_income
+```
+
+---
+
+
+#### 2. 그래프 만들기
+
+```{python}
+# 막대 그래프 만들기
+sns.barplot(data = sex_income, x = 'sex', y = 'mean_income')
+```
+
+
+## 09-3 나이와 월급의 관계 <br>- 몇 살 때 월급을 가장 많이 받을까?{background-color="#FFCE32" transition="fade"}
+
+---
+
+### 나이 변수 검토 및 전처리하기
+
+#### 1. 변수 검토하기
+
+```{python}
+welfare['birth'].dtypes  # 변수 타입 출력
+```
+
+```{python}
+welfare['birth'].describe()  # 요약 통계량 구하기
+```
+
+---
+
+```{python}
+sns.histplot(data = welfare, x = 'birth')  # 히스토그램 만들기
+```
+
+---
+
+#### 2. 전처리하기
+
+```{python}
+welfare['birth'].describe()  # 이상치 확인
+```
+
+```{python}
+welfare['birth'].isna().sum()  # 결측치 확인
+```
+
+---
+
+```{python}
+# 이상치 결측 처리
+welfare['birth'] = np.where(welfare['birth'] == 9999, np.nan, welfare['birth'])
+
+# 결측치 확인
+welfare['birth'].isna().sum()
+```
+
+---
+
+#### 3. 파생변수 만들기 - 나이
+
+```{python}
+welfare = welfare.assign(age = 2019 - welfare['birth'] + 1)  # 나이 변수 만들기
+welfare['age'].describe()                                    # 요약 통계량 구하기
+```
+
+---
+
+```{python}
+sns.histplot(data = welfare, x = 'age')  # 히스토그램 만들기
+```
+
+---
+
+### 나이와 월급의 관계 분석하기
+
+#### 1. 나이에 따른 월급 평균표 만들기
+
+:::: {.columns .small-95}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# 나이별 월급 평균표 만들기
+age_income = welfare.dropna(subset = 'income') \
+                    .groupby('age') \
+                    .agg(mean_income = ('income', 'mean'))
+
+age_income.head()
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# income 결측치 제거
+# age별 분리
+# income 평균 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 나이별 월급 평균표 만들기
+age_income = welfare.dropna(subset = 'income') \
+                    .groupby('age') \
+                    .agg(mean_income = ('income', 'mean'))
+
+age_income.head()
+
+
+```
+
+---
+
+#### 2.  그래프 만들기
+
+```{python}
+# 선 그래프 만들기
+sns.lineplot(data = age_income, x = 'age', y = 'mean_income')
+```
+
+
+## 09-4 연령대에 따른 월급 차이 <br>- 어떤 연령대의 월급이 가장 많을까?{background-color="#FFCE32" transition="fade"}
+
+---
+
+### 연령대 변수 검토 및 전처리하기
+
+#### 파생변수 만들기 - 연령대
+
+```{python}
+# 나이 변수 살펴보기
+welfare['age'].head()
+```
+
+---
+
+```{python}
+# 연령대 변수 만들기
+welfare = welfare.assign(ageg = np.where(welfare['age'] <  30, 'young',
+                                np.where(welfare['age'] <= 59, 'middle', 'old')))
+
+# 빈도 구하기
+welfare['ageg'].value_counts()
+```
+
+---
+
+```{python}
+# 빈도 막대 그래프 만들기
+sns.countplot(data = welfare, x = 'ageg')
+```
+
+---
+
+### 연령대에 따른 월급 차이 분석하기
+
+#### 1. 연령대별 월급 평균표 만들기
+
+:::: {.columns .small-90}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# 연령대별 월급 평균표 만들기
+ageg_income = welfare.dropna(subset = 'income') \
+                     .groupby('ageg', as_index = False) \
+                     .agg(mean_income = ('income', 'mean'))
+ageg_income
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# income 결측치 제거
+# ageg별 분리
+# income 평균 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 연령대별 월급 평균표 만들기
+ageg_income = welfare.dropna(subset = 'income') \
+                     .groupby('ageg', as_index = False) \
+                     .agg(mean_income = ('income', 'mean'))
+ageg_income
+
+```
+
+
+---
+
+
+#### 2. 그래프 만들기
+
+```{python}
+# 막대 그래프 만들기
+sns.barplot(data = ageg_income, x = 'ageg', y = 'mean_income')
+```
+
+---
+
+```{python}
+# 막대 정렬하기
+sns.barplot(data = ageg_income, x = 'ageg', y = 'mean_income',
+            order = ['young', 'middle', 'old'])
+```
+
+---
+
+
+## 09-5 연령대 및 성별 월급 차이 <br>- 성별 월급 차이는 연령대별로 다를까?{background-color="#FFCE32" transition="fade"}
+
+### 연령대 및 성별 월급 차이 분석하기
+
+#### 1. 연령대 및 성별 월급 평균표 만들기
+
+:::: {.columns .small-80}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# 연령대 및 성별 평균표 만들기
+sex_income = welfare.dropna(subset = 'income') \
+                    .groupby(['ageg', 'sex'], as_index = False) \
+                    .agg(mean_income = ('income', 'mean'))
+sex_income
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# income 결측치 제거
+# ageg 및 sex별 분리
+# income 평균 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 연령대 및 성별 평균표 만들기
+sex_income = welfare.dropna(subset = 'income') \
+                    .groupby(['ageg', 'sex'], as_index = False) \
+                    .agg(mean_income = ('income', 'mean'))
+sex_income
+
+```
+
+---
+
+#### 2. 그래프 만들기
+
+```{python}
+# 막대 그래프 만들기
+sns.barplot(data = sex_income, x = 'ageg', y = 'mean_income', hue = 'sex',
+            order = ['young', 'middle', 'old'])
+```
+
+---
+
+### 나이 및 성별 월급 차이 분석하기
+
+
+:::: {.columns .small-90}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# 나이 및 성별 월급 평균표 만들기
+sex_age = welfare.dropna(subset = 'income') \
+                 .groupby(['age', 'sex'], as_index = False) \
+                 .agg(mean_income = ('income', 'mean'))
+sex_age.head()
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# income 결측치 제거
+# age 및 sex별 분리
+# income 평균 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 나이 및 성별 월급 평균표 만들기
+sex_age = welfare.dropna(subset = 'income') \
+                 .groupby(['age', 'sex'], as_index = False) \
+                 .agg(mean_income = ('income', 'mean'))
+sex_age.head()
+
+```
+
+---
+
+```{python}
+# 선 그래프 만들기
+sns.lineplot(data = sex_age, x = 'age', y = 'mean_income', hue = 'sex')
+```
+
+
+## 09-6 직업별 월급 차이 <br>- 어떤 직업이 월급을 가장 많이 받을까?{background-color="#FFCE32" transition="fade"}
+
+### 직업 변수 검토 및 전처리하기
+
+#### 1. 변수 검토하기
+
+```{python}
+welfare['code_job'].dtypes  # 변수 타입 출력
+```
+
+```{python}
+welfare['code_job'].value_counts()  # 빈도 구하기
+```
+
+---
+
+
+#### 2. 전처리하기
+
+```{python}
+list_job = pd.read_excel('Koweps_Codebook_2019.xlsx', sheet_name = '직종코드')
+list_job.head()
+```
+
+```{python}
+list_job.shape  # 행, 열 개수 출력
+```
+
+---
+
+
+```{python}
+# welfare에 list_job 결합하기
+welfare = welfare.merge(list_job, how = 'left', on = 'code_job')
+
+# code_job 결측치 제거하고 code_job, job 출력
+welfare.dropna(subset = ['code_job'])[['code_job', 'job']].head()
+```
+
+---
+
+### 직업별 월급 차이 분석하기
+
+#### 1. 직업별 월급 평균표 만들기
+
+:::: {.columns .small-90}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# 직업별 월급 평균표 만들기
+job_income = welfare.dropna(subset = ['job', 'income']) \
+                    .groupby('job', as_index = False) \
+                    .agg(mean_income = ('income', 'mean'))
+job_income.head()
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# job, income 결측치 제거
+# job별 분리
+# income 평균 구하기
+```
+:::
+
+::::
+
+
+```{python}
+#| echo: false
+# 직업별 월급 평균표 만들기
+job_income = welfare.dropna(subset = ['job', 'income']) \
+                    .groupby('job', as_index = False) \
+                    .agg(mean_income = ('income', 'mean'))
+job_income.head()
+
+```
+
+
+---
+
+#### 3. 그래프 만들기
+
+**(1) 월급이 많은 직업**
+
+```{python}
+# 상위 10위 추출
+top10 = job_income.sort_values('mean_income', ascending = False).head(10)
+top10
+```
+
+---
+
+```{python}
+# 맑은 고딕 폰트 설정
+import matplotlib.pyplot as plt
+plt.rcParams.update({'font.family' : 'Malgun Gothic'})
+
+# 막대 그래프 만들기
+sns.barplot(data = top10, y = 'job', x = 'mean_income')
+```
+
+---
+
+**(2) 월급이 적은 직업**
+
+```{python}
+# 하위 10위 추출
+bottom10 = job_income.sort_values('mean_income').head(10)
+bottom10
+```
+
+---
+
+```{python}
+#| eval: false
+# 막대 그래프 만들기
+sns.barplot(data = bottom10, y = 'job', x = 'mean_income') \
+   .set(xlim = [0, 800])
+```
+
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 막대 그래프 만들기
+sns.barplot(data = bottom10, y = 'job', x = 'mean_income') \
+   .set(xlim = [0, 800]);
+
+plt.show()
+```
+
+
+## 09-7 성별 직업 빈도 <br>- 성별에 따라 어떤 직업이 가장 많을까?{background-color="#FFCE32" transition="fade"}
+
+---
+
+### 성별 직업 빈도 분석하기
+
+#### 1. 성별 직업 빈도표 만들기
+
+:::: {.columns .small-95}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# 남성 직업 빈도 상위 10개 추출
+job_male = welfare.dropna(subset = ['job']) \
+                  .query('sex == "male"') \
+                  .groupby('job', as_index = False) \
+                  .agg(n = ('job', 'count')) \
+                  .sort_values('n', ascending = False) \
+                  .head(10)
+job_male
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# job 결측치 제거
+# male 추출
+# job별 분리
+# job 빈도 구하기
+# 내림차순 정렬
+# 상위 10행 추출
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 남성 직업 빈도 상위 10개 추출
+job_male = welfare.dropna(subset = ['job']) \
+                  .query('sex == "male"') \
+                  .groupby('job', as_index = False) \
+                  .agg(n = ('job', 'count')) \
+                  .sort_values('n', ascending = False) \
+                  .head(10)
+job_male
+
+```
+
+---
+
+### 성별 직업 빈도 분석하기
+
+#### 1. 성별 직업 빈도표 만들기
+
+:::: {.columns .small-95}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# 여성 직업 빈도 상위 10개 추출
+job_female = welfare.dropna(subset = ['job']) \
+                    .query('sex == "female"') \
+                    .groupby('job', as_index = False) \
+                    .agg(n = ('job', 'count')) \
+                    .sort_values('n', ascending = False) \
+                    .head(10)
+job_female
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# job 결측치 제거
+# female 추출
+# job별 분리
+# job 빈도 구하기
+# 내림차순 정렬
+# 상위 10행 추출
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 여성 직업 빈도 상위 10개 추출
+job_female = welfare.dropna(subset = ['job']) \
+                    .query('sex == "female"') \
+                    .groupby('job', as_index = False) \
+                    .agg(n = ('job', 'count')) \
+                    .sort_values('n', ascending = False) \
+                    .head(10)
+job_female
+
+```
+
+---
+
+#### 2. 그래프 만들기
+
+```{python}
+#| eval: false
+# 남성 직업 빈도 막대 그래프 만들기
+sns.barplot(data = job_male, y = 'job', x = 'n').set(xlim = [0, 500])
+```
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 남성 직업 빈도 막대 그래프 만들기
+sns.barplot(data = job_male, y = 'job', x = 'n').set(xlim = [0, 500]);
+plt.show()
+```
+
+
+---
+
+#### 2. 그래프 만들기
+
+```{python}
+#| eval: false
+# 여성 직업 빈도 막대 그래프 만들기
+sns.barplot(data = job_female, y = 'job', x = 'n').set(xlim = [0, 500])
+```
+
+<br-back-40>
+
+
+```{python}
+#| echo: false
+# 여성 직업 빈도 막대 그래프 만들기
+sns.barplot(data = job_female, y = 'job', x = 'n').set(xlim = [0, 500]);
+plt.show()
+```
+
+
+
+
+## 09-8 종교 유무에 따른 이혼율 <br>- 종교가 있으면 이혼을 덜 할까?{background-color="#FFCE32" transition="fade"}
+
+### 종교 변수 검토 및 전처리하기
+
+#### 1. 변수 검토하기
+
+```{python}
+welfare['religion'].dtypes  # 변수 타입 출력
+```
+
+```{python}
+welfare['religion'].value_counts()  # 빈도 구하기
+```
+
+---
+
+#### 2. 전처리하기
+
+```{python}
+# 종교 유무 이름 부여
+welfare['religion'] = np.where(welfare['religion'] == 1, 'yes', 'no')
+
+# 빈도 구하기
+welfare['religion'].value_counts()
+```
+
+---
+
+```{python}
+# 막대 그래프 만들기
+sns.countplot(data = welfare, x = 'religion')
+```
+
+---
+
+
+### 혼인 상태 변수 검토 및 전처리하기
+
+#### 1. 변수 검토하기
+
+```{python}
+welfare['marriage_type'].dtypes  # 변수 타입 출력
+```
+
+```{python}
+welfare['marriage_type'].value_counts()  # 빈도 구하기
+```
+
+---
+
+
+#### 2. 파생변수 만들기 - 이혼 여부
+
+```{python}
+# 이혼 여부 변수 만들기
+welfare['marriage'] = np.where(welfare['marriage_type'] == 1, 'marriage',
+                      np.where(welfare['marriage_type'] == 3, 'divorce', 'etc'))
+```
+
+:::: {.columns .small-90}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+# 이혼 여부별 빈도
+n_divorce = welfare.groupby('marriage', as_index = False) \
+                   .agg(n = ('marriage', 'count'))
+n_divorce
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+
+# marriage별 분리
+# marriage별 빈도 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 이혼 여부별 빈도
+n_divorce = welfare.groupby('marriage', as_index = False) \
+                   .agg(n = ('marriage', 'count'))
+n_divorce
+
+```
+
+---
+
+```{python}
+# 막대 그래프 만들기
+sns.barplot(data = n_divorce, x = 'marriage', y = 'n')
+```
+
+
+---
+
+### 종교 유무에 따른 이혼율 분석하기
+
+#### 1. 종교 유무에 따른 이혼율표 만들기
+
+
+:::: {.columns .small-95}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+rel_div = welfare.query('marriage != "etc"') \
+                 .groupby('religion', as_index = False) \
+                 ['marriage'] \
+                 .value_counts(normalize = True)
+rel_div
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+# etc 제외
+# religion별 분리
+# marriage 추출
+# 비율 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+rel_div = welfare.query('marriage != "etc"') \
+                 .groupby('religion', as_index = False) \
+                 ['marriage'] \
+                 .value_counts(normalize = True)
+rel_div
+
+```
+
+---
+
+#### 2. 그래프 만들기
+
+:::: {.columns .small-90}
+
+::: {.column width="75%"}
+```{python}
+#| eval: false
+rel_div = \
+    rel_div.query('marriage == "divorce"') \
+           .assign(proportion = rel_div['proportion'] * 100) \
+           .round(1)
+
+rel_div
+
+```
+
+:::
+
+::: {.column width="25%"}
+
+```{python}
+# divorce 추출
+# 백분율로 바꾸기
+# 반올림
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+rel_div = rel_div.query('marriage == "divorce"') \
+                 .assign(proportion = rel_div['proportion'] * 100) \
+                 .round(1)
+rel_div
+
+```
+
+---
+
+```{python}
+# 막대 그래프 만들기
+sns.barplot(data = rel_div, x = 'religion', y = 'proportion')
+```
+
+---
+
+### 연령대 및 종교 유무에 따른 이혼율 분석하기
+
+#### 1. 연령대별 이혼율표 만들기
+
+:::: {.columns .small-95}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+age_div = welfare.query('marriage != "etc"') \
+                 .groupby('ageg', as_index = False) \
+                 ['marriage'] \
+                 .value_counts(normalize = True)
+age_div
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+# etc 제외
+# ageg별 분리
+# marriage 추출
+# 비율 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+age_div = welfare.query('marriage != "etc"') \
+                 .groupby('ageg', as_index = False) \
+                 ['marriage'] \
+                 .value_counts(normalize = True)
+age_div
+
+```
+
+
+
+---
+
+:::: {.columns .small-95}
+
+::: {.column width="50%"}
+```{python}
+#| eval: false
+# 연령대 및 이혼 여부별 빈도
+welfare.query('marriage != "etc"') \
+       .groupby('ageg', as_index = False) \
+       ['marriage'] \
+       .value_counts()
+
+```
+
+:::
+
+::: {.column width="40%"}
+
+```{python}
+
+# etc 제외
+# ageg별 분리
+# marriage 추출
+# 빈도 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+# 연령대 및 이혼 여부별 빈도
+welfare.query('marriage != "etc"') \
+       .groupby('ageg', as_index = False) \
+       ['marriage'] \
+       .value_counts()
+
+```
+
+
+---
+
+#### 2. 연령대별 이혼율 그래프 만들기
+
+
+:::: {.columns .small-90}
+
+::: {.column width="72%"}
+```{python}
+#| eval: false
+age_div = \ 
+    age_div.query('ageg != "young" & marriage == "divorce"') \
+           .assign(proportion = age_div['proportion'] * 100) \
+           .round(1)
+
+age_div
+
+```
+
+:::
+
+::: {.column width="28%"}
+
+```{python}
+# 초년층 제외, 이혼 추출
+# 백분율로 바꾸기
+# 반올림
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+age_div = age_div.query('ageg != "young" & marriage == "divorce"') \
+                 .assign(proportion = age_div['proportion'] * 100) \
+                 .round(1)
+age_div
+
+```
+
+---
+
+
+```{python}
+# 막대 그래프 만들기
+sns.barplot(data = age_div, x = 'ageg', y = 'proportion')
+```
+
+---
+
+
+#### 3. 연령대 및 종교 유무에 따른 이혼율표 만들기
+
+
+:::: {.columns .small-90}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+age_rel_div = \
+    welfare.query('marriage != "etc" & ageg != "young"') \
+           .groupby(['ageg', 'religion'], as_index = False) \
+           ['marriage'] \
+           .value_counts(normalize = True)
+
+age_rel_div
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+# etc 제외, 초년층 제외
+# ageg, religion별 분리
+# marriage 추출
+# 비율 구하기
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+age_rel_div = welfare.query('marriage != "etc" & ageg != "young"') \
+                     .groupby(['ageg', 'religion'], as_index = False) \
+                     ['marriage'] \
+                     .value_counts(normalize = True)
+
+age_rel_div
+
+```
+
+---
+
+#### 4. 연령대 및 종교 유무에 따른 이혼율 그래프 만들기
+
+:::: {.columns .small-85}
+
+::: {.column width="77%"}
+```{python}
+#| eval: false
+age_rel_div = \
+    age_rel_div.query('marriage == "divorce"') \
+               .assign(proportion = age_rel_div['proportion'] * 100) \
+               .round(1)
+
+age_rel_div
+
+```
+
+:::
+
+::: {.column width="23%"}
+
+```{python}
+# divorce 추출
+# 백분율로 바꾸기
+# 반올림
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+age_rel_div = age_rel_div.query('marriage == "divorce"') \
+                         .assign(proportion = age_rel_div['proportion'] * 100) \
+                         .round(1)
+
+age_rel_div
+
+```
+
+
+---
+
+
+```{python}
+# 막대 그래프 만들기
+sns.barplot(data = age_rel_div, x = 'ageg', y = 'proportion', hue = 'religion')
+```
+
+
+## 09-9 지역별 연령대 비율 <br>- 어느 지역에 노년층이 많을까?{background-color="#FFCE32" transition="fade"}
+
+---
+
+### 지역 변수 검토 및 전처리하기
+
+#### 1. 변수 검토하기
+
+```{python}
+welfare['code_region'].dtypes  # 변수 타입 출력
+```
+
+```{python}
+welfare['code_region'].value_counts()  # 빈도 구하기
+```
+
+---
+
+
+#### 2. 전처리하기
+
+```{python}
+# 지역 코드 목록 만들기
+list_region = pd.DataFrame({'code_region' : [1, 2, 3, 4, 5, 6, 7],
+                            'region'      : ['서울',
+                                             '수도권(인천/경기)',
+                                             '부산/경남/울산',
+                                             '대구/경북',
+                                             '대전/충남',
+                                             '강원/충북',
+                                             '광주/전남/전북/제주도']})
+list_region
+```
+
+---
+
+
+```{python}
+# 지역명 변수 추가
+welfare = welfare.merge(list_region, how = 'left', on = 'code_region')
+welfare[['code_region', 'region']].head()
+```
+
+---
+
+
+### 지역별 연령대 비율 분석하기
+
+#### 1. 지역별 연령대 비율표 만들기
+
+:::: {.columns .small-90}
+
+::: {.column width="70%"}
+```{python}
+#| eval: false
+region_ageg = welfare.groupby('region', as_index = False) \
+                     ['ageg'] \
+                     .value_counts(normalize = True)
+region_ageg
+
+```
+
+:::
+
+::: {.column width="30%"}
+
+```{python}
+# region별 분리
+# ageg 추출
+# 비율 구하기
+
+```
+:::
+
+::::
+
+<br-back-40>
+
+
+```{python}
+#| echo: false
+region_ageg = welfare.groupby('region', as_index = False) \
+                     ['ageg'] \
+                     .value_counts(normalize = True)
+
+region_ageg.head(13)
+
+```
+
+---
+
+#### 2. 그래프 만들기
+
+:::: {.columns .small-85}
+
+::: {.column width="80%"}
+```{python}
+#| eval: false
+region_ageg = \
+    region_ageg.assign(proportion = region_ageg['proportion'] * 100) \
+               .round(1)
+
+```
+
+:::
+
+::: {.column width="20%"}
+
+```{python}
+
+# 백분율로 바꾸기
+# 반올림
+```
+:::
+
+::::
+
+<br-back-40>
+
+```{python}
+#| echo: false
+region_ageg = region_ageg.assign(proportion = region_ageg['proportion'] * 100) \
+                         .round(1)
+
+```
+
+---
+
+```{python}
+#| eval: false
+# 막대 그래프 만들기
+sns.barplot(data = region_ageg, y = 'region', x = 'proportion', hue = 'ageg')
+```
+
+
+```{python}
+#| echo: false
+# 막대 그래프 만들기
+p = sns.barplot(data = region_ageg, y = 'region', x = 'proportion', hue = 'ageg')
+plt.tight_layout()  #  여백
+plt.show()
+```
+
+---
+
+#### 3. 누적 비율 막대 그래프 만들기
+
+##### (1) 피벗하기
+
+```{python}
+# 피벗
+pivot_df = \
+    region_ageg[['region', 'ageg', 'proportion']].pivot(index   = 'region',
+                                                        columns = 'ageg',
+                                                        values  = 'proportion')
+pivot_df
+```
+
+---
+
+##### (2) 그래프 만들기
+
+```{python}
+#| eval: false
+# 가로 막대 그래프 만들기
+pivot_df.plot.barh(stacked = True)
+```
+
+
+```{python}
+#| echo: false
+# 막대 그래프 만들기
+p = pivot_df.plot.barh(stacked = True)
+plt.tight_layout()  #  여백
+plt.show()
+```
+
+
+---
+
+##### (3) 막대 정렬하기
+
+```{python}
+# 노년층 비율 기준 정렬, 변수 순서 바꾸기
+reorder_df = pivot_df.sort_values('old')[['young', 'middle', 'old']]
+reorder_df
+```
+
+---
+
+```{python}
+#| eval: false
+# 누적 가로 막대 그래프 만들기
+reorder_df.plot.barh(stacked = True)
+```
+
+
+```{python}
+#| echo: false
+# 막대 그래프 만들기
+p = reorder_df.plot.barh(stacked = True)
+plt.tight_layout()  #  여백
+plt.show()
+```
+
+
+::: {background-color="#FF7232" transition="fade"}
+## 끝
+:::

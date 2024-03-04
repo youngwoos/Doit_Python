@@ -1,0 +1,3085 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="06_files/libs/clipboard/clipboard.min.js"></script>
+<script src="06_files/libs/quarto-html/tabby.min.js"></script>
+<script src="06_files/libs/quarto-html/popper.min.js"></script>
+<script src="06_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="06_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="06_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="06_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="06_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="06_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="06_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.290">
+
+  <title>Do it! 쉽게 배우는 파이썬 데이터 분석</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="06_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="06_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="06_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="06_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="06_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="06_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="06_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#FF7232" class="quarto-title-block center">
+  <h1 class="title">Do it! 쉽게 배우는 파이썬 데이터 분석</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="section" class="slide level3" data-menu-title="Info">
+<h3></h3>
+<!-- fa 아이콘 출력 설정 -->
+<!-- []} -->
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/cover.png" class="quarto-discovered-preview-image" style="width:75.0%"></p>
+</figure>
+</div>
+</div><!-- width: 55% --><div class="column" style="width:55%;">
+<p><br> <br> <br></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg> <a href="https://github.com/youngwoos/Doit_Python">github.com/youngwoos/Doit_Python</a></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path></svg> <a href="https://facebook.com/groups/datacommunity">facebook.com/groups/datacommunity</a></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 576 512" style="height:0.8em;width:0.9em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64H240l-10.7 32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H346.7L336 416H512c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM512 64V288H64V64H512z"></path></svg> <a href="https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md">슬라이드 목록</a></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"></path></svg> <a href="https://search.shopping.naver.com/book/catalog/32474211621">네이버책</a></p>
+<p><br-back-10></br-back-10></p>
+<p>&nbsp;&nbsp; ▪ <a href="http://www.yes24.com/Product/Goods/108947478">yes24</a></p>
+<p>&nbsp;&nbsp; ▪ <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601">알라딘</a></p>
+<p>&nbsp;&nbsp; ▪ <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791163033493">교보문고</a></p>
+</div>
+</div>
+</section>
+<section id="자유자재로-데이터-가공하기" class="title-slide slide level2 center" data-background-color="#FF7232" data-transition="fade">
+<h2>06 자유자재로 데이터 가공하기</h2>
+
+</section>
+
+<section id="section-1" class="slide level3" data-menu-title="To do">
+<h3></h3>
+<p><br> <br> <br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/06-intro.png" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section class="slide level3">
+
+<p><br></p>
+<h5 id="목차"><span class="font-jua larger">목차</span></h5>
+<p><span class="font-jua">06-1 데이터 전처리 - 원하는 형태로 데이터 가공하기</span>(<a href="#/데이터-전처리---원하는-형태로-데이터-가공하기">link</a>)</p>
+<p><span class="font-jua">06-2 조건에 맞는 데이터만 추출하기</span>(<a href="#/조건에-맞는-데이터만-추출하기">link</a>)</p>
+<p><span class="font-jua">06-3 필요한 변수만 추출하기</span>(<a href="#/필요한-변수만-추출하기">link</a>)</p>
+<p><span class="font-jua">06-4 순서대로 정렬하기</span>(<a href="#/순서대로-정렬하기">link</a>)</p>
+<p><span class="font-jua">06-5 파생변수 추가하기</span>(<a href="#/파생변수-추가하기">link</a>)</p>
+<p><span class="font-jua">06-6 집단별로 요약하기</span>(<a href="#/집단별로-요약하기">link</a>)</p>
+<p><span class="font-jua">06-7 데이터 합치기</span>(<a href="#/데이터-합치기">link</a>)</p>
+</section>
+<section>
+<section id="데이터-전처리---원하는-형태로-데이터-가공하기" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>06-1 데이터 전처리<br> - 원하는 형태로 데이터 가공하기</h2>
+
+</section>
+<section class="slide level3">
+
+<h4 id="데이터-전처리data-preprocessing">데이터 전처리(data preprocessing)</h4>
+<ul>
+<li>분석에 적합하게 데이터를 가공하는 작업</li>
+<li><code>pandas</code>: 전처리 작업에 가장 많이 사용되는 패키지</li>
+</ul>
+<p><img data-src="img/06-pandas.jpg" style="width:30.0%"></p>
+</section></section>
+<section>
+<section id="조건에-맞는-데이터만-추출하기" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>06-2 조건에 맞는 데이터만 추출하기</h2>
+
+</section>
+<section id="조건에-맞는-데이터만-추출하기-df.query" class="slide level3">
+<h3>조건에 맞는 데이터만 추출하기: <code>df.query()</code></h3>
+<p><br></p>
+<p><img data-src="img/06-query.jpg" style="width:70.0%"></p>
+</section>
+<section class="slide level3">
+
+<h4 id="데이터-불러오기">데이터 불러오기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>exam <span class="op">=</span> pd.read_csv(<span class="st">'exam.csv'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>exam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-20></br-back-20></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+0    1       1    50       98       50
+1    2       1    60       97       60
+2    3       1    45       86       78
+3    4       1    30       98       58
+4    5       2    25       80       65
+5    6       2    50       89       98
+6    7       2    80       90       45
+7    8       2    90       78       25
+8    9       3    20       98       15
+9   10       3    50       98       45
+10  11       3    65       65       65
+11  12       3    45       85       32
+12  13       4    46       98       65
+13  14       4    48       87       12
+14  15       4    75       56       78
+15  16       4    58       98       65
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87
+19  20       5    78       83       58</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># exam에서 nclass가 1인 경우만 추출</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass == 1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  nclass  math  english  science
+0   1       1    50       98       50
+1   2       1    60       97       60
+2   3       1    45       86       78
+3   4       1    30       98       58</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2반인 경우만 추출</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass == 2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  nclass  math  english  science
+4   5       2    25       80       65
+5   6       2    50       89       98
+6   7       2    80       90       45
+7   8       2    90       78       25</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1반이 아닌 경우</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass != 1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+4    5       2    25       80       65
+5    6       2    50       89       98
+6    7       2    80       90       45
+7    8       2    90       78       25
+8    9       3    20       98       15
+9   10       3    50       98       45
+10  11       3    65       65       65
+11  12       3    45       85       32
+12  13       4    46       98       65
+13  14       4    48       87       12
+14  15       4    75       56       78
+15  16       4    58       98       65
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87
+19  20       5    78       83       58</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3반이 아닌 경우</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass != 3'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+0    1       1    50       98       50
+1    2       1    60       97       60
+2    3       1    45       86       78
+3    4       1    30       98       58
+4    5       2    25       80       65
+5    6       2    50       89       98
+6    7       2    80       90       45
+7    8       2    90       78       25
+12  13       4    46       98       65
+13  14       4    48       87       12
+14  15       4    75       56       78
+15  16       4    58       98       65
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87
+19  20       5    78       83       58</code></pre>
+</div>
+</div>
+</section>
+<section id="초과-미만-이상-이하-조건-걸기" class="slide level3">
+<h3>초과, 미만, 이상, 이하 조건 걸기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 수학 점수가 50점을 초과한 경우</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'math &gt; 50'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+1    2       1    60       97       60
+6    7       2    80       90       45
+7    8       2    90       78       25
+10  11       3    65       65       65
+14  15       4    75       56       78
+15  16       4    58       98       65
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87
+19  20       5    78       83       58</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 수학 점수가 50점 미만인 경우</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'math &lt; 50'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+2    3       1    45       86       78
+3    4       1    30       98       58
+4    5       2    25       80       65
+8    9       3    20       98       15
+11  12       3    45       85       32
+12  13       4    46       98       65
+13  14       4    48       87       12</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 영어 점수가 50점 이상인 경우</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'english &gt;= 50'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+0    1       1    50       98       50
+1    2       1    60       97       60
+2    3       1    45       86       78
+3    4       1    30       98       58
+4    5       2    25       80       65
+5    6       2    50       89       98
+6    7       2    80       90       45
+7    8       2    90       78       25
+8    9       3    20       98       15
+9   10       3    50       98       45
+10  11       3    65       65       65
+11  12       3    45       85       32
+12  13       4    46       98       65
+13  14       4    48       87       12
+14  15       4    75       56       78
+15  16       4    58       98       65
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87
+19  20       5    78       83       58</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 영어 점수가 80점 이하인 경우</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'english &lt;= 80'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+4    5       2    25       80       65
+7    8       2    90       78       25
+10  11       3    65       65       65
+14  15       4    75       56       78
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87</code></pre>
+</div>
+</div>
+</section>
+<section id="여러-조건을-충족하는-행-추출하기" class="slide level3">
+<h3>여러 조건을 충족하는 행 추출하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1반이면서 수학 점수가 50점 이상인 경우</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass == 1 &amp; math &gt;= 50'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  nclass  math  english  science
+0   1       1    50       98       50
+1   2       1    60       97       60</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2반이면서 영어 점수가 80점 이상인 경우</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass == 2 &amp; english &gt;= 80'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  nclass  math  english  science
+4   5       2    25       80       65
+5   6       2    50       89       98
+6   7       2    80       90       45</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="여러-조건-중-하나-이상-충족하는-행-추출하기" class="slide level3">
+<h3>여러 조건 중 하나 이상 충족하는 행 추출하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 수학 점수가 90점 이상이거나 영어 점수가 90점 이상인 경우</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'math &gt;= 90 | english &gt;= 90'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+0    1       1    50       98       50
+1    2       1    60       97       60
+3    4       1    30       98       58
+6    7       2    80       90       45
+7    8       2    90       78       25
+8    9       3    20       98       15
+9   10       3    50       98       45
+12  13       4    46       98       65
+15  16       4    58       98       65</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 영어 점수가 90점 미만이거나 과학 점수가 50점 미만인 경우</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'english &lt; 90 | science &lt; 50'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+2    3       1    45       86       78
+4    5       2    25       80       65
+5    6       2    50       89       98
+6    7       2    80       90       45
+7    8       2    90       78       25
+8    9       3    20       98       15
+9   10       3    50       98       45
+10  11       3    65       65       65
+11  12       3    45       85       32
+13  14       4    48       87       12
+14  15       4    75       56       78
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87
+19  20       5    78       83       58</code></pre>
+</div>
+</div>
+</section>
+<section id="목록에-해당하는-행-추출하기" class="slide level3">
+<h3>목록에 해당하는 행 추출하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1, 3, 5반에 해당하면 추출</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass == 1 | nclass == 3 | nclass == 5'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+0    1       1    50       98       50
+1    2       1    60       97       60
+2    3       1    45       86       78
+3    4       1    30       98       58
+8    9       3    20       98       15
+9   10       3    50       98       45
+10  11       3    65       65       65
+11  12       3    45       85       32
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87
+19  20       5    78       83       58</code></pre>
+</div>
+</div>
+</section>
+<section id="목록에-해당하는-행-추출하기-1" class="slide level3">
+<h3>목록에 해당하는 행 추출하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1, 3, 5반에 해당하면 추출</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass in [1, 3, 5]'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+0    1       1    50       98       50
+1    2       1    60       97       60
+2    3       1    45       86       78
+3    4       1    30       98       58
+8    9       3    20       98       15
+9   10       3    50       98       45
+10  11       3    65       65       65
+11  12       3    45       85       32
+16  17       5    65       68       98
+17  18       5    80       78       90
+18  19       5    89       68       87
+19  20       5    78       83       58</code></pre>
+</div>
+</div>
+</section>
+<section id="추출한-행으로-데이터-만들기" class="slide level3">
+<h3>추출한 행으로 데이터 만들기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nclass가 1인 행 추출해 nclass1에 할당</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>nclass1 <span class="op">=</span> exam.query(<span class="st">'nclass == 1'</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># nclass가 2인 행 추출해 nclass2에 할당</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>nclass2 <span class="op">=</span> exam.query(<span class="st">'nclass == 2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>nclass1[<span class="st">'math'</span>].mean()  <span class="co"># 1반 수학 점수 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>46.25</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>nclass2[<span class="st">'math'</span>].mean()  <span class="co"># 2반 수학 점수 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>61.25</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="문자-변수를-이용해-조건에-맞는-행-추출하기" class="slide level3">
+<h3>문자 변수를 이용해 조건에 맞는 행 추출하기</h3>
+<h5 id="전체-조건-과-추출할-문자-에-서로-다른-모양-따옴표-입력">‘전체 조건’ 과 ‘추출할 문자’ 에 서로 다른 모양 따옴표 입력</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'sex'</span>     : [<span class="st">'F'</span>, <span class="st">'M'</span>, <span class="st">'F'</span>, <span class="st">'M'</span>],</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'country'</span> : [<span class="st">'Korea'</span>, <span class="st">'China'</span>, <span class="st">'Japan'</span>, <span class="st">'USA'</span>]})</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sex country
+0   F   Korea
+1   M   China
+2   F   Japan
+3   M     USA</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 전체 조건에 작은따옴표, 추출할 문자에 큰따옴표 사용</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'sex == "F" &amp; country == "Korea"'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sex country
+0   F   Korea</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 전체 조건에 큰따옴표, 추출할 문자에 작은따옴표 사용</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"sex == 'M' &amp; country == 'China'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sex country
+1   M   China</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:#FF7333;overflow:visible;position:relative;"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path></svg> <strong>같은 모양 따옴표 사용하면 에러</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 전체 조건과 추출할 문자에 모두 작은따옴표 사용</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'sex == '</span><span class="ss">F' &amp; country == '</span>Korea<span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-20></br-back-20></p>
+<pre><code>SyntaxError: invalid syntax (&lt;string&gt;, line 1)</code></pre>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">외부 변수를 이용해 추출하기</span></p>
+<p>별도의 변수를 이용해 행을 추출하려면 변수명 앞에 <code>@</code>를 붙여서 조건 입력</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass == @var'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+8    9       3    20       98       15
+9   10       3    50       98       45
+10  11       3    65       65       65
+11  12       3    45       85       32</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">파이썬에서 사용하는 기호</span></p>
+<p><br10></br10></p>
+<p><img data-src="img/06-special-character.jpg" style="width:60.0%"></p>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">데이터 프레임 출력 제한 설정하기</span></p>
+<h5 id="데이터-프레임-크면-중간-생략함">데이터 프레임 크면 중간 생략함</h5>
+<ul>
+<li>60행 넘기면 위아래 5행씩 10행만 출력</li>
+<li>20열 넘기면 좌우 10열씩 20열만 출력</li>
+</ul>
+<h5 id="행-열-제한-없이-모두-출력하기">행, 열 제한 없이 모두 출력하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_rows'</span>, <span class="va">None</span>)     <span class="co"># 모든 행 출력하도록 설정</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_columns'</span>, <span class="va">None</span>)  <span class="co"># 모든 열 출력하도록 설정</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-10></br-back-10></p>
+<ul>
+<li>JupyterLab이나 커널(Kernel)을 새로 실행하면 원래대로 돌아감
+<ul>
+<li>커널 새로 실행: JupyterLab 상단 메뉴 [Kernel → Restart Kernel…] 클릭</li>
+</ul></li>
+</ul>
+<h5 id="새로-실행하지-않고-설정-되돌리기">새로 실행하지 않고 설정 되돌리기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>pd.reset_option(<span class="st">'display.max_rows'</span>)     <span class="co"># 행 출력 제한 되돌리기</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>pd.reset_option(<span class="st">'display.max_columns'</span>)  <span class="co"># 열 출력 제한 되돌리기</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>pd.reset_option(<span class="st">'all'</span>)                  <span class="co"># 모든 설정 되돌리기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-30></br-back-30></p>
+</div>
+</section>
+<section id="혼자서-해보기" class="slide level3">
+<h3>혼자서 해보기</h3>
+<p><strong><code>mpg</code> 데이터를 이용해 분석 문제를 해결해 보세요.</strong></p>
+<p>Q1. 자동차 배기량에 따라 고속도로 연비가 다른지 알아보려고 합니다. <code>displ</code>(배기량)이 <code>4</code> 이하인<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 자동차와 <code>5</code> 이상인 자동차 중 어떤 자동차의 <code>hwy</code>(고속도로 연비) 평균이 더 높은지 알아보세요.</p>
+<!-- - 힌트: 특정 조건에 해당하는 데이터를 추출해 평균을 구하면 됩니다. `query()`를 이용해 `displ` 변수가 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;특정 값을 지닌 행을 추출해 새로운 변수에 할당한 다음 평균을 구해 보세요. -->
+<p>Q2. 자동차 제조 회사에 따라 도시 연비가 어떻게 다른지 알아보려고 합니다. <code>'audi'</code>와 <code>'toyota'</code> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중 어느 <code>manufacturer</code>(자동차 제조 회사)의 <code>cty</code>(도시 연비) 평균이 더 높은지 알아보세요.</p>
+<!-- - 힌트: '여러 조건 중 하나 이상 충족' 하면 추출하도록 `query()` 함수를 구성해 보세요. 이렇게 추출한 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;데이터로 평균을 구하면 됩니다. `in`을 이용하면 코드를 짧게 만들 수 있습니다. -->
+<p>Q3. <code>'chevrolet'</code>, <code>'ford'</code>, <code>'honda'</code> 자동차의 고속도로 연비 평균을 알아보려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;세 회사의 데이터를 추출한 다음 <code>hwy</code> 전체 평균을 구해 보세요.</p>
+<!-- - 힌트: 앞 문제와 동일한 절차로 해결하면 됩니다. 단, 변수의 값이 숫자가 아니라 문자라는 점이 다릅니다. -->
+</section>
+<section class="slide level3">
+
+<p>Q1. 자동차 배기량에 따라 고속도로 연비가 다른지 알아보려고 합니다. <code>displ</code>(배기량)이 <code>4</code> 이하인<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 자동차와 <code>5</code> 이상인 자동차 중 어떤 자동차의 <code>hwy</code>(고속도로 연비) 평균이 더 높은지 알아보세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.read_csv(<span class="st">'mpg.csv'</span>)     <span class="co"># mpg 데이터 불러오기</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>mpg_a <span class="op">=</span> mpg.query(<span class="st">'displ &lt;= 4'</span>)  <span class="co"># displ 4 이하 추출</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>mpg_b <span class="op">=</span> mpg.query(<span class="st">'displ &gt;= 5'</span>)  <span class="co"># displ 5 이상 추출</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br10></br10></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>mpg_a[<span class="st">'hwy'</span>].mean()              <span class="co"># displ 4 이하의 hwy 평균</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>25.96319018404908</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>mpg_b[<span class="st">'hwy'</span>].mean()              <span class="co"># displ 5 이상의 hwy 평균</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>18.07894736842105</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q2. 자동차 제조 회사에 따라 도시 연비가 어떻게 다른지 알아보려고 합니다. <code>'audi'</code>와 <code>'toyota'</code> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중 어느 <code>manufacturer</code>(자동차 제조 회사)의 <code>cty</code>(도시 연비) 평균이 더 높은지 알아보세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>mpg_audi   <span class="op">=</span> mpg.query(<span class="st">'manufacturer == "audi"'</span>)    <span class="co"># audi 추출</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>mpg_toyota <span class="op">=</span> mpg.query(<span class="st">'manufacturer == "toyota"'</span>)  <span class="co"># toyota 추출</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br10></br10></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>mpg_audi[<span class="st">'cty'</span>].mean()                              <span class="co"># audi의 cty 평균</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>17.61111111111111</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>mpg_toyota[<span class="st">'cty'</span>].mean()                            <span class="co"># toyota의 cty 평균</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>18.529411764705884</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q3. <code>'chevrolet'</code>, <code>'ford'</code>, <code>'honda'</code> 자동차의 고속도로 연비 평균을 알아보려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;세 회사의 데이터를 추출한 다음 <code>hwy</code> 전체 평균을 구해 보세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># manufacturer가 chevrolet, ford, honda에 해당하면 추출</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>mpg_new <span class="op">=</span> mpg.query(<span class="st">'manufacturer in ["chevrolet", "ford", "honda"]'</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>mpg_new[<span class="st">'hwy'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>22.50943396226415</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="필요한-변수만-추출하기" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>06-3 필요한 변수만 추출하기</h2>
+
+</section>
+<section id="변수-추출하기-df" class="slide level3">
+<h3>변수 추출하기: <code>df[]</code></h3>
+<p><br></p>
+<p><img data-src="img/06-select.jpg" style="width:70.0%"></p>
+</section>
+<section id="변수-추출하기" class="slide level3">
+<h3>변수 추출하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>exam[<span class="st">'math'</span>]  <span class="co"># math 추출</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0     50
+1     60
+2     45
+3     30
+4     25
+5     50
+6     80
+7     90
+8     20
+9     50
+10    65
+11    45
+12    46
+13    48
+14    75
+15    58
+16    65
+17    80
+18    89
+19    78
+Name: math, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>exam[<span class="st">'english'</span>]  <span class="co"># english 추출</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0     98
+1     97
+2     86
+3     98
+4     80
+5     89
+6     90
+7     78
+8     98
+9     98
+10    65
+11    85
+12    98
+13    87
+14    56
+15    98
+16    68
+17    78
+18    68
+19    83
+Name: english, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="여러-변수-추출하기">여러 변수 추출하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>exam[[<span class="st">'nclass'</span>, <span class="st">'math'</span>, <span class="st">'english'</span>]]  <span class="co"># nclass, math, english 추출</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    nclass  math  english
+0        1    50       98
+1        1    60       97
+2        1    45       86
+3        1    30       98
+4        2    25       80
+5        2    50       89
+6        2    80       90
+7        2    90       78
+8        3    20       98
+9        3    50       98
+10       3    65       65
+11       3    45       85
+12       4    46       98
+13       4    48       87
+14       4    75       56
+15       4    58       98
+16       5    65       68
+17       5    80       78
+18       5    89       68
+19       5    78       83</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><br-back-20></br-back-20></p>
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">변수가 1개 일 때 데이터 프레임 유지하기</span></p>
+<h5 id="변수명을-로-한-번-더-감싸기">변수명을 <code>[]</code>로 한 번 더 감싸기</h5>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 시리즈로 추출</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>exam[<span class="st">'math'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-30></br-back-30></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>0    50
+1    60
+2    45
+3    30
+4    25
+5    50
+6    80
+7    90
+8    20
+9    50
+Name: math, dtype: int64</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 프레임으로 추출</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>exam[[<span class="st">'math'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-30></br-back-30></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   math
+0    50
+1    60
+2    45
+3    30
+4    25
+5    50
+6    80
+7    90
+8    20
+9    50</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p><br-back-30></br-back-30></p>
+</div>
+</section>
+<section id="변수-제거하기" class="slide level3">
+<h3>변수 제거하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>exam.drop(columns <span class="op">=</span> <span class="st">'math'</span>)  <span class="co"># math 제거</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  english  science
+0    1       1       98       50
+1    2       1       97       60
+2    3       1       86       78
+3    4       1       98       58
+4    5       2       80       65
+5    6       2       89       98
+6    7       2       90       45
+7    8       2       78       25
+8    9       3       98       15
+9   10       3       98       45
+10  11       3       65       65
+11  12       3       85       32
+12  13       4       98       65
+13  14       4       87       12
+14  15       4       56       78
+15  16       4       98       65
+16  17       5       68       98
+17  18       5       78       90
+18  19       5       68       87
+19  20       5       83       58</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>exam.drop(columns <span class="op">=</span> [<span class="st">'math'</span>, <span class="st">'english'</span>])  <span class="co"># math, english 제거</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  science
+0    1       1       50
+1    2       1       60
+2    3       1       78
+3    4       1       58
+4    5       2       65
+5    6       2       98
+6    7       2       45
+7    8       2       25
+8    9       3       15
+9   10       3       45
+10  11       3       65
+11  12       3       32
+12  13       4       65
+13  14       4       12
+14  15       4       78
+15  16       4       65
+16  17       5       98
+17  18       5       90
+18  19       5       87
+19  20       5       58</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-함수-조합하기" class="slide level3">
+<h3><code>pandas</code> 함수 조합하기</h3>
+<h4 id="query와-조합하기"><code>query()</code>와 <code>[]</code> 조합하기</h4>
+<h5 id="반-학생의-영어-점수-추출">1반 학생의 영어 점수 추출</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nclass가 1인 행만 추출한 다음 english 추출</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass == 1'</span>)[<span class="st">'english'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    98
+1    97
+2    86
+3    98
+Name: english, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="수학-점수가-50점-이상인-학생의-id와-math-변수-추출">수학 점수가 <code>50</code>점 이상인 학생의 <code>id</code>와 <code>math</code> 변수 추출</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># math가 50 이상인 행만 추출한 다음 id, math 추출</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'math &gt;= 50'</span>)[[<span class="st">'id'</span>, <span class="st">'math'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  math
+0    1    50
+1    2    60
+5    6    50
+6    7    80
+7    8    90
+9   10    50
+10  11    65
+14  15    75
+15  16    58
+16  17    65
+17  18    80
+18  19    89
+19  20    78</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="일부만-출력하기">일부만 출력하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># math가 50 이상인 행만 추출한 다음 id, math 앞부분 5행까지 추출</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'math &gt;= 50'</span>)[[<span class="st">'id'</span>, <span class="st">'math'</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  math
+0   1    50
+1   2    60
+5   6    50
+6   7    80
+7   8    90</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="일부만-출력하기-1">일부만 출력하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># math가 50 이상인 행만 추출한 다음 id, math 앞부분 10행까지 추출</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'math &gt;= 50'</span>)[[<span class="st">'id'</span>, <span class="st">'math'</span>]].head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  math
+0    1    50
+1    2    60
+5    6    50
+6    7    80
+7    8    90
+9   10    50
+10  11    65
+14  15    75
+15  16    58
+16  17    65</code></pre>
+</div>
+</div>
+</section>
+<section id="가독성-있게-코드-줄-바꾸기" class="slide level3">
+<h3>가독성 있게 코드 줄 바꾸기</h3>
+<ul>
+<li><ol type="1">
+<li>명령어 끝난 부분 뒤에 백슬래시(<code>\</code>) 입력 후 [Enter]로 줄바꿈</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>[Spacebar]나 [Tab]을 이용해 간격 띄우고 다음 명령어 입력</li>
+</ol>
+<ul>
+<li><code>\</code> 뒤에 아무것도 입력하면 안 됨(주석, 띄어쓰기 X)</li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'math &gt;= 50'</span>) <span class="op">\</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">'id'</span>, <span class="st">'math'</span>]] <span class="op">\</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>    .head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  math
+0    1    50
+1    2    60
+5    6    50
+6    7    80
+7    8    90
+9   10    50
+10  11    65
+14  15    75
+15  16    58
+16  17    65</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># math가 50 이상인 행만 추출</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="co"># id, math 추출</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 앞부분 10행 추출</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="혼자서-해보기-1" class="slide level3">
+<h3>혼자서 해보기</h3>
+<p><strong><code>mpg</code> 데이터를 이용해 분석 문제를 해결해 보세요.</strong></p>
+<p>Q1. <code>mpg</code> 데이터는 11개 변수로 구성됩니다. 이 중 일부만 추출해 분석에 활용하려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>mpg</code> 데이터에서 <code>category</code>(자동차 종류), <code>cty</code>(도시 연비) 변수를 추출해 새로운 데이터를 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;만드세요. 새로 만든 데이터의 일부를 출력해 두 변수로만 구성되어 있는지 확인하세요.</p>
+<p>Q2. 자동차 종류에 따라 도시 연비가 어떻게 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이용해 <code>category</code>(자동차 종류)가 <code>'suv'</code>인 자동차와 <code>'compact'</code>인 자동차 중 어떤 자동차의 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>cty</code>(도시 연비) 평균이 더 높은지 알아보세요.</p>
+</section>
+<section class="slide level3">
+
+<p>Q1. <code>mpg</code> 데이터는 11개 변수로 구성됩니다. 이 중 일부만 추출해 분석에 활용하려고 합니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>mpg</code> 데이터에서 <code>category</code>(자동차 종류), <code>cty</code>(도시 연비) 변수를 추출해 새로운 데이터를 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;만드세요. 새로 만든 데이터의 일부를 출력해 두 변수로만 구성되어 있는지 확인하세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.read_csv(<span class="st">'mpg.csv'</span>)        <span class="co"># mpg 데이터 불러오기</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>mpg_new <span class="op">=</span> mpg[[<span class="st">'category'</span>, <span class="st">'cty'</span>]]  <span class="co"># category, cty 추출</span></span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>mpg_new.head()                      <span class="co"># mpg_new 일부 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-30></br-back-30></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  category  cty
+0  compact   18
+1  compact   21
+2  compact   20
+3  compact   21
+4  compact   16</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q2. 자동차 종류에 따라 도시 연비가 어떻게 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이용해 <code>category</code>(자동차 종류)가 <code>'suv'</code>인 자동차와 <code>'compact'</code>인 자동차 중 어떤 자동차의 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>cty</code>(도시 연비) 평균이 더 높은지 알아보세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>mpg_new.query(<span class="st">'category == "suv"'</span>)[<span class="st">'cty'</span>].mean()      <span class="co"># suv의 cty 평균</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>13.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>mpg_new.query(<span class="st">'category == "compact"'</span>)[<span class="st">'cty'</span>].mean()  <span class="co"># compact의 cty 평균</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>20.127659574468087</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="순서대로-정렬하기" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>06-4 순서대로 정렬하기</h2>
+
+</section>
+<section id="순서대로-정렬하기-df.sort_values" class="slide level3">
+<h3>순서대로 정렬하기: <code>df.sort_values()</code></h3>
+<p><br></p>
+<p><img data-src="img/06-sort-values.jpg" style="width:70.0%"></p>
+</section>
+<section id="오름차순으로-정렬하기" class="slide level3">
+<h3>오름차순으로 정렬하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>exam.sort_values(<span class="st">'math'</span>)  <span class="co"># math 오름차순 정렬</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+8    9       3    20       98       15
+4    5       2    25       80       65
+3    4       1    30       98       58
+2    3       1    45       86       78
+11  12       3    45       85       32
+12  13       4    46       98       65
+13  14       4    48       87       12
+0    1       1    50       98       50
+9   10       3    50       98       45
+5    6       2    50       89       98
+15  16       4    58       98       65
+1    2       1    60       97       60
+10  11       3    65       65       65
+16  17       5    65       68       98
+14  15       4    75       56       78
+19  20       5    78       83       58
+6    7       2    80       90       45
+17  18       5    80       78       90
+18  19       5    89       68       87
+7    8       2    90       78       25</code></pre>
+</div>
+</div>
+</section>
+<section id="내림차순으로-정렬하기" class="slide level3">
+<h3>내림차순으로 정렬하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>exam.sort_values(<span class="st">'math'</span>, ascending <span class="op">=</span> <span class="va">False</span>)  <span class="co"># math 내림차순 정렬</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+7    8       2    90       78       25
+18  19       5    89       68       87
+17  18       5    80       78       90
+6    7       2    80       90       45
+19  20       5    78       83       58
+14  15       4    75       56       78
+16  17       5    65       68       98
+10  11       3    65       65       65
+1    2       1    60       97       60
+15  16       4    58       98       65
+9   10       3    50       98       45
+5    6       2    50       89       98
+0    1       1    50       98       50
+13  14       4    48       87       12
+12  13       4    46       98       65
+11  12       3    45       85       32
+2    3       1    45       86       78
+3    4       1    30       98       58
+4    5       2    25       80       65
+8    9       3    20       98       15</code></pre>
+</div>
+</div>
+</section>
+<section id="여러-정렬-기준-적용하기" class="slide level3">
+<h3>여러 정렬 기준 적용하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nclass, math 오름차순 정렬</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>exam.sort_values([<span class="st">'nclass'</span>, <span class="st">'math'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+3    4       1    30       98       58
+2    3       1    45       86       78
+0    1       1    50       98       50
+1    2       1    60       97       60
+4    5       2    25       80       65
+5    6       2    50       89       98
+6    7       2    80       90       45
+7    8       2    90       78       25
+8    9       3    20       98       15
+11  12       3    45       85       32
+9   10       3    50       98       45
+10  11       3    65       65       65
+12  13       4    46       98       65
+13  14       4    48       87       12
+15  16       4    58       98       65
+14  15       4    75       56       78
+16  17       5    65       68       98
+19  20       5    78       83       58
+17  18       5    80       78       90
+18  19       5    89       68       87</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="변수별로-정렬-순서를-다르게-지정하기">변수별로 정렬 순서를 다르게 지정하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nclass 오름차순, math 내림차순 정렬</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>exam.sort_values([<span class="st">'nclass'</span>, <span class="st">'math'</span>], ascending <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science
+1    2       1    60       97       60
+0    1       1    50       98       50
+2    3       1    45       86       78
+3    4       1    30       98       58
+7    8       2    90       78       25
+6    7       2    80       90       45
+5    6       2    50       89       98
+4    5       2    25       80       65
+10  11       3    65       65       65
+9   10       3    50       98       45
+11  12       3    45       85       32
+8    9       3    20       98       15
+14  15       4    75       56       78
+15  16       4    58       98       65
+13  14       4    48       87       12
+12  13       4    46       98       65
+18  19       5    89       68       87
+17  18       5    80       78       90
+19  20       5    78       83       58
+16  17       5    65       68       98</code></pre>
+</div>
+</div>
+</section>
+<section id="혼자서-해보기-2" class="slide level3">
+<h3>혼자서 해보기</h3>
+<p><strong><code>mpg</code> 데이터를 이용해 분석 문제를 해결해 보세요.</strong></p>
+<div style="font-size: 0.9em;">
+<p>Q1. <code>'audi'</code>에서 생산한 자동차 중에 어떤 자동차 모델의 <code>hwy</code>(고속도로 연비)가 높은지 알아보려고 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 합니다. <code>'audi'</code>에서 생산한 자동차 중 <code>hwy</code>가 1~5위에 해당하는 자동차의 데이터를 출력하세요.</p>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.read_csv(<span class="st">'mpg.csv'</span>)     </span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>mpg.query(<span class="st">'manufacturer == "audi"'</span>) <span class="op">\</span></span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>   .sort_values(<span class="st">'hwy'</span>, ascending <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>   .head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mpg 데이터 불러오기</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co"># audi 추출</span></span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co"># hwy 내림차순 정렬</span></span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 5행까지 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-30></br-back-30></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  manufacturer       model  displ  year  cyl  ... drv cty  hwy  fl category
+2         audi          a4    2.0  2008    4  ...   f  20   31   p  compact
+3         audi          a4    2.0  2008    4  ...   f  21   30   p  compact
+0         audi          a4    1.8  1999    4  ...   f  18   29   p  compact
+1         audi          a4    1.8  1999    4  ...   f  21   29   p  compact
+9         audi  a4 quattro    2.0  2008    4  ...   4  20   28   p  compact</code></pre>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="파생변수-추가하기" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>06-5 파생변수 추가하기</h2>
+
+</section>
+<section id="파생변수-추가하기-df.assign" class="slide level3">
+<h3>파생변수 추가하기: <code>df.assign()</code></h3>
+<p><br></p>
+<p><img data-src="img/06-assign.jpg" style="width:70.0%"></p>
+</section>
+<section id="파생변수-추가하기-1" class="slide level3">
+<h3>파생변수 추가하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># total 변수 추가</span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>exam.assign(total <span class="op">=</span> exam[<span class="st">'math'</span>] <span class="op">+</span> exam[<span class="st">'english'</span>] <span class="op">+</span> exam[<span class="st">'science'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science  total
+0    1       1    50       98       50    198
+1    2       1    60       97       60    217
+2    3       1    45       86       78    209
+3    4       1    30       98       58    186
+4    5       2    25       80       65    170
+5    6       2    50       89       98    237
+6    7       2    80       90       45    215
+7    8       2    90       78       25    193
+8    9       3    20       98       15    133
+9   10       3    50       98       45    193
+10  11       3    65       65       65    195
+11  12       3    45       85       32    162
+12  13       4    46       98       65    209
+13  14       4    48       87       12    147
+14  15       4    75       56       78    209
+15  16       4    58       98       65    221
+16  17       5    65       68       98    231
+17  18       5    80       78       90    248
+18  19       5    89       68       87    244
+19  20       5    78       83       58    219</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="여러-파생변수-한-번에-추가하기">여러 파생변수 한 번에 추가하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>exam.assign(</span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>  total <span class="op">=</span> exam[<span class="st">'math'</span>] <span class="op">+</span> exam[<span class="st">'english'</span>] <span class="op">+</span> exam[<span class="st">'science'</span>],       <span class="co"># total 추가</span></span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>  mean <span class="op">=</span> (exam[<span class="st">'math'</span>] <span class="op">+</span> exam[<span class="st">'english'</span>] <span class="op">+</span> exam[<span class="st">'science'</span>]) <span class="op">/</span> <span class="dv">3</span>)  <span class="co"># mean 추가</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science  total       mean
+0    1       1    50       98       50    198  66.000000
+1    2       1    60       97       60    217  72.333333
+2    3       1    45       86       78    209  69.666667
+3    4       1    30       98       58    186  62.000000
+4    5       2    25       80       65    170  56.666667
+5    6       2    50       89       98    237  79.000000
+6    7       2    80       90       45    215  71.666667
+7    8       2    90       78       25    193  64.333333
+8    9       3    20       98       15    133  44.333333
+9   10       3    50       98       45    193  64.333333
+10  11       3    65       65       65    195  65.000000
+11  12       3    45       85       32    162  54.000000
+12  13       4    46       98       65    209  69.666667
+13  14       4    48       87       12    147  49.000000
+14  15       4    75       56       78    209  69.666667
+15  16       4    58       98       65    221  73.666667
+16  17       5    65       68       98    231  77.000000
+17  18       5    80       78       90    248  82.666667
+18  19       5    89       68       87    244  81.333333
+19  20       5    78       83       58    219  73.000000</code></pre>
+</div>
+</div>
+</section>
+<section id="df.assign에-np.where-적용하기" class="slide level3">
+<h3><code>df.assign()</code>에 <code>np.where()</code> 적용하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>exam.assign(test <span class="op">=</span> np.where(exam[<span class="st">'science'</span>] <span class="op">&gt;=</span> <span class="dv">60</span>, <span class="st">'pass'</span>, <span class="st">'fall'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science  test
+0    1       1    50       98       50  fall
+1    2       1    60       97       60  pass
+2    3       1    45       86       78  pass
+3    4       1    30       98       58  fall
+4    5       2    25       80       65  pass
+5    6       2    50       89       98  pass
+6    7       2    80       90       45  fall
+7    8       2    90       78       25  fall
+8    9       3    20       98       15  fall
+9   10       3    50       98       45  fall
+10  11       3    65       65       65  pass
+11  12       3    45       85       32  fall
+12  13       4    46       98       65  pass
+13  14       4    48       87       12  fall
+14  15       4    75       56       78  pass
+15  16       4    58       98       65  pass
+16  17       5    65       68       98  pass
+17  18       5    80       78       90  pass
+18  19       5    89       68       87  pass
+19  20       5    78       83       58  fall</code></pre>
+</div>
+</div>
+</section>
+<section id="추가한-변수를-pandas-함수에-바로-활용하기" class="slide level3">
+<h3>추가한 변수를 <code>pandas</code> 함수에 바로 활용하기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># total 변수 추가, total 기준 정렬</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>exam.assign(total <span class="op">=</span> exam[<span class="st">'math'</span>] <span class="op">+</span> exam[<span class="st">'english'</span>] <span class="op">+</span> exam[<span class="st">'science'</span>]) <span class="op">\</span></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">'total'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science  total
+8    9       3    20       98       15    133
+13  14       4    48       87       12    147
+11  12       3    45       85       32    162
+4    5       2    25       80       65    170
+3    4       1    30       98       58    186
+9   10       3    50       98       45    193
+7    8       2    90       78       25    193
+10  11       3    65       65       65    195
+0    1       1    50       98       50    198
+2    3       1    45       86       78    209
+12  13       4    46       98       65    209
+14  15       4    75       56       78    209
+6    7       2    80       90       45    215
+1    2       1    60       97       60    217
+19  20       5    78       83       58    219
+15  16       4    58       98       65    221
+16  17       5    65       68       98    231
+5    6       2    50       89       98    237
+18  19       5    89       68       87    244
+17  18       5    80       78       90    248</code></pre>
+</div>
+</div>
+</section>
+<section id="lambda-이용해-데이터-프레임명-줄여-쓰기" class="slide level3">
+<h3><code>lambda</code> 이용해 데이터 프레임명 줄여 쓰기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 긴 데이터 프레임명 지정</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a> long_name <span class="op">=</span> pd.read_csv(<span class="st">'exam.csv'</span>) </span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="co"># long_name 직접 입력</span></span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>long_name.assign(new <span class="op">=</span> long_name[<span class="st">'math'</span>] <span class="op">+</span> long_name[<span class="st">'english'</span>] <span class="op">+</span> </span>
+<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a>long_name[<span class="st">'science'</span>]) </span>
+<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a><span class="co"># long_name 대신 x 입력</span></span>
+<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a>long_name.assign(new <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'math'</span>] <span class="op">+</span> x[<span class="st">'english'</span>] <span class="op">+</span> x[<span class="st">'science'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="앞에서-만든-변수를-활용해-다시-변수-만들기" class="slide level3">
+<h3>앞에서 만든 변수를 활용해 다시 변수 만들기</h3>
+<h5 id="반드시-lambda를-이용해-데이터-프레임명을-약어로-입력">반드시 <code>lambda</code>를 이용해 데이터 프레임명을 약어로 입력</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>exam.assign(total <span class="op">=</span> exam[<span class="st">'math'</span>] <span class="op">+</span> exam[<span class="st">'english'</span>] <span class="op">+</span> exam[<span class="st">'science'</span>], </span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>            mean  <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'total'</span>] <span class="op">/</span> <span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p><br15></br15></p>
+<ul>
+<li>앞의 코드는 데이터 프레임명을 서로 다른 문자로 입력하여 읽기 불편함</li>
+<li>파생 변수를 만드는 행에 <code>lambda</code>를 각각 입력하면 데이터 프레임명 통일하여 가독성 높아짐</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>exam.assign(total <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'math'</span>] <span class="op">+</span> x[<span class="st">'english'</span>] <span class="op">+</span> x[<span class="st">'science'</span>], </span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>            mean  <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'total'</span>] <span class="op">/</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>lambda 이용하지 않고 데이터 프레임명 직접 입력하면 에러</strong></p>
+</div>
+<div class="callout-content">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>exam.assign(total <span class="op">=</span> exam[<span class="st">'math'</span>] <span class="op">+</span> exam[<span class="st">'english'</span>] <span class="op">+</span> exam[<span class="st">'science'</span>], </span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>            mean  <span class="op">=</span> exam[<span class="st">'total'</span>] <span class="op">/</span> <span class="dv">3</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>'total'</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="혼자서-해보기-3" class="slide level3">
+<h3>혼자서 해보기</h3>
+<p><strong><code>mpg</code> 데이터를 이용해 분석 문제를 해결해 보세요.</strong></p>
+<p>Q1. <code>mpg</code> 데이터 복사본을 만들고, <code>cty</code>와 <code>hwy</code>를 더한 ‘합산 연비 변수’ 를 추가하세요.</p>
+<p>Q2. 앞에서 만든 ‘합산 연비 변수’ 를 2로 나눠 ‘평균 연비 변수’ 를 추가하세요.</p>
+<p>Q3. ‘평균 연비 변수’ 가 가장 높은 자동차 3종의 데이터를 출력하세요.</p>
+<p>Q4. 1~3번 문제를 해결할 수 있는 하나로 연결된 <code>pandas</code> 구문을 만들어 실행해 보세요. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;데이터는 복사본 대신 <code>mpg</code> 원본을 이용하세요.</p>
+</section>
+<section class="slide level3">
+
+<p>Q1. <code>mpg</code> 데이터 복사본을 만들고, <code>cty</code>와 <code>hwy</code>를 더한 ‘합산 연비 변수’ 를 추가하세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.read_csv(<span class="st">'mpg.csv'</span>)  <span class="co"># mpg 데이터 불러오기</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>mpg_new <span class="op">=</span> mpg.copy()          <span class="co"># mpg 복사본 만들기</span></span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 합산 연비 변수 추가</span></span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a>mpg_new <span class="op">=</span> mpg_new.assign(total <span class="op">=</span> mpg_new[<span class="st">'cty'</span>] <span class="op">+</span> mpg_new[<span class="st">'hwy'</span>])  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q2. 앞에서 만든 ‘합산 연비 변수’ 를 2로 나눠 ‘평균 연비 변수’ 를 추가하세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 평균 연비 변수 추가</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>mpg_new <span class="op">=</span> mpg_new.assign(mean <span class="op">=</span> mpg_new[<span class="st">'total'</span>] <span class="op">/</span> <span class="dv">2</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q3. ‘평균 연비 변수’ 가 가장 높은 자동차 3종의 데이터를 출력하세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean 기준 내림차순 정렬, 상위 3행 출력</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>mpg_new.sort_values(<span class="st">'mean'</span>, ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">3</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-20></br-back-20></p>
+<div style="font-size: 0.9em;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    manufacturer       model  displ  year  cyl  ... hwy fl    category  total  mean
+221   volkswagen  new beetle    1.9  1999    4  ...  44  d  subcompact     79  39.5
+212   volkswagen       jetta    1.9  1999    4  ...  44  d     compact     77  38.5
+222   volkswagen  new beetle    1.9  1999    4  ...  41  d  subcompact     70  35.0</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q4. 1~3번 문제를 해결할 수 있는 하나로 연결된 <code>pandas</code> 구문을 만들어 실행해 보세요. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;데이터는 복사본 대신 <code>mpg</code> 원본을 이용하세요.</p>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>mpg.assign(total <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'cty'</span>] <span class="op">+</span> x[<span class="st">'hwy'</span>],</span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>           mean  <span class="op">=</span> <span class="kw">lambda</span> x: x[<span class="st">'total'</span>] <span class="op">/</span> <span class="dv">2</span>) <span class="op">\</span></span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>   .sort_values(<span class="st">'mean'</span>, ascending <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>   .head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:35%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 합산 연비 변수 추가</span></span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 평균 연비 변수 추가</span></span>
+<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 내림차순 정렬</span></span>
+<span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 상위 3행 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-30></br-back-30></p>
+<div style="font-size: 0.9em;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    manufacturer       model  displ  year  cyl  ... hwy fl    category  total  mean
+221   volkswagen  new beetle    1.9  1999    4  ...  44  d  subcompact     79  39.5
+212   volkswagen       jetta    1.9  1999    4  ...  44  d     compact     77  38.5
+222   volkswagen  new beetle    1.9  1999    4  ...  41  d  subcompact     70  35.0</code></pre>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="집단별로-요약하기" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>06-6 집단별로 요약하기</h2>
+
+</section>
+<section id="집단별로-요약하기-df.groupby-df.agg" class="slide level3">
+<h3>집단별로 요약하기: <code>df.groupby()</code>, <code>df.agg()</code></h3>
+<p><br></p>
+<p><img data-src="img/06-query.jpg" style="width:70.0%"></p>
+</section>
+<section id="집단별로-요약하기-1" class="slide level3">
+<h3>집단별로 요약하기</h3>
+<h5 id="전체-요약-통계량-구하기">전체 요약 통계량 구하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># math 평균 구하기</span></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>exam.agg(mean_math <span class="op">=</span> (<span class="st">'math'</span>, <span class="st">'mean'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            math
+mean_math  57.45</code></pre>
+</div>
+</div>
+<p><br></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:#FF7333;overflow:visible;position:relative;"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path></svg> 함수명 뒤에 <code>()</code> 넣지 않음</p>
+</section>
+<section id="집단별로-요약하기-2" class="slide level3">
+<h3>집단별로 요약하기</h3>
+<h5 id="집단별-요약-통계량-구하기">집단별 요약 통계량 구하기</h5>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>exam.groupby(<span class="st">'nclass'</span>) <span class="op">\</span></span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>    .agg(mean_math <span class="op">=</span> (<span class="st">'math'</span>, <span class="st">'mean'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nclass별로 분리하기</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="co"># math 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>        mean_math
+nclass           
+1           46.25
+2           61.25
+3           45.00
+4           56.75
+5           78.00</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">변수를 인덱스로 바꾸지 않기</span></p>
+<ul>
+<li><code>as_index = False</code>: 변수를 인덱스로 바꾸지 않고 원래대로 유지
+<ul>
+<li>앞 코드의 출력 결과에서 변수명 <code>nclass</code>가 인덱스(index)로 바뀌어 <code>mean_math</code>보다 밑에 표시됨</li>
+<li><code>groupby()</code>의 기본값이 변수를 인덱스로 바꾸도록 설정되어 있기 때문</li>
+<li>인덱스(index): 값이 데이터 프레임의 어디에 있는지 ‘값의 위치를 나타낸 값’</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>exam.groupby(<span class="st">'nclass'</span>, as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>    .agg(mean_math <span class="op">=</span> (<span class="st">'math'</span>, <span class="st">'mean'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   nclass  mean_math
+0       1      46.25
+1       2      61.25
+2       3      45.00
+3       4      56.75
+4       5      78.00</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="여러-요약-통계량-한-번에-구하기">여러 요약 통계량 한 번에 구하기</h5>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>exam.groupby(<span class="st">'nclass'</span>) <span class="op">\</span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>    .agg(mean_math   <span class="op">=</span> (<span class="st">'math'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a>         sum_math    <span class="op">=</span> (<span class="st">'math'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a>         median_math <span class="op">=</span> (<span class="st">'math'</span>, <span class="st">'median'</span>),</span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a>         n           <span class="op">=</span> (<span class="st">'nclass'</span>, <span class="st">'count'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nclass별로 분리</span></span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 수학 점수 평균</span></span>
+<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 수학 점수 합계</span></span>
+<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 수학 점수 중앙값</span></span>
+<span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 빈도(학생 수)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>        mean_math  sum_math  median_math  n
+nclass                                     
+1           46.25       185         47.5  4
+2           61.25       245         65.0  4
+3           45.00       180         47.5  4
+4           56.75       227         53.0  4
+5           78.00       312         79.0  4</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="agg에-자주-사용하는-요약-통계량-함수"><code>agg()</code>에 자주 사용하는 요약 통계량 함수</h4>
+<p><br></p>
+<p><img data-src="img/06-agg-functions.jpg" style="width:30.0%"></p>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">모든 변수의 요약 통계량 한 번에 구하기</span></p>
+<p><code>df.groupby()</code>에 <code>agg()</code> 대신 <code>mean()</code>, <code>sum()</code>과 같은 요약 통계량 함수 적용</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>exam.groupby(<span class="st">'nclass'</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          id   math  english  science
+nclass                               
+1        2.5  46.25    94.75    61.50
+2        6.5  61.25    84.25    58.25
+3       10.5  45.00    86.50    39.25
+4       14.5  56.75    84.75    55.00
+5       18.5  78.00    74.25    83.25</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="집단별로-다시-집단-나누기" class="slide level3">
+<h3>집단별로 다시 집단 나누기</h3>
+<h5 id="집단을-나눈-다음-다시-하위-집단으로-나누기">집단을 나눈 다음 다시 하위 집단으로 나누기</h5>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>mpg.groupby([<span class="st">'manufacturer'</span>, <span class="st">'drv'</span>]) <span class="op">\</span></span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>   .agg(mean_cty <span class="op">=</span> (<span class="st">'cty'</span>, <span class="st">'mean'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 제조 회사 및 구동 방식별 분리</span></span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="co"># cty 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                   mean_cty
+manufacturer drv           
+audi         4    16.818182
+             f    18.857143
+chevrolet    4    12.500000
+             f    18.800000
+             r    14.100000
+dodge        4    12.000000
+             f    15.818182
+ford         4    13.307692
+             r    14.750000
+honda        f    24.444444
+hyundai      f    18.642857
+jeep         4    13.500000
+land rover   4    11.500000
+lincoln      r    11.333333
+mercury      4    13.250000
+nissan       4    13.750000
+             f    20.000000
+pontiac      f    17.000000
+subaru       4    19.285714
+toyota       4    14.933333
+             f    21.368421
+volkswagen   f    20.925926</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info"><code>value_counts()</code>로 집단별 빈도 간단하게 구하기</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>mpg.groupby(<span class="st">'drv'</span>) <span class="op">\</span></span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>   .agg(n <span class="op">=</span> (<span class="st">'drv'</span>, <span class="st">'count'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       n
+drv     
+4    103
+f    106
+r     25</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>mpg[<span class="st">'drv'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>drv
+f    106
+4    103
+r     25
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<ul>
+<li>짧은 코드로 빈도를 구할 수 있음, 자동으로 빈도 기준 내림차순 정렬</li>
+<li>출력 결과가 데이터 프레임이 아닌 시리즈(series) 자료 구조이므로 <code>query()</code> 적용 불가</li>
+</ul>
+<p><br-back-20></br-back-20></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>mpg[<span class="st">'drv'</span>].value_counts().query(<span class="st">'n &gt; 100'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>'Series' object has no attribute 'query'</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="pandas-함수-조합하기-1" class="slide level3">
+<h3><code>pandas</code> 함수 조합하기</h3>
+<p>Q. 제조 회사별로 <code>'suv'</code> 자동차의 도시 및 고속도로 합산 연비 평균을 구해 내림차순으로 정렬하고, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1~5위까지 출력하기</p>
+<h5 id="함수-사용-절차">함수 사용 절차</h5>
+<p><img data-src="img/06-method-chaining.jpg" style="width:50.0%"></p>
+</section>
+<section id="pandas-함수-조합하기-2" class="slide level3">
+<h3><code>pandas</code> 함수 조합하기</h3>
+<p>Q. 제조 회사별로 <code>'suv'</code> 자동차의 도시 및 고속도로 합산 연비 평균을 구해 내림차순으로 정렬하고, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1~5위까지 출력하기</p>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>mpg.query(<span class="st">'category == "suv"'</span>) <span class="op">\</span></span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>   .assign(total <span class="op">=</span> (mpg[<span class="st">'hwy'</span>] <span class="op">+</span> mpg[<span class="st">'cty'</span>]) <span class="op">/</span> <span class="dv">2</span>) <span class="op">\</span></span>
+<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a>   .groupby(<span class="st">'manufacturer'</span>) <span class="op">\</span></span>
+<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a>   .agg(mean_tot <span class="op">=</span> (<span class="st">'total'</span>, <span class="st">'mean'</span>)) <span class="op">\</span></span>
+<span id="cb143-5"><a href="#cb143-5" aria-hidden="true" tabindex="-1"></a>   .sort_values(<span class="st">'mean_tot'</span>, ascending <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb143-6"><a href="#cb143-6" aria-hidden="true" tabindex="-1"></a>   .head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:35%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># suv 추출</span></span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 합산 연비 변수 만들기</span></span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 제조 회사별로 분리</span></span>
+<span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 합산 연비 평균 구하기</span></span>
+<span id="cb144-5"><a href="#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 내림차순 정렬</span></span>
+<span id="cb144-6"><a href="#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1~5위까지 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>               mean_tot
+manufacturer           
+subaru        21.916667
+toyota        16.312500
+nissan        15.875000
+mercury       15.625000
+jeep          15.562500</code></pre>
+</div>
+</div>
+</section>
+<section id="혼자서-해보기-4" class="slide level3">
+<h3>혼자서 해보기</h3>
+<p><strong><code>mpg</code> 데이터를 이용해 분석 문제를 해결해 보세요.</strong></p>
+<p>Q1. <code>mpg</code> 데이터의 <code>category</code>는 자동차를 특징에 따라 <code>'suv'</code>, <code>'compact'</code> 등 일곱 종류로 분류한 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변수입니다. 어떤 차종의 도시 연비가 높은지 비교해 보려고 합니다. <code>category</code>별 <code>cty</code> 평균을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;구해 보세요.</p>
+<p>Q2. 앞 문제의 출력 결과는 <code>category</code> 값 알파벳순으로 정렬되어 있습니다. 어떤 차종의 도시 연비가 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;높은지 쉽게 알아볼 수 있도록 <code>cty</code> 평균이 높은 순으로 정렬해 출력하세요.</p>
+<p>Q3. 어떤 회사 자동차의 <code>hwy</code>(고속도로 연비)가 가장 높은지 알아보려고 합니다. <code>hwy</code> 평균이 가장<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;높은 회사 세 곳을 출력하세요.</p>
+<p>Q4. 어떤 회사에서 <code>'compact'</code> 차종을 가장 많이 생산하는지 알아보려고 합니다. 회사별 <code>'compact'</code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;차종 수를 내림차순으로 정렬해 출력하세요.</p>
+</section>
+<section class="slide level3">
+
+<p>Q1. <code>mpg</code> 데이터의 <code>category</code>는 자동차를 특징에 따라 <code>'suv'</code>, <code>'compact'</code> 등 일곱 종류로 분류한 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변수입니다. 어떤 차종의 도시 연비가 높은지 비교해 보려고 합니다. <code>category</code>별 <code>cty</code> 평균을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;구해 보세요.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.read_csv(<span class="st">'mpg.csv'</span>)</span>
+<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a>mpg.groupby(<span class="st">'category'</span>) <span class="op">\</span></span>
+<span id="cb146-4"><a href="#cb146-4" aria-hidden="true" tabindex="-1"></a>   .agg(mean_cty <span class="op">=</span> (<span class="st">'cty'</span>, <span class="st">'mean'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="co"># category별 분리</span></span>
+<span id="cb147-4"><a href="#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="co"># cty 평균 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>             mean_cty
+category             
+2seater     15.400000
+compact     20.127660
+midsize     18.756098
+minivan     15.818182
+pickup      13.000000
+subcompact  20.371429
+suv         13.500000</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q2. 앞 문제의 출력 결과는 <code>category</code> 값 알파벳순으로 정렬되어 있습니다. 어떤 차종의 도시 연비가 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;높은지 쉽게 알아볼 수 있도록 <code>cty</code> 평균이 높은 순으로 정렬해 출력하세요.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a>mpg.groupby(<span class="st">'category'</span>) <span class="op">\</span></span>
+<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a>   .agg(mean_cty <span class="op">=</span> (<span class="st">'cty'</span>, <span class="st">'mean'</span>)) <span class="op">\</span></span>
+<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a>   .sort_values(<span class="st">'mean_cty'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># category별 분리</span></span>
+<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="co"># cty 평균 구하기</span></span>
+<span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 내림차순 정렬</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>             mean_cty
+category             
+subcompact  20.371429
+compact     20.127660
+midsize     18.756098
+minivan     15.818182
+2seater     15.400000
+suv         13.500000
+pickup      13.000000</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q3. 어떤 회사 자동차의 <code>hwy</code>(고속도로 연비)가 가장 높은지 알아보려고 합니다. <code>hwy</code> 평균이 가장<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;높은 회사 세 곳을 출력하세요.</p>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>mpg.groupby(<span class="st">'manufacturer'</span>) <span class="op">\</span></span>
+<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a>   .agg(mean_hwy <span class="op">=</span> (<span class="st">'hwy'</span>, <span class="st">'mean'</span>)) <span class="op">\</span></span>
+<span id="cb152-3"><a href="#cb152-3" aria-hidden="true" tabindex="-1"></a>   .sort_values(<span class="st">'mean_hwy'</span>, ascending <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb152-4"><a href="#cb152-4" aria-hidden="true" tabindex="-1"></a>   .head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:35%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># manufacturer별 분리</span></span>
+<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="co"># hwp 평균 구하기</span></span>
+<span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 내림차순 정렬</span></span>
+<span id="cb153-4"><a href="#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 상위 3행 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>               mean_hwy
+manufacturer           
+honda         32.555556
+volkswagen    29.222222
+hyundai       26.857143</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q4. 어떤 회사에서 <code>'compact'</code> 차종을 가장 많이 생산하는지 알아보려고 합니다. 회사별 <code>'compact'</code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;차종 수를 내림차순으로 정렬해 출력하세요.</p>
+<h5 id="방법1">방법1</h5>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a>mpg.query(<span class="st">'category == "compact"'</span>) <span class="op">\</span></span>
+<span id="cb155-2"><a href="#cb155-2" aria-hidden="true" tabindex="-1"></a>   .groupby(<span class="st">'manufacturer'</span>) <span class="op">\</span></span>
+<span id="cb155-3"><a href="#cb155-3" aria-hidden="true" tabindex="-1"></a>   .agg(n <span class="op">=</span> (<span class="st">'manufacturer'</span>, <span class="st">'count'</span>)) <span class="op">\</span></span>
+<span id="cb155-4"><a href="#cb155-4" aria-hidden="true" tabindex="-1"></a>   .sort_values(<span class="st">'n'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># manufacturer별 분리</span></span>
+<span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="co"># hwp 평균 구하기</span></span>
+<span id="cb156-3"><a href="#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 내림차순 정렬</span></span>
+<span id="cb156-4"><a href="#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 상위 3행 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>               n
+manufacturer    
+audi          15
+volkswagen    14
+toyota        12
+subaru         4
+nissan         2</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q4. 어떤 회사에서 <code>'compact'</code> 차종을 가장 많이 생산하는지 알아보려고 합니다. 회사별 <code>'compact'</code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;차종 수를 내림차순으로 정렬해 출력하세요.</p>
+<h5 id="방법2">방법2</h5>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>mpg.query(<span class="st">'category == "compact"'</span>) <span class="op">\</span></span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>   .value_counts(<span class="st">'manufacturer'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compact 추출</span></span>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="co"># manufacturer별 빈도 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>manufacturer
+audi          15
+volkswagen    14
+toyota        12
+subaru         4
+nissan         2
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="데이터-합치기" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>06-7 데이터 합치기</h2>
+
+</section>
+<section id="데이터-합치기-1" class="slide level3">
+<h3>데이터 합치기</h3>
+<h4 id="가로로-합치기-df.merge">가로로 합치기: <code>df.merge()</code></h4>
+<p><br15></br15></p>
+<p><img data-src="img/06-merge.jpg" style="width:65.0%"></p>
+<h4 id="세로로-합치기-df.concat">세로로 합치기: <code>df.concat()</code></h4>
+<p><br15></br15></p>
+<p><img data-src="img/06-concat.jpg" style="width:65.0%"></p>
+</section>
+<section id="가로로-합치기" class="slide level3">
+<h3>가로로 합치기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 중간고사 데이터 만들기</span></span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>test1 <span class="op">=</span> pd.DataFrame({<span class="st">'id'</span>      : [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'midterm'</span> : [<span class="dv">60</span>, <span class="dv">80</span>, <span class="dv">70</span>, <span class="dv">90</span>, <span class="dv">85</span>]})</span>
+<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 기말고사 데이터 만들기</span></span>
+<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a>test2 <span class="op">=</span> pd.DataFrame({<span class="st">'id'</span>    : [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'final'</span> : [<span class="dv">70</span>, <span class="dv">83</span>, <span class="dv">65</span>, <span class="dv">95</span>, <span class="dv">80</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a>test1  <span class="co"># test1 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  midterm
+0   1       60
+1   2       80
+2   3       70
+3   4       90
+4   5       85</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a>test2  <span class="co"># test2 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  final
+0   1     70
+1   2     83
+2   3     65
+3   4     95
+4   5     80</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<ol type="1">
+<li><code>pd.merge()</code>에 결합할 데이터 프레임명 나열</li>
+<li><code>how  = 'left'</code>: 오른쪽에 입력한 데이터 프레임을 왼쪽 데이터 프레임에 결합</li>
+<li><code>on</code>: 데이터를 합칠 때 기준으로 삼을 변수명 입력</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># id 기준으로 합쳐서 total에 할당</span></span>
+<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> pd.merge(test1, test2, how <span class="op">=</span> <span class="st">'left'</span>, on <span class="op">=</span> <span class="st">'id'</span>)</span>
+<span id="cb166-3"><a href="#cb166-3" aria-hidden="true" tabindex="-1"></a>total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  midterm  final
+0   1       60     70
+1   2       80     83
+2   3       70     65
+3   4       90     95
+4   5       85     80</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="다른-데이터를-활용해-변수-추가하기">다른 데이터를 활용해 변수 추가하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> pd.DataFrame({<span class="st">'nclass'</span>  : [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'teacher'</span> : [<span class="st">'kim'</span>, <span class="st">'lee'</span>, <span class="st">'park'</span>, <span class="st">'choi'</span>, <span class="st">'jung'</span>]})</span>
+<span id="cb168-3"><a href="#cb168-3" aria-hidden="true" tabindex="-1"></a>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   nclass teacher
+0       1     kim
+1       2     lee
+2       3    park
+3       4    choi
+4       5    jung</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="다른-데이터를-활용해-변수-추가하기-1">다른 데이터를 활용해 변수 추가하기</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nclass 기준으로 합쳐서 exam_new에 할당</span></span>
+<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a>exam_new <span class="op">=</span> pd.merge(exam, name, how <span class="op">=</span> <span class="st">'left'</span>, on <span class="op">=</span> <span class="st">'nclass'</span>)</span>
+<span id="cb170-3"><a href="#cb170-3" aria-hidden="true" tabindex="-1"></a>exam_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    id  nclass  math  english  science teacher
+0    1       1    50       98       50     kim
+1    2       1    60       97       60     kim
+2    3       1    45       86       78     kim
+3    4       1    30       98       58     kim
+4    5       2    25       80       65     lee
+5    6       2    50       89       98     lee
+6    7       2    80       90       45     lee
+7    8       2    90       78       25     lee
+8    9       3    20       98       15    park
+9   10       3    50       98       45    park
+10  11       3    65       65       65    park
+11  12       3    45       85       32    park
+12  13       4    46       98       65    choi
+13  14       4    48       87       12    choi
+14  15       4    75       56       78    choi
+15  16       4    58       98       65    choi
+16  17       5    65       68       98    jung
+17  18       5    80       78       90    jung
+18  19       5    89       68       87    jung
+19  20       5    78       83       58    jung</code></pre>
+</div>
+</div>
+</section>
+<section id="세로로-합치기" class="slide level3">
+<h3>세로로 합치기</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 학생 1~5번 시험 데이터 만들기</span></span>
+<span id="cb172-2"><a href="#cb172-2" aria-hidden="true" tabindex="-1"></a>group_a <span class="op">=</span> pd.DataFrame({<span class="st">'id'</span>   : [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb172-3"><a href="#cb172-3" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'test'</span> : [<span class="dv">60</span>, <span class="dv">80</span>, <span class="dv">70</span>, <span class="dv">90</span>, <span class="dv">85</span>]})</span>
+<span id="cb172-4"><a href="#cb172-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-5"><a href="#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 학생 6~10번 시험 데이터 만들기</span></span>
+<span id="cb172-6"><a href="#cb172-6" aria-hidden="true" tabindex="-1"></a>group_b <span class="op">=</span> pd.DataFrame({<span class="st">'id'</span>   : [<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>],</span>
+<span id="cb172-7"><a href="#cb172-7" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'test'</span> : [<span class="dv">70</span>, <span class="dv">83</span>, <span class="dv">65</span>, <span class="dv">95</span>, <span class="dv">80</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a>group_a  <span class="co"># group_a 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  test
+0   1    60
+1   2    80
+2   3    70
+3   4    90
+4   5    85</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a>group_b  <span class="co"># group_b 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  test
+0   6    70
+1   7    83
+2   8    65
+3   9    95
+4  10    80</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h5 id="결합할-데이터-프레임명을-를-이용해-나열">결합할 데이터 프레임명을 <code>[]</code>를 이용해 나열</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 합쳐서 group_all에 할당</span></span>
+<span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a>group_all <span class="op">=</span> pd.concat([group_a, group_b])</span>
+<span id="cb177-3"><a href="#cb177-3" aria-hidden="true" tabindex="-1"></a>group_all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id  test
+0   1    60
+1   2    80
+2   3    70
+3   4    90
+4   5    85
+0   6    70
+1   7    83
+2   8    65
+3   9    95
+4  10    80</code></pre>
+</div>
+</div>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:-0.5em;margin-right:auto;font-size:inherit;fill:#FF7333;overflow:visible;position:relative;"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path></svg> 인덱스 중복 안되도록 새로 부여하려면 <code>pd.concat()</code>에 <code>ignore_index = True</code></p>
+</section>
+<section class="slide level3">
+
+<div class="box">
+<p><span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> <span class="info">pandas 더 알아보기</span></p>
+<p><strong>치트 시트(cheat sheet)</strong>: 패키지 사용법을 요약한 매뉴얼</p>
+<p>• Pandas Cheat Sheet: <a href="https://bit.ly/easypy_pandas">bit.ly/easypy_pandas</a></p>
+<p><br20></br20></p>
+<p><strong><code>pandas</code> 공식 문서 검색하기</strong></p>
+<p>• pandas documentation: <a href="https://pandas.pydata.org/docs">pandas.pydata.org/docs</a></p>
+</div>
+</section>
+<section id="혼자서-해보기-5" class="slide level3">
+<h3>혼자서 해보기</h3>
+<p><strong><code>mpg</code> 데이터를 이용해 분석 문제를 해결해 보세요.</strong></p>
+<p><code>mpg</code> 데이터의 <code>fl</code> 변수는 자동차에 사용하는 연료(fuel)를 의미합니다. 다음은 자동차 연료별 가격을 나타낸 표입니다. 우선 이 정보를 이용해 연료와 가격으로 구성된 데이터 프레임을 만들어 보세요.</p>
+<p><br10></br10></p>
+<p><img data-src="img/06-quiz-fuel.jpg" style="width:38.0%"></p>
+<p><br-back-30></br-back-30></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb179"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a>fuel <span class="op">=</span> pd.DataFrame({<span class="st">'fl'</span>       : [<span class="st">'c'</span>, <span class="st">'d'</span>, <span class="st">'e'</span>, <span class="st">'p'</span>, <span class="st">'r'</span>],</span>
+<span id="cb179-2"><a href="#cb179-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'price_fl'</span> : [<span class="fl">2.35</span>, <span class="fl">2.38</span>, <span class="fl">2.11</span>, <span class="fl">2.76</span>, <span class="fl">2.22</span>]})</span>
+<span id="cb179-3"><a href="#cb179-3" aria-hidden="true" tabindex="-1"></a>fuel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  fl  price_fl
+0  c      2.35
+1  d      2.38
+2  e      2.11
+3  p      2.76
+4  r      2.22</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p><strong><code>mpg</code> 데이터를 이용해 분석 문제를 해결해 보세요.</strong></p>
+<p>Q1. <code>mpg</code> 데이터에는 연료 종류를 나타낸 <code>fl</code> 변수는 있지만 연료 가격을 나타낸 변수는 없습니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;앞에서 만든 <code>fuel</code> 데이터를 이용해 <code>mpg</code> 데이터에 <code>price_fl</code>(연료 가격) 변수를 추가하세요.</p>
+<p>Q2. 연료 가격 변수가 잘 추가됐는지 확인하기 위해 <code>model</code>, <code>fl</code>, <code>price_fl</code> 변수를 추출해 앞부분<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5행을 출력해 보세요.</p>
+</section>
+<section class="slide level3">
+
+<p>Q1. <code>mpg</code> 데이터에는 연료 종류를 나타낸 <code>fl</code> 변수는 있지만 연료 가격을 나타낸 변수는 없습니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;앞에서 만든 <code>fuel</code> 데이터를 이용해 <code>mpg</code> 데이터에 <code>price_fl</code>(연료 가격) 변수를 추가하세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mpg 데이터 불러오기</span></span>
+<span id="cb181-2"><a href="#cb181-2" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.read_csv(<span class="st">'mpg.csv'</span>)</span>
+<span id="cb181-3"><a href="#cb181-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="#cb181-4" aria-hidden="true" tabindex="-1"></a><span class="co"># mpg에 연료 가격 변수 추가</span></span>
+<span id="cb181-5"><a href="#cb181-5" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.merge(mpg, fuel, how <span class="op">=</span> <span class="st">'left'</span>, on <span class="op">=</span> <span class="st">'fl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>Q2. 연료 가격 변수가 잘 추가됐는지 확인하기 위해 <code>model</code>, <code>fl</code>, <code>price_fl</code> 변수를 추출해 앞부분<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5행을 출력해 보세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb182"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb182-1"><a href="#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수 추출, 앞부분 일부 출력</span></span>
+<span id="cb182-2"><a href="#cb182-2" aria-hidden="true" tabindex="-1"></a>mpg[[<span class="st">'model'</span>, <span class="st">'fl'</span>, <span class="st">'price_fl'</span>]].head()             </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  model fl  price_fl
+0    a4  p      2.76
+1    a4  p      2.76
+2    a4  p      2.76
+3    a4  p      2.76
+4    a4  p      2.76</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="정리하기">정리하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb184"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb184-1"><a href="#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co">## 1. 조건에 맞는 데이터만 추출하기</span></span>
+<span id="cb184-2"><a href="#cb184-2" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'english &lt;= 80'</span>)</span>
+<span id="cb184-3"><a href="#cb184-3" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass == 1 &amp; math &gt;= 50'</span>)    <span class="co"># 여러 조건 동시 충족</span></span>
+<span id="cb184-4"><a href="#cb184-4" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'math &gt;= 90 | english &gt;= 90'</span>)  <span class="co"># 여러 조건 중 하나 이상 충족</span></span>
+<span id="cb184-5"><a href="#cb184-5" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'nclass in [1, 3, 5]'</span>)</span>
+<span id="cb184-6"><a href="#cb184-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-7"><a href="#cb184-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-8"><a href="#cb184-8" aria-hidden="true" tabindex="-1"></a><span class="co">## 2. 필요한 변수만 추출하기</span></span>
+<span id="cb184-9"><a href="#cb184-9" aria-hidden="true" tabindex="-1"></a>exam[<span class="st">'math'</span>]                              <span class="co"># 한 변수 추출</span></span>
+<span id="cb184-10"><a href="#cb184-10" aria-hidden="true" tabindex="-1"></a>exam[[<span class="st">'nclass'</span>, <span class="st">'math'</span>, <span class="st">'english'</span>]]       <span class="co"># 여러 변수 추출</span></span>
+<span id="cb184-11"><a href="#cb184-11" aria-hidden="true" tabindex="-1"></a>exam.drop(columns <span class="op">=</span> <span class="st">'math'</span>)               <span class="co"># 변수 제거</span></span>
+<span id="cb184-12"><a href="#cb184-12" aria-hidden="true" tabindex="-1"></a>exam.drop(columns <span class="op">=</span> [<span class="st">'math'</span>, <span class="st">'english'</span>])  <span class="co"># 여러 변수 제거</span></span>
+<span id="cb184-13"><a href="#cb184-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-14"><a href="#cb184-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-15"><a href="#cb184-15" aria-hidden="true" tabindex="-1"></a><span class="co">## 3. pandas 명령어 조합하기</span></span>
+<span id="cb184-16"><a href="#cb184-16" aria-hidden="true" tabindex="-1"></a>exam.query(<span class="st">'math &gt;= 50'</span>)[[<span class="st">'id'</span>, <span class="st">'math'</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="정리하기-1">정리하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb185"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co">## 4. 순서대로 정렬하기</span></span>
+<span id="cb185-2"><a href="#cb185-2" aria-hidden="true" tabindex="-1"></a>exam.sort_values(<span class="st">'math'</span>)                     <span class="co"># 오름차순 정렬</span></span>
+<span id="cb185-3"><a href="#cb185-3" aria-hidden="true" tabindex="-1"></a>exam.sort_values(<span class="st">'math'</span>, ascending <span class="op">=</span> <span class="va">False</span>)  <span class="co"># 내림차순 정렬</span></span>
+<span id="cb185-4"><a href="#cb185-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-5"><a href="#cb185-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 여러 변수 기준 정렬</span></span>
+<span id="cb185-6"><a href="#cb185-6" aria-hidden="true" tabindex="-1"></a>exam.sort_values([<span class="st">'nclass'</span>, <span class="st">'math'</span>], ascending <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="정리하기-2">정리하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb186"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb186-1"><a href="#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co">## 5. 파생변수 추가하기</span></span>
+<span id="cb186-2"><a href="#cb186-2" aria-hidden="true" tabindex="-1"></a>exam.assign(total <span class="op">=</span> exam[<span class="st">'math'</span>] <span class="op">+</span> exam[<span class="st">'english'</span>] <span class="op">+</span> exam[<span class="st">'science'</span>])</span>
+<span id="cb186-3"><a href="#cb186-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-4"><a href="#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 여러 파생변수 한 번에 추가하기</span></span>
+<span id="cb186-5"><a href="#cb186-5" aria-hidden="true" tabindex="-1"></a>exam.assign(total <span class="op">=</span> exam[<span class="st">'math'</span>] <span class="op">+</span> exam[<span class="st">'english'</span>] <span class="op">+</span> exam[<span class="st">'science'</span>],</span>
+<span id="cb186-6"><a href="#cb186-6" aria-hidden="true" tabindex="-1"></a>            mean <span class="op">=</span> (exam[<span class="st">'math'</span>] <span class="op">+</span> exam[<span class="st">'english'</span>] <span class="op">+</span> exam[<span class="st">'science'</span>]) <span class="op">/</span> <span class="dv">3</span>)</span>
+<span id="cb186-7"><a href="#cb186-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-8"><a href="#cb186-8" aria-hidden="true" tabindex="-1"></a><span class="co"># assign()에 np.where() 적용하기</span></span>
+<span id="cb186-9"><a href="#cb186-9" aria-hidden="true" tabindex="-1"></a>exam.assign(test <span class="op">=</span> np.where(exam[<span class="st">'science'</span>] <span class="op">&gt;=</span> <span class="dv">60</span>, <span class="st">'pass'</span>, <span class="st">'fall'</span>))</span>
+<span id="cb186-10"><a href="#cb186-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-11"><a href="#cb186-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 추가한 변수를 pandas 코드에 바로 활용하기</span></span>
+<span id="cb186-12"><a href="#cb186-12" aria-hidden="true" tabindex="-1"></a>exam.assign(total <span class="op">=</span> exam[<span class="st">'math'</span>] <span class="op">+</span> exam[<span class="st">'english'</span>] <span class="op">+</span> exam[<span class="st">'science'</span>]) <span class="op">\</span></span>
+<span id="cb186-13"><a href="#cb186-13" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">'total'</span>) <span class="op">\</span></span>
+<span id="cb186-14"><a href="#cb186-14" aria-hidden="true" tabindex="-1"></a>    .head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<h4 id="정리하기-3">정리하기</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb187"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co">## 6. 집단별로 요약하기</span></span>
+<span id="cb187-2"><a href="#cb187-2" aria-hidden="true" tabindex="-1"></a>exam.groupby(<span class="st">'nclass'</span>) <span class="op">\</span></span>
+<span id="cb187-3"><a href="#cb187-3" aria-hidden="true" tabindex="-1"></a>    .agg(mean_math <span class="op">=</span> (<span class="st">'math'</span>, <span class="st">'mean'</span>))</span>
+<span id="cb187-4"><a href="#cb187-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-5"><a href="#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 각 집단별로 다시 집단 나누기</span></span>
+<span id="cb187-6"><a href="#cb187-6" aria-hidden="true" tabindex="-1"></a>mpg.groupby([<span class="st">'manufacturer'</span>, <span class="st">'drv'</span>]) <span class="op">\</span></span>
+<span id="cb187-7"><a href="#cb187-7" aria-hidden="true" tabindex="-1"></a>   .agg(mean_cty <span class="op">=</span> (<span class="st">'cty'</span>, <span class="st">'mean'</span>))</span>
+<span id="cb187-8"><a href="#cb187-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-9"><a href="#cb187-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-10"><a href="#cb187-10" aria-hidden="true" tabindex="-1"></a><span class="co">## 7. 데이터 합치기</span></span>
+<span id="cb187-11"><a href="#cb187-11" aria-hidden="true" tabindex="-1"></a>pd.merge(test1, test2, how <span class="op">=</span> <span class="st">'left'</span>, on <span class="op">=</span> <span class="st">'id'</span>)  <span class="co"># 가로로 합치기</span></span>
+<span id="cb187-12"><a href="#cb187-12" aria-hidden="true" tabindex="-1"></a>pd.concat([group_a, group_b])                    <span class="co"># 세로로 합치기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="분석-도전" class="title-slide slide level2 center" data-background-color="#FFCE32" data-transition="fade">
+<h2>분석 도전</h2>
+
+</section>
+<section id="분석-도전-1" class="slide level3">
+<h3>분석 도전</h3>
+<p><strong>미국 동북중부 437개 지역의 인구통계 정보를 담고 있는 <code>midwest.csv</code>를 사용해 데이터 분석 문제를 해결해 보세요.</strong></p>
+<p><br10></br10></p>
+<p>문제 1. <code>popadults</code>는 해당 지역의 성인 인구, <code>poptotal</code>은 전체 인구를 나타냅니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>midwest</code> 데이터에 ‘전체 인구 대비 미성년 인구 백분율’ 변수를 추가하세요.</p>
+<p>문제 2. 미성년 인구 백분율이 가장 높은 상위 5개 <code>county</code>(지역)의 미성년 인구 백분율을 출력하세요.</p>
+<p>문제 3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;알아보세요.</p>
+<p>문제 4. <code>popasian</code>은 해당 지역의 아시아인 인구를 나타냅니다. ‘전체 인구 대비 아시아인 인구 백분율’ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변수를 추가하고 하위 10개 지역의 <code>state</code>(주), <code>county</code>(지역), 아시아인 인구 백분율을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;출력하세요.</p>
+</section>
+<section class="slide level3">
+
+<p>문제 1. <code>popadults</code>는 해당 지역의 성인 인구, <code>poptotal</code>은 전체 인구를 나타냅니다. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>midwest</code> 데이터에 ‘전체 인구 대비 미성년 인구 백분율’ 변수를 추가하세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># midwest 데이터 불러오기</span></span>
+<span id="cb188-2"><a href="#cb188-2" aria-hidden="true" tabindex="-1"></a>midwest <span class="op">=</span> pd.read_csv(<span class="st">'midwest.csv'</span>)</span>
+<span id="cb188-3"><a href="#cb188-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-4"><a href="#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="co"># midwest에 백분율 변수 추가</span></span>
+<span id="cb188-5"><a href="#cb188-5" aria-hidden="true" tabindex="-1"></a>midwest[<span class="st">'ratio'</span>] <span class="op">=</span> (midwest[<span class="st">'poptotal'</span>] <span class="op">-</span> midwest[<span class="st">'popadults'</span>]) <span class="op">\</span></span>
+<span id="cb188-6"><a href="#cb188-6" aria-hidden="true" tabindex="-1"></a>                  <span class="op">/</span> midwest[<span class="st">'poptotal'</span>] <span class="op">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>문제 2. 미성년 인구 백분율이 가장 높은 상위 5개 <code>county</code>(지역)의 미성년 인구 백분율을 출력하세요.</p>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb189"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a>midwest.sort_values(<span class="st">'ratio'</span>, ascending <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a>       .head() <span class="op">\</span></span>
+<span id="cb189-3"><a href="#cb189-3" aria-hidden="true" tabindex="-1"></a>       [[<span class="st">'county'</span>, <span class="st">'ratio'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:35%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ratio 내림차순 정렬</span></span>
+<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 상위 5행 추출</span></span>
+<span id="cb190-3"><a href="#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수 추출</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>        county      ratio
+230   ISABELLA  51.501172
+404  MENOMINEE  50.591260
+281     ATHENS  49.320727
+247    MECOSTA  49.059183
+154     MONROE  47.358182</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>문제 3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;알아보세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb192"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb192-1"><a href="#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># midwest에 grade 변수 추가</span></span>
+<span id="cb192-2"><a href="#cb192-2" aria-hidden="true" tabindex="-1"></a>midwest[<span class="st">'grade'</span>] <span class="op">=</span> np.where(midwest[<span class="st">'ratio'</span>] <span class="op">&gt;=</span> <span class="dv">40</span>, <span class="st">'large'</span>,</span>
+<span id="cb192-3"><a href="#cb192-3" aria-hidden="true" tabindex="-1"></a>                   np.where(midwest[<span class="st">'ratio'</span>] <span class="op">&gt;=</span> <span class="dv">30</span>, <span class="st">'middle'</span>, <span class="st">'small'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<h5 id="방법1-1">방법1</h5>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb193"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a>midwest.groupby(<span class="st">'grade'</span>) <span class="op">\</span></span>
+<span id="cb193-2"><a href="#cb193-2" aria-hidden="true" tabindex="-1"></a>       .agg(n <span class="op">=</span> (<span class="st">'grade'</span>, <span class="st">'count'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb194"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb194-1"><a href="#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grade별 분리</span></span>
+<span id="cb194-2"><a href="#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="co"># grade 빈도 구하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br-back-40></br-back-40></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>          n
+grade      
+large    32
+middle  396
+small     9</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>문제 3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;알아보세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb196"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb196-1"><a href="#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># midwest에 grade 변수 추가</span></span>
+<span id="cb196-2"><a href="#cb196-2" aria-hidden="true" tabindex="-1"></a>midwest[<span class="st">'grade'</span>] <span class="op">=</span> np.where(midwest[<span class="st">'ratio'</span>] <span class="op">&gt;=</span> <span class="dv">40</span>, <span class="st">'large'</span>,</span>
+<span id="cb196-3"><a href="#cb196-3" aria-hidden="true" tabindex="-1"></a>                   np.where(midwest[<span class="st">'ratio'</span>] <span class="op">&gt;=</span> <span class="dv">30</span>, <span class="st">'middle'</span>, <span class="st">'small'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<h5 id="방법2-1">방법2</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb197"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb197-1"><a href="#cb197-1" aria-hidden="true" tabindex="-1"></a>midwest[<span class="st">'grade'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>grade
+middle    396
+large      32
+small       9
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>문제 4. <code>popasian</code>은 해당 지역의 아시아인 인구를 나타냅니다. ‘전체 인구 대비 아시아인 인구 백분율’ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;변수를 추가하고 하위 10개 지역의 <code>state</code>(주), <code>county</code>(지역), 아시아인 인구 백분율을 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;출력하세요.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb199"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb199-1"><a href="#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 백분율 변수 추가</span></span>
+<span id="cb199-2"><a href="#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 내림차순 정렬</span></span>
+<span id="cb199-3"><a href="#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 상위 10행 출력</span></span>
+<span id="cb199-4"><a href="#cb199-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 변수 추출</span></span>
+<span id="cb199-5"><a href="#cb199-5" aria-hidden="true" tabindex="-1"></a>midwest.assign(ratio_asian <span class="op">=</span> midwest[<span class="st">'popasian'</span>] <span class="op">/</span> midwest[<span class="st">'poptotal'</span>] <span class="op">*</span> <span class="dv">100</span>) <span class="op">\</span></span>
+<span id="cb199-6"><a href="#cb199-6" aria-hidden="true" tabindex="-1"></a>       .sort_values(<span class="st">'ratio_asian'</span>) <span class="op">\</span></span>
+<span id="cb199-7"><a href="#cb199-7" aria-hidden="true" tabindex="-1"></a>       .head(<span class="dv">10</span>) <span class="op">\</span></span>
+<span id="cb199-8"><a href="#cb199-8" aria-hidden="true" tabindex="-1"></a>       [[<span class="st">'state'</span>, <span class="st">'county'</span>, <span class="st">'ratio_asian'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br-back-30></br-back-30></p>
+<div class="small-90">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    state     county  ratio_asian
+404    WI  MENOMINEE     0.000000
+105    IN     BENTON     0.010592
+109    IN    CARROLL     0.015950
+358    OH     VINTON     0.027032
+390    WI       IRON     0.032504
+85     IL      SCOTT     0.053154
+112    IN       CLAY     0.060716
+261    MI     OSCODA     0.063759
+340    OH      PERRY     0.066546
+73     IL      PIATT     0.070749</code></pre>
+</div>
+</div>
+</div>
+</section></section>
+<section id="끝" class="title-slide slide level2 center" data-background-color="#FF7232" data-transition="fade">
+<h2>끝</h2>
+
+</section>
+
+<div class="footer footer-default">
+
+</div>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="06_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="06_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="06_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="06_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="06_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="06_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="06_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="06_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="06_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="06_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: false,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: true,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 750,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

@@ -1,0 +1,485 @@
+---
+jupyter: python3
+title: "Do it! 쉽게 배우는 파이썬 데이터 분석"
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+### {data-menu-title="Info"}
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+```
+
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+<br>
+<br>
+
+![](img/cover.png){fig-align="center" width="75%"}
+
+:::
+
+<!-- width: 55% -->
+
+::: {.column width="55%"}
+
+<br>
+<br>
+<br>
+
+`r fontawesome::fa("github", margin_left = '-0.5em')` [github.com/youngwoos/Doit_Python](https://github.com/youngwoos/Doit_Python)
+
+`r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [ 슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
+`r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
+
+<br-back-10>
+
+&nbsp;&nbsp; ▪ [yes24](http://www.yes24.com/Product/Goods/108947478)
+
+&nbsp;&nbsp; ▪ [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601)
+
+&nbsp;&nbsp; ▪ [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163033493)
+
+:::
+
+::::
+
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 04 데이터 프레임의 세계로! {background-color="#FF7232" transition="fade"}
+
+:::
+
+---
+
+### {data-menu-title="To do"}
+
+<br>
+<br>
+<br>
+<br>
+
+
+![](img/04-intro.png){width=40% fig-align="center"}
+
+
+---
+
+<br>
+
+##### [목차]{.font-jua .larger}
+
+
+[04-1 데이터 프레임 이해하기]{.font-jua}([link](#데이터-프레임-이해하기))
+
+[04-2 데이터 프레임 만들기]{.font-jua}([link](#데이터-프레임-만들기))
+
+[04-3 외부 데이터 이용하기]{.font-jua}([link](#외부-데이터-이용하기))
+
+
+
+
+## 04-1 데이터 프레임 이해하기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+#### 데이터 프레임
+
+- 데이터를 다룰 때 가장 많이 사용하는 데이터 형태
+- 행과 열로 구성된 사각형 모양의 표처럼 생김
+
+<br10>
+
+![](img/03-dataframe.jpg){fig-align="left" width="50%"}
+
+
+
+---
+
+#### '열' 은 속성이다
+
+<br-back-10>
+
+- 컬럼(column) 또는 변수(variable)라고 불림
+
+<br10>
+
+![](img/03-column.jpg){fig-align="left" width="50%"}
+
+
+::: {.fragment}
+
+#### '행' 은 한 사람의 정보다
+
+<br-back-10>
+
+- 로(row) 또는 케이스(case)라고 불림
+
+<br10>
+
+![](img/03-row.jpg){fig-align="left" width="50%"}
+:::
+
+---
+
+#### 데이터가 크다 = 행이 많다 또는 열이 많다
+
+<br>
+
+![](img/03-bigdata.jpg){fig-align="left" width="70%"}
+
+
+
+## 04-2 데이터 프레임 만들기{background-color="#FFCE32" transition="fade"}
+
+### 데이터 입력해 데이터 프레임 만들기
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame({'name'    : ['김지훈', '이유진', '박동현', '김민지'],
+                   'english' : [90, 80, 60, 70],
+                   'math'    : [50, 60, 100, 20]})
+df
+```
+
+
+### 데이터 프레임으로 분석하기
+
+#### 특정 변수의 값 추출하기
+
+```{python}
+df['english']
+```
+
+---
+
+#### 변수의 값으로 합계 구하기
+
+```{python}
+sum(df['english'])
+sum(df['math'])
+```
+
+
+::: {.fragment}
+
+#### 변수의 값으로 평균 구하기
+
+```{python}
+sum(df['english']) / 4  # 영어 점수 평균
+sum(df['math']) / 4     # 수학 점수 평균
+
+```
+
+:::
+
+
+
+---
+
+
+### 혼자서 해보기
+
+**앞에서 익힌 기능을 활용해 분석 문제를 해결해 보세요.**
+
+Q1. 다음 표의 내용을 데이터 프레임으로 만들어 출력해 보세요.
+
+<br15>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](img/04-quiz_table.jpg){width="35%"}
+
+
+Q2. 앞에서 만든 데이터 프레임을 이용해 과일의 가격 평균과 판매량 평균을<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;구해 보세요.
+
+---
+
+
+Q1. 다음 표의 내용을 데이터 프레임으로 만들어 출력해 보세요.
+
+
+```{python}
+# 데이터 프레임 만들기
+sales = pd.DataFrame({'fruit'  : ['사과', '딸기', '수박'],
+                      'price'  : [1800, 1500, 3000],
+                      'volume' : [24, 38, 13]})
+
+# 데이터 프레임 출력하기
+sales
+```
+
+---
+
+Q2. 앞에서 만든 데이터 프레임을 이용해 과일의 가격 평균과 판매량 평균을<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;구해 보세요.
+
+```{python}
+sum(sales['price']) / 3   # 가격 평균 구하기
+sum(sales['volume']) / 3  # 판매량 평균 구하기
+```
+
+
+
+## 04-3 외부 데이터 이용하기{background-color="#FFCE32" transition="fade"}
+
+---
+
+### 엑셀 파일 불러오기
+
+```{python}
+#| eval: false
+df_exam = pd.read_excel('excel_exam.xlsx')  # 엑셀 파일을 불러와 df_exam에 할당
+df_exam                                     # 출력
+```
+
+<br-back-30>
+
+```{python}
+#| echo: false
+df_exam = pd.read_excel('../Data/excel_exam.xlsx')
+df_exam
+```
+
+<!-- `r fontawesome::fa("triangle-exclamation", margin_left = '-0.5em', fill = '#FF7333')` 워킹 디렉터리에 불러올 파일이 있어야 함   -->
+<!-- <br-back-20> -->
+
+<!--   - 확인: `!cd`   -->
+
+---
+
+### 엑셀 파일 불러오기
+
+::: {.callout-warning}
+
+워킹 디렉터리에 불러올 파일이 있어야 함
+  - 확인: `!cd`
+:::
+
+
+::: {.fragment}
+
+<br>
+
+##### 경로 직접 지정
+
+```{python}
+#| eval: false
+df_exam = pd.read_excel('c:/easy_python/excel_exam.xlsx')
+```
+
+:::
+
+---
+
+#### 분석하기
+
+```{python}
+sum(df_exam['english']) / 20
+sum(df_exam['science']) / 20
+```
+
+---
+
+
+#### `len()` 이용해 평균 구하기
+
+```{python}
+# 변수의 값 개수 구하기
+x = [1, 2, 3, 4, 5]
+x
+len(x)
+```
+
+
+---
+
+#### `len()` 이용해 평균 구하기
+
+
+```{python}
+# 데이터 프레임의 행 개수 구하기
+df = pd.DataFrame({'a' : [1, 2, 3],
+                   'b' : [4, 5, 6]})
+df
+len(df)
+```
+---
+
+#### `len()` 이용해 평균 구하기
+
+```{python}
+# english 합계를 행 개수로 나누기
+sum(df_exam['english']) / len(df_exam)
+```
+
+
+```{python}
+# science 합계를 행 개수로 나누기
+sum(df_exam['science']) / len(df_exam)
+```
+
+
+
+----
+
+#### 엑셀 파일의 첫 번째 행이 변수명이 아니라면?
+
+```{python}
+#| eval: false
+df_exam_novar = pd.read_excel('excel_exam_novar.xlsx', header = None)
+df_exam_novar
+```
+
+<!-- `r fontawesome::fa("triangle-exclamation", margin_left = '-0.5em', fill = '#FF7333')` `None`의 첫 글자 `N` 대문자 유의 -->
+
+::: {.callout-warning}
+`None`의 첫 글자 `N` 대문자 유의
+:::
+
+
+
+
+---
+
+#### 엑셀 파일에 시트가 여러 개 있다면?
+
+```{python}
+#| eval: false
+
+# Sheet2 시트의 데이터 불러오기
+df_exam = pd.read_excel('excel_exam.xlsx', sheet_name = 'Sheet2')
+
+# 세 번째 시트의 데이터 불러오기
+df_exam = pd.read_excel('excel_exam.xlsx', sheet_name = 2)
+```
+
+<!-- `r fontawesome::fa("triangle-exclamation", margin_left = '-0.5em', fill = '#FF7333')` 숫자를 `0`부터 센다는 점 유의 -->
+
+
+::: {.callout-warning}
+
+숫자를 `0`부터 센다는 점 유의
+
+:::
+
+
+---
+
+### CSV 파일 불러오기
+
+```{python}
+#| eval: false
+df_csv_exam = pd.read_csv('exam.csv')
+df_csv_exam
+```
+
+<br-back-30>
+
+```{python}
+#| echo: false
+df_csv_exam = pd.read_csv('../Data/exam.csv')
+df_csv_exam
+```
+
+
+
+---
+
+### 데이터 프레임을 CSV 파일로 저장하기
+
+
+#### 1. 데이터 프레임 만들기
+```{python}
+df_midterm = pd.DataFrame({'english' : [90, 80, 60, 70],
+                           'math'    : [50, 60, 100, 20],
+                           'nclass'  : [1, 1, 2, 2]})
+df_midterm
+```
+
+
+::: {.fragment}
+
+#### 2. CSV 파일로 저장하기
+
+```{python}
+#| eval: false
+df_midterm.to_csv('output_newdata.csv')
+```
+
+:::
+
+::: {.fragment}
+
+- 인덱스 번호 제외하고 저장
+
+<br-back-20>
+
+```{python}
+#| eval: false
+df_midterm.to_csv('output_newdata.csv', index = False)
+```
+
+:::
+
+---
+
+### 정리하기
+
+```{python}
+#| eval: false
+# 1. 데이터 프레임 만들기
+df = pd.DataFrame({'name'    : [' 김지훈 ', ' 이유진 ', ' 박동현 ', ' 김민지 '],
+                   'english' : [90, 80, 60, 70],
+                   'math'    : [50, 60, 100, 20]})
+
+
+# 2. 외부 데이터 이용하기
+
+#  엑셀 파일 불러오기
+df_exam = pd.read_excel('excel_exam.xlsx')
+
+# CSV  파일 불러오기
+df_csv_exam = pd.read_csv('exam.csv')
+
+# CSV 파일로 저장하기
+df_midterm.to_csv('output_newdata.csv')
+```
+
+
+
+::: {background-color="#FF7232" transition="fade"}
+## 끝
+:::
