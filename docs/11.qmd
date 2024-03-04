@@ -321,6 +321,7 @@ bins = list(df_pop['pop'].quantile([0, 0.2, 0.4, 0.6, 0.8, 1]))
 bins
 ```
 
+
 ---
 
 **(4) 디자인 수정하기**
@@ -348,7 +349,6 @@ map_sig = folium.Map(location = [35.95, 127.7],
 ```{python}
 #| eval: false
 ## 단계 구분도 만들기
-
 # 지도 데이터
 # 통계 데이터
 # df_pop 행정 구역 코드, 인구
@@ -367,31 +367,12 @@ folium.Choropleth(geo_data = geo,
                   line_opacity = 0.5,
                   bins = bins) \
       .add_to(map_sig)
-
 map_sig
 ```
 
-```{python}
-#| echo: false
-folium.Choropleth(geo_data = geo,
-                  data = df_pop,
-                  columns = ('code', 'pop'),
-                  key_on = 'feature.properties.SIG_CD',
-                  fill_color = 'YlGnBu',
-                  fill_opacity = 1,
-                  line_opacity = 0.5,
-                  bins = bins) \
-      .add_to(map_sig)
-
-# map_sig
-
-map_sig.save('map_sig.html')
-```
-
-
 ---
 
-<iframe src="map_sig.html" width="1200" height="720"></iframe>
+<iframe src="map_sig_02.html" width="1200" height="720"></iframe>
 
 ---
 
