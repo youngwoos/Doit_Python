@@ -60,9 +60,9 @@ docs/*.xlsx
 docs/*.txt
 docs/*.geojson
 docs/*.sav
-docs/.ipynb_checkpoints/
-docs/.refer/
-docs/.qmd/
+docs/ipynb_checkpoints/
+docs/refer/
+docs/qmd/
 
 # docs
 # docs/refer.html
