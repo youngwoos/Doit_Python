@@ -130,7 +130,7 @@ pd.set_option("display.unicode.east_asian_width", True)
 
 
 
-## 08-1 시군구별 인구 단계 구분도 만들기 {background-color="#FFCE32" transition="fade"}
+## 11-1 시군구별 인구 단계 구분도 만들기 {background-color="#FFCE32" transition="fade"}
 
 ---
 
@@ -199,6 +199,8 @@ df_pop['code'] = df_pop['code'].astype(str)
 
 
 #### 3. 단계 구분도 만들기
+
+##### 패키지 설치
 
 ```{python}
 #| eval: false
@@ -344,8 +346,6 @@ map_sig = folium.Map(location = [35.95, 127.7],
 
 **(4) 디자인 수정하기**
 
-
-
 ```{python}
 #| eval: false
 ## 단계 구분도 만들기
@@ -374,160 +374,181 @@ map_sig
 
 <iframe src="map_sig_02.html" width="1200" height="720"></iframe>
 
+## 11-2 서울시 동별 외국인 인구<br>단계 구분도 만들기 {background-color="#FFCE32" transition="fade"}
+
 ---
 
-<!-- ## 11-2 서울시 동별 외국인 인구 단계 구분도 만들기 -->
+### 서울시 동별 외국인 인구 단계 구분도 만들기
 
-<!-- ### 서울시 동별 외국인 인구 단계 구분도 만들기 -->
+#### 1. 서울시 동 경계 지도 데이터 준비하기
 
-<!-- #### 1. 서울시 동 경계 지도 데이터 준비하기 -->
+```{python}
+#| eval: false
+import json
+geo_seoul = json.load(open('EMD_Seoul.geojson', encoding = 'UTF-8'))
+```
 
-<!-- ```{python} -->
-<!-- #| eval: false -->
-<!-- import json -->
-<!-- geo_seoul = json.load(open('EMD_Seoul.geojson', encoding = 'UTF-8')) -->
-<!-- ``` -->
+```{python}
+#| echo: false
+import json
+geo_seoul = json.load(open('../Data/EMD_Seoul.geojson', encoding = 'UTF-8'))
+```
 
-<!-- ```{python} -->
-<!-- #| echo: false -->
-<!-- import json -->
-<!-- geo_seoul = json.load(open('../Data/EMD_Seoul.geojson', encoding = 'UTF-8')) -->
-<!-- ``` -->
+```{python}
+# 행정 구역 코드 출력
+geo_seoul['features'][0]['properties']
+```
 
+---
 
+```{python}
+# 위도, 경도 좌표 출력
+geo_seoul['features'][0]['geometry']
+```
 
-<!-- ```{python} -->
-<!-- #| eval: false -->
-<!-- # 행정 구역 코드 출력  -->
-<!-- geo_seoul['features'][0]['properties'] -->
-<!-- ``` -->
+---
 
-<!-- ```{python} -->
-<!-- #| eval: false -->
-<!-- # 위도, 경도 좌표 출력 -->
-<!-- # geo_seoul['features'][0]['geometry'] -->
-<!-- ``` -->
+#### 2. 서울시 동별 외국인 인구 데이터 준비하기
 
-<!-- #### 2. 서울시 동별 외국인 인구 데이터 준비하기 -->
+```{python}
+#| eval: false
+foreigner = pd.read_csv('Foreigner_EMD_Seoul.csv')
+foreigner.head()
+```
 
-<!-- ```{python} -->
-<!-- #| eval: false -->
-<!-- foreigner = pd.read_csv('Foreigner_EMD_Seoul.csv') -->
-<!-- foreigner.head() -->
-<!-- ``` -->
+```{python}
+#| echo: false
+foreigner = pd.read_csv('../Data/Foreigner_EMD_Seoul.csv')
+foreigner.head()
+```
 
-<!-- ```{python} -->
-<!-- #| echo: false -->
-<!-- foreigner = pd.read_csv('../Data/Foreigner_EMD_Seoul.csv') -->
-<!-- foreigner.head() -->
-<!-- ``` -->
+---
 
-<!-- ```{python} -->
-<!-- foreigner.info() -->
-<!-- ``` -->
+```{python}
+foreigner.info()
+```
 
-<!-- ```{python} -->
-<!-- foreigner['code'] = foreigner['code'].astype(str) -->
-<!-- ``` -->
+---
 
-<!-- #### 3. 단계 구분도 만들기 -->
+##### `code`를 문자 타입으로 바꾸기
 
-<!-- ```{python} -->
-<!-- bins = list(foreigner['pop'].quantile([0, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])) -->
-<!-- bins -->
-<!-- ``` -->
+```{python}
+foreigner['code'] = foreigner['code'].astype(str)
+```
 
-<!-- ```{python} -->
-<!-- #| tags: [remove_output] -->
-<!-- ## 배경 지도 만들기 -->
+---
 
-<!-- # 서울 좌표 -->
-<!-- # 확대 단계 -->
-<!-- # 지도 종류 -->
-<!-- map_seoul = folium.Map(location = [37.56, 127],    -->
-<!--                        zoom_start = 12,            -->
-<!--                        tiles = 'cartodbpositron')  -->
-<!-- ``` -->
+#### 3. 단계 구분도 만들기
 
-<!-- ```{python} -->
-<!-- #| tags: [remove_output] -->
-<!-- ## 단계구분도 만들기 -->
+##### 계급 구간 정하기
 
-<!-- # 지도 데이터 -->
-<!-- # 통계 데이터 -->
-<!-- # foreigner 행정 구역 코드, 인구 -->
-<!-- # geo_seoul 행정 구역 코드 -->
-<!-- # 컬러맵 -->
-<!-- # 결측치 색깔 -->
-<!-- # 투명도 -->
-<!-- # 경계선 투명도 -->
-<!-- # 계급 구간 기준값 -->
-<!-- # 배경 지도에 추가 -->
-<!-- folium.Choropleth(geo_data = geo_seoul, -->
-<!--                   data = foreigner, -->
-<!--                   columns = ('code', 'pop'), -->
-<!--                   key_on = 'feature.properties.ADM_DR_CD', -->
-<!--                   fill_color = 'Blues', -->
-<!--                   nan_fill_color = 'White', -->
-<!--                   fill_opacity = 1, -->
-<!--                   line_opacity = 0.5, -->
-<!--                   bins = bins) \ -->
-<!--       .add_to(map_seoul) -->
+```{python}
+bins = list(foreigner['pop'].quantile([0, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]))
+bins
+```
 
-<!-- map_seoul -->
-<!-- ``` -->
+```{python}
+## 배경 지도 만들기
 
-<!-- #### 4. 구 경계선 추가하기 -->
+# 서울 좌표
+# 확대 단계
+# 지도 종류
+map_seoul = folium.Map(location = [37.56, 127],
+                       zoom_start = 12,
+                       tiles = 'cartodbpositron')
+```
 
-<!-- ```{python} -->
-<!-- #| eval: false -->
-<!-- geo_seoul_sig = json.load(open('SIG_Seoul.geojson', encoding = 'UTF-8')) -->
-<!-- ``` -->
+---
 
-<!-- ```{python} -->
-<!-- #| echo: false -->
-<!-- geo_seoul_sig = json.load(open('../Data/SIG_Seoul.geojson', encoding = 'UTF-8')) -->
-<!-- ``` -->
+```{python}
+#| eval: false
+## 단계구분도 만들기
+# 지도 데이터
+# 통계 데이터
+# foreigner 행정 구역 코드, 인구
+# geo_seoul 행정 구역 코드
+# 컬러맵
+# 결측치 색깔
+# 투명도
+# 경계선 투명도
+# 계급 구간 기준값
+# 배경 지도에 추가
+folium.Choropleth(geo_data = geo_seoul,
+                  data = foreigner,
+                  columns = ('code', 'pop'),
+                  key_on = 'feature.properties.ADM_DR_CD',
+                  fill_color = 'Blues',
+                  nan_fill_color = 'White',
+                  fill_opacity = 1,
+                  line_opacity = 0.5,
+                  bins = bins) \
+      .add_to(map_seoul)
+map_seoul
+```
 
-<!-- ```{python} -->
-<!-- #| tags: [remove_output] -->
-<!-- ## 서울 구 라인 추가 -->
+---
 
-<!-- # 지도 데이터 -->
-<!-- # 투명도 -->
-<!-- # 선 두께 -->
-<!-- # 지도에 추가 -->
-<!-- folium.Choropleth(geo_data = geo_seoul_sig, -->
-<!--                   fill_opacity = 0, -->
-<!--                   line_weight = 4) \ -->
-<!--       .add_to(map_seoul) -->
+<iframe src="map_seoul.html" width="1200" height="720"></iframe>
 
-<!-- map_seoul -->
-<!-- ``` -->
-
-<!-- ----------------------------------------------------------------------- -->
-
-<!-- ### (알아 두면 좋아요) `folium` 활용하기 -->
-
-<!-- **HTML 파일로 저장하기** -->
-
-<!-- ```{python} -->
-<!-- #| eval: false -->
-<!-- map_seoul.save('map_seoul.html') -->
-<!-- ``` -->
-
-<!-- **웹 브라우저에서 html 파일 열기** -->
-
-<!-- ```{python} -->
-<!-- #| eval: false -->
-<!-- import webbrowser -->
-<!-- # webbrowser.open_new('map_seoul.html') -->
-<!-- ``` -->
+---
 
 
+#### 4. 구 경계선 추가하기
+
+```{python}
+#| eval: false
+geo_seoul_sig = json.load(open('SIG_Seoul.geojson', encoding = 'UTF-8'))
+```
+
+```{python}
+#| echo: false
+geo_seoul_sig = json.load(open('../Data/SIG_Seoul.geojson', encoding = 'UTF-8'))
+```
+
+```{python}
+#| eval: false
+## 서울 구 라인 추가
+
+# 지도 데이터
+# 투명도
+# 선 두께
+# 지도에 추가
+folium.Choropleth(geo_data = geo_seoul_sig,
+                  fill_opacity = 0,
+                  line_weight = 4) \
+      .add_to(map_seoul)
+
+map_seoul
+```
+
+---
+
+<iframe src="map_seoul_gu.html" width="1200" height="720"></iframe>
+
+---
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [`folium` 활용하기]{.info}
+
+**HTML 파일로 저장하기**
+
+```{python}
+#| eval: false
+map_seoul.save('map_seoul.html')
+```
+
+**웹 브라우저에서 html 파일 열기**
+
+```{python}
+#| eval: false
+import webbrowser
+webbrowser.open_new('map_seoul.html')
+```
+
+:::
 
 
-
-<!-- ::: {background-color="#FF7232" transition="fade"} -->
-<!-- ## 끝 -->
-<!-- ::: -->
+::: {background-color="#FF7232" transition="fade"}
+## 끝
+:::
