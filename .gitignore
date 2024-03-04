@@ -1,3 +1,6 @@
+# 대용량 파일 제거 LFS
+bfg-1.14.0.jar
+
 # History files
 .Rhistory
 .Rapp.history
