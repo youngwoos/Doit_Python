@@ -1,0 +1,60 @@
+---
+title: "Untitled"
+format: 
+  revealjs:
+    incremental: true   
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code23
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+
+# 장제목
+
+## 절제목
+
+```{r}
+1+1
+```
+
+아예 절제목인가
+
+
+## 이렇게
+
+있고
+
+---
+
+또있고고
+
+있고
+
+---
+
+## 제목  {background-color="#806040   "}
+
+- 불릿  
+- 추가
+<br>
+- 이렇게
+
+
+글자  
+줄바꿈

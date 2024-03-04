@@ -1,0 +1,103 @@
+---
+title: 12 인터랙티브 그래프
+jupyter:
+  jupytext:
+    cell_metadata_filter: 'eval,name,error,tags,echo,-all'
+    notebook_metadata_filter: '-all'
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+
+## 12-1 인터랙티브 그래프 만들기
+
+### 산점도 만들기
+
+#### 패키지 준비하기
+
+
+pip install plotly
+pip install jupyter-dash
+
+#### 산점도 만들기
+
+```{python}
+#| eval: false
+import pandas as pd
+mpg = pd.read_csv('mpg.csv')
+```
+
+```{python}
+# 산점도 만들기
+import plotly.express as px
+px.scatter(data_frame = mpg, x = 'cty', y = 'hwy', color = 'drv')
+```
+
+### 막대 그래프 만들기
+
+```{python}
+# 자동차 종류별 빈도 구하기
+df = mpg.groupby('category', as_index = False) \
+        .agg(n = ('category', 'count'))
+df
+```
+
+```{python}
+# 막대 그래프 만들기
+px.bar(data_frame = df, x = 'category', y = 'n', color = 'category')
+```
+
+### 선 그래프 만들기
+
+```{python}
+#| eval: false
+# economics 불러오기
+economics = pd.read_csv('economics.csv')                  
+
+# 선 그래프 만들기
+px.line(data_frame = economics, x = 'date', y = 'psavert')
+```
+
+### 상자 그림 만들기
+
+```{python}
+# 상자 그림 만들기
+px.box(data_frame = mpg, x = 'drv', y = 'hwy', color = 'drv')
+```
+
+------------------------------------------------------------------------
+
+#### (알아 두면 좋아요) `plotly` 활용하기
+
+**그래프 크기 조절하기**
+
+```{python}
+px.scatter(data_frame = mpg, x = 'hwy', y = 'cty', color = 'drv',
+           width = 600, height = 400)
+```
+
+**새 창에 그래프 출력하기**
+
+```{python}
+import plotly
+plotly.io.renderers.default = 'browser'
+```
+
+```{python}
+# 설정 원래대로 되돌리기
+plotly.io.renderers.default = 'jupyterlab'
+```
+
+**HTML 파일로 저장하기**
+
+```{python}
+#| eval: false
+# 그래프를 변수에 할당하기
+fig = px.scatter(data_frame = mpg, x = 'cty', y = 'hwy')
+
+# html로 저장하기
+# fig.write_html('scatter_plot.html')
+```
+

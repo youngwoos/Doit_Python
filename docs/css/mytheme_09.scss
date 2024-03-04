@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-full.css");
+
+/*-- scss:defaults --*/
+
+/*
+폰트, 색깔, 크기
+*/
+$code-block-bg: #F2F2F2;
+$code-block-border-color: #e0e0e0;
+$code-block-font-size: 0.6em;
+$presentation-heading-color: #2c6eab;
+$presentation-h1-font-size: 1.7em;
+$presentation-h3-font-size: 0.9em;
+$presentation-h4-font-size: 0.8em;
+/*$presentation-h5-font-size: 0.7em;*/
+$presentation-block-margin: 20px;
+
+
+/*$presentation-h3-font-size: 1em;*/
+/*$presentation-h4-font-size: 0.9em;*/
+/*$presentation-h5-font-size: 0.8em;*/
+
+
+
+
+/*-- scss:rules --*/
+
+.reveal h1 {
+  font-family:'Jua';
+  font-weight: normal;
+  text-align: center;
+}
+
+.reveal h2
+{
+  font-family:'Jua';
+  font-weight: normal;
+  text-align: center;
+}
+
+.reveal h3 {
+  font-family:'NanumGothic';
+  font-weight: bold;
+}
+
+.reveal h4 {
+  font-family:'NanumGothic';
+  font-weight: bold;
+  /*margin-bottom: -0.05em;*/ /*아래 간격*/
+  
+}
+
+.reveal h5 {
+  font-family:'NanumGothic';
+  /*font-weight: bold;*/
+  color: black;
+  margin-bottom: 0.2em;
+  font-size: 0.7em;
+}
+
+
+/*헤더 글자 색깔*/
+section.has-light-background h2, section.has-light-background h1  {
+  color: #FFFFFF;
+}
+
+
+/*셀 경계선 색깔*/
+/*$border-color:	#2c6eab;*/
+
+/*셀 경계선 두께*/
+/* $border-width:	1px;  */
+
+/*셀 경계선 곡선 각도*/
+/* $border-radius:	1px;*/
+
+
+/*코드 검정색*/
+pre > code.sourceCode > span {
+  color: #333333;
+}
+
+
+/*셀 간격*/
+div.cell {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+
+/*코드 블럭*/
+.reveal pre.sourceCode code {
+    padding: 10px 9px; /*박스 두께*/
+    font-size: 1.1em;
+    font-family: 'consolas';
+}
+
+/*코드 아웃풋 간격*/
+.reveal pre code {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-family: 'D2Coding';
+}
+
+
+/*코드 아웃풋 스크롤 생성 기준*/
+.reveal pre code {
+    max-height: 500px;
+}
+
+/*코드 아웃풋 스크롤 박스 자동 생성 막기*/
+/*
+.reveal pre code {
+    max-height: none;
+}
+*/
+
+
+
+/*코드 블럭*/
+.reveal div.sourceCode pre code {
+    max-height: none; /*상하 제한 없음*/
+}
+
+
+/*그래프 코드 아래 간격*/
+.reveal img {
+    margin-top: -20px;
+}
+
+
+/*백틱 코드 블럭*/
+p code:not(.sourceCode) {
+    background-color: #F2F2F2;
+}
+
+
+/* 문장 내 코드*/
+.reveal code {
+    font-family: 'Inconsolata';
+    font-size: 110%;
+    /*color: #F2F2F2;;*/
+    background-color: #F2F2F2;
+    padding: 3px 3px;  /*음영 상하 좌우*/ 
+}
+
+/*문자*/
+code span.st {
+    color: #B03328;
+}
+
+/*숫자*/
+code span.dv {
+    color: #338424;
+}
+
+/*주석*/
+code span.co {
+    color: #4B7E7F;
+    font-style: italic;
+}
+
+/*특수문자*/
+code span.op {
+    color: #9E41F6;
+}
+
+
+/*import 함수*/
+code span.im {
+  color: #307C21;
+  font-weight: bold;
+}
+
+/*내장 함수*/
+code span.bu {
+  color: #307C21;
+  font-weight: bold;
+}
+
+/*callout 폰트*/
+div.callout-tip.callout-style-default .callout-caption {
+    font-family: Nanumgothic;
+}
+
+/*폰트 크기*/
+.large { font-size: 120% }
+.large2 { font-size: 140% }
+.larger{ font-size: 1.5em; }
+
+.small { font-size: 70% }
+
+.small-70 { font-size: 70% }
+.small-80 { font-size: 80% }
+.small-85 { font-size: 85% }
+.small-90 { font-size: 90% }
+.small-95 { font-size: 95% }
+
+.tiny  { font-size: 40%  }
+
+
+.font-jua {
+  font-family:'Jua';
+}
+
+.title1 {
+  background-color: #FFCE32;
+  color: white;
+  font-family:'Jua';
+  font-size: 55px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+
+/*줄 간격 늘리기*/
+br10 {
+   display: block;
+   margin-block-start: 1em;
+}
+
+br15 {
+   display: block;
+   margin-block-start: 1.5em;
+}
+
+
+br20 {
+   display: block;
+   margin-block-start: 2em;
+}
+
+
+/*간격 줄이기*/
+br-back-5 {
+   display: block;
+   margin: -5px 0;
+}
+
+br-back-10 {
+   display: block;
+   margin: -10px 0;
+}
+
+br-back-15 {
+   display: block;
+   margin: -15px 0;
+}
+
+br-back-20 {
+   display: block;
+   margin: -20px 0;
+}
+
+br-back-25 {
+   display: block;
+   margin: -25px 0;
+}
+
+br-back-30 {
+   display: block;
+   margin: -30px 0;
+}
+
+
+br-back-35 {
+   display: block;
+   margin: -35px 0;
+}
+
+br-back-40 {
+   display: block;
+   margin: -40px 0;
+}
+
+br-back-50 {
+   display: block;
+   margin: -50px 0;
+}
+
+
+/*주의 박스*/
+
+/*박스 제목*/
+/*
+.callout.callout-captioned .callout-caption p {
+    margin-bottom: 0em;
+    line-height: 2em;
+    font-size: 1em;
+}
+*/
+.callout.callout-captioned .callout-caption p {
+    margin-bottom: 0em;
+    line-height: 1.5em;
+    font-size: 0.9em;
+}
+
+.callout.callout-style-default div.callout-content {
+    padding-right: 0.5em;
+    font-size: 1.4em;
+}
+
+
+/*알아두면 좋아요 폰트*/
+.info {
+  font-size: 30px;
+  color : #FF7333;
+  /*font-family:'Jua';*/
+  font-family: 'NanumGothic';
+  font-weight: bold;
+}
+
+
+/*---박스---*/
+
+/* USYD blockquote */
+box, .box {
+  display: block;
+  /*margin-top: 1em;*/
+  margin-bottom: 0.2em;
+  margin-left: 0px;
+  margin-right: 5px;
+  border-left: solid 10px #FF8C58;
+  border-top: solid 2px #FF8C58;
+  border-bottom: solid 2px #FF8C58;
+  border-right: solid 2px #FF8C58;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  /* background-color: #e64626; */
+  /*color: #e64626;*/
+  padding: 0.5em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+
+/*본문*/
+.reveal p {
+    font-size: 0.7em;
+    line-height: 1.5em;
+    font-family:'NanumGothic';
+}
+
+/*목록*/
+.reveal li{
+    margin-top: 0.4em;
+    margin-bottom: 0.2em;
+    font-size: 0.65em;
+    font-family:'NanumGothic';
+    
+}
+
+/*하위 목록*/
+.reveal ul ul, .reveal ul ol, .reveal ol ol, .reveal ol ul {
+    font-size: 1.5em;
+}
+
+
+/*True False*/
+code span.va {
+    color: #41792F;
+    font-weight: bold;
+}
+
+/*목록 위 간격*/
+.reveal ul {
+    margin: -5px 0 0 1em;
+}
+
+
+:root {
+  --r-selection-background-color: #ABEED7; /*코드 하일리이팅 컬러*/
+  --quarto-hl-fu-color: none;              /*제목, 본문 내 코드 컬러*/
+}
+
+
+
+
+
+.reveal .slide.scrollable {
+      overflow-y: 1em;
+}
+    
+/*
+.scroll {
+    overflow: auto;
+    max-height: 800px;
+}
+*/
+
+
+
+/*코드 아웃풋 스크롤 박스 삽입*/
+
+.scroll-90 { height: 90%; overflow-y: scroll;}
+.scroll-80 { height: 80%; overflow-y: scroll;}
+.scroll-70 { height: 70%; overflow-y: scroll;}
+.scroll-60 { height: 60%; overflow-y: scroll;}
+.scroll-50 { height: 50%; overflow-y: scroll;}
+
+
+
+/* 강조 박스 안에 스크롤 박스 넣기*/
+.scroll-15em { height: 15em; overflow-y: scroll;}
+
+
+
+/*
+.scroll-8 {
+  height:8em;
+  overflow-y: scroll;
+  margin: -20px 0;
+}
+.scroll-10 {
+  height:10em;
+  overflow-y: scroll;
+  margin: -20px 0;
+}
+.scroll-12 {
+  height:12em;
+  overflow-y: scroll;
+  margin: -20px 0;
+}
+.scroll-14 {
+  height:14em;
+  overflow-y: scroll;
+  margin: -20px 0;
+}
+.scroll-16 {
+  height:16em;
+  overflow-y: scroll;
+  margin: -20px 0;
+}
+.scroll-18 {
+  height:18em;
+  overflow-y: scroll;
+  margin: -20px 0;
+}
+.scroll-20 {
+  height:20em;
+  overflow-y: scroll;
+  margin: -20px 0;
+}
+.scroll-22 {
+  height:22em;
+  overflow-y: scroll;
+  margin: -20px 0;
+}
+.scroll-24 {
+  height:24em;
+  overflow-y: scroll;
+  margin: -20px 0;
+}
+.scroll-26 {
+  height:26em;
+  overflow-y: scroll;
+  margin: -20px 0;
+}
+*/
+
+.pull-left-70 {
+  float: left;
+  width: 70%;
+}
+
+.pull-right-30 {
+  float: right;
+  width: 29%;
+}

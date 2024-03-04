@@ -1,0 +1,99 @@
+---
+jupyter: python3
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+]{.font-jua}([link](#))
+
+
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+```
+
+
+
+<!-- ::: {background-color="#FF7232" transition="fade"} -->
+
+
+<!-- ::: -->
+
+
+
+## 05-1 데이터 파악하기 {background-color="#FFCE32" transition="fade"}
+
+
+
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [알아 두면 좋아요]{.info}
+
+:::
+
+
+
+
+::: {.callout-warning}
+
+주의
+
+:::
+
+
+`r fontawesome::fa("triangle-exclamation", margin_left = '-0.5em', fill = '#FF7333')` 팁
+
+
+
+
+
+
+
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해 분석 문제를 해결해 보세요.**
+
+
+
+<!-- 혼자서 해보기 줄바꿈 -->
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+<!-- 분석 도전 줄바꿈 -->
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+::: {background-color="#FF7232" transition="fade"}
+## 끝
+:::

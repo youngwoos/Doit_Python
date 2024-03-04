@@ -50,10 +50,13 @@ Notebook/*
 !Notebook/*.md
 
 # docs 폴더의 .qmd, .html, .md 제외한 모든 파일 ignore
-docs/*
-!docs/*.html
-!docs/*.qmd
-!docs/*.md
+docs/*.csv
+docs/*.xlsx
+docs/*.txt
+docs/*.geojson
+# !docs/*.html
+# !docs/*.qmd
+# !docs/*.md
 # refer!docs/*.md
 
 # docs
