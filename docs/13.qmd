@@ -1,0 +1,285 @@
+---
+jupyter: python3
+title: "Do it! 쉽게 배우는 파이썬 데이터 분석"
+output-dir: html
+title-slide-attributes:
+  data-background-color: "#FF7232"
+format:
+  revealjs:
+    theme: [default, css/mytheme_09.scss]
+    incremental: false
+    scrollable: false
+    code-line-numbers: false
+    slide-level: 3
+    slide-number: true
+    mouse-wheel: true
+    auto-stretch: false # 그림 크기 자동 설정
+    progress: false    # progress bar
+    width: 1200
+    height: 750
+    # margin: 0.17
+    # highlight-style: pygments
+    fig-dpi: 300
+    fig-width: 6
+    fig-height: 4
+knitr: true
+execute:
+  echo: true
+  error: true
+  cache: false
+---
+
+### {data-menu-title="Info"}
+
+```{python}
+#| echo: false
+# 데이터 프레임 하단 행, 열 개수 표기X
+import pandas as pd
+pd.options.display.show_dimensions = False
+
+# 한글 우측 줄맞춤
+import pandas as pd
+pd.set_option("display.unicode.east_asian_width", True)
+
+```
+
+
+<!-- fa 아이콘 출력 설정 -->
+<!-- [{{< fa rocket size=sm >}}]} -->
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+<br>
+<br>
+<br>
+
+![](img/cover.png){fig-align="center" width="70%"}
+
+:::
+
+<!-- width: 55% -->
+
+::: {.column width="55%"}
+
+<br>
+<br>
+<br>
+
+`r fontawesome::fa("github", margin_left = '-0.5em')` [github.com/youngwoos/Doit_Python](https://github.com/youngwoos/Doit_Python)
+
+`r fontawesome::fa("facebook-square", margin_left = '-0.5em')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+`r fontawesome::fa('desktop', margin_left = '-0.5em', width = '0.9em')` [ 슬라이드 목록](https://github.com/youngwoos/Doit_Python/blob/main/docs/README.md)
+
+`r fontawesome::fa("book", margin_left = '-0.5em')` [네이버책](https://search.shopping.naver.com/book/catalog/32474211621)
+
+<br-back-10>
+
+&nbsp;&nbsp; ▪ [yes24](http://www.yes24.com/Product/Goods/108947478)
+
+&nbsp;&nbsp; ▪ [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K162837601)
+
+&nbsp;&nbsp; ▪ [교보문고](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163033493)
+
+:::
+
+::::
+
+
+::: {background-color="#FF7232" transition="fade"}
+
+## 마크다운으로 데이터 분석 보고서 만들기 {background-color="#FF7232" transition="fade"}
+
+ 
+:::
+
+
+---
+
+### {data-menu-title="To do"}
+
+<br>
+
+![](img/title_html.png){width=50% fig-align="center"}
+
+---
+
+
+<br>
+
+##### [목차]{.font-jua .larger}
+
+[13-1 신뢰할 수 있는 데이터 분석 보고서 만들기]{.font-jua}([link](#신뢰할-수-있는-데이터-분석-보고서-만들기))
+
+[13-2 마크다운 문서 만들기]{.font-jua}([link](#마크다운-문서-만들기))
+
+
+## 13-1 신뢰할 수 있는 데이터 분석 보고서 만들기 {background-color="#FFCE32" transition="fade"}
+
+---
+
+#### 13-1 신뢰할 수 있는 데이터 분석 보고서 만들기
+
+**코드와 결과물이 설명 글과 함께 어우러진 데이터 분석 보고서**
+
+- 독자가 분석 과정을 명확히 이해할 수 있음
+- 보고서의 코드를 직접 실행하면서 똑같은 결과가 출력되는지 확인할 수 있음
+- 자신의 분석 작업에 활용할 수 있음
+
+
+**마크다운(markdown) 활용**
+
+- 데이터 분석 전 과정을 담은 보고서를 만들 수 있음
+- HTML, 워드, PDF 등 다양한 포맷으로 저장할 수 있음
+- 별도의 문서 작성 소프트웨어 사용하지 않아도 됨
+
+
+**신뢰받는 데이터 분석 보고서**
+
+- 재현성(reproducibility)을 갖춰야 함
+- 똑같은 분석 과정을 거쳤을 때 똑같은 분석 결과가 반복되어 나옴
+- 마크다운 이용하면 재현성 갖춘 데이터 분석 보고서를 만들 수 있음
+
+
+## 13-2 마크다운 문서 만들기 {background-color="#FFCE32" transition="fade"}
+
+
+### 마크다운 문서 만들기
+
+- 노트북의 셀 타입을 마크다운으로 변경
+- [Shift + Enter]로 셀을 실행하면 글자 양식이 적용되어 보기 좋게 바뀜
+
+<br>
+
+![](img/cell_markdown.png){width=60% fig-align="center"}
+
+---
+
+
+### 마크다운 문법 이용하기
+
+문자 앞뒤에 특수 문자를 넣어 문자 양식을 정함
+
+<br10>
+
+#### 입력한 내용
+
+```
+문자 앞뒤에 *특수문자*를 넣으면 기울임체가 됩니다.
+
+문자 앞뒤에 **특수문자**를 넣으면 강조체가 됩니다.
+
+문자 앞뒤에 ~~특수문자~~를 넣으면 취소선을 만듭니다.
+
+문자 앞뒤에 [특수문자](http://www.google.com/search?q=special+character)를 넣으면 하이퍼링크를 만듭니다.
+
+# 1 단계 제목
+## 2 단계 제목
+### 3 단계 제목
+#### 4 단계 제목
+
+코드에 백틱 기호를 입력하면 `pandas`와 같이 음영을 넣습니다.
+
+```
+
+### 마크다운 문법 이용하기
+
+문자 앞뒤에 특수 문자를 넣어 문자 양식을 정함
+
+<br10>
+
+#### 출력된 내용
+
+<br>
+
+![](img/markdown_output.png){width=60% fig-align="left"}
+
+
+---
+
+### 마크다운으로 데이터 분석 보고서 만들기
+
+<br20>
+
+#### 입력한 내용
+
+- 첫 번째 셀은 마크다운 타입
+- 두 번째, 세 번째 셀은 코드 타입
+
+<br10>
+
+![](img/markdown_basic_1.png){width=60% fig-align="left"}
+
+
+---
+
+### 마크다운으로 데이터 분석 보고서 만들기
+
+<br20>
+
+#### 출력된 내용
+
+<br20>
+
+![](img/markdown_basic_2.png){width=38% fig-align="left"}
+
+
+---
+
+### 문서 파일로 저장하기
+
+<br>
+
+##### HTML 파일로 저장하기
+
+[File → Save and Export Notebook As... → HTML]
+
+<br>
+
+##### PDF 파일로 저장하기
+
+[File → Print → ‘대상’을 ‘PDF로 저장’으로 바꾸기 → 저장]
+
+<br>
+
+##### 워드 파일로 저장하기
+
+1. [pandoc.org/installing.html](https://pandoc.org/installing.html)에서 pandoc 설치 파일을 다운로드 받아 설치 후 JupyterLab 재실행
+2. 새 노트북에서 다음 명령어 실행
+
+<br-back-10>
+
+```{python}
+#| eval: false
+!pandoc report.ipynb -s -o report.docx
+```
+
+---
+
+::: {.box}
+
+<span style="color:#FF7333"><i class="fa-solid fa-rocket fa-sm fa-beat"></i></span> [마크다운 활용하기]{.info}
+
+
+**마크다운 목차**
+
+- #을 넣어 제목을 만든 다음 JupyterLab 사이드바 Table of Contents 아이콘 클릭
+- 목차 클릭하면 노트북에서 제목이 있는 셀로 바로 이동함
+
+
+![](img/toc.png){width=40% fig-align="center"}
+
+**마크다운 치트 시트**
+
+- Markdown Cheat Sheet: [bit.ly/easypy_131](https://bit.ly/easypy_131)
+
+:::
+
+
+
+::: {background-color="#FF7232" transition="fade"}
+## 끝
+:::
+
