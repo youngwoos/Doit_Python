@@ -13,7 +13,8 @@
 [11.html](https://youngwoos.github.io/Doit_Python/11.html)| 11 지도 시각화
 [12.html](https://youngwoos.github.io/Doit_Python/12.html)| 12 인터랙티브 그래프
 [13.html](https://youngwoos.github.io/Doit_Python/13.html)| 13 마크다운으로 데이터 분석 보고서 만들기
-14~ | upcoming
+[14.html](https://youngwoos.github.io/Doit_Python/14.html)| 14 통계 분석 기법을 이용한 가설 검정
+~ | upcoming
 
 - 슬라이드는 크롬에 최적화되어 있습니다([크롬 다운로드](https://www.google.com/chrome/)).
 - 자유롭게 수정하고 배포하셔도 됩니다.

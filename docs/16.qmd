@@ -1,0 +1,503 @@
+---
+title: '**여섯째마당. 한발 더 들어가기**'
+jupyter:
+  jupytext:
+    cell_metadata_filter: 'name,eval,tags,include,echo,error,-all'
+    notebook_metadata_filter: '-all'
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+```{python}
+%%html
+<!--마크다운 표 정렬 설정-->
+<style> table {float:left} </style>
+```
+
+---
+
+
+---
+---
+
+
+# 16 데이터를 추출하는 다양한 방법
+
+## 16-1 `[]` 이용하기
+
+### 조건을 충족하는 행 추출하기
+
+```{python}
+#| eval: false
+import pandas as pd
+df_raw = pd.read_csv('exam.csv')
+df = df_raw.head(10)
+df
+```
+
+```{python}
+# nclass 추출
+df['nclass'] 
+```
+
+```{python}
+# nclass가 1인지 확인
+df['nclass'] == 1  
+```
+
+```{python}
+# nclass가 1이면 추출
+df[df['nclass'] == 1]  
+```
+
+```{python}
+# 수학 점수가 80점 이상이면 추출
+df[df['math'] >= 80]   
+```
+
+```{python}
+# nclass가 1이면서 수학 점수가 50점 이상
+df[(df['nclass'] == 1) & (df['math'] >= 50)]
+```
+
+```{python}
+# 수학 점수가 50점 미만이거나 영어 점수가 50점 미만
+df[(df['math'] < 50) | (df['english'] < 50)]
+```
+
+### 열 추출하기
+
+```{python}
+df['id']
+```
+
+```{python}
+df['nclass']
+```
+
+```{python}
+df[['id', 'nclass']]
+```
+
+#### 열이 1개일 때 데이터 프레임 자료 구조 유지하기
+
+```{python}
+# 시리즈로 추출
+df['id']
+```
+
+```{python}
+# 데이터 프레임으로 추출
+df[['id']]
+```
+
+------------------------------------------------------------------------
+
+#### (알아 두면 좋아요) `.`을 이용해 변수를 간단하게 추출하기
+
+```{python}
+# []를 이용해 변수 추출
+df['math']  
+```
+
+```{python}
+# .을 이용해 변수 추출
+df.math
+```
+
+```{python}
+df['math'].mean()
+```
+
+```{python}
+df.math.mean()
+```
+
+------------------------------------------------------------------------
+
+### 조건을 충족하는 행에서 열 추출하기
+
+```{python}
+# nclass가 1인 행의 math 열
+df[df['nclass'] == 1]['math']
+```
+
+```{python}
+# nclass가 1인 행의 math, english 열
+df[df['nclass'] == 1][['math', 'english']]
+```
+
+------------------------------------------------------------------------
+
+#### (알아 두면 좋아요) `[]`를 `pandas` 함수와 함께 사용하기
+
+```{python}
+# pandas 함수만 사용
+df.groupby('nclass') \
+  .agg(math    = ('math', 'mean'), 
+       english = ('english', 'mean'))
+```
+
+```{python}
+# pandas 함수와 [] 함께 사용
+df.groupby('nclass')[['math', 'english']].mean()
+```
+
+------------------------------------------------------------------------
+
+## 16-2 `df.loc[]` 이용하기
+
+### 인덱스 활용하기
+
+```{python}
+df = pd.DataFrame({'var1' : [1, 2, 3], 
+                   'var2' : [4, 5, 6]})
+df
+```
+
+```{python}
+# 인덱스 문자열 지정하기
+df = pd.DataFrame({'var1' : [1, 2, 3], 
+                   'var2' : [4, 5, 6]},
+                   index = ['kim', 'lee', 'park'])
+df
+```
+
+### 인덱스 문자열을 지정해 행 추출하기
+
+```{python}
+# kim 행 추출
+df.loc['kim']
+```
+
+#### 여러 행 추출하기
+
+```{python}
+# kim, park 행 추출
+df.loc[['kim', 'park']]  
+```
+
+### 인덱스 문자열을 지정해 열 추출하기
+
+```{python}
+# lee 행의 var1 열 추출
+df.loc['lee', 'var1'] 
+```
+
+```{python}
+# kim, lee 행의 var2 열 추출
+df.loc[['kim', 'lee'], 'var2'] 
+```
+
+```{python}
+#| eval: false
+#| tags: [raises-exception]
+df.loc[, 'var1']
+```
+
+```{python}
+df.loc[:, 'var1']
+```
+
+### 인덱스 번호를 지정해 행 추출하기
+
+```{python}
+# 인덱스 번호가 있는 데이터 프레임
+df = df_raw.copy()
+df
+```
+
+```{python}
+# 0행 추출
+df.loc[0]
+```
+
+```{python}
+# 2행 추출
+df.loc[2]  
+```
+
+#### 행이 1개일 때 데이터 프레임 자료 구조 유지하기
+
+```{python}
+# 시리즈로 추출
+df.loc[0]
+```
+
+```{python}
+# 데이터 프레임으로 추출
+df.loc[[0]]
+```
+
+#### 여러 행 추출하기
+
+```{python}
+# 1, 3, 5행 추출
+df.loc[[0, 3, 5]] 
+```
+
+#### 연속된 행 추출하기
+
+```{python}
+# 0~3행 추출
+df.loc[0:3]
+```
+
+```{python}
+# 7~9행 추출
+df.loc[7:9]
+```
+
+```{python}
+# 0~2행 추출
+df.loc[0:2]
+```
+
+```{python}
+# 첫 번째 행 ~ 2행 추출
+df.loc[:2]
+```
+
+```{python}
+# 5~9행 추출
+df.loc[5:9]
+```
+
+```{python}
+# 5행 ~ 마지막 행 추출
+df.loc[5:]
+```
+
+```{python}
+# 첫 번째 행 ~ 마지막 행 추출
+df.loc[:]
+```
+
+```{python}
+df
+```
+
+#### 인덱스 문자열만 있으면 인덱스 번호로 행을 추출할 수 없다
+
+```{python}
+#| error: true
+# 인덱스 문자열이 있는 데이터 프레임
+df_label = pd.DataFrame({'var1' : [1, 2, 3], 
+                         'var2' : [4, 5, 6]},
+                         index = ['kim', 'lee', 'park'])
+df_label
+```
+
+```{python}
+#| error: true
+#| tags: [raises-exception]
+# 인덱스 번호로 행 추출하기
+df_label.loc[0]
+```
+
+#### 인덱스 번호로 열을 추출할 수 없다
+
+```{python}
+#| error: true
+# 인덱스 번호로 행 추출하기
+df.loc[2, :]
+```
+
+```{python}
+#| error: true
+#| tags: [raises-exception]
+# 인덱스 번호로 열 추출하기
+df.loc[:, 2]
+```
+
+### 조건을 충족하는 행 추출하기
+
+```{python}
+# nclass가 1이면 추출
+df.loc[df['nclass'] == 1]
+```
+
+```{python}
+# 수학 점수가 60점 이상이면 추출
+df.loc[df['math'] >= 60]
+```
+
+#### 조건을 충족하는 행에서 열 추출하기
+
+```{python}
+# nclass가 1인 행의 math, english 열 추출
+df.loc[df['nclass'] == 1, ['math', 'english']]
+```
+
+```{python}
+# 0~3행의 math 열 추출
+df.loc[0:3, 'math'] 
+```
+
+#### 조건을 충족하는 행 추출 방법 비교하기
+
+```{python}
+#| eval: false
+# 수학 점수가 50을 초과하는 행 추출하기
+# df.query('math > 50')    # df.query()
+# df[df['math'] > 50]      # df[]
+# df.loc[df['math'] > 50]  # df.loc[]
+```
+
+## 16-3 `df.iloc[]` 이용하기
+
+### 인덱스 번호를 지정해 행 추출하기
+
+```{python}
+# 0행 추출
+df.iloc[0]
+```
+
+```{python}
+# 2행 추출
+df.iloc[2]
+```
+
+#### 행이 1개일 때 데이터 프레임 자료 구조 유지하기
+
+```{python}
+# 시리즈로 추출
+df.iloc[0]
+```
+
+```{python}
+# 데이터 프레임으로 추출
+df.iloc[[0]]
+```
+
+#### 여러 행 추출하기
+
+```{python}
+# 1, 3, 5행 추출
+df.iloc[[0, 3, 5]] 
+```
+
+#### 연속된 행 추출하기
+
+**`df.loc[x:y]` = x행 이상 y행 이하 추출**
+
+```{python}
+df.loc[1:5]  # 1~5행 출력
+```
+
+**`df.iloc[x:y]` = x행 이상 y행 미만 추출**
+
+```{python}
+df.iloc[1:5]  # 1~4행 출력
+```
+
+#### 인덱스 문자열만 있어도 인덱스 번호로 행을 추출할 수 있다
+
+```{python}
+# 인덱스 문자열이 있는 데이터 프레임
+df_label
+```
+
+```{python}
+#| error: true
+#| tags: [raises-exception]
+df_label.loc[0]
+```
+
+```{python}
+df_label.iloc[0]
+```
+
+### 인덱스 번호를 지정해 열 추출하기
+
+```{python}
+# 모든 행의 1열 추출
+df.iloc[:, 1]
+```
+
+```{python}
+# 모든 행의 1, 3열 추출
+df.iloc[:, [1, 3]]
+```
+
+#### 인덱스 번호를 지정해 행, 열 추출하기
+
+```{python}
+# 2행의 3열 추출
+df.iloc[2, 3] 
+```
+
+```{python}
+# 0, 1행의 2, 3열 추출
+df.iloc[[0, 1], [2, 3]]   
+```
+
+#### 조건을 충족하는 행을 추출할 수 없다
+
+```{python}
+#| error: true
+#| tags: [raises-exception]
+# nclass가 1이면 추출
+df.iloc[df['nclass'] == 1]
+```
+
+#### `df.loc[]`와 `df.iloc[]`의 차이점
+
+| 기능                    | df.loc()     | df.iloc()    |
+|-------------------------|--------------|--------------|
+| 행 추출 인덱스          | 문자열, 번호 | 번호         |
+| 열 추출 인덱스          | 문자열       | 번호         |
+| 조건 지정해서 행 추출   | O            | X            |
+| 연속된 행 추출 x:y      | 이상:이하    | 이상:미만    |
+  
+
+--- 
+
+### 정리하기
+
+```{python}
+#| eval: false
+#| lines_to_next_cell: 0
+## 1. [] 이용하기
+
+df[df['math'] >= 80]                          # 조건을 충족하는 행 추출
+df[(df['nclass'] == 1) & (df['math'] >= 50)]  # 여러 조건을 충족하는 행 추출
+
+df[['id', 'nclass']]                          # 열 추출
+df[df['nclass'] == 1]['math']                 # 조건을 충족하는 행에서 열 추출
+df[df['nclass'] == 1][['math', 'english']]    # 조건을 충족하는 행에서 여러 열 추출
+
+
+## 2. df.loc[] 이용하기
+
+df.loc['kim']            # 인덱스 문자열로 행 추출
+df.loc[['kim', 'park']]  # 인덱스 문자열로 여러 행 추출  
+
+df.loc[:, 'var1']        # 문자열로 열 추출
+df.loc['lee', 'var1']    # 행, 열 모두 문자열로 추출
+
+df.loc[0]                # 인덱스 번호로 행 추출
+df.loc[[1, 3, 5]]        # 인덱스 번호로 여러 행 추출
+
+df.loc[7:9]              # 연속된 행 추출: x행 이상 y행 이하
+df.loc[:2]               # 첫 행부터 추출
+df.loc[5:]               # 끝 행까지 추출
+df.loc[:]                # 모든 행 추출
+
+df.loc[df['math'] >= 60]                        # 조건을 충족하는 행 추출
+df.loc[0:3, 'math']                             # 조건을 충족하는 행에서 열 추출
+df.loc[df['nclass'] == 1, ['math', 'english']]  # 조건을 충족하는 행에서 여러 열 추출
+
+
+## 3. df.iloc[] 이용하기
+
+df.iloc[0]               # 인덱스 번호로 행 추출
+df.iloc[1:5]             # 연속된 행 추출: x행 이상 y행 미만
+
+df.iloc[:, 1]            # 인덱스 번호로 열 추출
+df.iloc[2, 3]            # 행과 열을 모두 인덱스 번호로 추출
+df.iloc[[0, 1], [2, 3]]  # 여러 행과 여러 열을 모두 인덱스 번호로 추출
+```
+
